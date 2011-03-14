@@ -1,0 +1,418 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://org.apache.synapse/xsd" xmlns:ax213="http://common.csg.cloud.carbon.wso2.org/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://service.agent.csg.cloud.carbon.wso2.org" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://service.agent.csg.cloud.carbon.wso2.org">
+    <wsdl:documentation>CSGAgentAdminService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://common.csg.cloud.carbon.wso2.org/xsd">
+            <xs:complexType name="CSGException">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="CSGServerBean">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="host" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="port" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax214="http://common.csg.cloud.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.synapse/xsd">
+            <xs:import namespace="http://common.csg.cloud.carbon.wso2.org/xsd"/>
+            <xs:element name="CSGException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CSGException" nillable="true" type="ax214:CSGException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateCSGServer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="csgServer" nillable="true" type="ax214:CSGServerBean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="unPublishService">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeCSGServer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="csgServerName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="publishService">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isservicePublished">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isservicePublishedResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCSGServerList">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCSGServerListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax214:CSGServerBean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCSGServer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="csgServerName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCSGServerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax214:CSGServerBean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addCSGServer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="csgServer" nillable="true" type="ax214:CSGServerBean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="isservicePublishedRequest">
+        <wsdl:part name="parameters" element="ns:isservicePublished"/>
+    </wsdl:message>
+    <wsdl:message name="isservicePublishedResponse">
+        <wsdl:part name="parameters" element="ns:isservicePublishedResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CSGException">
+        <wsdl:part name="parameters" element="ns:CSGException"/>
+    </wsdl:message>
+    <wsdl:message name="getCSGServerListRequest">
+        <wsdl:part name="parameters" element="ns:getCSGServerList"/>
+    </wsdl:message>
+    <wsdl:message name="getCSGServerListResponse">
+        <wsdl:part name="parameters" element="ns:getCSGServerListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addCSGServerRequest">
+        <wsdl:part name="parameters" element="ns:addCSGServer"/>
+    </wsdl:message>
+    <wsdl:message name="unPublishServiceRequest">
+        <wsdl:part name="parameters" element="ns:unPublishService"/>
+    </wsdl:message>
+    <wsdl:message name="publishServiceRequest">
+        <wsdl:part name="parameters" element="ns:publishService"/>
+    </wsdl:message>
+    <wsdl:message name="removeCSGServerRequest">
+        <wsdl:part name="parameters" element="ns:removeCSGServer"/>
+    </wsdl:message>
+    <wsdl:message name="getCSGServerRequest">
+        <wsdl:part name="parameters" element="ns:getCSGServer"/>
+    </wsdl:message>
+    <wsdl:message name="getCSGServerResponse">
+        <wsdl:part name="parameters" element="ns:getCSGServerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateCSGServerRequest">
+        <wsdl:part name="parameters" element="ns:updateCSGServer"/>
+    </wsdl:message>
+    <wsdl:portType name="CSGAgentAdminServicePortType">
+        <wsdl:operation name="isservicePublished">
+            <wsdl:input message="tns:isservicePublishedRequest" wsaw:Action="urn:isservicePublished"/>
+            <wsdl:output message="tns:isservicePublishedResponse" wsaw:Action="urn:isservicePublishedResponse"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:isservicePublishedCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServerList">
+            <wsdl:input message="tns:getCSGServerListRequest" wsaw:Action="urn:getCSGServerList"/>
+            <wsdl:output message="tns:getCSGServerListResponse" wsaw:Action="urn:getCSGServerListResponse"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:getCSGServerListCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="addCSGServer">
+            <wsdl:input message="tns:addCSGServerRequest" wsaw:Action="urn:addCSGServer"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:addCSGServerCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="unPublishService">
+            <wsdl:input message="tns:unPublishServiceRequest" wsaw:Action="urn:unPublishService"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:unPublishServiceCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="publishService">
+            <wsdl:input message="tns:publishServiceRequest" wsaw:Action="urn:publishService"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:publishServiceCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeCSGServer">
+            <wsdl:input message="tns:removeCSGServerRequest" wsaw:Action="urn:removeCSGServer"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:removeCSGServerCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServer">
+            <wsdl:input message="tns:getCSGServerRequest" wsaw:Action="urn:getCSGServer"/>
+            <wsdl:output message="tns:getCSGServerResponse" wsaw:Action="urn:getCSGServerResponse"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:getCSGServerCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateCSGServer">
+            <wsdl:input message="tns:updateCSGServerRequest" wsaw:Action="urn:updateCSGServer"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:updateCSGServerCSGException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CSGAgentAdminServiceSoap11Binding" type="tns:CSGAgentAdminServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="isservicePublished">
+            <soap:operation soapAction="urn:isservicePublished" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServerList">
+            <soap:operation soapAction="urn:getCSGServerList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addCSGServer">
+            <soap:operation soapAction="urn:addCSGServer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="unPublishService">
+            <soap:operation soapAction="urn:unPublishService" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeCSGServer">
+            <soap:operation soapAction="urn:removeCSGServer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="publishService">
+            <soap:operation soapAction="urn:publishService" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServer">
+            <soap:operation soapAction="urn:getCSGServer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateCSGServer">
+            <soap:operation soapAction="urn:updateCSGServer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CSGAgentAdminServiceSoap12Binding" type="tns:CSGAgentAdminServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="isservicePublished">
+            <soap12:operation soapAction="urn:isservicePublished" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServerList">
+            <soap12:operation soapAction="urn:getCSGServerList" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addCSGServer">
+            <soap12:operation soapAction="urn:addCSGServer" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="unPublishService">
+            <soap12:operation soapAction="urn:unPublishService" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeCSGServer">
+            <soap12:operation soapAction="urn:removeCSGServer" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="publishService">
+            <soap12:operation soapAction="urn:publishService" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServer">
+            <soap12:operation soapAction="urn:getCSGServer" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateCSGServer">
+            <soap12:operation soapAction="urn:updateCSGServer" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CSGAgentAdminServiceHttpBinding" type="tns:CSGAgentAdminServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="isservicePublished">
+            <http:operation location="isservicePublished"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServerList">
+            <http:operation location="getCSGServerList"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCSGServer">
+            <http:operation location="addCSGServer"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="unPublishService">
+            <http:operation location="unPublishService"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="removeCSGServer">
+            <http:operation location="removeCSGServer"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="publishService">
+            <http:operation location="publishService"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getCSGServer">
+            <http:operation location="getCSGServer"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateCSGServer">
+            <http:operation location="updateCSGServer"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CSGAgentAdminService">
+        <wsdl:port name="CSGAgentAdminServiceHttpsSoap11Endpoint" binding="tns:CSGAgentAdminServiceSoap11Binding">
+            <soap:address location="https://192.168.152.1:9444/services/CSGAgentAdminService.CSGAgentAdminServiceHttpsSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CSGAgentAdminServiceHttpsSoap12Endpoint" binding="tns:CSGAgentAdminServiceSoap12Binding">
+            <soap12:address location="https://192.168.152.1:9444/services/CSGAgentAdminService.CSGAgentAdminServiceHttpsSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CSGAgentAdminServiceHttpsEndpoint" binding="tns:CSGAgentAdminServiceHttpBinding">
+            <http:address location="https://192.168.152.1:9444/services/CSGAgentAdminService.CSGAgentAdminServiceHttpsEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

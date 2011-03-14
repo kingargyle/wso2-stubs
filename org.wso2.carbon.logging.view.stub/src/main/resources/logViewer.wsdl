@@ -1,0 +1,283 @@
+<!--
+ ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ WSO2 Inc. licenses this file to you under the Apache License,
+ ~ Version 2.0 (the "License"); you may not use this file except
+ ~ in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing,
+ ~ software distributed under the License is distributed on an
+ ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~ KIND, either express or implied.  See the License for the
+ ~ specific language governing permissions and limitations
+ ~ under the License.
+ -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://service.logging.carbon.wso2.org" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax229="http://data.service.logging.carbon.wso2.org/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://service.logging.carbon.wso2.org">
+    <wsdl:documentation>LogViewer</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax230="http://data.service.logging.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
+    <xs:import namespace="http://data.service.logging.carbon.wso2.org/xsd" />
+    <xs:element name="clearLogsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="return" type="xs:boolean" />
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="Exception">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getLogs">
+
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+                <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getLogsResponse">
+        <xs:complexType>
+
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax229:LogMessage" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getLogsForSingleLogLevel">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getLogsForSingleLogLevelResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax229:LogMessage" />
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+    <xs:element name="searchLog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+                <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="searchLogResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax229:LogMessage" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://data.service.logging.carbon.wso2.org/xsd">
+
+    <xs:complexType name="LogMessage">
+        <xs:all>
+            <xs:element minOccurs="0" name="logMessage" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+        </xs:all>
+    </xs:complexType>
+</xs:schema>
+    </wsdl:types>
+    <wsdl:message name="clearLogsRequest" />
+
+    <wsdl:message name="clearLogsResponse">
+        <wsdl:part name="parameters" element="ns1:clearLogsResponse" />
+    </wsdl:message>
+    <wsdl:message name="getLogsRequest">
+        <wsdl:part name="parameters" element="ns1:getLogs" />
+    </wsdl:message>
+    <wsdl:message name="getLogsResponse">
+        <wsdl:part name="parameters" element="ns1:getLogsResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="searchLogRequest">
+        <wsdl:part name="parameters" element="ns1:searchLog" />
+    </wsdl:message>
+    <wsdl:message name="searchLogResponse">
+        <wsdl:part name="parameters" element="ns1:searchLogResponse" />
+    </wsdl:message>
+    <wsdl:message name="getLogsForSingleLogLevelRequest">
+        <wsdl:part name="parameters" element="ns1:getLogsForSingleLogLevel" />
+    </wsdl:message>
+
+    <wsdl:message name="getLogsForSingleLogLevelResponse">
+        <wsdl:part name="parameters" element="ns1:getLogsForSingleLogLevelResponse" />
+    </wsdl:message>
+    <wsdl:portType name="LogViewerPortType">
+        <wsdl:operation name="clearLogs">
+            <wsdl:input message="axis2:clearLogsRequest" wsaw:Action="urn:clearLogs" />
+            <wsdl:output message="axis2:clearLogsResponse" wsaw:Action="urn:clearLogsResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="getLogs">
+
+            <wsdl:input message="axis2:getLogsRequest" wsaw:Action="urn:getLogs" />
+            <wsdl:output message="axis2:getLogsResponse" wsaw:Action="urn:getLogsResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="searchLog">
+            <wsdl:input message="axis2:searchLogRequest" wsaw:Action="urn:searchLog" />
+            <wsdl:output message="axis2:searchLogResponse" wsaw:Action="urn:searchLogResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="getLogsForSingleLogLevel">
+            <wsdl:input message="axis2:getLogsForSingleLogLevelRequest" wsaw:Action="urn:getLogsForSingleLogLevel" />
+
+            <wsdl:output message="axis2:getLogsForSingleLogLevelResponse" wsaw:Action="urn:getLogsForSingleLogLevelResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="LogViewerSoap11Binding" type="axis2:LogViewerPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="clearLogs">
+            <soap:operation soapAction="urn:clearLogs" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLogs">
+            <soap:operation soapAction="urn:getLogs" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLogsForSingleLogLevel">
+            <soap:operation soapAction="urn:getLogsForSingleLogLevel" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchLog">
+            <soap:operation soapAction="urn:searchLog" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="LogViewerSoap12Binding" type="axis2:LogViewerPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="clearLogs">
+
+            <soap12:operation soapAction="urn:clearLogs" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLogs">
+
+            <soap12:operation soapAction="urn:getLogs" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLogsForSingleLogLevel">
+
+            <soap12:operation soapAction="urn:getLogsForSingleLogLevel" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchLog">
+
+            <soap12:operation soapAction="urn:searchLog" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:binding name="LogViewerHttpBinding" type="axis2:LogViewerPortType">
+        <http:binding verb="POST" />
+        <wsdl:operation name="clearLogs">
+            <http:operation location="LogViewer/clearLogs" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="clearLogs" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="clearLogs" />
+
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLogs">
+            <http:operation location="LogViewer/getLogs" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="getLogs" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getLogs" />
+
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLogsForSingleLogLevel">
+            <http:operation location="LogViewer/getLogsForSingleLogLevel" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="getLogsForSingleLogLevel" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getLogsForSingleLogLevel" />
+
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchLog">
+            <http:operation location="LogViewer/searchLog" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="searchLog" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="searchLog" />
+
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="LogViewer">
+        <wsdl:port name="LogViewerHttpsSoap11Endpoint" binding="axis2:LogViewerSoap11Binding">
+            <soap:address location="https://10.100.1.155:9443/services/LogViewer.LogViewerHttpsSoap11Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="LogViewerHttpsSoap12Endpoint" binding="axis2:LogViewerSoap12Binding">
+            <soap12:address location="https://10.100.1.155:9443/services/LogViewer.LogViewerHttpsSoap12Endpoint/" />
+
+        </wsdl:port>
+        <wsdl:port name="LogViewerHttpsEndpoint" binding="axis2:LogViewerHttpBinding">
+            <http:address location="https://10.100.1.155:9443/services/LogViewer.LogViewerHttpsEndpoint/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

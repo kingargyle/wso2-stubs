@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ WSO2 Inc. licenses this file to you under the Apache License,
+ ~ Version 2.0 (the "License"); you may not use this file except
+ ~ in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing,
+ ~ software distributed under the License is distributed on an
+ ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~ KIND, either express or implied.  See the License for the
+ ~ specific language governing permissions and limitations
+ ~ under the License.
+ -->
+<definitions name="ProcessManagement" targetNamespace="http://wso2.org/bps/management/wsdl/InstanceManagement"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://wso2.org/bps/management/wsdl/InstanceManagement"
+             xmlns:ns="http://wso2.org/bps/management/schema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types>
+        <xsd:schema targetNamespace="http://wso2.org/bps/management/wsdl/InstanceManagement">
+            <xsd:import namespace="http://wso2.org/bps/management/schema" schemaLocation="bps_management.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="getPaginatedInstanceListRequest">
+        <part name="part" element="ns:getPaginatedInstanceListInput"/>
+    </message>
+    <message name="getPaginatedInstanceListResponse">
+        <part name="part" element="ns:PaginatedInstanceList"/>
+    </message>
+    <message name="getInstanceInfoRequest">
+        <part name="part" element="ns:getInstanceInfoIn"/>
+    </message>
+    <message name="getInstanceInfoResponse">
+        <part name="part" element="ns:InstanceInfo"/>
+    </message>
+
+    <message name="getInstanceInfoWithEventsResponse">
+        <part name="part" element="ns:InstanceInfoWithEvents"/>
+    </message>
+
+    <message name="getActivityLifeCycleFilterRequest">
+        <part name="part" element="ns:getActivityLifeCycleFilterIn"/>
+    </message>
+
+    <message name="getActivityLifeCycleFilterResponse">
+        <part name="part" element="ns:ActivityLifeCycleEvents"/>
+    </message>
+    
+    <message name="suspendInstanceRequest">
+        <part name="part" element="ns:suspendInstance"/>
+    </message>
+    <!--message name="suspendInstanceResponse">
+        <part name="part" element="ns:InstanceInfo"/>
+    </message-->
+    <message name="resumeInstanceRequest">
+        <part name="part" element="ns:resumeInstance"/>
+    </message>
+    <!--message name="resumeinstanceResponse">
+        <part name="part" element="ns:InstanceInfo"/>
+    </message-->
+    <message name="terminateInstanceRequest">
+        <part name="part" element="ns:terminateInstance"/>
+    </message>
+    <!--<message name="terminateInstanceResponse">-->
+        <!--<part name="part" element="ns:InstanceInfo"/>-->
+    <!--</message>-->
+    <message name="faultInstanceRequest">
+        <part name="part" element="ns:faultInstance"/>
+    </message>
+    <message name="faultInstanceResponse">
+        <part name="part" element="ns:InstanceInfo"/>
+    </message>
+    <message name="deleteInstanceRequest">
+        <part name="part" element="ns:deleteInstance"/>
+    </message>
+    <message name="deleteInstanceResponse">
+        <part name="part" element="ns:deleteInstanceOut"/>
+    </message>
+    <message name="getScopeInfoRequest">
+        <part name="part" element="ns:getScopeInfo"/>
+    </message>
+    <message name="getScopeInfoResponse">
+        <part name="part" element="ns:ScopeInfo"/>
+    </message>
+    <message name="getScopeInfoWithActivitiesRequest">
+        <part name="part" element="ns:getScopeInfoWithActivities"/>
+    </message>
+    <message name="getScopeInfoWithActivitiesResponse">
+        <part name="part" element="ns:ScopeInfo"/>
+    </message>
+    <message name="getVariableInfoRequest">
+        <part name="part" element="ns:getVariableInfo"/>
+    </message>
+    <message name="getVariableInfoResponse">
+        <part name="part" element="ns:VariableInfo"/>
+    </message>
+    <message name="deleteInstancesRequest">
+        <part name="part" element="ns:deleteInstances"/>
+    </message>
+    <message name="deleteInstancesResponse">
+        <part name="part" element="ns:deleteInstanceResponse"/>
+    </message>
+    <message name="recoverActivityRequest">
+        <part name="part" element="ns:recoverActivity"/>
+    </message>
+
+    <portType name="InstanceManagementPortType">
+        <operation name="getPaginatedInstanceList">
+            <input message="tns:getPaginatedInstanceListRequest"/>
+            <output message="tns:getPaginatedInstanceListResponse"/>
+        </operation>
+        <operation name="getInstanceInfo">
+            <input message="tns:getInstanceInfoRequest"/>
+            <output message="tns:getInstanceInfoResponse"/>
+        </operation>
+        <operation name="getInstanceInfoWithEvents">
+            <input message="tns:getInstanceInfoRequest"/>
+            <output message="tns:getInstanceInfoWithEventsResponse"/>
+        </operation>
+        <operation name="getActivityLifeCycleFilter">
+            <input message="tns:getActivityLifeCycleFilterRequest"/>
+            <output message="tns:getActivityLifeCycleFilterResponse"/>
+        </operation>
+        <operation name="suspendInstance">
+            <input message="tns:suspendInstanceRequest"/>
+        </operation>
+        <operation name="resumeInstance">
+            <input message="tns:resumeInstanceRequest"/>
+        </operation>
+        <operation name="terminateInstance">
+            <input message="tns:terminateInstanceRequest"/>
+        </operation>
+        <operation name="deleteInstances">
+            <input message="tns:deleteInstancesRequest"/>
+            <output message="tns:deleteInstancesResponse"/>
+        </operation>
+        
+        <!--<operation name="faultInstance">-->
+            <!--<input message="tns:faultInstanceRequest"/>-->
+            <!--<output message="tns:faultInstanceResponse"/>-->
+        <!--</operation>-->
+        <!--<operation name="deleteInstance">-->
+            <!--<input message="tns:deleteInstanceRequest"/>-->
+            <!--<output message="tns:deleteInstanceResponse"/>-->
+        <!--</operation>-->
+        <!--<operation name="getScopeInfo">-->
+            <!--<input message="tns:getScopeInfoRequest"/>-->
+            <!--<output message="tns:getScopeInfoResponse"/>-->
+        <!--</operation>-->
+        <!--<operation name="getScopeInfoWithActivities">-->
+            <!--<input message="tns:getScopeInfoWithActivitiesRequest"/>-->
+            <!--<output message="tns:getScopeInfoWithActivitiesResponse"/>-->
+        <!--</operation>-->
+        <!--<operation name="getVariableInfo">-->
+            <!--<input message="tns:getVariableInfoRequest"/>-->
+            <!--<output message="tns:getVariableInfoResponse"/>-->
+        <!--</operation>-->
+        <operation name="recoverActivity">
+            <input message="tns:recoverActivityRequest"/>
+        </operation>
+    </portType>
+    <binding name="InstanceManagementSOAPBinding" type="tns:InstanceManagementPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getPaginatedInstanceList">
+            <soap:operation soapAction="urn:getPaginatedInstanceList"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getInstanceInfo">
+            <soap:operation soapAction="urn:getInstanceInfo"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getActivityLifeCycleFilter">
+            <soap:operation soapAction="urn:getActivityLifeCycleFilter"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getInstanceInfoWithEvents">
+            <soap:operation soapAction="urn:getInstanceInfoWithEvents"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="suspendInstance">
+            <soap:operation soapAction="urn:suspendInstance"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+        <operation name="resumeInstance">
+            <soap:operation soapAction="urn:resumeInstance"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+        <operation name="terminateInstance">
+            <soap:operation soapAction="urn:terminateInstance"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+        <operation name="deleteInstances">
+            <soap:operation soapAction="urn:deleteInstances"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <!--<operation name="faultInstance">-->
+            <!--<soap:operation soapAction="urn:faultInstance"/>-->
+            <!--<input>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</input>-->
+            <!--<output>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</output>-->
+        <!--</operation>-->
+        <!--<operation name="deleteInstance">-->
+            <!--<soap:operation soapAction="urn:deleteInstance"/>-->
+            <!--<input>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</input>-->
+            <!--<output>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</output>-->
+        <!--</operation>-->
+        <!--<operation name="getScopeInfo">-->
+            <!--<soap:operation soapAction="urn:getScopeInfo"/>-->
+            <!--<input>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</input>-->
+            <!--<output>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</output>-->
+        <!--</operation>-->
+        <!--<operation name="getScopeInfoWithActivities">-->
+            <!--<soap:operation soapAction="urn:getScopeInfoWithActivities"/>-->
+            <!--<input>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</input>-->
+            <!--<output>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</output>-->
+        <!--</operation>-->
+        <!--<operation name="getVariableInfo">-->
+            <!--<soap:operation soapAction="urn:getVariableInfo"/>-->
+            <!--<input>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</input>-->
+            <!--<output>-->
+                <!--<soap:body use="literal"/>-->
+            <!--</output>-->
+        <!--</operation>-->
+        <operation name="recoverActivity">
+            <soap:operation soapAction="urn:recoverActivity"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+        </operation>
+    </binding>
+
+    <service name="InstanceManagementService">
+        <port name="instanceManagementSOAPPort" binding="tns:InstanceManagementSOAPBinding">
+            <soap:address location="http://localhost:9763/services/InstanceManagementService"/>
+        </port>
+    </service>
+</definitions>
