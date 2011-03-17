@@ -318,6 +318,13 @@
         </xsd:sequence>
     </xsd:complexType>
     <xsd:element name="getPaginatedInstanceListInput" type="tns:getPaginatedInstanceListInputType"/>
+    <xsd:element name="getLongRunningInstancesInput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="limit" type="xsd:int" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
     <xsd:complexType name="getPaginatedInstanceListInputType">
         <xsd:sequence>
             <xsd:element name="filter" type="xsd:string"/>
@@ -330,6 +337,13 @@
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element name="pages" type="xsd:int"/>
+                <xsd:element name="Instance" type="tns:LimitedInstanceInfoType" maxOccurs="unbounded" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="getLongRunningInstancesResponse">
+        <xsd:complexType>
+            <xsd:sequence>
                 <xsd:element name="Instance" type="tns:LimitedInstanceInfoType" maxOccurs="unbounded" minOccurs="0"/>
             </xsd:sequence>
         </xsd:complexType>
@@ -857,6 +871,17 @@
                 <xsd:element name="process" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
             </xsd:sequence>
             <xsd:attribute name="packageName" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="instanceSummary">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="active" type="xsd:int"/>
+                <xsd:element name="completed" type="xsd:int"/>
+                <xsd:element name="terminated" type="xsd:int"/>
+                <xsd:element name="failed" type="xsd:int"/>
+                <xsd:element name="suspended" type="xsd:int"/>
+            </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
 

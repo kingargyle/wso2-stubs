@@ -35,6 +35,12 @@
     <message name="getPaginatedInstanceListResponse">
         <part name="part" element="ns:PaginatedInstanceList"/>
     </message>
+    <message name="getLongRunningInstancesRequest">
+        <part name="part" element="ns:getLongRunningInstancesInput"/>
+    </message>
+    <message name="getLongRunningInstancesResponse">
+        <part name="part" element="ns:getLongRunningInstancesResponse"/>
+    </message>
     <message name="getInstanceInfoRequest">
         <part name="part" element="ns:getInstanceInfoIn"/>
     </message>
@@ -111,11 +117,19 @@
     <message name="recoverActivityRequest">
         <part name="part" element="ns:recoverActivity"/>
     </message>
+    <message name="getInstanceSummaryRequest"/>
+    <message name="getInstanceSummaryResponse">
+        <part name="part" element="ns:instanceSummary"/>
+    </message>
 
     <portType name="InstanceManagementPortType">
         <operation name="getPaginatedInstanceList">
             <input message="tns:getPaginatedInstanceListRequest"/>
             <output message="tns:getPaginatedInstanceListResponse"/>
+        </operation>
+        <operation name="getLongRunningInstances">
+            <input message="tns:getLongRunningInstancesRequest"/>
+            <output message="tns:getLongRunningInstancesResponse"/>
         </operation>
         <operation name="getInstanceInfo">
             <input message="tns:getInstanceInfoRequest"/>
@@ -166,11 +180,24 @@
         <operation name="recoverActivity">
             <input message="tns:recoverActivityRequest"/>
         </operation>
+        <operation name="getInstanceSummary">
+            <input message="tns:getInstanceSummaryRequest"/>
+            <output message="tns:getInstanceSummaryResponse"/>
+        </operation>
     </portType>
     <binding name="InstanceManagementSOAPBinding" type="tns:InstanceManagementPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="getPaginatedInstanceList">
             <soap:operation soapAction="urn:getPaginatedInstanceList"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getLongRunningInstances">
+            <soap:operation soapAction="urn:getLongRunningInstances"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -283,6 +310,15 @@
             <input>
                 <soap:body use="literal"/>
             </input>
+        </operation>
+        <operation name="getInstanceSummary">
+            <soap:operation soapAction="urn:getInstanceSummary"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
         </operation>
     </binding>
 
