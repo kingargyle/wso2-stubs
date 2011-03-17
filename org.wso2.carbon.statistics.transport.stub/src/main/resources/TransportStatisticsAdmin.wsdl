@@ -1,24 +1,7 @@
-<!--
- ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- ~
- ~ WSO2 Inc. licenses this file to you under the Apache License,
- ~ Version 2.0 (the "License"); you may not use this file except
- ~ in compliance with the License.
- ~ You may obtain a copy of the License at
- ~
- ~    http://www.apache.org/licenses/LICENSE-2.0
- ~
- ~ Unless required by applicable law or agreed to in writing,
- ~ software distributed under the License is distributed on an
- ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- ~ KIND, either express or implied.  See the License for the
- ~ specific language governing permissions and limitations
- ~ under the License.
- -->
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://services.transport.statistics.carbon.wso2.org" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ax291="http://util.services.transport.statistics.carbon.wso2.org/xsd" targetNamespace="http://services.transport.statistics.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2452="http://util.services.transport.statistics.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://services.transport.statistics.carbon.wso2.org" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.transport.statistics.carbon.wso2.org">
     <wsdl:documentation>TransportStatisticsAdmin</wsdl:documentation>
     <wsdl:types>
-        <xs:schema xmlns:ax292="http://util.services.transport.statistics.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
+        <xs:schema xmlns:ax2453="http://util.services.transport.statistics.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
             <xs:import namespace="http://util.services.transport.statistics.carbon.wso2.org/xsd"/>
             <xs:element name="getTransportStatistic">
                 <xs:complexType>
@@ -30,7 +13,7 @@
             <xs:element name="getTransportStatisticResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax291:TransportStatistics"/>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2453:TransportStatistics"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -76,6 +59,18 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getThreadViewStatistics">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getThreadViewStatisticsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2453:ThreadViewStatistics"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -244,6 +239,11 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getExposedTransports">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getExposedTransportsResponse">
                 <xs:complexType>
                     <xs:sequence>
@@ -311,10 +311,15 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getAllTransportStatistics">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getAllTransportStatisticsResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax291:SystemTransportStatistics"/>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2453:SystemTransportStatistics"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -375,6 +380,32 @@
                     <xs:element minOccurs="0" name="transportSenderQueueSize" type="xs:int"/>
                     <xs:element minOccurs="0" name="transportSenderTimeoutsReceiving" type="xs:long"/>
                     <xs:element minOccurs="0" name="transportSenderTimeoutsSending" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ThreadViewStatistics">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="clientWorkerAvgBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerAvgUnblockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerDeadLockedWorkers" type="xs:int"/>
+                    <xs:element minOccurs="0" name="clientWorkerLast15MinuteBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerLast24HourBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerLast5MinuteBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerLast8HourBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerLastHourBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerLastMinuteBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="clientWorkerLastResetTime" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="clientWorkerTotalWorkerCount" type="xs:int"/>
+                    <xs:element minOccurs="0" name="serverWorkerAvgBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerAvgUnblockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerDeadLockedWorkers" type="xs:int"/>
+                    <xs:element minOccurs="0" name="serverWorkerLast15MinuteBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerLast24HourBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerLast5MinuteBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerLast8HourBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerLastHourBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerLastMinuteBlockedWorkerPercentage" type="xs:double"/>
+                    <xs:element minOccurs="0" name="serverWorkerLastResetTime" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serverWorkerTotalWorkerCount" type="xs:int"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="SystemTransportStatistics">
@@ -467,7 +498,9 @@
     <wsdl:message name="getTimeoutsSendingResponse">
         <wsdl:part name="parameters" element="ns1:getTimeoutsSendingResponse"/>
     </wsdl:message>
-    <wsdl:message name="getAllTransportStatisticsRequest"/>
+    <wsdl:message name="getAllTransportStatisticsRequest">
+        <wsdl:part name="parameters" element="ns1:getAllTransportStatistics"/>
+    </wsdl:message>
     <wsdl:message name="getAllTransportStatisticsResponse">
         <wsdl:part name="parameters" element="ns1:getAllTransportStatisticsResponse"/>
     </wsdl:message>
@@ -513,6 +546,12 @@
     <wsdl:message name="getTimeoutsReceivingResponse">
         <wsdl:part name="parameters" element="ns1:getTimeoutsReceivingResponse"/>
     </wsdl:message>
+    <wsdl:message name="getThreadViewStatisticsRequest">
+        <wsdl:part name="parameters" element="ns1:getThreadViewStatistics"/>
+    </wsdl:message>
+    <wsdl:message name="getThreadViewStatisticsResponse">
+        <wsdl:part name="parameters" element="ns1:getThreadViewStatisticsResponse"/>
+    </wsdl:message>
     <wsdl:message name="getTransportClassNameRequest">
         <wsdl:part name="parameters" element="ns1:getTransportClassName"/>
     </wsdl:message>
@@ -525,7 +564,9 @@
     <wsdl:message name="getAvgSizeReceivedResponse">
         <wsdl:part name="parameters" element="ns1:getAvgSizeReceivedResponse"/>
     </wsdl:message>
-    <wsdl:message name="getExposedTransportsRequest"/>
+    <wsdl:message name="getExposedTransportsRequest">
+        <wsdl:part name="parameters" element="ns1:getExposedTransports"/>
+    </wsdl:message>
     <wsdl:message name="getExposedTransportsResponse">
         <wsdl:part name="parameters" element="ns1:getExposedTransportsResponse"/>
     </wsdl:message>
@@ -549,95 +590,99 @@
     </wsdl:message>
     <wsdl:portType name="TransportStatisticsAdminPortType">
         <wsdl:operation name="getFaultsSending">
-            <wsdl:input message="axis2:getFaultsSendingRequest" wsaw:Action="urn:getFaultsSending"/>
-            <wsdl:output message="axis2:getFaultsSendingResponse" wsaw:Action="urn:getFaultsSendingResponse"/>
+            <wsdl:input message="tns:getFaultsSendingRequest" wsaw:Action="urn:getFaultsSending"/>
+            <wsdl:output message="tns:getFaultsSendingResponse" wsaw:Action="urn:getFaultsSendingResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getQueueSize">
-            <wsdl:input message="axis2:getQueueSizeRequest" wsaw:Action="urn:getQueueSize"/>
-            <wsdl:output message="axis2:getQueueSizeResponse" wsaw:Action="urn:getQueueSizeResponse"/>
+            <wsdl:input message="tns:getQueueSizeRequest" wsaw:Action="urn:getQueueSize"/>
+            <wsdl:output message="tns:getQueueSizeResponse" wsaw:Action="urn:getQueueSizeResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getBytesSent">
-            <wsdl:input message="axis2:getBytesSentRequest" wsaw:Action="urn:getBytesSent"/>
-            <wsdl:output message="axis2:getBytesSentResponse" wsaw:Action="urn:getBytesSentResponse"/>
+            <wsdl:input message="tns:getBytesSentRequest" wsaw:Action="urn:getBytesSent"/>
+            <wsdl:output message="tns:getBytesSentResponse" wsaw:Action="urn:getBytesSentResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getMinSizeReceived">
-            <wsdl:input message="axis2:getMinSizeReceivedRequest" wsaw:Action="urn:getMinSizeReceived"/>
-            <wsdl:output message="axis2:getMinSizeReceivedResponse" wsaw:Action="urn:getMinSizeReceivedResponse"/>
+            <wsdl:input message="tns:getMinSizeReceivedRequest" wsaw:Action="urn:getMinSizeReceived"/>
+            <wsdl:output message="tns:getMinSizeReceivedResponse" wsaw:Action="urn:getMinSizeReceivedResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getTransportStatistic">
-            <wsdl:input message="axis2:getTransportStatisticRequest" wsaw:Action="urn:getTransportStatistic"/>
-            <wsdl:output message="axis2:getTransportStatisticResponse" wsaw:Action="urn:getTransportStatisticResponse"/>
+            <wsdl:input message="tns:getTransportStatisticRequest" wsaw:Action="urn:getTransportStatistic"/>
+            <wsdl:output message="tns:getTransportStatisticResponse" wsaw:Action="urn:getTransportStatisticResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getBytesReceived">
-            <wsdl:input message="axis2:getBytesReceivedRequest" wsaw:Action="urn:getBytesReceived"/>
-            <wsdl:output message="axis2:getBytesReceivedResponse" wsaw:Action="urn:getBytesReceivedResponse"/>
+            <wsdl:input message="tns:getBytesReceivedRequest" wsaw:Action="urn:getBytesReceived"/>
+            <wsdl:output message="tns:getBytesReceivedResponse" wsaw:Action="urn:getBytesReceivedResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getMinSizeSent">
-            <wsdl:input message="axis2:getMinSizeSentRequest" wsaw:Action="urn:getMinSizeSent"/>
-            <wsdl:output message="axis2:getMinSizeSentResponse" wsaw:Action="urn:getMinSizeSentResponse"/>
+            <wsdl:input message="tns:getMinSizeSentRequest" wsaw:Action="urn:getMinSizeSent"/>
+            <wsdl:output message="tns:getMinSizeSentResponse" wsaw:Action="urn:getMinSizeSentResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getTimeoutsSending">
-            <wsdl:input message="axis2:getTimeoutsSendingRequest" wsaw:Action="urn:getTimeoutsSending"/>
-            <wsdl:output message="axis2:getTimeoutsSendingResponse" wsaw:Action="urn:getTimeoutsSendingResponse"/>
+            <wsdl:input message="tns:getTimeoutsSendingRequest" wsaw:Action="urn:getTimeoutsSending"/>
+            <wsdl:output message="tns:getTimeoutsSendingResponse" wsaw:Action="urn:getTimeoutsSendingResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getAllTransportStatistics">
-            <wsdl:input message="axis2:getAllTransportStatisticsRequest" wsaw:Action="urn:getAllTransportStatistics"/>
-            <wsdl:output message="axis2:getAllTransportStatisticsResponse" wsaw:Action="urn:getAllTransportStatisticsResponse"/>
+            <wsdl:input message="tns:getAllTransportStatisticsRequest" wsaw:Action="urn:getAllTransportStatistics"/>
+            <wsdl:output message="tns:getAllTransportStatisticsResponse" wsaw:Action="urn:getAllTransportStatisticsResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getFaultsReceiving">
-            <wsdl:input message="axis2:getFaultsReceivingRequest" wsaw:Action="urn:getFaultsReceiving"/>
-            <wsdl:output message="axis2:getFaultsReceivingResponse" wsaw:Action="urn:getFaultsReceivingResponse"/>
+            <wsdl:input message="tns:getFaultsReceivingRequest" wsaw:Action="urn:getFaultsReceiving"/>
+            <wsdl:output message="tns:getFaultsReceivingResponse" wsaw:Action="urn:getFaultsReceivingResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getActiveThreadCount">
-            <wsdl:input message="axis2:getActiveThreadCountRequest" wsaw:Action="urn:getActiveThreadCount"/>
-            <wsdl:output message="axis2:getActiveThreadCountResponse" wsaw:Action="urn:getActiveThreadCountResponse"/>
+            <wsdl:input message="tns:getActiveThreadCountRequest" wsaw:Action="urn:getActiveThreadCount"/>
+            <wsdl:output message="tns:getActiveThreadCountResponse" wsaw:Action="urn:getActiveThreadCountResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getMaxSizeReceived">
-            <wsdl:input message="axis2:getMaxSizeReceivedRequest" wsaw:Action="urn:getMaxSizeReceived"/>
-            <wsdl:output message="axis2:getMaxSizeReceivedResponse" wsaw:Action="urn:getMaxSizeReceivedResponse"/>
+            <wsdl:input message="tns:getMaxSizeReceivedRequest" wsaw:Action="urn:getMaxSizeReceived"/>
+            <wsdl:output message="tns:getMaxSizeReceivedResponse" wsaw:Action="urn:getMaxSizeReceivedResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getMaxSizeSent">
-            <wsdl:input message="axis2:getMaxSizeSentRequest" wsaw:Action="urn:getMaxSizeSent"/>
-            <wsdl:output message="axis2:getMaxSizeSentResponse" wsaw:Action="urn:getMaxSizeSentResponse"/>
+            <wsdl:input message="tns:getMaxSizeSentRequest" wsaw:Action="urn:getMaxSizeSent"/>
+            <wsdl:output message="tns:getMaxSizeSentResponse" wsaw:Action="urn:getMaxSizeSentResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getMessagesReceived">
-            <wsdl:input message="axis2:getMessagesReceivedRequest" wsaw:Action="urn:getMessagesReceived"/>
-            <wsdl:output message="axis2:getMessagesReceivedResponse" wsaw:Action="urn:getMessagesReceivedResponse"/>
+            <wsdl:input message="tns:getMessagesReceivedRequest" wsaw:Action="urn:getMessagesReceived"/>
+            <wsdl:output message="tns:getMessagesReceivedResponse" wsaw:Action="urn:getMessagesReceivedResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getMetricsWindow">
-            <wsdl:input message="axis2:getMetricsWindowRequest" wsaw:Action="urn:getMetricsWindow"/>
-            <wsdl:output message="axis2:getMetricsWindowResponse" wsaw:Action="urn:getMetricsWindowResponse"/>
+            <wsdl:input message="tns:getMetricsWindowRequest" wsaw:Action="urn:getMetricsWindow"/>
+            <wsdl:output message="tns:getMetricsWindowResponse" wsaw:Action="urn:getMetricsWindowResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getTimeoutsReceiving">
-            <wsdl:input message="axis2:getTimeoutsReceivingRequest" wsaw:Action="urn:getTimeoutsReceiving"/>
-            <wsdl:output message="axis2:getTimeoutsReceivingResponse" wsaw:Action="urn:getTimeoutsReceivingResponse"/>
+            <wsdl:input message="tns:getTimeoutsReceivingRequest" wsaw:Action="urn:getTimeoutsReceiving"/>
+            <wsdl:output message="tns:getTimeoutsReceivingResponse" wsaw:Action="urn:getTimeoutsReceivingResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getThreadViewStatistics">
+            <wsdl:input message="tns:getThreadViewStatisticsRequest" wsaw:Action="urn:getThreadViewStatistics"/>
+            <wsdl:output message="tns:getThreadViewStatisticsResponse" wsaw:Action="urn:getThreadViewStatisticsResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getTransportClassName">
-            <wsdl:input message="axis2:getTransportClassNameRequest" wsaw:Action="urn:getTransportClassName"/>
-            <wsdl:output message="axis2:getTransportClassNameResponse" wsaw:Action="urn:getTransportClassNameResponse"/>
+            <wsdl:input message="tns:getTransportClassNameRequest" wsaw:Action="urn:getTransportClassName"/>
+            <wsdl:output message="tns:getTransportClassNameResponse" wsaw:Action="urn:getTransportClassNameResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getAvgSizeReceived">
-            <wsdl:input message="axis2:getAvgSizeReceivedRequest" wsaw:Action="urn:getAvgSizeReceived"/>
-            <wsdl:output message="axis2:getAvgSizeReceivedResponse" wsaw:Action="urn:getAvgSizeReceivedResponse"/>
+            <wsdl:input message="tns:getAvgSizeReceivedRequest" wsaw:Action="urn:getAvgSizeReceived"/>
+            <wsdl:output message="tns:getAvgSizeReceivedResponse" wsaw:Action="urn:getAvgSizeReceivedResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getExposedTransports">
-            <wsdl:input message="axis2:getExposedTransportsRequest" wsaw:Action="urn:getExposedTransports"/>
-            <wsdl:output message="axis2:getExposedTransportsResponse" wsaw:Action="urn:getExposedTransportsResponse"/>
+            <wsdl:input message="tns:getExposedTransportsRequest" wsaw:Action="urn:getExposedTransports"/>
+            <wsdl:output message="tns:getExposedTransportsResponse" wsaw:Action="urn:getExposedTransportsResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getLastResetTime">
-            <wsdl:input message="axis2:getLastResetTimeRequest" wsaw:Action="urn:getLastResetTime"/>
-            <wsdl:output message="axis2:getLastResetTimeResponse" wsaw:Action="urn:getLastResetTimeResponse"/>
+            <wsdl:input message="tns:getLastResetTimeRequest" wsaw:Action="urn:getLastResetTime"/>
+            <wsdl:output message="tns:getLastResetTimeResponse" wsaw:Action="urn:getLastResetTimeResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getAvgSizeSent">
-            <wsdl:input message="axis2:getAvgSizeSentRequest" wsaw:Action="urn:getAvgSizeSent"/>
-            <wsdl:output message="axis2:getAvgSizeSentResponse" wsaw:Action="urn:getAvgSizeSentResponse"/>
+            <wsdl:input message="tns:getAvgSizeSentRequest" wsaw:Action="urn:getAvgSizeSent"/>
+            <wsdl:output message="tns:getAvgSizeSentResponse" wsaw:Action="urn:getAvgSizeSentResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getMessagesSent">
-            <wsdl:input message="axis2:getMessagesSentRequest" wsaw:Action="urn:getMessagesSent"/>
-            <wsdl:output message="axis2:getMessagesSentResponse" wsaw:Action="urn:getMessagesSentResponse"/>
+            <wsdl:input message="tns:getMessagesSentRequest" wsaw:Action="urn:getMessagesSent"/>
+            <wsdl:output message="tns:getMessagesSentResponse" wsaw:Action="urn:getMessagesSentResponse"/>
         </wsdl:operation>
     </wsdl:portType>
-    <wsdl:binding name="TransportStatisticsAdminSoap11Binding" type="axis2:TransportStatisticsAdminPortType">
+    <wsdl:binding name="TransportStatisticsAdminSoap11Binding" type="tns:TransportStatisticsAdminPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="getFaultsSending">
             <soap:operation soapAction="urn:getFaultsSending" style="document"/>
@@ -792,6 +837,15 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getThreadViewStatistics">
+            <soap:operation soapAction="urn:getThreadViewStatistics" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getAvgSizeReceived">
             <soap:operation soapAction="urn:getAvgSizeReceived" style="document"/>
             <wsdl:input>
@@ -838,7 +892,7 @@
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:binding name="TransportStatisticsAdminSoap12Binding" type="axis2:TransportStatisticsAdminPortType">
+    <wsdl:binding name="TransportStatisticsAdminSoap12Binding" type="tns:TransportStatisticsAdminPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="getFaultsSending">
             <soap12:operation soapAction="urn:getFaultsSending" style="document"/>
@@ -993,6 +1047,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getThreadViewStatistics">
+            <soap12:operation soapAction="urn:getThreadViewStatistics" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getAvgSizeReceived">
             <soap12:operation soapAction="urn:getAvgSizeReceived" style="document"/>
             <wsdl:input>
@@ -1039,216 +1102,225 @@
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:binding name="TransportStatisticsAdminHttpBinding" type="axis2:TransportStatisticsAdminPortType">
+    <wsdl:binding name="TransportStatisticsAdminHttpBinding" type="tns:TransportStatisticsAdminPortType">
         <http:binding verb="POST"/>
         <wsdl:operation name="getFaultsSending">
             <http:operation location="getFaultsSending"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getFaultsSending"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getFaultsSending"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getQueueSize">
             <http:operation location="getQueueSize"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getQueueSize"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getQueueSize"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getMinSizeReceived">
             <http:operation location="getMinSizeReceived"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getMinSizeReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getMinSizeReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getBytesSent">
             <http:operation location="getBytesSent"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getBytesSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getBytesSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getTransportStatistic">
             <http:operation location="getTransportStatistic"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getTransportStatistic"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getTransportStatistic"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getMinSizeSent">
             <http:operation location="getMinSizeSent"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getMinSizeSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getMinSizeSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getBytesReceived">
             <http:operation location="getBytesReceived"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getBytesReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getBytesReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getTimeoutsSending">
             <http:operation location="getTimeoutsSending"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getTimeoutsSending"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getTimeoutsSending"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getAllTransportStatistics">
             <http:operation location="getAllTransportStatistics"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getAllTransportStatistics"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getAllTransportStatistics"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getFaultsReceiving">
             <http:operation location="getFaultsReceiving"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getFaultsReceiving"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getFaultsReceiving"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getActiveThreadCount">
             <http:operation location="getActiveThreadCount"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getActiveThreadCount"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getActiveThreadCount"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getMaxSizeSent">
             <http:operation location="getMaxSizeSent"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getMaxSizeSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getMaxSizeSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getMaxSizeReceived">
             <http:operation location="getMaxSizeReceived"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getMaxSizeReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getMaxSizeReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getMessagesReceived">
             <http:operation location="getMessagesReceived"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getMessagesReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getMessagesReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getMetricsWindow">
             <http:operation location="getMetricsWindow"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getMetricsWindow"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getMetricsWindow"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getTimeoutsReceiving">
             <http:operation location="getTimeoutsReceiving"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getTimeoutsReceiving"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getTimeoutsReceiving"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getTransportClassName">
             <http:operation location="getTransportClassName"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getTransportClassName"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getTransportClassName"/>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getThreadViewStatistics">
+            <http:operation location="getThreadViewStatistics"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getAvgSizeReceived">
             <http:operation location="getAvgSizeReceived"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getAvgSizeReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getAvgSizeReceived"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getExposedTransports">
             <http:operation location="getExposedTransports"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getExposedTransports"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getExposedTransports"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getLastResetTime">
             <http:operation location="getLastResetTime"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getLastResetTime"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getLastResetTime"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getMessagesSent">
             <http:operation location="getMessagesSent"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getMessagesSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getMessagesSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getAvgSizeSent">
             <http:operation location="getAvgSizeSent"/>
             <wsdl:input>
-                <mime:content type="text/xml" part="getAvgSizeSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
-                <mime:content type="text/xml" part="getAvgSizeSent"/>
+                <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="TransportStatisticsAdmin">
-        <wsdl:port name="TransportStatisticsAdminHttpsSoap11Endpoint" binding="axis2:TransportStatisticsAdminSoap11Binding">
-            <soap:address location="https://10.100.1.164:9443/services/TransportStatisticsAdmin.TransportStatisticsAdminHttpsSoap11Endpoint/"/>
+        <wsdl:port name="TransportStatisticsAdminHttpsSoap11Endpoint" binding="tns:TransportStatisticsAdminSoap11Binding">
+            <soap:address location="https://localhost:8243/services/TransportStatisticsAdmin.TransportStatisticsAdminHttpsSoap11Endpoint"/>
         </wsdl:port>
-        <wsdl:port name="TransportStatisticsAdminHttpsSoap12Endpoint" binding="axis2:TransportStatisticsAdminSoap12Binding">
-            <soap12:address location="https://10.100.1.164:9443/services/TransportStatisticsAdmin.TransportStatisticsAdminHttpsSoap12Endpoint/"/>
+        <wsdl:port name="TransportStatisticsAdminHttpsSoap12Endpoint" binding="tns:TransportStatisticsAdminSoap12Binding">
+            <soap12:address location="https://localhost:8243/services/TransportStatisticsAdmin.TransportStatisticsAdminHttpsSoap12Endpoint"/>
         </wsdl:port>
-        <wsdl:port name="TransportStatisticsAdminHttpsEndpoint" binding="axis2:TransportStatisticsAdminHttpBinding">
-            <http:address location="https://10.100.1.164:9443/services/TransportStatisticsAdmin.TransportStatisticsAdminHttpsEndpoint/"/>
+        <wsdl:port name="TransportStatisticsAdminHttpsEndpoint" binding="tns:TransportStatisticsAdminHttpBinding">
+            <http:address location="https://localhost:8243/services/TransportStatisticsAdmin.TransportStatisticsAdminHttpsEndpoint"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
