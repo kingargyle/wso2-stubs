@@ -1,105 +1,88 @@
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-                  xmlns:ax2106="http://messagebox.carbon.wso2.org/xsd"
+                  xmlns:ax2179="http://internal.admin.messagebox.carbon.wso2.org/xsd"
                   xmlns:ns1="http://org.apache.axis2/xsd"
                   xmlns:ns="http://internal.admin.messagebox.carbon.wso2.org"
-                  xmlns:ax2108="http://internal.admin.messagebox.carbon.wso2.org/xsd"
                   xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
                   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
-                  xmlns:ax2104="http://exception.internal.admin.messagebox.carbon.wso2.org/xsd"
+                  xmlns:ax2181="http://messagebox.carbon.wso2.org/xsd"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:ax2177="http://exception.internal.admin.messagebox.carbon.wso2.org/xsd"
                   xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
                   targetNamespace="http://internal.admin.messagebox.carbon.wso2.org">
     <wsdl:documentation>MessageBoxAdminService</wsdl:documentation>
     <wsdl:types>
-        <xs:schema xmlns:ax2107="http://messagebox.carbon.wso2.org/xsd"
-                   xmlns:ax2109="http://internal.admin.messagebox.carbon.wso2.org/xsd"
-                   xmlns:ax2105="http://exception.internal.admin.messagebox.carbon.wso2.org/xsd"
+        <xs:schema xmlns:ax2182="http://messagebox.carbon.wso2.org/xsd"
+                   xmlns:ax2180="http://internal.admin.messagebox.carbon.wso2.org/xsd"
+                   xmlns:ax2178="http://exception.internal.admin.messagebox.carbon.wso2.org/xsd"
                    attributeFormDefault="qualified" elementFormDefault="qualified"
                    targetNamespace="http://internal.admin.messagebox.carbon.wso2.org">
             <xs:import namespace="http://exception.internal.admin.messagebox.carbon.wso2.org/xsd"/>
-            <xs:import namespace="http://messagebox.carbon.wso2.org/xsd"/>
             <xs:import namespace="http://internal.admin.messagebox.carbon.wso2.org/xsd"/>
-            <xs:element name="setUserSecretIdMessageBoxAdminException">
+            <xs:import namespace="http://messagebox.carbon.wso2.org/xsd"/>
+            <xs:element name="getSQSKeysMessageBoxAdminException">
                 <xs:complexType>
 
                     <xs:sequence>
                         <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2105:MessageBoxAdminException"/>
+                                    type="ax2178:MessageBoxAdminException"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="setUserSecretId">
+            <xs:element name="getSQSKeys">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
 
-                        <xs:element minOccurs="0" name="secretId" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getUserSecretIdMessageBoxAdminException">
+            <xs:element name="getSQSKeysResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2105:MessageBoxAdminException"/>
+                        <xs:element minOccurs="0" name="return" nillable="true"
+                                    type="ax2179:SQSKeys"/>
                     </xs:sequence>
+                </xs:complexType>
 
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getUserSecretId">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="getUserSecretIdResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
             </xs:element>
             <xs:element name="getAllRetrievedMessagesMessageBoxAdminException">
                 <xs:complexType>
-
                     <xs:sequence>
                         <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2105:MessageBoxAdminException"/>
+                                    type="ax2178:MessageBoxAdminException"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllRetrievedMessages">
+
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="messageBoxId" nillable="true"
                                     type="xs:string"/>
-
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllRetrievedMessagesResponse">
                 <xs:complexType>
                     <xs:sequence>
+
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
-                                    nillable="true" type="ax2107:MessageDetails"/>
+                                    nillable="true" type="ax2181:MessageDetails"/>
                     </xs:sequence>
                 </xs:complexType>
-
             </xs:element>
             <xs:element name="getAllPermissionsMessageBoxAdminException">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2105:MessageBoxAdminException"/>
+                                    type="ax2178:MessageBoxAdminException"/>
                     </xs:sequence>
+
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllPermissions">
-
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="messageBoxId" nillable="true"
@@ -107,66 +90,66 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
             <xs:element name="getAllPermissionsResponse">
                 <xs:complexType>
                     <xs:sequence>
-
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
-                                    nillable="true" type="ax2107:PermissionLabel"/>
+                                    nillable="true" type="ax2181:PermissionLabel"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllMessageBoxesMessageBoxAdminException">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2105:MessageBoxAdminException"/>
+                                    type="ax2178:MessageBoxAdminException"/>
                     </xs:sequence>
-
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllMessageBoxes">
                 <xs:complexType>
                     <xs:sequence/>
                 </xs:complexType>
+
             </xs:element>
             <xs:element name="getAllMessageBoxesResponse">
                 <xs:complexType>
-
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
-                                    nillable="true" type="ax2109:MessageBoxDetail"/>
+                                    nillable="true" type="ax2179:MessageBoxDetail"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllAvailableMessagesMessageBoxAdminException">
+
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2105:MessageBoxAdminException"/>
-
+                                    type="ax2178:MessageBoxAdminException"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllAvailableMessages">
                 <xs:complexType>
                     <xs:sequence>
+
                         <xs:element minOccurs="0" name="messageBoxId" nillable="true"
                                     type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
-
             </xs:element>
             <xs:element name="getAllAvailableMessagesResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
-                                    nillable="true" type="ax2107:MessageDetails"/>
+                                    nillable="true" type="ax2181:MessageDetails"/>
                     </xs:sequence>
+
                 </xs:complexType>
             </xs:element>
         </xs:schema>
-
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
                    targetNamespace="http://exception.internal.admin.messagebox.carbon.wso2.org/xsd">
             <xs:complexType name="MessageBoxAdminException">
@@ -174,9 +157,17 @@
                     <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
+
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
                    targetNamespace="http://internal.admin.messagebox.carbon.wso2.org/xsd">
+            <xs:complexType name="SQSKeys">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="accessKeyId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="secretAccessKeyId" nillable="true"
+                                type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:complexType name="MessageBoxDetail">
 
                 <xs:sequence>
@@ -206,6 +197,8 @@
                     <xs:element minOccurs="0" name="receivedCount" nillable="true"
                                 type="xs:string"/>
 
+                    <xs:element minOccurs="0" name="sentTimestamp" nillable="true"
+                                type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="PermissionLabel">
@@ -216,8 +209,8 @@
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="sharedUsers"
                                 nillable="true" type="xs:string"/>
                 </xs:sequence>
-            </xs:complexType>
 
+            </xs:complexType>
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="getAllPermissionsRequest">
@@ -226,58 +219,51 @@
     <wsdl:message name="getAllPermissionsResponse">
         <wsdl:part name="parameters" element="ns:getAllPermissionsResponse"/>
     </wsdl:message>
-    <wsdl:message name="getAllPermissionsMessageBoxAdminException">
 
+    <wsdl:message name="getAllPermissionsMessageBoxAdminException">
         <wsdl:part name="parameters" element="ns:getAllPermissionsMessageBoxAdminException"/>
     </wsdl:message>
-    <wsdl:message name="getUserSecretIdRequest">
-        <wsdl:part name="parameters" element="ns:getUserSecretId"/>
+    <wsdl:message name="getSQSKeysRequest">
+        <wsdl:part name="parameters" element="ns:getSQSKeys"/>
     </wsdl:message>
-    <wsdl:message name="getUserSecretIdResponse">
-        <wsdl:part name="parameters" element="ns:getUserSecretIdResponse"/>
+    <wsdl:message name="getSQSKeysResponse">
+        <wsdl:part name="parameters" element="ns:getSQSKeysResponse"/>
     </wsdl:message>
-    <wsdl:message name="getUserSecretIdMessageBoxAdminException">
 
-        <wsdl:part name="parameters" element="ns:getUserSecretIdMessageBoxAdminException"/>
-    </wsdl:message>
-    <wsdl:message name="setUserSecretIdRequest">
-        <wsdl:part name="parameters" element="ns:setUserSecretId"/>
-    </wsdl:message>
-    <wsdl:message name="setUserSecretIdMessageBoxAdminException">
-        <wsdl:part name="parameters" element="ns:setUserSecretIdMessageBoxAdminException"/>
+    <wsdl:message name="getSQSKeysMessageBoxAdminException">
+        <wsdl:part name="parameters" element="ns:getSQSKeysMessageBoxAdminException"/>
     </wsdl:message>
     <wsdl:message name="getAllAvailableMessagesRequest">
-
         <wsdl:part name="parameters" element="ns:getAllAvailableMessages"/>
     </wsdl:message>
     <wsdl:message name="getAllAvailableMessagesResponse">
         <wsdl:part name="parameters" element="ns:getAllAvailableMessagesResponse"/>
     </wsdl:message>
+
     <wsdl:message name="getAllAvailableMessagesMessageBoxAdminException">
         <wsdl:part name="parameters" element="ns:getAllAvailableMessagesMessageBoxAdminException"/>
     </wsdl:message>
     <wsdl:message name="getAllMessageBoxesRequest">
-
         <wsdl:part name="parameters" element="ns:getAllMessageBoxes"/>
     </wsdl:message>
     <wsdl:message name="getAllMessageBoxesResponse">
         <wsdl:part name="parameters" element="ns:getAllMessageBoxesResponse"/>
     </wsdl:message>
+
     <wsdl:message name="getAllMessageBoxesMessageBoxAdminException">
         <wsdl:part name="parameters" element="ns:getAllMessageBoxesMessageBoxAdminException"/>
     </wsdl:message>
     <wsdl:message name="getAllRetrievedMessagesRequest">
-
         <wsdl:part name="parameters" element="ns:getAllRetrievedMessages"/>
     </wsdl:message>
     <wsdl:message name="getAllRetrievedMessagesResponse">
         <wsdl:part name="parameters" element="ns:getAllRetrievedMessagesResponse"/>
     </wsdl:message>
+
     <wsdl:message name="getAllRetrievedMessagesMessageBoxAdminException">
         <wsdl:part name="parameters" element="ns:getAllRetrievedMessagesMessageBoxAdminException"/>
     </wsdl:message>
     <wsdl:portType name="MessageBoxAdminServicePortType">
-
         <wsdl:operation name="getAllPermissions">
             <wsdl:input message="ns:getAllPermissionsRequest" wsaw:Action="urn:getAllPermissions"/>
             <wsdl:output message="ns:getAllPermissionsResponse"
@@ -286,20 +272,13 @@
                         name="getAllPermissionsMessageBoxAdminException"
                         wsaw:Action="urn:getAllPermissionsgetAllPermissionsMessageBoxAdminException"/>
         </wsdl:operation>
-        <wsdl:operation name="getUserSecretId">
-            <wsdl:input message="ns:getUserSecretIdRequest" wsaw:Action="urn:getUserSecretId"/>
-            <wsdl:output message="ns:getUserSecretIdResponse"
-                         wsaw:Action="urn:getUserSecretIdResponse"/>
-            <wsdl:fault message="ns:getUserSecretIdMessageBoxAdminException"
-                        name="getUserSecretIdMessageBoxAdminException"
-                        wsaw:Action="urn:getUserSecretIdgetUserSecretIdMessageBoxAdminException"/>
 
-        </wsdl:operation>
-        <wsdl:operation name="setUserSecretId">
-            <wsdl:input message="ns:setUserSecretIdRequest" wsaw:Action="urn:setUserSecretId"/>
-            <wsdl:fault message="ns:setUserSecretIdMessageBoxAdminException"
-                        name="setUserSecretIdMessageBoxAdminException"
-                        wsaw:Action="urn:setUserSecretIdsetUserSecretIdMessageBoxAdminException"/>
+        <wsdl:operation name="getSQSKeys">
+            <wsdl:input message="ns:getSQSKeysRequest" wsaw:Action="urn:getSQSKeys"/>
+            <wsdl:output message="ns:getSQSKeysResponse" wsaw:Action="urn:getSQSKeysResponse"/>
+            <wsdl:fault message="ns:getSQSKeysMessageBoxAdminException"
+                        name="getSQSKeysMessageBoxAdminException"
+                        wsaw:Action="urn:getSQSKeysgetSQSKeysMessageBoxAdminException"/>
         </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <wsdl:input message="ns:getAllAvailableMessagesRequest"
@@ -347,27 +326,17 @@
                 <soap:fault use="literal" name="getAllPermissionsMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="getUserSecretId">
+        <wsdl:operation name="getSQSKeys">
 
-            <soap:operation soapAction="urn:getUserSecretId" style="document"/>
+            <soap:operation soapAction="urn:getSQSKeys" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getUserSecretIdMessageBoxAdminException">
-                <soap:fault use="literal" name="getUserSecretIdMessageBoxAdminException"/>
-
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="setUserSecretId">
-            <soap:operation soapAction="urn:setUserSecretId" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:fault name="setUserSecretIdMessageBoxAdminException">
-                <soap:fault use="literal" name="setUserSecretIdMessageBoxAdminException"/>
+            <wsdl:fault name="getSQSKeysMessageBoxAdminException">
+                <soap:fault use="literal" name="getSQSKeysMessageBoxAdminException"/>
 
             </wsdl:fault>
         </wsdl:operation>
@@ -428,27 +397,17 @@
                 <soap12:fault use="literal" name="getAllPermissionsMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="getUserSecretId">
+        <wsdl:operation name="getSQSKeys">
 
-            <soap12:operation soapAction="urn:getUserSecretId" style="document"/>
+            <soap12:operation soapAction="urn:getSQSKeys" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getUserSecretIdMessageBoxAdminException">
-                <soap12:fault use="literal" name="getUserSecretIdMessageBoxAdminException"/>
-
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="setUserSecretId">
-            <soap12:operation soapAction="urn:setUserSecretId" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:fault name="setUserSecretIdMessageBoxAdminException">
-                <soap12:fault use="literal" name="setUserSecretIdMessageBoxAdminException"/>
+            <wsdl:fault name="getSQSKeysMessageBoxAdminException">
+                <soap12:fault use="literal" name="getSQSKeysMessageBoxAdminException"/>
 
             </wsdl:fault>
         </wsdl:operation>
@@ -505,8 +464,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getUserSecretId">
-            <http:operation location="getUserSecretId"/>
+        <wsdl:operation name="getSQSKeys">
+            <http:operation location="getSQSKeys"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
 
@@ -515,41 +474,34 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="setUserSecretId">
-            <http:operation location="setUserSecretId"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <http:operation location="getAllAvailableMessages"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
+
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getAllMessageBoxes">
             <http:operation location="getAllMessageBoxes"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
+
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
             <http:operation location="getAllRetrievedMessages"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
+
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
@@ -557,18 +509,18 @@
         <wsdl:port name="MessageBoxAdminServiceHttpsSoap11Endpoint"
                    binding="ns:MessageBoxAdminServiceSoap11Binding">
             <soap:address
-                    location="https://10.100.0.16:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap11Endpoint/"/>
+                    location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap11Endpoint/"/>
+
         </wsdl:port>
         <wsdl:port name="MessageBoxAdminServiceHttpsSoap12Endpoint"
                    binding="ns:MessageBoxAdminServiceSoap12Binding">
             <soap12:address
-                    location="https://10.100.0.16:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap12Endpoint/"/>
-
+                    location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap12Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="MessageBoxAdminServiceHttpsEndpoint"
                    binding="ns:MessageBoxAdminServiceHttpBinding">
             <http:address
-                    location="https://10.100.0.16:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsEndpoint/"/>
+                    location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsEndpoint/"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
