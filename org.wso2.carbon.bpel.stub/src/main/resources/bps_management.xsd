@@ -111,7 +111,6 @@
             <xsd:enumeration value="TERMINATED"/>
             <xsd:enumeration value="FAILED"/>
             <xsd:enumeration value="SUSPENDED"/>
-            <xsd:enumeration value="ERROR"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:complexType name="FailuresInfo">
