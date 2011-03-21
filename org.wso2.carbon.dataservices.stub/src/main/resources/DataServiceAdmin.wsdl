@@ -62,7 +62,7 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string" />
-                        <xs:element minOccurs="0" name="serviceGroup" nillable="true" type="xs:string" />                        
+                        <xs:element minOccurs="0" name="serviceHierarchy" nillable="true" type="xs:string" />                        
                         <xs:element minOccurs="0" name="serviceContents" nillable="true" type="xs:string" />
                     </xs:sequence>
                 </xs:complexType>

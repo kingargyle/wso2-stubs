@@ -69,6 +69,7 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="serviceHierarchy" nillable="true" type="xs:string"/>                        
                         <xs:element minOccurs="0" name="dataHandler" nillable="true" type="xs:base64Binary"/>
                     </xs:sequence>
                 </xs:complexType>
