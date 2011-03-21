@@ -755,6 +755,7 @@
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element name="filter" type="xsd:string"></xsd:element>
+		<xsd:element name="deleteMessageExchanges" type="xsd:boolean"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
