@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://services.taskscheduler.dataservices.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax25="http://task.carbon.wso2.org/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://task.synapse.apache.org/xsd" xmlns:ax22="http://util.java/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.taskscheduler.dataservices.carbon.wso2.org">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://util.java/xsd">
+            <xs:complexType name="Set">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="empty" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://task.carbon.wso2.org/xsd">
+            <xs:complexType name="TaskManagementException">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax23="http://util.java/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://task.synapse.apache.org/xsd">
+            <xs:import namespace="http://util.java/xsd"/>
+            <xs:complexType name="TaskDescription">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="count" type="xs:int"/>
+                    <xs:element minOccurs="0" name="cron" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="group" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="interval" type="xs:long"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="pinnedServers" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="properties" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="startTime" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="taskClass" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="volatility" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax26="http://task.carbon.wso2.org/xsd" xmlns:ax24="http://task.synapse.apache.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.taskscheduler.dataservices.carbon.wso2.org">
+            <xs:import namespace="http://task.synapse.apache.org/xsd"/>
+            <xs:import namespace="http://task.carbon.wso2.org/xsd"/>
+            <xs:element name="isContains">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isContainsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTaskDescription">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTaskDescriptionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax24:TaskDescription"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getServicesList">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getServicesListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPropertyNames">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskClass" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPropertyNamesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TaskManagementException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="TaskManagementException" nillable="true" type="ax25:TaskManagementException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllTaskDescriptionsInAnOMElement">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllTaskDescriptionsInAnOMElementResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllTaskDescriptions">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllTaskDescriptionsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax24:TaskDescription"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllJobGroups">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllJobGroupsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="XMLStreamException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="XMLStreamException" nillable="true" type="xs:anyType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="editTaskDescriptionInOmElement">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskElementString" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="editTaskDescription">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskDescription" nillable="true" type="ax24:TaskDescription"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteTaskDescription">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addTaskDescriptionInAnOmElement">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskElementString" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addTaskDescription">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="taskDescription" nillable="true" type="ax24:TaskDescription"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="addTaskDescriptionInAnOmElementRequest">
+        <wsdl:part name="parameters" element="ns:addTaskDescriptionInAnOmElement"/>
+    </wsdl:message>
+    <wsdl:message name="TaskManagementException">
+        <wsdl:part name="parameters" element="ns:TaskManagementException"/>
+    </wsdl:message>
+    <wsdl:message name="XMLStreamException">
+        <wsdl:part name="parameters" element="ns:XMLStreamException"/>
+    </wsdl:message>
+    <wsdl:message name="getServicesListRequest">
+        <wsdl:part name="parameters" element="ns:getServicesList"/>
+    </wsdl:message>
+    <wsdl:message name="getServicesListResponse">
+        <wsdl:part name="parameters" element="ns:getServicesListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="isContainsRequest">
+        <wsdl:part name="parameters" element="ns:isContains"/>
+    </wsdl:message>
+    <wsdl:message name="isContainsResponse">
+        <wsdl:part name="parameters" element="ns:isContainsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editTaskDescriptionInOmElementRequest">
+        <wsdl:part name="parameters" element="ns:editTaskDescriptionInOmElement"/>
+    </wsdl:message>
+    <wsdl:message name="getTaskDescriptionRequest">
+        <wsdl:part name="parameters" element="ns:getTaskDescription"/>
+    </wsdl:message>
+    <wsdl:message name="getTaskDescriptionResponse">
+        <wsdl:part name="parameters" element="ns:getTaskDescriptionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllTaskDescriptionsInAnOMElementRequest">
+        <wsdl:part name="parameters" element="ns:getAllTaskDescriptionsInAnOMElement"/>
+    </wsdl:message>
+    <wsdl:message name="getAllTaskDescriptionsInAnOMElementResponse">
+        <wsdl:part name="parameters" element="ns:getAllTaskDescriptionsInAnOMElementResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editTaskDescriptionRequest">
+        <wsdl:part name="parameters" element="ns:editTaskDescription"/>
+    </wsdl:message>
+    <wsdl:message name="deleteTaskDescriptionRequest">
+        <wsdl:part name="parameters" element="ns:deleteTaskDescription"/>
+    </wsdl:message>
+    <wsdl:message name="getAllJobGroupsRequest">
+        <wsdl:part name="parameters" element="ns:getAllJobGroups"/>
+    </wsdl:message>
+    <wsdl:message name="getAllJobGroupsResponse">
+        <wsdl:part name="parameters" element="ns:getAllJobGroupsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllTaskDescriptionsRequest">
+        <wsdl:part name="parameters" element="ns:getAllTaskDescriptions"/>
+    </wsdl:message>
+    <wsdl:message name="getAllTaskDescriptionsResponse">
+        <wsdl:part name="parameters" element="ns:getAllTaskDescriptionsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addTaskDescriptionRequest">
+        <wsdl:part name="parameters" element="ns:addTaskDescription"/>
+    </wsdl:message>
+    <wsdl:message name="getPropertyNamesRequest">
+        <wsdl:part name="parameters" element="ns:getPropertyNames"/>
+    </wsdl:message>
+    <wsdl:message name="getPropertyNamesResponse">
+        <wsdl:part name="parameters" element="ns:getPropertyNamesResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="TaskManagementAdminServicePortType">
+        <wsdl:operation name="addTaskDescriptionInAnOmElement">
+            <wsdl:input message="ns:addTaskDescriptionInAnOmElementRequest" wsaw:Action="urn:addTaskDescriptionInAnOmElement"/>
+            <wsdl:fault message="ns:TaskManagementException" name="TaskManagementException" wsaw:Action="urn:addTaskDescriptionInAnOmElementTaskManagementException"/>
+            <wsdl:fault message="ns:XMLStreamException" name="XMLStreamException" wsaw:Action="urn:addTaskDescriptionInAnOmElementXMLStreamException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServicesList">
+            <wsdl:input message="ns:getServicesListRequest" wsaw:Action="urn:getServicesList"/>
+            <wsdl:output message="ns:getServicesListResponse" wsaw:Action="urn:getServicesListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="isContains">
+            <wsdl:input message="ns:isContainsRequest" wsaw:Action="urn:isContains"/>
+            <wsdl:output message="ns:isContainsResponse" wsaw:Action="urn:isContainsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescriptionInOmElement">
+            <wsdl:input message="ns:editTaskDescriptionInOmElementRequest" wsaw:Action="urn:editTaskDescriptionInOmElement"/>
+            <wsdl:fault message="ns:TaskManagementException" name="TaskManagementException" wsaw:Action="urn:editTaskDescriptionInOmElementTaskManagementException"/>
+            <wsdl:fault message="ns:XMLStreamException" name="XMLStreamException" wsaw:Action="urn:editTaskDescriptionInOmElementXMLStreamException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTaskDescription">
+            <wsdl:input message="ns:getTaskDescriptionRequest" wsaw:Action="urn:getTaskDescription"/>
+            <wsdl:output message="ns:getTaskDescriptionResponse" wsaw:Action="urn:getTaskDescriptionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptionsInAnOMElement">
+            <wsdl:input message="ns:getAllTaskDescriptionsInAnOMElementRequest" wsaw:Action="urn:getAllTaskDescriptionsInAnOMElement"/>
+            <wsdl:output message="ns:getAllTaskDescriptionsInAnOMElementResponse" wsaw:Action="urn:getAllTaskDescriptionsInAnOMElementResponse"/>
+            <wsdl:fault message="ns:TaskManagementException" name="TaskManagementException" wsaw:Action="urn:getAllTaskDescriptionsInAnOMElementTaskManagementException"/>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescription">
+            <wsdl:input message="ns:editTaskDescriptionRequest" wsaw:Action="urn:editTaskDescription"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTaskDescription">
+            <wsdl:input message="ns:deleteTaskDescriptionRequest" wsaw:Action="urn:deleteTaskDescription"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllJobGroups">
+            <wsdl:input message="ns:getAllJobGroupsRequest" wsaw:Action="urn:getAllJobGroups"/>
+            <wsdl:output message="ns:getAllJobGroupsResponse" wsaw:Action="urn:getAllJobGroupsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptions">
+            <wsdl:input message="ns:getAllTaskDescriptionsRequest" wsaw:Action="urn:getAllTaskDescriptions"/>
+            <wsdl:output message="ns:getAllTaskDescriptionsResponse" wsaw:Action="urn:getAllTaskDescriptionsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addTaskDescription">
+            <wsdl:input message="ns:addTaskDescriptionRequest" wsaw:Action="urn:addTaskDescription"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPropertyNames">
+            <wsdl:input message="ns:getPropertyNamesRequest" wsaw:Action="urn:getPropertyNames"/>
+            <wsdl:output message="ns:getPropertyNamesResponse" wsaw:Action="urn:getPropertyNamesResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TaskManagementAdminServiceSoap11Binding" type="ns:TaskManagementAdminServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="addTaskDescriptionInAnOmElement">
+            <soap:operation soapAction="urn:addTaskDescriptionInAnOmElement" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="TaskManagementException">
+                <soap:fault use="literal" name="TaskManagementException"/>
+            </wsdl:fault>
+            <wsdl:fault name="XMLStreamException">
+                <soap:fault use="literal" name="XMLStreamException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getServicesList">
+            <soap:operation soapAction="urn:getServicesList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isContains">
+            <soap:operation soapAction="urn:isContains" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescriptionInOmElement">
+            <soap:operation soapAction="urn:editTaskDescriptionInOmElement" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="TaskManagementException">
+                <soap:fault use="literal" name="TaskManagementException"/>
+            </wsdl:fault>
+            <wsdl:fault name="XMLStreamException">
+                <soap:fault use="literal" name="XMLStreamException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTaskDescription">
+            <soap:operation soapAction="urn:getTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescription">
+            <soap:operation soapAction="urn:editTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptionsInAnOMElement">
+            <soap:operation soapAction="urn:getAllTaskDescriptionsInAnOMElement" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="TaskManagementException">
+                <soap:fault use="literal" name="TaskManagementException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllJobGroups">
+            <soap:operation soapAction="urn:getAllJobGroups" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTaskDescription">
+            <soap:operation soapAction="urn:deleteTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptions">
+            <soap:operation soapAction="urn:getAllTaskDescriptions" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addTaskDescription">
+            <soap:operation soapAction="urn:addTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPropertyNames">
+            <soap:operation soapAction="urn:getPropertyNames" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="TaskManagementAdminServiceSoap12Binding" type="ns:TaskManagementAdminServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="addTaskDescriptionInAnOmElement">
+            <soap12:operation soapAction="urn:addTaskDescriptionInAnOmElement" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="TaskManagementException">
+                <soap12:fault use="literal" name="TaskManagementException"/>
+            </wsdl:fault>
+            <wsdl:fault name="XMLStreamException">
+                <soap12:fault use="literal" name="XMLStreamException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getServicesList">
+            <soap12:operation soapAction="urn:getServicesList" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isContains">
+            <soap12:operation soapAction="urn:isContains" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescriptionInOmElement">
+            <soap12:operation soapAction="urn:editTaskDescriptionInOmElement" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="TaskManagementException">
+                <soap12:fault use="literal" name="TaskManagementException"/>
+            </wsdl:fault>
+            <wsdl:fault name="XMLStreamException">
+                <soap12:fault use="literal" name="XMLStreamException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTaskDescription">
+            <soap12:operation soapAction="urn:getTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescription">
+            <soap12:operation soapAction="urn:editTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptionsInAnOMElement">
+            <soap12:operation soapAction="urn:getAllTaskDescriptionsInAnOMElement" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="TaskManagementException">
+                <soap12:fault use="literal" name="TaskManagementException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllJobGroups">
+            <soap12:operation soapAction="urn:getAllJobGroups" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTaskDescription">
+            <soap12:operation soapAction="urn:deleteTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptions">
+            <soap12:operation soapAction="urn:getAllTaskDescriptions" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addTaskDescription">
+            <soap12:operation soapAction="urn:addTaskDescription" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPropertyNames">
+            <soap12:operation soapAction="urn:getPropertyNames" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="TaskManagementAdminServiceHttpBinding" type="ns:TaskManagementAdminServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="addTaskDescriptionInAnOmElement">
+            <http:operation location="addTaskDescriptionInAnOmElement"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getServicesList">
+            <http:operation location="getServicesList"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isContains">
+            <http:operation location="isContains"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescriptionInOmElement">
+            <http:operation location="editTaskDescriptionInOmElement"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getTaskDescription">
+            <http:operation location="getTaskDescription"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editTaskDescription">
+            <http:operation location="editTaskDescription"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptionsInAnOMElement">
+            <http:operation location="getAllTaskDescriptionsInAnOMElement"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllJobGroups">
+            <http:operation location="getAllJobGroups"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTaskDescription">
+            <http:operation location="deleteTaskDescription"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllTaskDescriptions">
+            <http:operation location="getAllTaskDescriptions"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addTaskDescription">
+            <http:operation location="addTaskDescription"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPropertyNames">
+            <http:operation location="getPropertyNames"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TaskManagementAdminService">
+        <wsdl:port name="TaskManagementAdminServiceHttpSoap11Endpoint" binding="ns:TaskManagementAdminServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/TaskManagementAdminService"/>
+        </wsdl:port>
+        <wsdl:port name="TaskManagementAdminServiceHttpSoap12Endpoint" binding="ns:TaskManagementAdminServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/TaskManagementAdminService"/>
+        </wsdl:port>
+        <wsdl:port name="TaskManagementAdminServiceHttpEndpoint" binding="ns:TaskManagementAdminServiceHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/TaskManagementAdminService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
