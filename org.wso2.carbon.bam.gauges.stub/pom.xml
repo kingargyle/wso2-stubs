@@ -46,29 +46,33 @@
                         </goals>
                         <configuration>
                             <tasks>
+                                <path id="wsdl2java.classpath">
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/${orbit.version.axis2}/axis2-client-${orbit.version.axis2}.jar"/>
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
+                                </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/BAMStatQueryDS.wsdl -u -uw                                                 -o target/generated-code -p org.wso2.carbon.bam.gauges.ui.stub.bsqd                                                 -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://gauges.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.neethi"/>
-                                    <classpath refid="maven.dependency.classpath"/>
-                                    <classpath refid="maven.compile.classpath"/>
-                                    <classpath refid="maven.runtime.classpath"/>
+                                    <arg line="-uri src/main/resources/BAMStatQueryDS.wsdl -u -uw
+                                    -o target/generated-code -p org.wso2.carbon.bam.gauges.ui.stub.bsqd
+                                    -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://gauges.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.bsqd.types.neethi"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                   <arg line="-uri src/main/resources/BAMStatQueryAdminService.wsdl -u -uw                                                -o target/generated-code -p org.wso2.carbon.bam.gauges.ui.bsqas                                                -ns2p http://rmi.java/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://data.querycache.services.listservice.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://services.listservice.bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://rmi.java/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://data.querycache.services.listservice.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://services.listservice.bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.bsqas.types"/>
-                                   <classpath refid="maven.dependency.classpath"/>
-                                   <classpath refid="maven.compile.classpath"/>
-                                   <classpath refid="maven.runtime.classpath"/>
+                                   <arg line="-uri src/main/resources/BAMStatQueryAdminService.wsdl -u -uw
+                                   -o target/generated-code -p org.wso2.carbon.bam.gauges.ui.bsqas
+                                   -ns2p http://rmi.java/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://data.querycache.services.listservice.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://services.listservice.bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://rmi.java/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://data.querycache.services.listservice.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.bsqas.types,http://services.listservice.bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.bsqas.types"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/BAMSummaryQueryDS.wsdl -u -uw                                                 -o target/generated-code -p org.wso2.carbon.bam.gauges.ui                                                 -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.gauges.ui,http://bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.summary,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.neethi"/>
-                                    <classpath refid="maven.dependency.classpath"/>
-                                    <classpath refid="maven.compile.classpath"/>
-                                    <classpath refid="maven.runtime.classpath"/>
+                                    <arg line="-uri src/main/resources/BAMSummaryQueryDS.wsdl -u -uw
+                                    -o target/generated-code -p org.wso2.carbon.bam.gauges.ui
+                                    -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.gauges.ui,http://bam.carbon.wso2.org=org.wso2.carbon.bam.gauges.ui.summary,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.summaryquery.types.neethi"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/BAMListAdminService.wsdl -u -uw                                                 -o target/generated-code -p org.wso2.carbon.bam.gauges.ui.stub.blas                                                 -ns2p http://common.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://activity.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://service.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://dto.mgt.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://gauges.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.axis2,http://neethi.apache.org/xsd=org.wso2.bam.carbon.gauges.ui.stub.blas.types.neethi"/>
-                                    <classpath refid="maven.dependency.classpath"/>
-                                    <classpath refid="maven.compile.classpath"/>
-                                    <classpath refid="maven.runtime.classpath"/>
+                                    <arg line="-uri src/main/resources/BAMListAdminService.wsdl -u -uw
+                                    -o target/generated-code -p org.wso2.carbon.bam.gauges.ui.stub.blas
+                                    -ns2p http://common.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://activity.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://service.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://dto.mgt.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://gauges.carbon.wso2.org/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.gauges.ui.stub.blas.types.axis2,http://neethi.apache.org/xsd=org.wso2.bam.carbon.gauges.ui.stub.blas.types.neethi"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
                         </configuration>
