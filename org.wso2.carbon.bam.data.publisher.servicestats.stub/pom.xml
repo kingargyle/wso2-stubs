@@ -46,11 +46,13 @@
                         </goals>
                         <configuration>
                             <tasks>
+                                <path id="wsdl2java.classpath">
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/${orbit.version.axis2}/axis2-client-${orbit.version.axis2}.jar"/>
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
+                                </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/ServiceStatPublisherAdmin.wsdl -u -uw -o target/generated-code  -p org.wso2.carbon.bam.data.publisher.servicestats.ui          -ns2p  http://config.servicestats.publishers.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub,http://services.servicestats.publishers.data.bam.carbon.wso2.org=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub,http://org.apache.axis2/xsd=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub,http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub"/>
-                                    <classpath refid="maven.dependency.classpath"/>
-                                    <classpath refid="maven.compile.classpath"/>
-                                    <classpath refid="maven.runtime.classpath"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
                         </configuration>
