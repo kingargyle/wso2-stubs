@@ -26,7 +26,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.governance.custom.lifecycles.checklist.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
+    <version>${carbon.platform.version}</version>
     <name>WSO2 Carbon - Governance - Custom Lifecycle Checklist Stub</name>
     <url>http://wso2.org</url>
 
@@ -46,15 +47,11 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <path id="wsdl2java.classpath">
-                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/${orbit.version.axis2}/axis2-client-${orbit.version.axis2}.jar"/>
-                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
-                                </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/CustomLifecyclesChecklistAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.governance.custom.lifecycles.checklist.ui
-                                    -ns2p http://util.checklist.lifecycles.custom.governance.carbon.wso2.org/xsd=org.wso2.carbon.governance.custom.lifecycles.checklist.ui.util.xsd,http://beans.checklist.lifecycles.custom.governance.carbon.wso2.org/xsd=org.wso2.carbon.governance.custom.lifecycles.checklist.ui.beans.xsd,http://services.checklist.lifecycles.custom.governance.carbon.wso2.org=org.wso2.carbon.governance.custom.lifecycles.checklist.ui.services"/>
-                                    <classpath refid="wsdl2java.classpath"/>
+                                    <arg line="-uri src/main/resources/CustomLifecyclesChecklistAdminService.wsdl -u -uw -o target/generated-code                                     -p org.wso2.carbon.governance.custom.lifecycles.checklist.stub                                     -ns2p http://util.checklist.lifecycles.custom.governance.carbon.wso2.org/xsd=org.wso2.carbon.governance.custom.lifecycles.checklist.stub.util.xsd,http://beans.checklist.lifecycles.custom.governance.carbon.wso2.org/xsd=org.wso2.carbon.governance.custom.lifecycles.checklist.stub.beans.xsd,http://services.checklist.lifecycles.custom.governance.carbon.wso2.org=org.wso2.carbon.governance.custom.lifecycles.checklist.stub.services"/>
+                                    <classpath refid="maven.dependency.classpath"/>
+                                    <classpath refid="maven.compile.classpath"/>
+                                    <classpath refid="maven.runtime.classpath"/>
                                 </java>
                             </tasks>
                         </configuration>
@@ -80,6 +77,30 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.governance.custom.lifecycles.checklist.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            javax.servlet; version=2.4.0,
+                            javax.servlet.http; version=2.4.0,
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Carbon-Component>Stub</Carbon-Component>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
