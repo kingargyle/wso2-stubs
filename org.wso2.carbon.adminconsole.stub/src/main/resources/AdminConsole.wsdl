@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.adminconsole.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+            <xs:element name="getMysqlUsers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMysqlUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDbInstanceList">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDbInstanceListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseList">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="dropDatabase">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="tenantDomain" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="mysqlUsername" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createDbUserForTenant">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="jdbcUrl" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createDatabaseForTenant">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="tenantDomain" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createDatabaseForTenantResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addDbInstance">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="strDbInstance" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addDbInstanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="createDatabaseForTenantRequest">
+        <wsdl:part name="parameters" element="ns:createDatabaseForTenant"/>
+    </wsdl:message>
+    <wsdl:message name="createDatabaseForTenantResponse">
+        <wsdl:part name="parameters" element="ns:createDatabaseForTenantResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDbInstanceListRequest">
+        <wsdl:part name="parameters" element="ns:getDbInstanceList"/>
+    </wsdl:message>
+    <wsdl:message name="getDbInstanceListResponse">
+        <wsdl:part name="parameters" element="ns:getDbInstanceListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteUserRequest">
+        <wsdl:part name="parameters" element="ns:deleteUser"/>
+    </wsdl:message>
+    <wsdl:message name="addDbInstanceRequest">
+        <wsdl:part name="parameters" element="ns:addDbInstance"/>
+    </wsdl:message>
+    <wsdl:message name="addDbInstanceResponse">
+        <wsdl:part name="parameters" element="ns:addDbInstanceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMysqlUsersRequest">
+        <wsdl:part name="parameters" element="ns:getMysqlUsers"/>
+    </wsdl:message>
+    <wsdl:message name="getMysqlUsersResponse">
+        <wsdl:part name="parameters" element="ns:getMysqlUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDatabaseListRequest">
+        <wsdl:part name="parameters" element="ns:getDatabaseList"/>
+    </wsdl:message>
+    <wsdl:message name="getDatabaseListResponse">
+        <wsdl:part name="parameters" element="ns:getDatabaseListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createDbUserForTenantRequest">
+        <wsdl:part name="parameters" element="ns:createDbUserForTenant"/>
+    </wsdl:message>
+    <wsdl:message name="dropDatabaseRequest">
+        <wsdl:part name="parameters" element="ns:dropDatabase"/>
+    </wsdl:message>
+    <wsdl:portType name="ConsoleAdminPortType">
+        <wsdl:operation name="createDatabaseForTenant">
+            <wsdl:input message="ns:createDatabaseForTenantRequest" wsaw:Action="urn:createDatabaseForTenant"/>
+            <wsdl:output message="ns:createDatabaseForTenantResponse" wsaw:Action="urn:createDatabaseForTenantResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDbInstanceList">
+            <wsdl:input message="ns:getDbInstanceListRequest" wsaw:Action="urn:getDbInstanceList"/>
+            <wsdl:output message="ns:getDbInstanceListResponse" wsaw:Action="urn:getDbInstanceListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <wsdl:input message="ns:deleteUserRequest" wsaw:Action="urn:deleteUser"/>
+        </wsdl:operation>
+        <wsdl:operation name="addDbInstance">
+            <wsdl:input message="ns:addDbInstanceRequest" wsaw:Action="urn:addDbInstance"/>
+            <wsdl:output message="ns:addDbInstanceResponse" wsaw:Action="urn:addDbInstanceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMysqlUsers">
+            <wsdl:input message="ns:getMysqlUsersRequest" wsaw:Action="urn:getMysqlUsers"/>
+            <wsdl:output message="ns:getMysqlUsersResponse" wsaw:Action="urn:getMysqlUsersResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseList">
+            <wsdl:input message="ns:getDatabaseListRequest" wsaw:Action="urn:getDatabaseList"/>
+            <wsdl:output message="ns:getDatabaseListResponse" wsaw:Action="urn:getDatabaseListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createDbUserForTenant">
+            <wsdl:input message="ns:createDbUserForTenantRequest" wsaw:Action="urn:createDbUserForTenant"/>
+        </wsdl:operation>
+        <wsdl:operation name="dropDatabase">
+            <wsdl:input message="ns:dropDatabaseRequest" wsaw:Action="urn:dropDatabase"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ConsoleAdminSoap11Binding" type="ns:ConsoleAdminPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="createDatabaseForTenant">
+            <soap:operation soapAction="urn:createDatabaseForTenant" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDbInstanceList">
+            <soap:operation soapAction="urn:getDbInstanceList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="addDbInstance">
+            <soap:operation soapAction="urn:addDbInstance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMysqlUsers">
+            <soap:operation soapAction="urn:getMysqlUsers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createDbUserForTenant">
+            <soap:operation soapAction="urn:createDbUserForTenant" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseList">
+            <soap:operation soapAction="urn:getDatabaseList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="dropDatabase">
+            <soap:operation soapAction="urn:dropDatabase" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ConsoleAdminSoap12Binding" type="ns:ConsoleAdminPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="createDatabaseForTenant">
+            <soap12:operation soapAction="urn:createDatabaseForTenant" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDbInstanceList">
+            <soap12:operation soapAction="urn:getDbInstanceList" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap12:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="addDbInstance">
+            <soap12:operation soapAction="urn:addDbInstance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMysqlUsers">
+            <soap12:operation soapAction="urn:getMysqlUsers" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createDbUserForTenant">
+            <soap12:operation soapAction="urn:createDbUserForTenant" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseList">
+            <soap12:operation soapAction="urn:getDatabaseList" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="dropDatabase">
+            <soap12:operation soapAction="urn:dropDatabase" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ConsoleAdminHttpBinding" type="ns:ConsoleAdminPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="createDatabaseForTenant">
+            <http:operation location="createDatabaseForTenant"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDbInstanceList">
+            <http:operation location="getDbInstanceList"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <http:operation location="deleteUser"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="addDbInstance">
+            <http:operation location="addDbInstance"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMysqlUsers">
+            <http:operation location="getMysqlUsers"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createDbUserForTenant">
+            <http:operation location="createDbUserForTenant"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseList">
+            <http:operation location="getDatabaseList"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="dropDatabase">
+            <http:operation location="dropDatabase"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ConsoleAdmin">
+        <wsdl:port name="ConsoleAdminHttpSoap11Endpoint" binding="ns:ConsoleAdminSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/ConsoleAdmin"/>
+        </wsdl:port>
+        <wsdl:port name="ConsoleAdminHttpSoap12Endpoint" binding="ns:ConsoleAdminSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/ConsoleAdmin"/>
+        </wsdl:port>
+        <wsdl:port name="ConsoleAdminHttpEndpoint" binding="ns:ConsoleAdminHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/ConsoleAdmin"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
