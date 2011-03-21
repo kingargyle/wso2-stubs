@@ -46,23 +46,27 @@
                         </goals>
                         <configuration>
                             <tasks>
+                                <path id="wsdl2java.classpath">
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/${orbit.version.axis2}/axis2-client-${orbit.version.axis2}.jar"/>
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
+                                </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-									<arg line="-uri src/main/resources/DataServiceFileUploader.wsdl -u -uw           -o target/generated-code -p org.wso2.carbon.dataservices.ui.fileupload           -ns2p http://admin.core.dataservices.carbon.wso2.org=org.wso2.carbon.dataservices.ui.fileupload"/>
-									<classpath refid="maven.dependency.classpath"/>
-									<classpath refid="maven.compile.classpath"/>
-									<classpath refid="maven.runtime.classpath"/>
+									<arg line="-uri src/main/resources/DataServiceFileUploader.wsdl -u -uw
+									-o target/generated-code -p org.wso2.carbon.dataservices.ui.fileupload
+									-ns2p http://admin.core.dataservices.carbon.wso2.org=org.wso2.carbon.dataservices.ui.fileupload"/>
+                                    <classpath refid="wsdl2java.classpath"/>
 								</java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/DataServiceAdmin.wsdl -u -uw           -o target/generated-code -p org.wso2.carbon.dataservices.ui.service           -ns2p http://admin.core.dataservices.carbon.wso2.org=org.wso2.carbon.dataservices.ui.service.admin,http://admin.core.dataservices.carbon.wso2.org/xsd=org.wso2.carbon.dataservices.ui.service.admin.xsd,http://org.apache.axis2/xsd=org.wso2.carbon.dataservices.ui.service.admin.axis2.xsd"/>
-                                    <classpath refid="maven.dependency.classpath"/>
-									<classpath refid="maven.compile.classpath"/>
-									<classpath refid="maven.runtime.classpath"/>
+                                    <arg line="-uri src/main/resources/DataServiceAdmin.wsdl -u -uw
+                                    -o target/generated-code -p org.wso2.carbon.dataservices.ui.service
+                                    -ns2p http://admin.core.dataservices.carbon.wso2.org=org.wso2.carbon.dataservices.ui.service.admin,http://admin.core.dataservices.carbon.wso2.org/xsd=org.wso2.carbon.dataservices.ui.service.admin.xsd,http://org.apache.axis2/xsd=org.wso2.carbon.dataservices.ui.service.admin.axis2.xsd"/>
+                                    <classpath refid="wsdl2java.classpath"/>
 								</java>
                                  <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-									<arg line="-uri src/main/resources/TaskManagementAdminService.wsdl -u -uw           -o target/generated-code -p org.wso2.carbon.dataservices.ui.taskscheduler           -ns2p http://org.apache.axis2/xsd=org.wso2.carbon.dataservices.ui.taskscheduler.axis2,http://services.taskscheduler.dataservices.carbon.wso2.org=org.wso2.carbon.dataservices.ui.taskscheduler.services,http://task.synapse.apache.org/xsd=org.wso2.carbon.dataservices.ui.synapse.xsd,http://util.java/xsd=org.wso2.carbon.dataservices.ui.taskscheduler.java.util.xsd"/>
-									<classpath refid="maven.dependency.classpath"/>
-									<classpath refid="maven.compile.classpath"/>
-									<classpath refid="maven.runtime.classpath"/>
+									<arg line="-uri src/main/resources/TaskManagementAdminService.wsdl -u -uw
+									-o target/generated-code -p org.wso2.carbon.dataservices.ui.taskscheduler
+									-ns2p http://org.apache.axis2/xsd=org.wso2.carbon.dataservices.ui.taskscheduler.axis2,http://services.taskscheduler.dataservices.carbon.wso2.org=org.wso2.carbon.dataservices.ui.taskscheduler.services,http://task.synapse.apache.org/xsd=org.wso2.carbon.dataservices.ui.synapse.xsd,http://util.java/xsd=org.wso2.carbon.dataservices.ui.taskscheduler.java.util.xsd"/>
+                                     <classpath refid="wsdl2java.classpath"/>
 								</java>
                             </tasks>
                         </configuration>
