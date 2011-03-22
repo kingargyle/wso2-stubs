@@ -26,12 +26,34 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.localentry.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - localentry Stub</name>
     <url>http://wso2.org</url>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Private-Package>
+                        </Private-Package>
+                        <Export-Package>
+                            org.wso2.carbon.localentry.stub.*;
+			    version="${carbon.platform.package.export.version}"
+                        </Export-Package>
+                        <Import-Package>
+                            !org.wso2.carbon.localentry.stub.*
+                        </Import-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -51,8 +73,8 @@
                                     <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/LocalEntry.wsdl -p org.wso2.carbon.localentry.ui.types
-                                    -ns2p http://org.apache.axis2/xsd=org.wso2.carbon.localentry.ui.types.axis2,http://dos.localentry.carbon.wso2.org/xsd=org.wso2.carbon.localentry.ui.types,http://localentry.carbon.wso2.org/xsd=org.wso2.carbon.localentry.ui.types.xsd,http://mgt.dependency.mediation.carbon.wso2.org/xsd=org.wso2.carbon.localentry.ui.types -u -uw -o target/generated-code"/>
+                                    <arg line="-uri src/main/resources/LocalEntry.wsdl -p org.wso2.carbon.localentry.stub.types
+                                    -ns2p http://org.apache.axis2/xsd=org.wso2.carbon.localentry.stub.types.axis2,http://dos.localentry.carbon.wso2.org/xsd=org.wso2.carbon.localentry.stub.types,http://localentry.carbon.wso2.org/xsd=org.wso2.carbon.localentry.stub.types.xsd,http://mgt.dependency.mediation.carbon.wso2.org/xsd=org.wso2.carbon.localentry.stub.types -u -uw -o target/generated-code"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
