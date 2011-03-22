@@ -68,8 +68,9 @@
                                     <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/configadmin.wsdl -u -uw -o target/generated-code
-                                    -ns2p http://org.apache.synapse/xsd=org.wso2.carbon.mediation.configadmin.ui.types.synapse,http://configadmin.mediation.carbon.wso2.org/xsd=org.wso2.carbon.mediation.configadmin.ui.types.carbon,http://configadmin.mediation.carbon.wso2.org=org.wso2.carbon.mediation.configadmin.ui,http://util.java/xsd=org.wso2.carbon.mediation.configadmin.ui.types.java"/>
+
+                                    <arg line="-uri src/main/resources/configadmin.wsdl -u -uw -o target/generated-code                                     -ns2p http://org.apache.synapse/xsd=org.wso2.carbon.mediation.configadmin.stub.types.synapse,http://configadmin.mediation.carbon.wso2.org/xsd=org.wso2.carbon.mediation.configadmin.stub.types.carbon,http://configadmin.mediation.carbon.wso2.org=org.wso2.carbon.mediation.configadmin.stub,http://util.java/xsd=org.wso2.carbon.mediation.configadmin.stub.types.java"/>
+                     
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
