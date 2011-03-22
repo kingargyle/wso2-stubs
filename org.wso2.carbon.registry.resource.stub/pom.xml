@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.registry.resource.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Registry - Resources Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,20 +52,20 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/ResourceAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.registry.resource.ui
-                                    -ns2p http://utils.services.resource.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.resource.ui.services.utils.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.resource.ui.common.xsd,http://beans.resource.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.resource.ui.beans.xsd,http://services.resource.registry.carbon.wso2.org=org.wso2.carbon.registry.resource.ui.services"/>
+                                    -p org.wso2.carbon.registry.resource.stub
+                                    -ns2p http://utils.services.resource.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.resource.stub.services.utils.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.resource.stub.common.xsd,http://beans.resource.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.resource.stub.beans.xsd,http://services.resource.registry.carbon.wso2.org=org.wso2.carbon.registry.resource.stub.services"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/CustomUIAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.registry.resource.ui.custom
-                                    -ns2p http://services.custom.registry.carbon.wso2.org=org.wso2.carbon.registry.resource.ui.custom.services"/>
+                                    -p org.wso2.carbon.registry.resource.stub.custom
+                                    -ns2p http://services.custom.registry.carbon.wso2.org=org.wso2.carbon.registry.resource.stub.custom.services"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/RegistryAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.registry.resource.ui.registry.service
-                                    -ns2p http://service.server.registry.carbon.wso2.org=org.wso2.carbon.registry.resource.ui.registry.service"/>
+                                    -p org.wso2.carbon.registry.resource.stub.registry.service
+                                    -ns2p http://service.server.registry.carbon.wso2.org=org.wso2.carbon.registry.resource.stub.registry.service"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -92,6 +92,30 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+             <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.registry.resource.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            javax.servlet; version=2.4.0,
+                            javax.servlet.http; version=2.4.0,
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Carbon-Component>Stub</Carbon-Component>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
