@@ -99,14 +99,14 @@
                             ${pom.artifactId}
                         </Bundle-SymbolicName>
                         <Export-Package>
-                            org.wso2.carbon.bam.core.stub.bamarchiverds.*,
-                            org.wso2.carbon.bam.core.stub.bamarchiverds.types.*,
-                            org.wso2.carbon.bam.core.stub.bamconfigurationds.*,
-                            org.wso2.carbon.bam.core.stub.bamconfigurationds.types.*,
-                            org.wso2.carbon.bam.core.stub.bamdatacollectionds.*,
-                            org.wso2.carbon.bam.core.stub.bamdatacollectionds.types.*,
-                            org.wso2.carbon.bam.core.stub.bamsummarygenerationds.*,
-                            org.wso2.carbon.bam.core.stub.bamsummarygenerationds.types.*
+                            org.wso2.carbon.bam.core.stub.bamarchiverds.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.core.stub.bamarchiverds.types.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.core.stub.bamconfigurationds.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.core.stub.bamconfigurationds.types.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.core.stub.bamdatacollectionds.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.core.stub.bamdatacollectionds.types.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.core.stub.bamsummarygenerationds.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.core.stub.bamsummarygenerationds.types.*; version="${carbon.platform.package.export.version}"
                         </Export-Package>
                     </instructions>
                 </configuration>
