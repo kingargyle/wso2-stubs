@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.registry.indexing.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Registry - Indexing Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,14 +52,38 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/ContentSearchAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.registry.indexing.ui.generated
-                                    -ns2p http://io.java/xsd=org.wso2.carbon.registry.indexing.ui.java.io,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.ui.core.exceptions,http://service.indexing.registry.carbon.wso2.org=org.wso2.carbon.registry.indexing.ui.generated,http://service.indexing.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.ui.generated.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.ui.generated.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.ui.generated.xsd"/>
+                                    -p org.wso2.carbon.registry.indexing.stub.generated
+                                    -ns2p http://io.java/xsd=org.wso2.carbon.registry.indexing.stub.java.io,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.stub.core.exceptions,http://service.indexing.registry.carbon.wso2.org=org.wso2.carbon.registry.indexing.stub.generated,http://service.indexing.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.stub.generated.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.stub.generated.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.indexing.stub.generated.xsd"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+             <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.registry.indexing.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            javax.servlet; version=2.4.0,
+                            javax.servlet.http; version=2.4.0,
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Carbon-Component>Stub</Carbon-Component>
+                    </instructions>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

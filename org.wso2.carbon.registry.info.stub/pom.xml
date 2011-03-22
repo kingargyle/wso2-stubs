@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.registry.info.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Registry - Info Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,14 +52,38 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/InfoAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.registry.info.ui
-                                    -ns2p http://util.java/xsd=org.wso2.carbon.registry.info.ui.java.utils.xsd,http://services.info.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.ui.services.xsd,http://utils.services.info.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.ui.services.utils.xsd,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.ui.exception.xsd,http://services.info.registry.carbon.wso2.org=org.wso2.carbon.registry.info.ui.services,http://beans.common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.ui.beans.xsd,http://utils.beans.common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.ui.beans.utils.xsd"/>
+                                    -p org.wso2.carbon.registry.info.stub
+                                    -ns2p http://util.java/xsd=org.wso2.carbon.registry.info.stub.java.utils.xsd,http://services.info.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.stub.services.xsd,http://utils.services.info.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.stub.services.utils.xsd,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.stub.exception.xsd,http://services.info.registry.carbon.wso2.org=org.wso2.carbon.registry.info.stub.services,http://beans.common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.stub.beans.xsd,http://utils.beans.common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.info.stub.beans.utils.xsd"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+             <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.registry.info.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            javax.servlet; version=2.4.0,
+                            javax.servlet.http; version=2.4.0,
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Carbon-Component>Stub</Carbon-Component>
+                    </instructions>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

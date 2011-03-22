@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.registry.handler.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Registry - Handlers Stub</name>
     <url>http://wso2.org</url>
 
@@ -54,14 +54,38 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/HandlerManagementService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.registry.handler.ui
-                                    -ns2p http://beans.handler.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.handler.ui.beans.xsd,http://services.handler.registry.carbon.wso2.org=org.wso2.carbon.registry.handler.ui.services"/>
+                                    -p org.wso2.carbon.registry.handler.stub
+                                    -ns2p http://beans.handler.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.handler.stub.beans.xsd,http://services.handler.registry.carbon.wso2.org=org.wso2.carbon.registry.handler.stub.services"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+             <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.registry.handler.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            javax.servlet; version=2.4.0,
+                            javax.servlet.http; version=2.4.0,
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Carbon-Component>Stub</Carbon-Component>
+                    </instructions>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
