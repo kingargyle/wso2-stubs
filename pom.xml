@@ -31,6 +31,7 @@
     <url>http://wso2.org</url>
 
     <modules>
+        <module>org.wso2.carbon.adminconsole.stub</module>
         <module>org.wso2.carbon.aarservices.stub</module>
 	<module>org.wso2.carbon.account.mgt.stub</module>
         <module>org.wso2.carbon.admin.mgt.stub</module>
@@ -63,6 +64,8 @@
         <module>org.wso2.carbon.dashboard.social.stub</module>
         <module>org.wso2.carbon.dashboard.stub</module>
         <module>org.wso2.carbon.dataservices.stub</module>
+        <module>org.wso2.carbon.dataservices.taskscheduler.stub</module>
+        <module>org.wso2.carbon.dataservices.fileupload.stub</module>
         <module>org.wso2.carbon.datasource.stub</module>
         <module>org.wso2.carbon.deployment.synchronizer.stub</module>
         <module>org.wso2.carbon.directory.server.manager.stub</module>
@@ -145,6 +148,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- Service Stubs -->
+            <dependency>
+                <groupId>org.wso2.carbon</groupId>
+                <artifactId>org.wso2.carbon.adminconsole.stub</artifactId>
+                <version>${carbon.platform.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.aarservices.stub</artifactId>
@@ -298,6 +306,16 @@
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.dataservices.stub</artifactId>
+                <version>${carbon.platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon</groupId>
+                <artifactId>org.wso2.carbon.dataservices.taskscheduler.stub</artifactId>
+                <version>${carbon.platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon</groupId>
+                <artifactId>org.wso2.carbon.dataservices.fileupload.stub</artifactId>
                 <version>${carbon.platform.version}</version>
             </dependency>
             <dependency>
