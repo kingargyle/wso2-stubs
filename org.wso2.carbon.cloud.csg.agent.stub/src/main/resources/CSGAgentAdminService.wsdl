@@ -68,6 +68,20 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getPublishedServerList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPublishedServerListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getCSGServerList">
                 <xs:complexType>
                     <xs:sequence/>
@@ -118,6 +132,12 @@
     <wsdl:message name="getCSGServerListResponse">
         <wsdl:part name="parameters" element="ns:getCSGServerListResponse"/>
     </wsdl:message>
+    <wsdl:message name="getPublishedServerListRequest">
+        <wsdl:part name="parameters" element="ns:getPublishedServerList"/>
+    </wsdl:message>
+    <wsdl:message name="getPublishedServerListResponse">
+        <wsdl:part name="parameters" element="ns:getPublishedServerListResponse"/>
+    </wsdl:message>
     <wsdl:message name="addCSGServerRequest">
         <wsdl:part name="parameters" element="ns:addCSGServer"/>
     </wsdl:message>
@@ -149,6 +169,11 @@
             <wsdl:input message="tns:getCSGServerListRequest" wsaw:Action="urn:getCSGServerList"/>
             <wsdl:output message="tns:getCSGServerListResponse" wsaw:Action="urn:getCSGServerListResponse"/>
             <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:getCSGServerListCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPublishedServerList">
+            <wsdl:input message="tns:getPublishedServerListRequest" wsaw:Action="urn:getPublishedServerList"/>
+            <wsdl:output message="tns:getPublishedServerListResponse" wsaw:Action="urn:getPublishedServerListResponse"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:getPublishedServerListCSGException"/>
         </wsdl:operation>
         <wsdl:operation name="addCSGServer">
             <wsdl:input message="tns:addCSGServerRequest" wsaw:Action="urn:addCSGServer"/>
@@ -192,6 +217,18 @@
         </wsdl:operation>
         <wsdl:operation name="getCSGServerList">
             <soap:operation soapAction="urn:getCSGServerList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPublishedServerList">
+            <soap:operation soapAction="urn:getPublishedServerList" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -286,6 +323,18 @@
                 <soap12:fault use="literal" name="CSGException"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getPublishedServerList">
+            <soap12:operation soapAction="urn:getPublishedServerList" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="addCSGServer">
             <soap12:operation soapAction="urn:addCSGServer" style="document"/>
             <wsdl:input>
@@ -357,6 +406,15 @@
         </wsdl:operation>
         <wsdl:operation name="getCSGServerList">
             <http:operation location="getCSGServerList"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPublishedServerList">
+            <http:operation location="getPublishedServerList"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
