@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.bam.data.publisher.servicestats.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon -  BAM - Service Stat publisher Stub</name>
     <url>http://wso2.org</url>
 
@@ -51,7 +51,7 @@
                                     <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/ServiceStatPublisherAdmin.wsdl -u -uw -o target/generated-code  -p org.wso2.carbon.bam.data.publisher.servicestats.ui          -ns2p  http://config.servicestats.publishers.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub,http://services.servicestats.publishers.data.bam.carbon.wso2.org=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub,http://org.apache.axis2/xsd=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub,http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.servicestats.ui.stub"/>
+                                    <arg line="-uri src/main/resources/ServiceStatPublisherAdmin.wsdl -u -uw -o target/generated-code  -p org.wso2.carbon.bam.data.publisher.servicestats.stub  -ns2p  http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.servicestats.stub.config,http://services.servicestats.publishers.data.bam.carbon.wso2.org=org.wso2.carbon.bam.data.publisher.servicestats.stub.services,http://org.apache.axis2/xsd=org.wso2.carbon.bam.data.publisher.servicestats.stub.axis2"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -79,6 +79,33 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>
+                            ${pom.artifactId}
+                        </Bundle-SymbolicName>
+                        <Export-Package>
+                            org.wso2.carbon.bam.data.publisher.servicestats.stub.*;
+                            version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.data.publisher.servicestats.stub.axis2.*;
+                            version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.data.publisher.servicestats.stub.config.*;
+                            version="${carbon.platform.package.export.version}"
+                        </Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

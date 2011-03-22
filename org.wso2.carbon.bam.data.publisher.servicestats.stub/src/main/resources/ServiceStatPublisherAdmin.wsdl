@@ -15,22 +15,39 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  -->
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://services.servicestats.publisher.data.bam.carbon.wso2.org" xmlns:ax29="http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.servicestats.publisher.data.bam.carbon.wso2.org">
-    <wsdl:documentation>ServiceStatPublisherAdmin</wsdl:documentation>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:ax2308="http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd"
+                  xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:tns="http://services.servicestats.publisher.data.bam.carbon.wso2.org"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  targetNamespace="http://services.servicestats.publisher.data.bam.carbon.wso2.org">
+    <wsdl:documentation>
+        ServiceStatPublisherAdmin
+    </wsdl:documentation>
     <wsdl:types>
-        <xs:schema xmlns:ns="http://org.apache.axis2/xsd" xmlns:ax210="http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
+        <xs:schema xmlns:ax2309="http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd"
+                   xmlns:ns="http://org.apache.axis2/xsd" attributeFormDefault="qualified"
+                   elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
             <xs:import namespace="http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd"/>
+            <xs:element name="getEventingConfigData">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getEventingConfigDataResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax29:EventingConfigData"/>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2309:EventingConfigData"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="Exception">
+            <xs:element name="configureEventingException">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="Exception" nillable="true" type="ns1:Exception"/>
+                        <xs:element minOccurs="0" name="configureEventingException" nillable="true"
+                                    type="ns1:Exception"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -42,12 +59,14 @@
             <xs:element name="configureEventing">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="eventingConfigData" nillable="true" type="ax29:EventingConfigData"/>
+                        <xs:element minOccurs="0" name="eventingConfigData" nillable="true"
+                                    type="ax2309:EventingConfigData"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
         </xs:schema>
-        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd">
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+                   targetNamespace="http://config.servicestats.publisher.data.bam.carbon.wso2.org/xsd">
             <xs:complexType name="EventingConfigData">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="enableEventing" nillable="true" type="xs:string"/>
@@ -61,32 +80,35 @@
     <wsdl:message name="configureEventingRequest">
         <wsdl:part name="parameters" element="ns1:configureEventing"/>
     </wsdl:message>
-    <wsdl:message name="Exception">
-        <wsdl:part name="parameters" element="ns1:Exception"/>
+    <wsdl:message name="configureEventingException">
+        <wsdl:part name="parameters" element="ns1:configureEventingException"/>
     </wsdl:message>
-    <wsdl:message name="getEventingConfigDataRequest"/>
+    <wsdl:message name="getEventingConfigDataRequest">
+        <wsdl:part name="parameters" element="ns1:getEventingConfigData"/>
+    </wsdl:message>
     <wsdl:message name="getEventingConfigDataResponse">
         <wsdl:part name="parameters" element="ns1:getEventingConfigDataResponse"/>
     </wsdl:message>
     <wsdl:portType name="ServiceStatPublisherAdminPortType">
         <wsdl:operation name="configureEventing">
-            <wsdl:input message="axis2:configureEventingRequest" wsaw:Action="urn:configureEventing"/>
-            <wsdl:fault message="axis2:Exception" name="Exception" wsaw:Action="urn:configureEventingException"/>
+            <wsdl:input message="tns:configureEventingRequest" wsaw:Action="urn:configureEventing"/>
+            <wsdl:fault message="tns:configureEventingException" name="configureEventingException"
+                        wsaw:Action="urn:configureEventingconfigureEventingException"/>
         </wsdl:operation>
         <wsdl:operation name="getEventingConfigData">
-            <wsdl:input message="axis2:getEventingConfigDataRequest" wsaw:Action="urn:getEventingConfigData"/>
-            <wsdl:output message="axis2:getEventingConfigDataResponse" wsaw:Action="urn:getEventingConfigDataResponse"/>
+            <wsdl:input message="tns:getEventingConfigDataRequest" wsaw:Action="urn:getEventingConfigData"/>
+            <wsdl:output message="tns:getEventingConfigDataResponse" wsaw:Action="urn:getEventingConfigDataResponse"/>
         </wsdl:operation>
     </wsdl:portType>
-    <wsdl:binding name="ServiceStatPublisherAdminSoap11Binding" type="axis2:ServiceStatPublisherAdminPortType">
+    <wsdl:binding name="ServiceStatPublisherAdminSoap11Binding" type="tns:ServiceStatPublisherAdminPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="configureEventing">
             <soap:operation soapAction="urn:configureEventing" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="Exception">
-                <soap:fault use="literal" name="Exception"/>
+            <wsdl:fault name="configureEventingException">
+                <soap:fault use="literal" name="configureEventingException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getEventingConfigData">
@@ -99,15 +121,15 @@
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:binding name="ServiceStatPublisherAdminSoap12Binding" type="axis2:ServiceStatPublisherAdminPortType">
+    <wsdl:binding name="ServiceStatPublisherAdminSoap12Binding" type="tns:ServiceStatPublisherAdminPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="configureEventing">
             <soap12:operation soapAction="urn:configureEventing" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="Exception">
-                <soap12:fault use="literal" name="Exception"/>
+            <wsdl:fault name="configureEventingException">
+                <soap12:fault use="literal" name="configureEventingException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getEventingConfigData">
@@ -120,7 +142,7 @@
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:binding name="ServiceStatPublisherAdminHttpBinding" type="axis2:ServiceStatPublisherAdminPortType">
+    <wsdl:binding name="ServiceStatPublisherAdminHttpBinding" type="tns:ServiceStatPublisherAdminPortType">
         <http:binding verb="POST"/>
         <wsdl:operation name="configureEventing">
             <http:operation location="configureEventing"/>
@@ -139,14 +161,19 @@
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="ServiceStatPublisherAdmin">
-        <wsdl:port name="ServiceStatPublisherAdminHttpsSoap11Endpoint" binding="axis2:ServiceStatPublisherAdminSoap11Binding">
-            <soap:address location="https://10.100.1.128:8443/services/ServiceStatPublisherAdmin.ServiceStatPublisherAdminHttpsSoap11Endpoint/"/>
+        <wsdl:port name="ServiceStatPublisherAdminHttpsSoap11Endpoint"
+                   binding="tns:ServiceStatPublisherAdminSoap11Binding">
+            <soap:address
+                    location="https://10.100.0.136:9444/as/services/ServiceStatPublisherAdmin.ServiceStatPublisherAdminHttpsSoap11Endpoint/"/>
         </wsdl:port>
-        <wsdl:port name="ServiceStatPublisherAdminHttpsSoap12Endpoint" binding="axis2:ServiceStatPublisherAdminSoap12Binding">
-            <soap12:address location="https://10.100.1.128:8443/services/ServiceStatPublisherAdmin.ServiceStatPublisherAdminHttpsSoap12Endpoint/"/>
+        <wsdl:port name="ServiceStatPublisherAdminHttpsSoap12Endpoint"
+                   binding="tns:ServiceStatPublisherAdminSoap12Binding">
+            <soap12:address
+                    location="https://10.100.0.136:9444/as/services/ServiceStatPublisherAdmin.ServiceStatPublisherAdminHttpsSoap12Endpoint/"/>
         </wsdl:port>
-        <wsdl:port name="ServiceStatPublisherAdminHttpsEndpoint" binding="axis2:ServiceStatPublisherAdminHttpBinding">
-            <http:address location="https://10.100.1.128:8443/services/ServiceStatPublisherAdmin.ServiceStatPublisherAdminHttpsEndpoint/"/>
+        <wsdl:port name="ServiceStatPublisherAdminHttpsEndpoint" binding="tns:ServiceStatPublisherAdminHttpBinding">
+            <http:address
+                    location="https://10.100.0.136:9444/as/services/ServiceStatPublisherAdmin.ServiceStatPublisherAdminHttpsEndpoint/"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
