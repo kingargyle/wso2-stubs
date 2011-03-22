@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.cep.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - CEP Stub</name>
     <url>http://wso2.org</url>
 
@@ -51,7 +51,7 @@
                                     <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/CEPAdminService.wsdl -u -uw -sn CEPAdminService -o target/generated-code                                     -ns2p                                     http://internal.admin.cep.carbon.wso2.org/xsd=org.wso2.carbon.cep.ui.types, "/>
+                                    <arg line="-uri src/main/resources/CEPAdminService.wsdl -u -uw -sn CEPAdminService -o target/generated-code                                     -ns2p                                     http://internal.admin.cep.carbon.wso2.org/xsd=org.wso2.carbon.cep.stub.admin.internal.xsd,http://exception.core.cep.carbon.wso2.org/xsd=org.wso2.carbon.cep.stub.core.exception,http://wso2.org/carbon/cep/admin/xsd=org.wso2.carbon.cep.stub.admin.xsd,http://exception.internal.admin.cep.carbon.wso2.org/xsd=org.wso2.carbon.cep.stub.admin.exception.xsd,http://wso2.org/carbon/cep/admin=org.wso2.carbon.cep.stub.admin,"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -78,6 +78,27 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+             <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Carbon-Component>UIBundle</Carbon-Component>
+                        <Import-Package>
+                            org.apache.axis2.*; version="${axis2.osgi.version.range}",
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Export-Package>
+                            org.wso2.carbon.cep.stub.*;version="${carbon.platform.package.export.version}",                            
+                        </Export-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
