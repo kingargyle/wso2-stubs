@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.dashboard.mgt.gadgetrepo.stub</artifactId>
-    <packaging>jar</packaging>
+   <packaging>bundle</packaging>
     <name>WSO2 Carbon - Gadget Repository Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,8 +52,8 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/GadgetRepoService.wsdl -u -uw
-                                    -o target/generated-code -p org.wso2.carbon.dashboard.mgt.gadgetrepo.ui
-                                    -ns2p http://utils.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.ui.types.carbon,http://dashboard.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.ui.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.ui.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.ui.types.neethi,http://common.gadgetrepo.mgt.dashboard.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.ui.types.carbon,http://bean.common.dashboard.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.ui.types.carbon,http://org.wso2.wsf/tools=org.wso2.carbon.dashboard.mgt.gadgetrepo.ui.types.tools"/>
+                                    -o target/generated-code -p org.wso2.carbon.dashboard.mgt.gadgetrepo.stub
+                                    -ns2p http://utils.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.types.carbon,http://dashboard.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.types.neethi,http://common.gadgetrepo.mgt.dashboard.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.types.carbon,http://bean.common.dashboard.carbon.wso2.org/xsd=org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.types.carbon,http://org.wso2.wsf/tools=org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.types.tools"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -80,6 +80,22 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.dashboard.mgt.gadgetrepo.stub.*; version=3.2.0-SNAPSHOT,
+                        </Export-Package>
+                        <Carbon-Component>UIBundle</Carbon-Component>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
