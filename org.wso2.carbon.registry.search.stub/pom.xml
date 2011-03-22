@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.registry.search.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Registry - Search Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,8 +52,8 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/SearchAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.registry.search.ui
-                                    -ns2p http://services.search.registry.carbon.wso2.org=org.wso2.carbon.registry.search.ui.services,http://beans.search.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.search.ui.beans.xsd,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.search.ui.exceptions.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.search.ui.common.xsd"/>
+                                    -p org.wso2.carbon.registry.search.stub
+                                    -ns2p http://services.search.registry.carbon.wso2.org=org.wso2.carbon.registry.search.stub.services,http://beans.search.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.search.stub.beans.xsd,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.search.stub.exceptions.xsd,http://common.registry.carbon.wso2.org/xsd=org.wso2.carbon.registry.search.stub.common.xsd"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -81,6 +81,30 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+               <groupId>org.apache.felix</groupId>
+               <artifactId>maven-bundle-plugin</artifactId>
+               <version>1.4.0</version>
+               <extensions>true</extensions>
+               <configuration>
+                   <instructions>
+                       <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                       <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                       <Export-Package>
+                           org.wso2.carbon.registry.search.stub.*;version="${carbon.platform.package.export.version}",
+                       </Export-Package>
+                       <Import-Package>
+                           !javax.xml.namespace,
+                           javax.xml.namespace; version=0.0.0,
+                           javax.servlet; version=2.4.0,
+                           javax.servlet.http; version=2.4.0,
+                           org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                           *;resolution:=optional
+                       </Import-Package>
+                       <Carbon-Component>Stub</Carbon-Component>
+                   </instructions>
+               </configuration>
+           </plugin>
         </plugins>
     </build>
 
