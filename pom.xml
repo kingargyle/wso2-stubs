@@ -134,6 +134,7 @@
         <module>org.wso2.carbon.sts.stub</module>
         <module>org.wso2.carbon.task.stub</module>
         <module>org.wso2.carbon.throttle.stub</module>
+	<module>org.wso2.carbon.throttling.agent.stub</module>
         <module>org.wso2.carbon.tracer.stub</module>
         <module>org.wso2.carbon.transport.jms.stub</module>
         <module>org.wso2.carbon.transport.mgt.stub</module>
