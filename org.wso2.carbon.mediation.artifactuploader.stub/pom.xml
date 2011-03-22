@@ -43,6 +43,9 @@
                         <Bundle-Name>${pom.artifactId}</Bundle-Name>
                         <Private-Package>
                         </Private-Package>
+			<Import-Package>
+                            !org.wso2.carbon.mediation.artifactuploader.stub.*
+                        </Import-Package>
                         <Export-Package>
                             org.wso2.carbon.mediation.artifactuploader.stub.*;version="${carbon.platform.package.export.version}",
                         </Export-Package>
