@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.rule.service.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>   
     <name>WSO2 Carbon - Rule Services Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,14 +52,14 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/RuleServiceFileUploadAdmin.wsdl -u -uw
-                                    -o target/generated-code -p org.wso2.carbon.rule.service.ui.fileupload
-                                    -ns2p http://admin.service.rule.carbon.wso2.org=org.wso2.carbon.rule.service.ui.fileupload"/>
+                                    -o target/generated-code -p org.wso2.carbon.rule.service.stub.fileupload
+                                    -ns2p http://admin.service.rule.carbon.wso2.org=org.wso2.carbon.rule.service.stub.fileupload"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/RuleServiceAdmin.wsdl -u -uw
-                                    -o target/generated-code -p  org.wso2.carbon.rule.service.ui.wizard
-                                    -ns2p http://admin.service.rule.carbon.wso2.org=org.wso2.carbon.rule.service.ui.wizard.admin,http://service.rule.carbon.wso2.org/xsd=org.wso2.carbon.rule.service.ui.wizard.service.xsd,http://core.rule.carbon.wso2.org/xsd=org.wso2.carbon.rule.service.ui.wizard.core.xsd,http://org.apache.axis2/xsd=org.wso2.carbon.rule.service.ui.wizard.admin.axis2.xsd"/>
+                                    -o target/generated-code -p  org.wso2.carbon.rule.service.stub.wizard
+                                    -ns2p http://admin.service.rule.carbon.wso2.org=org.wso2.carbon.rule.service.stub.wizard.admin,http://service.rule.carbon.wso2.org/xsd=org.wso2.carbon.rule.service.stub.wizard.service.xsd,http://core.rule.carbon.wso2.org/xsd=org.wso2.carbon.rule.service.stub.wizard.core.xsd,http://org.apache.axis2/xsd=org.wso2.carbon.rule.service.stub.wizard.admin.axis2.xsd"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -86,6 +86,28 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+	     <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Private-Package>org.wso2.carbon.rule.core.internal</Private-Package>
+                        <Export-Package>
+                            org.wso2.carbon.rule.service.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            *;resolution:=optional,
+                        </Import-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
