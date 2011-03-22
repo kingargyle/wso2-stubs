@@ -1,0 +1,259 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax29="http://common.csg.cloud.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://org.apache.synapse/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://service.csg.cloud.carbon.wso2.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://service.csg.cloud.carbon.wso2.org">
+    <wsdl:documentation>CSGAdminService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://common.csg.cloud.carbon.wso2.org/xsd">
+            <xs:complexType name="CSGException">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="ServiceMetaData">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="endpoint" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="hasInOutMEP" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="rmPolicy" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="secPolicy" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="wsRmEnabled" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="wsSecEnabled" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="wsdlLocation" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax210="http://common.csg.cloud.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.synapse/xsd">
+            <xs:import namespace="http://common.csg.cloud.carbon.wso2.org/xsd"/>
+            <xs:element name="CSGException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CSGException" nillable="true" type="ax29:CSGException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="unDeployProxy">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRemoteConnectionURL">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRemoteConnectionURLResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deployProxy">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="metaData" nillable="true" type="ax29:ServiceMetaData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createOrUpdateServerRegistryJNDI">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="qpidJNDIString" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createOrUpdateServerQpidJNDIFile">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="qpidJNDIString" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="tenentId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="createOrUpdateServerRegistryJNDIRequest">
+        <wsdl:part name="parameters" element="ns:createOrUpdateServerRegistryJNDI"/>
+    </wsdl:message>
+    <wsdl:message name="CSGException">
+        <wsdl:part name="parameters" element="ns:CSGException"/>
+    </wsdl:message>
+    <wsdl:message name="unDeployProxyRequest">
+        <wsdl:part name="parameters" element="ns:unDeployProxy"/>
+    </wsdl:message>
+    <wsdl:message name="deployProxyRequest">
+        <wsdl:part name="parameters" element="ns:deployProxy"/>
+    </wsdl:message>
+    <wsdl:message name="createOrUpdateServerQpidJNDIFileRequest">
+        <wsdl:part name="parameters" element="ns:createOrUpdateServerQpidJNDIFile"/>
+    </wsdl:message>
+    <wsdl:message name="getRemoteConnectionURLRequest">
+        <wsdl:part name="parameters" element="ns:getRemoteConnectionURL"/>
+    </wsdl:message>
+    <wsdl:message name="getRemoteConnectionURLResponse">
+        <wsdl:part name="parameters" element="ns:getRemoteConnectionURLResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CSGAdminServicePortType">
+        <wsdl:operation name="createOrUpdateServerRegistryJNDI">
+            <wsdl:input message="tns:createOrUpdateServerRegistryJNDIRequest" wsaw:Action="urn:createOrUpdateServerRegistryJNDI"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:createOrUpdateServerRegistryJNDICSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="unDeployProxy">
+            <wsdl:input message="tns:unDeployProxyRequest" wsaw:Action="urn:unDeployProxy"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:unDeployProxyCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deployProxy">
+            <wsdl:input message="tns:deployProxyRequest" wsaw:Action="urn:deployProxy"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:deployProxyCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createOrUpdateServerQpidJNDIFile">
+            <wsdl:input message="tns:createOrUpdateServerQpidJNDIFileRequest" wsaw:Action="urn:createOrUpdateServerQpidJNDIFile"/>
+            <wsdl:fault message="tns:CSGException" name="CSGException" wsaw:Action="urn:createOrUpdateServerQpidJNDIFileCSGException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getRemoteConnectionURL">
+            <wsdl:input message="tns:getRemoteConnectionURLRequest" wsaw:Action="urn:getRemoteConnectionURL"/>
+            <wsdl:output message="tns:getRemoteConnectionURLResponse" wsaw:Action="urn:getRemoteConnectionURLResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CSGAdminServiceSoap11Binding" type="tns:CSGAdminServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="createOrUpdateServerRegistryJNDI">
+            <soap:operation soapAction="urn:createOrUpdateServerRegistryJNDI" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="unDeployProxy">
+            <soap:operation soapAction="urn:unDeployProxy" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deployProxy">
+            <soap:operation soapAction="urn:deployProxy" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createOrUpdateServerQpidJNDIFile">
+            <soap:operation soapAction="urn:createOrUpdateServerQpidJNDIFile" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRemoteConnectionURL">
+            <soap:operation soapAction="urn:getRemoteConnectionURL" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CSGAdminServiceSoap12Binding" type="tns:CSGAdminServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="createOrUpdateServerRegistryJNDI">
+            <soap12:operation soapAction="urn:createOrUpdateServerRegistryJNDI" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="unDeployProxy">
+            <soap12:operation soapAction="urn:unDeployProxy" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deployProxy">
+            <soap12:operation soapAction="urn:deployProxy" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createOrUpdateServerQpidJNDIFile">
+            <soap12:operation soapAction="urn:createOrUpdateServerQpidJNDIFile" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:fault name="CSGException">
+                <soap12:fault use="literal" name="CSGException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRemoteConnectionURL">
+            <soap12:operation soapAction="urn:getRemoteConnectionURL" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CSGAdminServiceHttpBinding" type="tns:CSGAdminServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="createOrUpdateServerRegistryJNDI">
+            <http:operation location="createOrUpdateServerRegistryJNDI"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="unDeployProxy">
+            <http:operation location="unDeployProxy"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deployProxy">
+            <http:operation location="deployProxy"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="createOrUpdateServerQpidJNDIFile">
+            <http:operation location="createOrUpdateServerQpidJNDIFile"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getRemoteConnectionURL">
+            <http:operation location="getRemoteConnectionURL"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CSGAdminService">
+        <wsdl:port name="CSGAdminServiceHttpsSoap11Endpoint" binding="tns:CSGAdminServiceSoap11Binding">
+            <soap:address location="https://localhost:8243/services/CSGAdminService.CSGAdminServiceHttpsSoap11Endpoint"/>
+        </wsdl:port>
+        <wsdl:port name="CSGAdminServiceHttpsSoap12Endpoint" binding="tns:CSGAdminServiceSoap12Binding">
+            <soap12:address location="https://localhost:8243/services/CSGAdminService.CSGAdminServiceHttpsSoap12Endpoint"/>
+        </wsdl:port>
+        <wsdl:port name="CSGAdminServiceHttpsEndpoint" binding="tns:CSGAdminServiceHttpBinding">
+            <http:address location="https://localhost:8243/services/CSGAdminService.CSGAdminServiceHttpsEndpoint"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -54,6 +54,7 @@
         <module>org.wso2.carbon.cep.stub</module>
         <module>org.wso2.carbon.claim.mgt.stub</module>
         <module>org.wso2.carbon.cloud.csg.agent.stub</module>
+		<module>org.wso2.carbon.cloud.csg.stub</module>
         <module>org.wso2.carbon.cluster.mgt.admin.stub</module>
         <module>org.wso2.carbon.component.mgt.stub</module>
         <module>org.wso2.carbon.dashboard.mgt.gadgetrepo.stub</module>
@@ -242,6 +243,11 @@
                 <artifactId>org.wso2.carbon.cloud.csg.agent.stub</artifactId>
                 <version>${carbon.platform.version}</version>
             </dependency>
+			<dependency>
+				<groupId>org.wso2.carbon</groupId>
+				<artifactId>org.wso2.carbon.cloud.csg.stub</artifactId>
+				<version>${carbon.platform.version}</version>
+			</dependency>	
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.cluster.mgt.admin.stub</artifactId>
