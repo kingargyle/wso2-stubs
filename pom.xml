@@ -46,6 +46,7 @@
         <module>org.wso2.carbon.bam.data.publisher.mediationstats.stub</module>
         <module>org.wso2.carbon.bam.data.publisher.servicestats.stub</module>
         <module>org.wso2.carbon.bam.gauges.stub</module>
+        <module>org.wso2.carbon.bam.core.stub</module>
         <module>org.wso2.carbon.bam.stub</module>
         <module>org.wso2.carbon.bpel.stub</module>
         <module>org.wso2.carbon.brokermanager.stub</module>
@@ -54,7 +55,7 @@
         <module>org.wso2.carbon.cep.stub</module>
         <module>org.wso2.carbon.claim.mgt.stub</module>
         <module>org.wso2.carbon.cloud.csg.agent.stub</module>
-		<module>org.wso2.carbon.cloud.csg.stub</module>
+	<module>org.wso2.carbon.cloud.csg.stub</module>
         <module>org.wso2.carbon.cluster.mgt.admin.stub</module>
         <module>org.wso2.carbon.component.mgt.stub</module>
         <module>org.wso2.carbon.dashboard.mgt.gadgetrepo.stub</module>
