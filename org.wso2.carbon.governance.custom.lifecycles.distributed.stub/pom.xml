@@ -26,8 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.governance.custom.lifecycles.distributed.stub</artifactId>
-    <packaging>bundle</packaging>
-       <version>${carbon.platform.version}</version>
+    <packaging>jar</packaging>
     <name>WSO2 Carbon - Governance - Distributed Lifecycles Stub</name>
     <url>http://wso2.org</url>
 
