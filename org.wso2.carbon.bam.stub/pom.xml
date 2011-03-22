@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.bam.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - BAM Stub</name>
     <url>http://wso2.org</url>
 
@@ -51,15 +51,19 @@
                                     <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/BAMConfigAdminService.wsdl -u -uw                                        -o target/generated-code -p org.wso2.carbon.bam.ui                                       -ns2p http://service.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.ui.config,http://org.apache.axis2/xsd=org.wso2.carbon.bam.ui.config,http://common.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.ui.config,http://services.core.bam.carbon.wso2.org=org.wso2.carbon.bam.ui.config,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.ui.config"/>
+                                    <arg line="-uri src/main/resources/BAMConfigAdminService.wsdl -u -uw -o target/generated-code -p org.wso2.carbon.bam.stub.configadmin -ns2p http://service.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.configadmin.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.stub.configadmin.types.axis2,http://common.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.configadmin.types.carbon,http://services.core.bam.carbon.wso2.org=org.wso2.carbon.bam.stub.configadmin.types.carbon,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.configadmin.types.carbon"/>
+                                    <classpath refid="wsdl2java.classpath"/>
+                                </java>
+                               <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
+                                    <arg line="-uri src/main/resources/BAMStatQueryDS.wsdl -u -uw -o target/generated-code -p org.wso2.carbon.bam.stub.statquery -ns2p http://bam.carbon.wso2.org=org.wso2.carbon.bam.stub.statquery,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.statquery.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.stub.statquery.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.stub.statquery.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.stub.statquery.types.neethi"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/BAMStatQueryDS.wsdl -u -uw                                                 -o target/generated-code -p org.wso2.carbon.bam.ui                                                 -ns2p http://bam.carbon.wso2.org=org.wso2.carbon.bam.ui.stat,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.ui.stub.bamconfig.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.ui.stub.bamconfig.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.ui.stub.bamconfig.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.ui.stub.bamconfig.types.neethi"/>
+                                    <arg line="-uri src/main/resources/BAMSummaryQueryDS.wsdl -u -uw -o target/generated-code -p org.wso2.carbon.bam.stub.summaryquery -ns2p http://bam.carbon.wso2.org=org.wso2.carbon.bam.stub.summaryquery,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.summaryquery.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.stub.summaryquery.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.stub.summaryquery.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.stub.summaryquery.types.neethi"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/BAMSummaryQueryDS.wsdl -u -uw                                                 -o target/generated-code -p org.wso2.carbon.bam.ui                                                 -ns2p http://bam.carbon.wso2.org=org.wso2.carbon.bam.ui.summary,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.bam.ui.stub.summaryquery.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.ui.stub.summaryquery.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.ui.stub.summaryquery.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.ui.stub.summaryquery.types.neethi"/>
+                                    <arg line="-uri src/main/resources/BAMListAdminService.wsdl -u -uw -o target/generated-code -p org.wso2.carbon.bam.stub.listadmin -ns2p http://common.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.listadmin.types.carbon,http://activity.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.listadmin.types.carbon,http://service.dataobjects.common.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.listadmin.types.carbon,http://util.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.listadmin.types.carbon,http://dto.mgt.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.listadmin.types.carbon,http://util.java/xsd=org.wso2.carbon.bam.stub.listadmin.types.carbon,http://gauges.carbon.wso2.org/xsd=org.wso2.carbon.bam.stub.listadmin.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.bam.stub.listadmin.types.axis2,http://neethi.apache.org/xsd=org.wso2.carbon.bam.listadmin.types.neethi"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -86,6 +90,25 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.bam.stub.*; version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !org.wso2.carbon.bam.stub.*
+                        </Import-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
