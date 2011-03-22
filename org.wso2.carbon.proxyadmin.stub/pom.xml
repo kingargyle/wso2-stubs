@@ -68,9 +68,11 @@
                                     <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/ProxyServiceAdmin.wsdl -u -uw -o target/generated-code
-                                    -ns2p http://org.apache.synapse/xsd=org.wso2.carbon.proxyadmin.ui.types.synapse,http://proxyadmin.carbon.wso2.org/xsd=org.wso2.carbon.proxyadmin.ui.types.carbon,http://service.proxyadmin.carbon.wso2.org=org.wso2.carbon.proxyadmin.ui,http://util.java/xsd=org.wso2.carbon.proxyadmin.ui.types.java"/>
+
+                                    <arg line="-uri src/main/resources/ProxyServiceAdmin.wsdl -u -uw -o target/generated-code                                     -ns2p http://org.apache.synapse/xsd=org.wso2.carbon.proxyadmin.stub.types.synapse,http://proxyadmin.carbon.wso2.org/xsd=org.wso2.carbon.proxyadmin.stub.types.carbon,http://service.proxyadmin.carbon.wso2.org=org.wso2.carbon.proxyadmin.stub,http://util.java/xsd=org.wso2.carbon.proxyadmin.stub.types.java"/>
+
                                     <classpath refid="wsdl2java.classpath"/>
+
                                 </java>
                             </tasks>
                         </configuration>
