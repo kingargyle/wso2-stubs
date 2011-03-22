@@ -26,7 +26,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.governance.sla.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
+    <version>${carbon.platform.version}</version>
     <name>WSO2 Carbon - Governance - SLA User Interface Stub</name>
     <url>http://wso2.org</url>
 
@@ -54,8 +55,8 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/AddSLAService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.governance.sla.ui
-                                    -ns2p http://services.sla.governance.carbon.wso2.org=org.wso2.carbon.governance.sla.ui.services,http://beans.sla.governance.carbon.wso2.org/xsd=org.wso2.carbon.governance.sla.ui.beans,http://utils.extensions.registry.carbon.wso2.org/xsd=org.wso2.carbon.governance.sla.ui.beans.xsd,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.governance.sla.ui.exceptions.xsd"/>
+                                    -p org.wso2.carbon.governance.sla.stub
+                                    -ns2p http://services.sla.governance.carbon.wso2.org=org.wso2.carbon.governance.sla.stub.services,http://beans.sla.governance.carbon.wso2.org/xsd=org.wso2.carbon.governance.sla.stub.beans,http://utils.extensions.registry.carbon.wso2.org/xsd=org.wso2.carbon.governance.sla.stub.beans.xsd,http://exceptions.core.registry.carbon.wso2.org/xsd=org.wso2.carbon.governance.sla.stub.exceptions.xsd"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -82,6 +83,31 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.governance.sla.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            javax.servlet; version=2.4.0,
+                            javax.servlet.http; version=2.4.0,
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Carbon-Component>Stub</Carbon-Component>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
