@@ -145,6 +145,7 @@
         <module>org.wso2.carbon.webapp.mgt.stub</module>
         <module>org.wso2.carbon.xkms.mgt.stub</module>
         <module>org.wso2.carbon.bpel.skeleton</module>
+	<module>org.wso2.carbon.usage.stub</module>
   </modules>
     <dependencyManagement>
         <dependencies>
