@@ -81,8 +81,7 @@
                             org.wso2.carbon.account.mgt.stub.*; version="${carbon.platform.package.export.version}",
                         </Export-Package>
                         <Import-Package>
-                            javax.servlet; version=2.4.0,
-                            javax.servlet.http; version=2.4.0,
+			    !org.wso2.carbon.account.mgt.stub.*,
                             *;resolution:=optional
                         </Import-Package>
                     </instructions>
