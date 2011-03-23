@@ -100,6 +100,9 @@
                             org.wso2.carbon.mediation.statistics.stub.aspect.*;
                             version="${carbon.platform.package.export.version}"
                         </Export-Package>
+                        <Import-Package>
+                            !org.wso2.carbon.mediation.statistics.stub.*
+                        </Import-Package>
                         <_nouse>true</_nouse>
                         <Carbon-Component>UIBundle</Carbon-Component>
                         <DynamicImport-Package>*</DynamicImport-Package>
