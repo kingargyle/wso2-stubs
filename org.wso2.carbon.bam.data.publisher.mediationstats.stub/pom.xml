@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.bam.data.publisher.mediationstats.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - BAM - Mediation Stat Publisher Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,8 +52,8 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/MediationStatPublisherAdmin.wsdl -u -uw
-                                    -o target/generated-code  -p org.wso2.carbon.bam.data.publisher.mediationstats.ui
-                                    -ns2p  http://config.mediationstats.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.mediationstats.ui,http://config.mediationstats.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.mediationstats.ui.xsd,http://org.apache.axis2/xsd=org.wso2.carbon.bam.data.publisher.mediationstats.ui"/>
+                                    -o target/generated-code  -p org.wso2.carbon.bam.data.publisher.mediationstats.stub
+                                    -ns2p  http://config.mediationstats.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.mediationstats.stub.config,http://org.apache.axis2/xsd=org.wso2.carbon.bam.data.publisher.mediationstats.stub.axis2"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -81,6 +81,33 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>
+                            ${pom.artifactId}
+                        </Bundle-SymbolicName>
+                        <Export-Package>
+                            org.wso2.carbon.bam.data.publisher.mediationstats.stub.*;
+                            version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.data.publisher.mediationstats.stub.axis2.*;
+                            version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.bam.data.publisher.mediationstats.stub.config.*;
+                            version="${carbon.platform.package.export.version}"
+                        </Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
