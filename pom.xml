@@ -128,6 +128,7 @@
         <module>org.wso2.carbon.reporting.stub</module>
         <module>org.wso2.carbon.rm.stub</module>
         <module>org.wso2.carbon.rule.service.stub</module>
+        <module>org.wso2.carbon.sample.installer.stub</module>
         <module>org.wso2.carbon.security.mgt.stub</module>
         <module>org.wso2.carbon.sequences.stub</module>
         <module>org.wso2.carbon.server.admin.stub</module>
