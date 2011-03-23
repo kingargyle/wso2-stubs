@@ -21,7 +21,7 @@
             <xs:import namespace="http://exception.internal.admin.messagebox.carbon.wso2.org/xsd"/>
             <xs:import namespace="http://internal.admin.messagebox.carbon.wso2.org/xsd"/>
             <xs:import namespace="http://messagebox.carbon.wso2.org/xsd"/>
-            <xs:element name="getSQSKeysMessageBoxAdminException">
+            <xs:element name="MessageBoxAdminServiceMessageBoxAdminException">
                 <xs:complexType>
 
                     <xs:sequence>
@@ -47,16 +47,7 @@
                 </xs:complexType>
 
             </xs:element>
-            <xs:element name="getAllRetrievedMessagesMessageBoxAdminException">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2178:MessageBoxAdminException"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="getAllRetrievedMessages">
-
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="messageBoxId" nillable="true"
@@ -65,78 +56,52 @@
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllRetrievedMessagesResponse">
+
                 <xs:complexType>
                     <xs:sequence>
-
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
                                     nillable="true" type="ax2181:MessageDetails"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getAllPermissionsMessageBoxAdminException">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2178:MessageBoxAdminException"/>
-                    </xs:sequence>
-
-                </xs:complexType>
-            </xs:element>
             <xs:element name="getAllPermissions">
                 <xs:complexType>
                     <xs:sequence>
+
                         <xs:element minOccurs="0" name="messageBoxId" nillable="true"
                                     type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="getAllPermissionsResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
                                     nillable="true" type="ax2181:PermissionLabel"/>
                     </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getAllMessageBoxesMessageBoxAdminException">
-                <xs:complexType>
 
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2178:MessageBoxAdminException"/>
-                    </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllMessageBoxes">
                 <xs:complexType>
                     <xs:sequence/>
                 </xs:complexType>
-
             </xs:element>
             <xs:element name="getAllMessageBoxesResponse">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
                                     nillable="true" type="ax2179:MessageBoxDetail"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getAllAvailableMessagesMessageBoxAdminException">
-
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="MessageBoxAdminException" nillable="true"
-                                    type="ax2178:MessageBoxAdminException"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="getAllAvailableMessages">
                 <xs:complexType>
                     <xs:sequence>
-
                         <xs:element minOccurs="0" name="messageBoxId" nillable="true"
                                     type="xs:string"/>
+
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -146,8 +111,8 @@
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return"
                                     nillable="true" type="ax2181:MessageDetails"/>
                     </xs:sequence>
-
                 </xs:complexType>
+
             </xs:element>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
@@ -157,8 +122,8 @@
                     <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
-
         </xs:schema>
+
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
                    targetNamespace="http://internal.admin.messagebox.carbon.wso2.org/xsd">
             <xs:complexType name="SQSKeys">
@@ -169,8 +134,8 @@
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="MessageBoxDetail">
-
                 <xs:sequence>
+
                     <xs:element minOccurs="0" name="messageBoxId" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="messageBoxName" nillable="true"
                                 type="xs:string"/>
@@ -182,8 +147,8 @@
                                 type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
-
         </xs:schema>
+
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
                    targetNamespace="http://messagebox.carbon.wso2.org/xsd">
             <xs:complexType name="MessageDetails">
@@ -196,9 +161,9 @@
                                 type="xs:string"/>
                     <xs:element minOccurs="0" name="receivedCount" nillable="true"
                                 type="xs:string"/>
-
                     <xs:element minOccurs="0" name="sentTimestamp" nillable="true"
                                 type="xs:string"/>
+
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="PermissionLabel">
@@ -209,8 +174,8 @@
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="sharedUsers"
                                 nillable="true" type="xs:string"/>
                 </xs:sequence>
-
             </xs:complexType>
+
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="getAllPermissionsRequest">
@@ -219,9 +184,9 @@
     <wsdl:message name="getAllPermissionsResponse">
         <wsdl:part name="parameters" element="ns:getAllPermissionsResponse"/>
     </wsdl:message>
+    <wsdl:message name="MessageBoxAdminServiceMessageBoxAdminException">
 
-    <wsdl:message name="getAllPermissionsMessageBoxAdminException">
-        <wsdl:part name="parameters" element="ns:getAllPermissionsMessageBoxAdminException"/>
+        <wsdl:part name="parameters" element="ns:MessageBoxAdminServiceMessageBoxAdminException"/>
     </wsdl:message>
     <wsdl:message name="getSQSKeysRequest">
         <wsdl:part name="parameters" element="ns:getSQSKeys"/>
@@ -229,29 +194,19 @@
     <wsdl:message name="getSQSKeysResponse">
         <wsdl:part name="parameters" element="ns:getSQSKeysResponse"/>
     </wsdl:message>
-
-    <wsdl:message name="getSQSKeysMessageBoxAdminException">
-        <wsdl:part name="parameters" element="ns:getSQSKeysMessageBoxAdminException"/>
-    </wsdl:message>
     <wsdl:message name="getAllAvailableMessagesRequest">
+
         <wsdl:part name="parameters" element="ns:getAllAvailableMessages"/>
     </wsdl:message>
     <wsdl:message name="getAllAvailableMessagesResponse">
         <wsdl:part name="parameters" element="ns:getAllAvailableMessagesResponse"/>
     </wsdl:message>
-
-    <wsdl:message name="getAllAvailableMessagesMessageBoxAdminException">
-        <wsdl:part name="parameters" element="ns:getAllAvailableMessagesMessageBoxAdminException"/>
-    </wsdl:message>
     <wsdl:message name="getAllMessageBoxesRequest">
         <wsdl:part name="parameters" element="ns:getAllMessageBoxes"/>
     </wsdl:message>
     <wsdl:message name="getAllMessageBoxesResponse">
-        <wsdl:part name="parameters" element="ns:getAllMessageBoxesResponse"/>
-    </wsdl:message>
 
-    <wsdl:message name="getAllMessageBoxesMessageBoxAdminException">
-        <wsdl:part name="parameters" element="ns:getAllMessageBoxesMessageBoxAdminException"/>
+        <wsdl:part name="parameters" element="ns:getAllMessageBoxesResponse"/>
     </wsdl:message>
     <wsdl:message name="getAllRetrievedMessagesRequest">
         <wsdl:part name="parameters" element="ns:getAllRetrievedMessages"/>
@@ -259,250 +214,247 @@
     <wsdl:message name="getAllRetrievedMessagesResponse">
         <wsdl:part name="parameters" element="ns:getAllRetrievedMessagesResponse"/>
     </wsdl:message>
-
-    <wsdl:message name="getAllRetrievedMessagesMessageBoxAdminException">
-        <wsdl:part name="parameters" element="ns:getAllRetrievedMessagesMessageBoxAdminException"/>
-    </wsdl:message>
     <wsdl:portType name="MessageBoxAdminServicePortType">
+
         <wsdl:operation name="getAllPermissions">
             <wsdl:input message="ns:getAllPermissionsRequest" wsaw:Action="urn:getAllPermissions"/>
             <wsdl:output message="ns:getAllPermissionsResponse"
                          wsaw:Action="urn:getAllPermissionsResponse"/>
-            <wsdl:fault message="ns:getAllPermissionsMessageBoxAdminException"
-                        name="getAllPermissionsMessageBoxAdminException"
-                        wsaw:Action="urn:getAllPermissionsgetAllPermissionsMessageBoxAdminException"/>
+            <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException"
+                        name="MessageBoxAdminServiceMessageBoxAdminException"
+                        wsaw:Action="urn:getAllPermissionsMessageBoxAdminServiceMessageBoxAdminException"/>
         </wsdl:operation>
-
         <wsdl:operation name="getSQSKeys">
             <wsdl:input message="ns:getSQSKeysRequest" wsaw:Action="urn:getSQSKeys"/>
             <wsdl:output message="ns:getSQSKeysResponse" wsaw:Action="urn:getSQSKeysResponse"/>
-            <wsdl:fault message="ns:getSQSKeysMessageBoxAdminException"
-                        name="getSQSKeysMessageBoxAdminException"
-                        wsaw:Action="urn:getSQSKeysgetSQSKeysMessageBoxAdminException"/>
+            <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException"
+                        name="MessageBoxAdminServiceMessageBoxAdminException"
+                        wsaw:Action="urn:getSQSKeysMessageBoxAdminServiceMessageBoxAdminException"/>
+
         </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <wsdl:input message="ns:getAllAvailableMessagesRequest"
                         wsaw:Action="urn:getAllAvailableMessages"/>
             <wsdl:output message="ns:getAllAvailableMessagesResponse"
                          wsaw:Action="urn:getAllAvailableMessagesResponse"/>
-            <wsdl:fault message="ns:getAllAvailableMessagesMessageBoxAdminException"
-                        name="getAllAvailableMessagesMessageBoxAdminException"
-                        wsaw:Action="urn:getAllAvailableMessagesgetAllAvailableMessagesMessageBoxAdminException"/>
-
+            <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException"
+                        name="MessageBoxAdminServiceMessageBoxAdminException"
+                        wsaw:Action="urn:getAllAvailableMessagesMessageBoxAdminServiceMessageBoxAdminException"/>
         </wsdl:operation>
         <wsdl:operation name="getAllMessageBoxes">
             <wsdl:input message="ns:getAllMessageBoxesRequest"
                         wsaw:Action="urn:getAllMessageBoxes"/>
             <wsdl:output message="ns:getAllMessageBoxesResponse"
                          wsaw:Action="urn:getAllMessageBoxesResponse"/>
-            <wsdl:fault message="ns:getAllMessageBoxesMessageBoxAdminException"
-                        name="getAllMessageBoxesMessageBoxAdminException"
-                        wsaw:Action="urn:getAllMessageBoxesgetAllMessageBoxesMessageBoxAdminException"/>
+
+            <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException"
+                        name="MessageBoxAdminServiceMessageBoxAdminException"
+                        wsaw:Action="urn:getAllMessageBoxesMessageBoxAdminServiceMessageBoxAdminException"/>
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
             <wsdl:input message="ns:getAllRetrievedMessagesRequest"
                         wsaw:Action="urn:getAllRetrievedMessages"/>
             <wsdl:output message="ns:getAllRetrievedMessagesResponse"
                          wsaw:Action="urn:getAllRetrievedMessagesResponse"/>
-
-            <wsdl:fault message="ns:getAllRetrievedMessagesMessageBoxAdminException"
-                        name="getAllRetrievedMessagesMessageBoxAdminException"
-                        wsaw:Action="urn:getAllRetrievedMessagesgetAllRetrievedMessagesMessageBoxAdminException"/>
+            <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException"
+                        name="MessageBoxAdminServiceMessageBoxAdminException"
+                        wsaw:Action="urn:getAllRetrievedMessagesMessageBoxAdminServiceMessageBoxAdminException"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="MessageBoxAdminServiceSoap11Binding"
                   type="ns:MessageBoxAdminServicePortType">
+
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="getAllPermissions">
             <soap:operation soapAction="urn:getAllPermissions" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
-
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getAllPermissionsMessageBoxAdminException">
-                <soap:fault use="literal" name="getAllPermissionsMessageBoxAdminException"/>
+
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getSQSKeys">
-
             <soap:operation soapAction="urn:getSQSKeys" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
+
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getSQSKeysMessageBoxAdminException">
-                <soap:fault use="literal" name="getSQSKeysMessageBoxAdminException"/>
-
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <soap:operation soapAction="urn:getAllAvailableMessages" style="document"/>
+
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal"/>
-
             </wsdl:output>
-            <wsdl:fault name="getAllAvailableMessagesMessageBoxAdminException">
-                <soap:fault use="literal" name="getAllAvailableMessagesMessageBoxAdminException"/>
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
+
         </wsdl:operation>
         <wsdl:operation name="getAllMessageBoxes">
             <soap:operation soapAction="urn:getAllMessageBoxes" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
-
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getAllMessageBoxesMessageBoxAdminException">
-                <soap:fault use="literal" name="getAllMessageBoxesMessageBoxAdminException"/>
+
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
-
             <soap:operation soapAction="urn:getAllRetrievedMessages" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
+
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getAllRetrievedMessagesMessageBoxAdminException">
-                <soap:fault use="literal" name="getAllRetrievedMessagesMessageBoxAdminException"/>
-
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="MessageBoxAdminServiceSoap12Binding"
                   type="ns:MessageBoxAdminServicePortType">
+
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="getAllPermissions">
             <soap12:operation soapAction="urn:getAllPermissions" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
-
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getAllPermissionsMessageBoxAdminException">
-                <soap12:fault use="literal" name="getAllPermissionsMessageBoxAdminException"/>
+
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getSQSKeys">
-
             <soap12:operation soapAction="urn:getSQSKeys" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
+
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getSQSKeysMessageBoxAdminException">
-                <soap12:fault use="literal" name="getSQSKeysMessageBoxAdminException"/>
-
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <soap12:operation soapAction="urn:getAllAvailableMessages" style="document"/>
+
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
-
             </wsdl:output>
-            <wsdl:fault name="getAllAvailableMessagesMessageBoxAdminException">
-                <soap12:fault use="literal" name="getAllAvailableMessagesMessageBoxAdminException"/>
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
+
         </wsdl:operation>
         <wsdl:operation name="getAllMessageBoxes">
             <soap12:operation soapAction="urn:getAllMessageBoxes" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
-
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getAllMessageBoxesMessageBoxAdminException">
-                <soap12:fault use="literal" name="getAllMessageBoxesMessageBoxAdminException"/>
+
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
-
             <soap12:operation soapAction="urn:getAllRetrievedMessages" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
+
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="getAllRetrievedMessagesMessageBoxAdminException">
-                <soap12:fault use="literal" name="getAllRetrievedMessagesMessageBoxAdminException"/>
-
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
+                <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="MessageBoxAdminServiceHttpBinding" type="ns:MessageBoxAdminServicePortType">
+
         <http:binding verb="POST"/>
         <wsdl:operation name="getAllPermissions">
             <http:operation location="getAllPermissions"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+
         </wsdl:operation>
         <wsdl:operation name="getSQSKeys">
             <http:operation location="getSQSKeys"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+
         </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <http:operation location="getAllAvailableMessages"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+
         </wsdl:operation>
         <wsdl:operation name="getAllMessageBoxes">
             <http:operation location="getAllMessageBoxes"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
             <http:operation location="getAllRetrievedMessages"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="MessageBoxAdminService">
@@ -510,13 +462,13 @@
                    binding="ns:MessageBoxAdminServiceSoap11Binding">
             <soap:address
                     location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap11Endpoint/"/>
-
         </wsdl:port>
         <wsdl:port name="MessageBoxAdminServiceHttpsSoap12Endpoint"
                    binding="ns:MessageBoxAdminServiceSoap12Binding">
             <soap12:address
                     location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap12Endpoint/"/>
         </wsdl:port>
+
         <wsdl:port name="MessageBoxAdminServiceHttpsEndpoint"
                    binding="ns:MessageBoxAdminServiceHttpBinding">
             <http:address
