@@ -46,10 +46,15 @@
                         </goals>
                         <configuration>
                             <tasks>
+                                <path id="wsdl2java.classpath">
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/${orbit.version.axis2}/axis2-client-${orbit.version.axis2}.jar"/>
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
+                                </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/BAMArchiverDS.wsdl -u -uw
                                     -o target/generated-code -p org.wso2.carbon.bam.core.stub.bamarchiverds
                                     -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.core.stub.bamarchiverds,http://bam.carbon.wso2.org=org.wso2.carbon.bam.core.stub.bamarchiverds.types"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                     <classpath refid="maven.dependency.classpath"/>
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
@@ -58,6 +63,7 @@
                                     <arg line="-uri src/main/resources/BAMConfigurationDS.wsdl -u -uw
                                     -o target/generated-code -p org.wso2.carbon.bam.core.stub.bamconfigurationds
                                     -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.core.stub.bamconfigurationds.types,http://bam.carbon.wso2.org=org.wso2.carbon.bam.core.stub.bamconfigurationds.types,http://dss.server.bam.carbon.wso2.org=org.wso2.carbon.bam.core.stub.bamconfigurationds"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                     <classpath refid="maven.dependency.classpath"/>
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
@@ -66,6 +72,7 @@
                                     <arg line="-uri src/main/resources/BAMDataCollectionDS.wsdl -u
                                     -o target/generated-code -p org.wso2.carbon.bam.core.stub.bamdatacollectionds
                                     -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.core.stub.bamdatacollectionds.types,http://bam.carbon.wso2.org=org.wso2.carbon.bam.core.stub.bamdatacollectionds.types"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                     <classpath refid="maven.dependency.classpath"/>
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
@@ -74,6 +81,7 @@
                                     <arg line="-uri src/main/resources/BAMSummaryGenerationDS.wsdl -u -uw
                                     -o target/generated-code -p org.wso2.carbon.bam.core.stub.bamsummarygenerationds
                                     -ns2p http://ws.wso2.org/dataservice=org.wso2.carbon.bam.core.stub.bamsummarygenerationds.types,http://bam.carbon.wso2.org=org.wso2.carbon.bam.core.stub.bamsummarygenerationds.types"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                     <classpath refid="maven.dependency.classpath"/>
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
