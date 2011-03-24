@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.eventing.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Eventing Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,7 +52,7 @@
                                 </path>
                                <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/EventingAdminService.wsdl -u -uw -sn EventingAdminService
-                                    -o target/generated-code -ns2p http://service.eventing.carbon.wso2.org=org.wso2.carbon.eventing.ui.service"/>
+                                    -o target/generated-code -ns2p http://service.eventing.carbon.wso2.org=org.wso2.carbon.eventing.stub.service,http://dto.service.eventing.carbon.wso2.org/xsd=org.wso2.carbon.eventing.stub.service.dto"/>
                                    <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -79,6 +79,29 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+             <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Carbon-Component>UIBundle</Carbon-Component>
+                        <Import-Package>
+                            org.wso2.carbon.utils,
+                            org.apache.axis2.*; version="${axis2.osgi.version.range.eventing}",
+                            org.apache.axiom.*; version="${axiom.osgi.version.range.eventing}",
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Export-Package>
+                             org.wso2.carbon.eventing.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
