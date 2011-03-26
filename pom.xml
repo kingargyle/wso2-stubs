@@ -156,6 +156,7 @@
         <module>org.wso2.carbon.bpel.skeleton</module>
 	<module>org.wso2.carbon.usage.stub</module>
 	<module>org.wso2.carbon.subscription.mgt.stub</module>
+	<module>org.wso2.carbon.roles.mgt.stub</module>
   </modules>
     <dependencyManagement>
 	<dependencies>
