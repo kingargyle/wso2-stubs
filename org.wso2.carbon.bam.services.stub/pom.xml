@@ -90,6 +90,7 @@
                                     <arg line="-uri src/main/resources/AuthenticationAdminService_2_0_2.wsdl -u -uw
                                     -o target/generated-code -p org.wso2.carbon.bam.services.stub.authenticationadminservice202
                                     -ns2p http://authentication.services.core.carbon.wso2.org=org.wso2.carbon.bam.services.stub.authenticationadminservice202.types.carbon,http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice202.types.carbon,http://authentication.services.core.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice202.types.carbon,http://core.user.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice202.types.carbon"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                     <classpath refid="maven.dependency.classpath"/>
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
@@ -98,6 +99,7 @@
                                     <arg line="-uri src/main/resources/AuthenticationAdminService_2_0_3.wsdl -u -uw
                                     -o target/generated-code -p org.wso2.carbon.bam.services.stub.authenticationadminservice203
                                     -ns2p http://authentication.services.core.carbon.wso2.org=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon,http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon,http://authentication.services.core.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon,http://core.user.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                     <classpath refid="maven.dependency.classpath"/>
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
@@ -106,6 +108,7 @@
                                     <arg line="-uri src/main/resources/AuthenticationAdmin.wsdl -u -uw
                                     -o target/generated-code -p org.wso2.carbon.bam.services.stub.authenticationadmin_3_1_0
                                     -ns2p http://authentication.services.core.carbon.wso2.org=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon,http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon,http://authentication.services.core.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon,http://core.user.carbon.wso2.org/xsd=org.wso2.carbon.bam.services.stub.authenticationadminservice203.types.carbon"/>
+                                    <classpath refid="wsdl2java.classpath"/>
                                     <classpath refid="maven.dependency.classpath"/>
                                     <classpath refid="maven.compile.classpath"/>
                                     <classpath refid="maven.runtime.classpath"/>
