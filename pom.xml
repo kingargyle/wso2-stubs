@@ -104,6 +104,7 @@
         <module>org.wso2.carbon.mediators.command.admin.stub</module>
         <module>org.wso2.carbon.mediators.event.admin.stub</module>
         <module>org.wso2.carbon.messagebox.stub</module>
+        <module>org.wso2.carbon.message.store.stub</module>
         <module>org.wso2.carbon.module.mgt.stub</module>
         <module>org.wso2.carbon.operation.mgt.stub</module>
         <module>org.wso2.carbon.policybuilder.stub</module>
