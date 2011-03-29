@@ -26,12 +26,35 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.rm.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Reliable Messaging Stub</name>
     <url>http://wso2.org</url>
 
     <build>
         <plugins>
+
+             <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Private-Package>
+                        </Private-Package>
+                        <Export-Package>
+                            org.wso2.carbon.rm.stub.*;
+                            version="${carbon.platform.package.export.version}"
+                        </Export-Package>
+                        <Import-Package>
+                            !org.wso2.carbon.rm.stub.*
+                        </Import-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -52,14 +75,14 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/RMAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.rm.ui.service
-                                    -ns2p http://service.rm.carbon.wso2.org=org.wso2.carbon.rm.ui.service,http://service.rm.carbon.wso2.org/xsd=org.wso2.carbon.rm.ui.service.xsd"/>
+                                    -p org.wso2.carbon.rm.stub.service
+                                    -ns2p http://service.rm.carbon.wso2.org=org.wso2.carbon.rm.stub.service,http://service.rm.carbon.wso2.org/xsd=org.wso2.carbon.rm.stub.service.xsd"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/RMAdminGlobal.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.rm.ui.global
-                                    -ns2p http://global.rm.carbon.wso2.org/xsd=org.wso2.carbon.rm.ui.global.xsd,http://global.rm.carbon.wso2.org=org.wso2.carbon.rm.ui.global"/>
+                                    -p org.wso2.carbon.rm.stub.global
+                                    -ns2p http://global.rm.carbon.wso2.org/xsd=org.wso2.carbon.rm.stub.global.xsd,http://global.rm.carbon.wso2.org=org.wso2.carbon.rm.stub.global"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
