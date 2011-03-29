@@ -172,6 +172,7 @@
 	<module>org.wso2.carbon.identity.sts.passive.stub</module>
 	<module>org.wso2.carbon.identity.user.profile.stub</module>
 	<module>org.wso2.carbon.identity.user.registration.stub</module>
+	<module>org.wso2.carbon.um.ws.api.stub</module>
   </modules>
     <dependencyManagement>
 	<dependencies>
