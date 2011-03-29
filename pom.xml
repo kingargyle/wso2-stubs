@@ -173,6 +173,7 @@
 	<module>org.wso2.carbon.identity.user.profile.stub</module>
 	<module>org.wso2.carbon.identity.user.registration.stub</module>
 	<module>org.wso2.carbon.um.ws.api.stub</module>
+	<module>org.wso2.carbon.identity.authenticator.sso.stub</module>
   </modules>
     <dependencyManagement>
 	<dependencies>
