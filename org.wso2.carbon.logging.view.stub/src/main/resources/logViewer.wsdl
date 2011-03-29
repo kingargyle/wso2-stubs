@@ -1,4 +1,4 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://service.logging.carbon.wso2.org" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax2268="http://data.service.logging.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ax2266="http://service.logging.carbon.wso2.org/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://service.logging.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://service.logging.carbon.wso2.org" xmlns:ax2268="http://data.service.logging.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ax2266="http://service.logging.carbon.wso2.org/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://service.logging.carbon.wso2.org">
     <wsdl:documentation>LogViewer</wsdl:documentation>
     <wsdl:types>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.logging.carbon.wso2.org/xsd">
@@ -52,12 +52,13 @@
                         <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="logIndex" nillable="true" type="xs:string" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getPaginatedLogMessageResponse">
-                <xs:complexType>
 
+                <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2268:PaginatedLogMessage" />
                     </xs:sequence>
@@ -66,8 +67,8 @@
             <xs:element name="getPaginatedLogInfo">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
 
+                        <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -76,8 +77,8 @@
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2268:PaginatedLogInfo" />
                     </xs:sequence>
-                </xs:complexType>
 
+                </xs:complexType>
             </xs:element>
             <xs:element name="getPaginatedBottomUpLogMessage">
                 <xs:complexType>
@@ -86,7 +87,6 @@
                         <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
-                        <xs:element minOccurs="0" name="logIndex" nillable="true" type="xs:string" />
 
                     </xs:sequence>
                 </xs:complexType>
@@ -469,13 +469,13 @@
     <wsdl:service name="LogViewer">
 
         <wsdl:port name="LogViewerHttpsSoap11Endpoint" binding="tns:LogViewerSoap11Binding">
-            <soap:address location="https://10.100.0.101:9443/services/LogViewer.LogViewerHttpsSoap11Endpoint/" />
+            <soap:address location="https://192.168.1.4:9443/services/LogViewer.LogViewerHttpsSoap11Endpoint/" />
         </wsdl:port>
         <wsdl:port name="LogViewerHttpsSoap12Endpoint" binding="tns:LogViewerSoap12Binding">
-            <soap12:address location="https://10.100.0.101:9443/services/LogViewer.LogViewerHttpsSoap12Endpoint/" />
+            <soap12:address location="https://192.168.1.4:9443/services/LogViewer.LogViewerHttpsSoap12Endpoint/" />
         </wsdl:port>
         <wsdl:port name="LogViewerHttpsEndpoint" binding="tns:LogViewerHttpBinding">
-            <http:address location="https://10.100.0.101:9443/services/LogViewer.LogViewerHttpsEndpoint/" />
+            <http:address location="https://192.168.1.4:9443/services/LogViewer.LogViewerHttpsEndpoint/" />
         </wsdl:port>
 
     </wsdl:service>
