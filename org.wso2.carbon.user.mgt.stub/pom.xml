@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.user.mgt.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - User Management Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,8 +52,8 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/UserAdmin.wsdl -u -uw
-                                    -p org.wso2.carbon.user.mgt.ui -o target/generated-code
-                                    -ns2p http://common.mgt.user.carbon.wso2.org/xsd=org.wso2.carbon.user.mgt.ui.types.carbon,http://mgt.user.carbon.wso2.org=org.wso2.carbon.user.mgt.ui.types.carbon,http://mgt.user.carbon.wso2.org/xsd=org.wso2.carbon.user.mgt.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.server.admin.ui.types.axis2"/>
+                                    -p org.wso2.carbon.user.mgt.stub -o target/generated-code
+                                    -ns2p http://common.mgt.user.carbon.wso2.org/xsd=org.wso2.carbon.user.mgt.stub.types.carbon,http://mgt.user.carbon.wso2.org=org.wso2.carbon.user.mgt.stub.types.carbon,http://mgt.user.carbon.wso2.org/xsd=org.wso2.carbon.user.mgt.ui.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.user.mgt.stub.types.axis2"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -80,6 +80,24 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+	     <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.user.mgt.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !org.wso2.carbon.user.mgt.stub.*,
+                            *;resolution:=optional
+                        </Import-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>

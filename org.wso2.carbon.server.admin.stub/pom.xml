@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.server.admin.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Server Administration Stub</name>
     <url>http://wso2.org</url>
 
@@ -52,8 +52,8 @@
                                 </path>
                                  <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/ServerAdmin.wsdl -u -uw 
-                                    -p org.wso2.carbon.server.admin.ui -o target/generated-code
-                                    -ns2p http://common.admin.server.carbon.wso2.org/xsd=org.wso2.carbon.server.admin.ui.types.carbon,http://util.service.admin.server.carbon.wso2.org/xsd=org.wso2.carbon.server.admin.ui.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.server.admin.ui.types.axis2"/>
+                                    -p org.wso2.carbon.server.admin.stub -o target/generated-code
+                                    -ns2p http://common.admin.server.carbon.wso2.org/xsd=org.wso2.carbon.server.admin.stub.types.carbon,http://util.service.admin.server.carbon.wso2.org/xsd=org.wso2.carbon.server.admin.stub.types.carbon,http://org.apache.axis2/xsd=org.wso2.carbon.server.admin.stub.types.axis2"/>
                                      <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -80,6 +80,26 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+	    <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>
+                            ${pom.artifactId}
+                        </Bundle-SymbolicName>
+                        <Bundle-Vendor>WSO2 Inc</Bundle-Vendor>
+                        <Export-Package>
+                            org.wso2.carbon.server.admin.stub.*;version="${carbon.platform.package.export.version}"
+                        </Export-Package>
+                        <Import-Package>
+                            !org.wso2.carbon.server.admin.stub.*,
+                            *;resolution:=optional
+                        </Import-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>

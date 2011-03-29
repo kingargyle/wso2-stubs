@@ -139,6 +139,7 @@
         <module>org.wso2.carbon.statistics.stub</module>
         <module>org.wso2.carbon.statistics.transport.stub</module>
         <module>org.wso2.carbon.sts.stub</module>
+	<module>org.wso2.carbon.stub</module>
         <module>org.wso2.carbon.task.stub</module>
 	<module>org.wso2.carbon.tenant.reg.agent.stub</module>
 	<module>org.wso2.carbon.tenant.register.stub</module>
