@@ -26,13 +26,36 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.viewflows.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - View Flows Stub</name>
     <url>http://wso2.org</url>
 
     <build>
         <plugins>
-            
+			<plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.viewflows.stub.*; version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !org.wso2.carbon.viewflows.stub.*;
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Carbon-Component>UIBundle</Carbon-Component>
+                    </instructions>
+                </configuration>
+            </plugin>            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -52,8 +75,8 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/FlowsAdminService.wsdl -u -uw -o target/generated-code
-                                    -p org.wso2.carbon.viewflows.ui
-                                    -ns2p http://service.viewflows.carbon.wso2.org=org.wso2.carbon.viewflows.ui,http://viewflows.carbon.wso2.org/xsd=org.wso2.carbon.viewflows.ui.types"/>
+                                    -p org.wso2.carbon.viewflows.stub
+                                    -ns2p http://service.viewflows.carbon.wso2.org=org.wso2.carbon.viewflows.stub,http://viewflows.carbon.wso2.org/xsd=org.wso2.carbon.viewflows.stub.types"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
