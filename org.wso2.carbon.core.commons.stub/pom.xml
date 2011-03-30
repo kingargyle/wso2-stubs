@@ -25,9 +25,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.carbon.stub</artifactId>
+    <artifactId>org.wso2.carbon.core.commons.stub</artifactId>
     <packaging>bundle</packaging>
-    <name>WSO2 Carbon - UI Stub</name>
+    <name>WSO2 Carbon Core - UI Stub</name>
     <url>http://wso2.org</url>
 
     <build>
@@ -53,25 +53,25 @@
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/RegistryAdminService.wsdl
                                     -u -uw -o target/generated-code
-                                    -ns2p http://service.server.registry.carbon.wso2.org=org.wso2.carbon.stub.registry.service"/>
+                                    -ns2p http://service.server.registry.carbon.wso2.org=org.wso2.carbon.core.commons.stub.registry.service"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/FileUploadService.wsdl -u -uw -o target/generated-code
-                                                    -p org.wso2.carbon.stub.fileupload
-                                                    -ns2p http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.stub.fileupload,http://fileupload.services.core.carbon.wso2.org=org.wso2.carbon.stub.fileupload.utils,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.stub.fileupload.utils"/>
+                                                    -p org.wso2.carbon.core.commons.stub.fileupload
+                                                    -ns2p http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.core.commons.stub.fileupload,http://fileupload.services.core.carbon.wso2.org=org.wso2.carbon.core.commons.stub.fileupload.utils,http://utils.carbon.wso2.org/xsd=org.wso2.carbon.core.commons.stub.fileupload.utils"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/FileDownloadService.wsdl -u -uw -o target/generated-code
-                                                    -p org.wso2.carbon.stub.filedownload
-                                                    -ns2p http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.stub.filedownload,http://filedownload.services.core.carbon.wso2.org=org.wso2.carbon.stub.filedownload.utils"/>
+                                                    -p org.wso2.carbon.core.commons.stub.filedownload
+                                                    -ns2p http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.core.commons.stub.filedownload,http://filedownload.services.core.carbon.wso2.org=org.wso2.carbon.core.commons.stub.filedownload.utils"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/LoggedUserInfoAdmin.wsdl -u -uw -o target/generated-code
-                                                    -p org.wso2.carbon.stub.loggeduserinfo
-                                                    -ns2p http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.stub.loggeduserinfo,http://loggeduserinfo.services.core.carbon.wso2.org=org.wso2.carbon.stub.loggeduserinfo"/>
+                                                    -p org.wso2.carbon.core.commons.stub.loggeduserinfo
+                                                    -ns2p http://common.core.carbon.wso2.org/xsd=org.wso2.carbon.core.commons.stub.loggeduserinfo,http://loggeduserinfo.services.core.carbon.wso2.org=org.wso2.carbon.core.commons.stub.loggeduserinfo"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -110,10 +110,10 @@
                         </Bundle-SymbolicName>
                         <Bundle-Vendor>WSO2 Inc</Bundle-Vendor>
                         <Export-Package>
-                            org.wso2.carbon.stub.*;version="${carbon.platform.package.export.version}"
+                            org.wso2.carbon.core.commons.stub.*;version="${carbon.platform.package.export.version}"
                         </Export-Package>
                         <Import-Package>
-                            !org.wso2.carbon.stub.*,
+                            !org.wso2.carbon.core.commons.stub.*,
                             *;resolution:=optional
                         </Import-Package>
                     </instructions>
