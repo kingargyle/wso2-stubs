@@ -48,6 +48,7 @@
         <module>org.wso2.carbon.bam.stub</module>
         <module>org.wso2.carbon.bpel.stub</module>
         <module>org.wso2.carbon.brokermanager.stub</module>
+        <module>org.wso2.carbon.business.messaging.salesforce.stub</module>
         <module>org.wso2.carbon.caching.stub</module>
         <module>org.wso2.carbon.cassandra.mgt.stub</module>
         <module>org.wso2.carbon.cep.stub</module>
