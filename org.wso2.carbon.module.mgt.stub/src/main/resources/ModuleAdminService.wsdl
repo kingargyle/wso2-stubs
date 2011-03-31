@@ -3,19 +3,19 @@
     <wsdl:types>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mgt.module.carbon.wso2.org/xsd">
             <xs:complexType name="ModuleUploadData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="dataHandler" nillable="true" type="xs:base64Binary"/>
                     <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="ModuleMgtException">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="key" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="level" type="xs:int"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="ModuleMetaData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="engagedGlobalLevel" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="engagedOperationLevel" type="xs:boolean"/>
@@ -25,7 +25,7 @@
                     <xs:element minOccurs="0" name="moduleId" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="moduleVersion" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="modulename" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
         </xs:schema>
         <xs:schema xmlns:ax2212="http://mgt.module.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.mgt.module.carbon.wso2.org">
