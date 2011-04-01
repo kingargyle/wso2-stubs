@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.caching.stub</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>WSO2 Carbon - Caching Stub</name>
     <url>http://wso2.org</url>
 
@@ -51,7 +51,7 @@
                                     <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar"/>
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/CachingAdminService.wsdl -u -uw -o target/generated-code                                     -p org.wso2.carbon.caching.ui -ns2p http://service.caching.carbon.wso2.org=org.wso2.carbon.caching.ui,http://caching.carbon.wso2.org/xsd=org.wso2.carbon.caching.ui.types"/>
+                                    <arg line="-uri src/main/resources/CachingAdminService.wsdl -u -uw -o target/generated-code -p org.wso2.carbon.caching.stub -ns2p http://service.caching.carbon.wso2.org=org.wso2.carbon.caching.stub,http://caching.carbon.wso2.org/xsd=org.wso2.carbon.caching.stub.types"/>
                                     <classpath refid="wsdl2java.classpath"/>
                                 </java>
                             </tasks>
@@ -78,6 +78,29 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+	    <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${pom.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            org.wso2.carbon.caching.stub.*;version="${carbon.platform.package.export.version}",
+                        </Export-Package>
+                        <Import-Package>
+                            !javax.xml.namespace,
+                            javax.xml.namespace; version=0.0.0,
+                            javax.servlet; version=2.4.0,
+                            javax.servlet.http; version=2.4.0,
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
