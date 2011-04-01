@@ -179,6 +179,7 @@
 	<module>org.wso2.carbon.um.ws.api.stub</module>
 	<module>org.wso2.carbon.identity.authenticator.sso.stub</module>
 	<module>org.wso2.stratos.gadget.login.stub</module>
+    <module>org.wso2.carbon.mashup.jsservices.stub</module>
   </modules>
     <dependencyManagement>
 	<dependencies>
