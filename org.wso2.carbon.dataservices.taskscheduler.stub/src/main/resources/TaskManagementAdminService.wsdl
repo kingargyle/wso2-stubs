@@ -49,6 +49,20 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getTriggers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTriggersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getTaskDescription">
                 <xs:complexType>
                     <xs:sequence>
@@ -89,13 +103,6 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="TaskManagementException">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="TaskManagementException" nillable="true" type="ax25:TaskManagementException"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="getAllTaskDescriptionsInAnOMElement">
                 <xs:complexType>
                     <xs:sequence/>
@@ -132,7 +139,14 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="XMLStreamException">
+            <xs:element name="TaskManagementAdminServiceTaskManagementException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="TaskManagementException" nillable="true" type="ax25:TaskManagementException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TaskManagementAdminServiceXMLStreamException">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="XMLStreamException" nillable="true" type="xs:anyType"/>
@@ -179,11 +193,11 @@
     <wsdl:message name="addTaskDescriptionInAnOmElementRequest">
         <wsdl:part name="parameters" element="ns:addTaskDescriptionInAnOmElement"/>
     </wsdl:message>
-    <wsdl:message name="TaskManagementException">
-        <wsdl:part name="parameters" element="ns:TaskManagementException"/>
+    <wsdl:message name="TaskManagementAdminServiceTaskManagementException">
+        <wsdl:part name="parameters" element="ns:TaskManagementAdminServiceTaskManagementException"/>
     </wsdl:message>
-    <wsdl:message name="XMLStreamException">
-        <wsdl:part name="parameters" element="ns:XMLStreamException"/>
+    <wsdl:message name="TaskManagementAdminServiceXMLStreamException">
+        <wsdl:part name="parameters" element="ns:TaskManagementAdminServiceXMLStreamException"/>
     </wsdl:message>
     <wsdl:message name="getServicesListRequest">
         <wsdl:part name="parameters" element="ns:getServicesList"/>
@@ -239,11 +253,17 @@
     <wsdl:message name="getPropertyNamesResponse">
         <wsdl:part name="parameters" element="ns:getPropertyNamesResponse"/>
     </wsdl:message>
+    <wsdl:message name="getTriggersRequest">
+        <wsdl:part name="parameters" element="ns:getTriggers"/>
+    </wsdl:message>
+    <wsdl:message name="getTriggersResponse">
+        <wsdl:part name="parameters" element="ns:getTriggersResponse"/>
+    </wsdl:message>
     <wsdl:portType name="TaskManagementAdminServicePortType">
         <wsdl:operation name="addTaskDescriptionInAnOmElement">
             <wsdl:input message="ns:addTaskDescriptionInAnOmElementRequest" wsaw:Action="urn:addTaskDescriptionInAnOmElement"/>
-            <wsdl:fault message="ns:TaskManagementException" name="TaskManagementException" wsaw:Action="urn:addTaskDescriptionInAnOmElementTaskManagementException"/>
-            <wsdl:fault message="ns:XMLStreamException" name="XMLStreamException" wsaw:Action="urn:addTaskDescriptionInAnOmElementXMLStreamException"/>
+            <wsdl:fault message="ns:TaskManagementAdminServiceTaskManagementException" name="TaskManagementAdminServiceTaskManagementException" wsaw:Action="urn:addTaskDescriptionInAnOmElementTaskManagementAdminServiceTaskManagementException"/>
+            <wsdl:fault message="ns:TaskManagementAdminServiceXMLStreamException" name="TaskManagementAdminServiceXMLStreamException" wsaw:Action="urn:addTaskDescriptionInAnOmElementTaskManagementAdminServiceXMLStreamException"/>
         </wsdl:operation>
         <wsdl:operation name="getServicesList">
             <wsdl:input message="ns:getServicesListRequest" wsaw:Action="urn:getServicesList"/>
@@ -255,8 +275,8 @@
         </wsdl:operation>
         <wsdl:operation name="editTaskDescriptionInOmElement">
             <wsdl:input message="ns:editTaskDescriptionInOmElementRequest" wsaw:Action="urn:editTaskDescriptionInOmElement"/>
-            <wsdl:fault message="ns:TaskManagementException" name="TaskManagementException" wsaw:Action="urn:editTaskDescriptionInOmElementTaskManagementException"/>
-            <wsdl:fault message="ns:XMLStreamException" name="XMLStreamException" wsaw:Action="urn:editTaskDescriptionInOmElementXMLStreamException"/>
+            <wsdl:fault message="ns:TaskManagementAdminServiceTaskManagementException" name="TaskManagementAdminServiceTaskManagementException" wsaw:Action="urn:editTaskDescriptionInOmElementTaskManagementAdminServiceTaskManagementException"/>
+            <wsdl:fault message="ns:TaskManagementAdminServiceXMLStreamException" name="TaskManagementAdminServiceXMLStreamException" wsaw:Action="urn:editTaskDescriptionInOmElementTaskManagementAdminServiceXMLStreamException"/>
         </wsdl:operation>
         <wsdl:operation name="getTaskDescription">
             <wsdl:input message="ns:getTaskDescriptionRequest" wsaw:Action="urn:getTaskDescription"/>
@@ -265,7 +285,6 @@
         <wsdl:operation name="getAllTaskDescriptionsInAnOMElement">
             <wsdl:input message="ns:getAllTaskDescriptionsInAnOMElementRequest" wsaw:Action="urn:getAllTaskDescriptionsInAnOMElement"/>
             <wsdl:output message="ns:getAllTaskDescriptionsInAnOMElementResponse" wsaw:Action="urn:getAllTaskDescriptionsInAnOMElementResponse"/>
-            <wsdl:fault message="ns:TaskManagementException" name="TaskManagementException" wsaw:Action="urn:getAllTaskDescriptionsInAnOMElementTaskManagementException"/>
         </wsdl:operation>
         <wsdl:operation name="editTaskDescription">
             <wsdl:input message="ns:editTaskDescriptionRequest" wsaw:Action="urn:editTaskDescription"/>
@@ -288,6 +307,10 @@
             <wsdl:input message="ns:getPropertyNamesRequest" wsaw:Action="urn:getPropertyNames"/>
             <wsdl:output message="ns:getPropertyNamesResponse" wsaw:Action="urn:getPropertyNamesResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="getTriggers">
+            <wsdl:input message="ns:getTriggersRequest" wsaw:Action="urn:getTriggers"/>
+            <wsdl:output message="ns:getTriggersResponse" wsaw:Action="urn:getTriggersResponse"/>
+        </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="TaskManagementAdminServiceSoap11Binding" type="ns:TaskManagementAdminServicePortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
@@ -296,11 +319,11 @@
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="TaskManagementException">
-                <soap:fault use="literal" name="TaskManagementException"/>
+            <wsdl:fault name="TaskManagementAdminServiceTaskManagementException">
+                <soap:fault use="literal" name="TaskManagementAdminServiceTaskManagementException"/>
             </wsdl:fault>
-            <wsdl:fault name="XMLStreamException">
-                <soap:fault use="literal" name="XMLStreamException"/>
+            <wsdl:fault name="TaskManagementAdminServiceXMLStreamException">
+                <soap:fault use="literal" name="TaskManagementAdminServiceXMLStreamException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getServicesList">
@@ -326,11 +349,11 @@
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="TaskManagementException">
-                <soap:fault use="literal" name="TaskManagementException"/>
+            <wsdl:fault name="TaskManagementAdminServiceTaskManagementException">
+                <soap:fault use="literal" name="TaskManagementAdminServiceTaskManagementException"/>
             </wsdl:fault>
-            <wsdl:fault name="XMLStreamException">
-                <soap:fault use="literal" name="XMLStreamException"/>
+            <wsdl:fault name="TaskManagementAdminServiceXMLStreamException">
+                <soap:fault use="literal" name="TaskManagementAdminServiceXMLStreamException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getTaskDescription">
@@ -356,9 +379,6 @@
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="TaskManagementException">
-                <soap:fault use="literal" name="TaskManagementException"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllJobGroups">
             <soap:operation soapAction="urn:getAllJobGroups" style="document"/>
@@ -399,6 +419,15 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getTriggers">
+            <soap:operation soapAction="urn:getTriggers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="TaskManagementAdminServiceSoap12Binding" type="ns:TaskManagementAdminServicePortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
@@ -407,11 +436,11 @@
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="TaskManagementException">
-                <soap12:fault use="literal" name="TaskManagementException"/>
+            <wsdl:fault name="TaskManagementAdminServiceTaskManagementException">
+                <soap12:fault use="literal" name="TaskManagementAdminServiceTaskManagementException"/>
             </wsdl:fault>
-            <wsdl:fault name="XMLStreamException">
-                <soap12:fault use="literal" name="XMLStreamException"/>
+            <wsdl:fault name="TaskManagementAdminServiceXMLStreamException">
+                <soap12:fault use="literal" name="TaskManagementAdminServiceXMLStreamException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getServicesList">
@@ -437,11 +466,11 @@
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="TaskManagementException">
-                <soap12:fault use="literal" name="TaskManagementException"/>
+            <wsdl:fault name="TaskManagementAdminServiceTaskManagementException">
+                <soap12:fault use="literal" name="TaskManagementAdminServiceTaskManagementException"/>
             </wsdl:fault>
-            <wsdl:fault name="XMLStreamException">
-                <soap12:fault use="literal" name="XMLStreamException"/>
+            <wsdl:fault name="TaskManagementAdminServiceXMLStreamException">
+                <soap12:fault use="literal" name="TaskManagementAdminServiceXMLStreamException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getTaskDescription">
@@ -467,9 +496,6 @@
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="TaskManagementException">
-                <soap12:fault use="literal" name="TaskManagementException"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllJobGroups">
             <soap12:operation soapAction="urn:getAllJobGroups" style="document"/>
@@ -503,6 +529,15 @@
         </wsdl:operation>
         <wsdl:operation name="getPropertyNames">
             <soap12:operation soapAction="urn:getPropertyNames" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTriggers">
+            <soap12:operation soapAction="urn:getTriggers" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -599,6 +634,15 @@
         </wsdl:operation>
         <wsdl:operation name="getPropertyNames">
             <http:operation location="getPropertyNames"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTriggers">
+            <http:operation location="getTriggers"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
