@@ -1,0 +1,81 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://services.core.reporting.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.core.reporting.carbon.wso2.org">
+    <wsdl:documentation>JrxmlFileUploader</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.core.reporting.carbon.wso2.org">
+            <xs:element name="uploadJrxmlFile">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="fileContent" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="uploadJrxmlFileResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="uploadJrxmlFileRequest">
+        <wsdl:part name="parameters" element="ns:uploadJrxmlFile"/>
+    </wsdl:message>
+    <wsdl:message name="uploadJrxmlFileResponse">
+        <wsdl:part name="parameters" element="ns:uploadJrxmlFileResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="JrxmlFileUploaderPortType">
+        <wsdl:operation name="uploadJrxmlFile">
+            <wsdl:input message="ns:uploadJrxmlFileRequest" wsaw:Action="urn:uploadJrxmlFile"/>
+            <wsdl:output message="ns:uploadJrxmlFileResponse" wsaw:Action="urn:uploadJrxmlFileResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="JrxmlFileUploaderSoap11Binding" type="ns:JrxmlFileUploaderPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="uploadJrxmlFile">
+            <soap:operation soapAction="urn:uploadJrxmlFile" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="JrxmlFileUploaderSoap12Binding" type="ns:JrxmlFileUploaderPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="uploadJrxmlFile">
+            <soap12:operation soapAction="urn:uploadJrxmlFile" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="JrxmlFileUploaderHttpBinding" type="ns:JrxmlFileUploaderPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="uploadJrxmlFile">
+            <http:operation location="uploadJrxmlFile"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="JrxmlFileUploader">
+        <wsdl:port name="JrxmlFileUploaderHttpsSoap11Endpoint" binding="ns:JrxmlFileUploaderSoap11Binding">
+            <soap:address location="https://111.223.162.243:9443/services/JrxmlFileUploader.JrxmlFileUploaderHttpsSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="JrxmlFileUploaderHttpsSoap12Endpoint" binding="ns:JrxmlFileUploaderSoap12Binding">
+            <soap12:address location="https://111.223.162.243:9443/services/JrxmlFileUploader.JrxmlFileUploaderHttpsSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="JrxmlFileUploaderHttpsEndpoint" binding="ns:JrxmlFileUploaderHttpBinding">
+            <http:address location="https://111.223.162.243:9443/services/JrxmlFileUploader.JrxmlFileUploaderHttpsEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
