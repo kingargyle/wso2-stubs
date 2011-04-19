@@ -16,141 +16,161 @@
                     <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
                 </xs:sequence>
             </xs:complexType>
-            <xs:element name="getPaginatedLogMessage">
+            <xs:element name="isLogsConfigured">
 
+                <xs:complexType>
+                    <xs:sequence />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isLogsConfiguredResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean" />
+                    </xs:sequence>
+
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPaginatedLogMessage">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
                         <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
+
                         <xs:element minOccurs="0" name="logIndex" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="maxLines" type="xs:int" />
                         <xs:element minOccurs="0" name="start" type="xs:int" />
-
                         <xs:element minOccurs="0" name="end" type="xs:int" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getPaginatedLogMessageResponse">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2252:PaginatedLogMessage" />
                     </xs:sequence>
-
                 </xs:complexType>
             </xs:element>
             <xs:element name="getPaginatedLogInfo">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
+
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="getPaginatedLogInfoResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2252:PaginatedLogInfo" />
                     </xs:sequence>
                 </xs:complexType>
+
             </xs:element>
             <xs:element name="getPaginatedBottomUpLogMessage">
                 <xs:complexType>
-
                     <xs:sequence>
                         <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
                         <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="maxLines" type="xs:int" />
+
                         <xs:element minOccurs="0" name="start" type="xs:int" />
                         <xs:element minOccurs="0" name="end" type="xs:int" />
                     </xs:sequence>
-
                 </xs:complexType>
             </xs:element>
             <xs:element name="getPaginatedBottomUpLogMessageResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2252:PaginatedLogMessage" />
+
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="getLogLine">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="lineNo" type="xs:int" />
                     </xs:sequence>
+
                 </xs:complexType>
             </xs:element>
             <xs:element name="getLogLineResponse">
-
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
             <xs:element name="getLineNumbers">
                 <xs:complexType>
                     <xs:sequence>
-
                         <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getLineNumbersResponse">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" type="xs:int" />
                     </xs:sequence>
-
                 </xs:complexType>
             </xs:element>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://data.service.logging.carbon.wso2.org/xsd">
             <xs:complexType name="PaginatedLogMessage">
                 <xs:sequence>
+
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="logInfo" nillable="true" type="ax2252:LogMessage" />
                     <xs:element minOccurs="0" name="numberOfPages" type="xs:int" />
                 </xs:sequence>
-
             </xs:complexType>
             <xs:complexType name="LogMessage">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="logMessage" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
                 </xs:sequence>
+
             </xs:complexType>
             <xs:complexType name="PaginatedLogInfo">
                 <xs:sequence>
-
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="logInfo" nillable="true" type="ax2252:LogInfo" />
                     <xs:element minOccurs="0" name="numberOfPages" type="xs:int" />
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="LogInfo">
                 <xs:sequence>
+
                     <xs:element minOccurs="0" name="fileSize" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="logDate" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="logName" nillable="true" type="xs:string" />
-
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
     </wsdl:types>
-    <wsdl:message name="getLineNumbersRequest">
-        <wsdl:part name="parameters" element="ns1:getLineNumbers" />
-    </wsdl:message>
-    <wsdl:message name="getLineNumbersResponse">
-        <wsdl:part name="parameters" element="ns1:getLineNumbersResponse" />
+    <wsdl:message name="isLogsConfiguredRequest">
+        <wsdl:part name="parameters" element="ns1:isLogsConfigured" />
 
+    </wsdl:message>
+    <wsdl:message name="isLogsConfiguredResponse">
+        <wsdl:part name="parameters" element="ns1:isLogsConfiguredResponse" />
     </wsdl:message>
     <wsdl:message name="LogViewerException">
         <wsdl:part name="parameters" element="ns1:LogViewerException" />
+    </wsdl:message>
+    <wsdl:message name="getLineNumbersRequest">
+        <wsdl:part name="parameters" element="ns1:getLineNumbers" />
+
+    </wsdl:message>
+    <wsdl:message name="getLineNumbersResponse">
+        <wsdl:part name="parameters" element="ns1:getLineNumbersResponse" />
     </wsdl:message>
     <wsdl:message name="getPaginatedLogMessageRequest">
         <wsdl:part name="parameters" element="ns1:getPaginatedLogMessage" />
@@ -180,45 +200,64 @@
 
     </wsdl:message>
     <wsdl:portType name="LogViewerPortType">
+        <wsdl:operation name="isLogsConfigured">
+            <wsdl:input message="tns:isLogsConfiguredRequest" wsaw:Action="urn:isLogsConfigured" />
+            <wsdl:output message="tns:isLogsConfiguredResponse" wsaw:Action="urn:isLogsConfiguredResponse" />
+            <wsdl:fault message="tns:LogViewerException" name="LogViewerException" wsaw:Action="urn:isLogsConfiguredLogViewerException" />
+        </wsdl:operation>
         <wsdl:operation name="getLineNumbers">
             <wsdl:input message="tns:getLineNumbersRequest" wsaw:Action="urn:getLineNumbers" />
+
             <wsdl:output message="tns:getLineNumbersResponse" wsaw:Action="urn:getLineNumbersResponse" />
             <wsdl:fault message="tns:LogViewerException" name="LogViewerException" wsaw:Action="urn:getLineNumbersLogViewerException" />
         </wsdl:operation>
         <wsdl:operation name="getPaginatedLogMessage">
             <wsdl:input message="tns:getPaginatedLogMessageRequest" wsaw:Action="urn:getPaginatedLogMessage" />
-
             <wsdl:output message="tns:getPaginatedLogMessageResponse" wsaw:Action="urn:getPaginatedLogMessageResponse" />
             <wsdl:fault message="tns:LogViewerException" name="LogViewerException" wsaw:Action="urn:getPaginatedLogMessageLogViewerException" />
         </wsdl:operation>
         <wsdl:operation name="getLogLine">
+
             <wsdl:input message="tns:getLogLineRequest" wsaw:Action="urn:getLogLine" />
             <wsdl:output message="tns:getLogLineResponse" wsaw:Action="urn:getLogLineResponse" />
             <wsdl:fault message="tns:LogViewerException" name="LogViewerException" wsaw:Action="urn:getLogLineLogViewerException" />
         </wsdl:operation>
         <wsdl:operation name="getPaginatedLogInfo">
-
             <wsdl:input message="tns:getPaginatedLogInfoRequest" wsaw:Action="urn:getPaginatedLogInfo" />
             <wsdl:output message="tns:getPaginatedLogInfoResponse" wsaw:Action="urn:getPaginatedLogInfoResponse" />
             <wsdl:fault message="tns:LogViewerException" name="LogViewerException" wsaw:Action="urn:getPaginatedLogInfoLogViewerException" />
         </wsdl:operation>
+
         <wsdl:operation name="getPaginatedBottomUpLogMessage">
             <wsdl:input message="tns:getPaginatedBottomUpLogMessageRequest" wsaw:Action="urn:getPaginatedBottomUpLogMessage" />
             <wsdl:output message="tns:getPaginatedBottomUpLogMessageResponse" wsaw:Action="urn:getPaginatedBottomUpLogMessageResponse" />
             <wsdl:fault message="tns:LogViewerException" name="LogViewerException" wsaw:Action="urn:getPaginatedBottomUpLogMessageLogViewerException" />
         </wsdl:operation>
-
     </wsdl:portType>
     <wsdl:binding name="LogViewerSoap11Binding" type="tns:LogViewerPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="isLogsConfigured">
+
+            <soap:operation soapAction="urn:isLogsConfigured" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="LogViewerException">
+                <soap:fault use="literal" name="LogViewerException" />
+
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="getLineNumbers">
             <soap:operation soapAction="urn:getLineNumbers" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
-
                 <soap:body use="literal" />
+
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
                 <soap:fault use="literal" name="LogViewerException" />
@@ -227,8 +266,8 @@
         <wsdl:operation name="getPaginatedLogMessage">
             <soap:operation soapAction="urn:getPaginatedLogMessage" style="document" />
             <wsdl:input>
-
                 <soap:body use="literal" />
+
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal" />
@@ -237,8 +276,8 @@
                 <soap:fault use="literal" name="LogViewerException" />
             </wsdl:fault>
         </wsdl:operation>
-
         <wsdl:operation name="getPaginatedLogInfo">
+
             <soap:operation soapAction="urn:getPaginatedLogInfo" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
@@ -247,8 +286,8 @@
                 <soap:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
-
                 <soap:fault use="literal" name="LogViewerException" />
+
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getLogLine">
@@ -257,8 +296,8 @@
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
-
                 <soap:body use="literal" />
+
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
                 <soap:fault use="literal" name="LogViewerException" />
@@ -267,8 +306,8 @@
         <wsdl:operation name="getPaginatedBottomUpLogMessage">
             <soap:operation soapAction="urn:getPaginatedBottomUpLogMessage" style="document" />
             <wsdl:input>
-
                 <soap:body use="literal" />
+
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal" />
@@ -277,17 +316,30 @@
                 <soap:fault use="literal" name="LogViewerException" />
             </wsdl:fault>
         </wsdl:operation>
-
     </wsdl:binding>
+
     <wsdl:binding name="LogViewerSoap12Binding" type="tns:LogViewerPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
-        <wsdl:operation name="getLineNumbers">
-            <soap12:operation soapAction="urn:getLineNumbers" style="document" />
+        <wsdl:operation name="isLogsConfigured">
+            <soap12:operation soapAction="urn:isLogsConfigured" style="document" />
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
+                <soap12:body use="literal" />
 
+            </wsdl:output>
+            <wsdl:fault name="LogViewerException">
+                <soap12:fault use="literal" name="LogViewerException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getLineNumbers">
+            <soap12:operation soapAction="urn:getLineNumbers" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+
+            </wsdl:input>
+            <wsdl:output>
                 <soap12:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
@@ -295,9 +347,9 @@
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getPaginatedLogMessage">
+
             <soap12:operation soapAction="urn:getPaginatedLogMessage" style="document" />
             <wsdl:input>
-
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -305,9 +357,9 @@
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
                 <soap12:fault use="literal" name="LogViewerException" />
+
             </wsdl:fault>
         </wsdl:operation>
-
         <wsdl:operation name="getPaginatedLogInfo">
             <soap12:operation soapAction="urn:getPaginatedLogInfo" style="document" />
             <wsdl:input>
@@ -315,9 +367,9 @@
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal" />
+
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
-
                 <soap12:fault use="literal" name="LogViewerException" />
             </wsdl:fault>
         </wsdl:operation>
@@ -325,9 +377,9 @@
             <soap12:operation soapAction="urn:getLogLine" style="document" />
             <wsdl:input>
                 <soap12:body use="literal" />
+
             </wsdl:input>
             <wsdl:output>
-
                 <soap12:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
@@ -335,9 +387,9 @@
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getPaginatedBottomUpLogMessage">
+
             <soap12:operation soapAction="urn:getPaginatedBottomUpLogMessage" style="document" />
             <wsdl:input>
-
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -345,19 +397,29 @@
             </wsdl:output>
             <wsdl:fault name="LogViewerException">
                 <soap12:fault use="literal" name="LogViewerException" />
+
             </wsdl:fault>
         </wsdl:operation>
-
     </wsdl:binding>
     <wsdl:binding name="LogViewerHttpBinding" type="tns:LogViewerPortType">
         <http:binding verb="POST" />
+        <wsdl:operation name="isLogsConfigured">
+            <http:operation location="isLogsConfigured" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getLineNumbers">
             <http:operation location="getLineNumbers" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
             <wsdl:output>
-
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
@@ -365,9 +427,9 @@
             <http:operation location="getPaginatedLogMessage" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
             <wsdl:output>
-
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
@@ -375,9 +437,9 @@
             <http:operation location="getPaginatedLogInfo" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
             <wsdl:output>
-
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
@@ -385,9 +447,9 @@
             <http:operation location="getLogLine" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
             <wsdl:output>
-
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
@@ -395,9 +457,9 @@
             <http:operation location="getPaginatedBottomUpLogMessage" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
             <wsdl:output>
-
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
@@ -405,9 +467,9 @@
     <wsdl:service name="LogViewer">
         <wsdl:port name="LogViewerHttpsSoap11Endpoint" binding="tns:LogViewerSoap11Binding">
             <soap:address location="https://10.100.0.145:9443/services/LogViewer.LogViewerHttpsSoap11Endpoint/" />
+
         </wsdl:port>
         <wsdl:port name="LogViewerHttpsSoap12Endpoint" binding="tns:LogViewerSoap12Binding">
-
             <soap12:address location="https://10.100.0.145:9443/services/LogViewer.LogViewerHttpsSoap12Endpoint/" />
         </wsdl:port>
         <wsdl:port name="LogViewerHttpsEndpoint" binding="tns:LogViewerHttpBinding">
