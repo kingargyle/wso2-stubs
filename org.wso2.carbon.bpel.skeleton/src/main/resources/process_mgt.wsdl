@@ -62,12 +62,15 @@
         <operation name="getPaginatedProcessList">
             <input message="tns:getPaginatedProcessListRequest"/>
             <output message="tns:getPaginatedProcessListResponse"/>
+            <fault name="processManagementException" message="tns:processManagementException" />
         </operation>
         <operation name="retireProcess">
             <input message="tns:retireProcessRequest"/>
+            <fault name="processManagementException" message="tns:processManagementException" />
         </operation>
         <operation name="activateProcess">
             <input message="tns:activateProcessRequest"/>
+            <fault name="processManagementException" message="tns:processManagementException" />
         </operation>
         <operation name="getProcessInfo">
             <input message="tns:getProcessInfoRequest"/>
@@ -77,6 +80,7 @@
         <operation name="getAllProcesses">
             <input message="tns:getAllProcessesRequest"/>
             <output message="tns:getAllProcessesResponse"/>
+            <fault name="processManagementException" message="tns:processManagementException" />
         </operation>
     </portType>
     <binding name="ProcessManagementSOAPBinding" type="tns:ProcessManagementPortType">
@@ -89,18 +93,27 @@
             <output>
                 <soap:body use="literal"/>
             </output>
+            <fault name="processManagementException">
+                <soap:fault name="processManagementException" use="literal"/>
+            </fault>
         </operation>
         <operation name="retireProcess">
             <soap:operation soapAction="urn:retireProcess"/>
             <input>
                 <soap:body use="literal"/>
             </input>
+            <fault name="processManagementException">
+                <soap:fault name="processManagementException" use="literal"/>
+            </fault>
         </operation>
         <operation name="activateProcess">
             <soap:operation soapAction="urn:activateProcess"/>
             <input>
                 <soap:body use="literal"/>
             </input>
+            <fault name="processManagementException">
+                <soap:fault name="processManagementException" use="literal"/>
+            </fault>
         </operation>
         <operation name="getProcessInfo">
             <soap:operation soapAction="urn:getProcessInfo"/>
@@ -122,6 +135,9 @@
             <output>
                 <soap:body use="literal"/>
             </output>
+            <fault name="processManagementException">
+                <soap:fault name="processManagementException" use="literal"/>
+            </fault>
         </operation>
     </binding>
     <service name="ProcessManagementService">

@@ -67,6 +67,7 @@
         <operation name="undeployBPELPackage">
             <input message="tns:undeployBPELPackageRequest"/>
             <output message="tns:undeployBPELPackageResponse"/>
+            <fault name="packageManagementException" message="tns:packageManagementException" />
         </operation>
         <!--<operation name="redeployBPELPackage">-->
             <!--<input message="tns:redeployBPELPackageRequest"/>-->
@@ -96,6 +97,9 @@
             <output>
                 <soap:body use="literal"/>
             </output>
+            <fault name="packageManagementException">
+                <soap:fault name="packageManagementException" use="literal"/>
+            </fault>
         </operation>
         <!--<operation name="redeployBPELPackage">-->
             <!--<soap:operation soapAction="urn:redeployBPELPackage"/>-->

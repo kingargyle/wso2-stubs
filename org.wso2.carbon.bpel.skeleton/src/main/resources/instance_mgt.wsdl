@@ -191,6 +191,7 @@
         <!--</operation>-->
         <operation name="recoverActivity">
             <input message="tns:recoverActivityRequest"/>
+            <fault name="instanceManagementException" message="tns:instanceManagementException" />
         </operation>
         <operation name="getInstanceSummary">
             <input message="tns:getInstanceSummaryRequest"/>
@@ -350,6 +351,9 @@
             <input>
                 <soap:body use="literal"/>
             </input>
+            <fault name="instanceManagementException">
+                <soap:fault name="instanceManagementException" use="literal"/>
+            </fault>
         </operation>
         <operation name="getInstanceSummary">
             <soap:operation soapAction="urn:getInstanceSummary"/>
