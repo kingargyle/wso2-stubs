@@ -188,6 +188,7 @@
 				<module>org.wso2.carbon.usage.meteringqueryds.stub</module>
 				<module>org.wso2.carbon.mashup.jsservices.stub</module>
 				<module>org.wso2.carbon.usage.meteringsummarygenerationds.stub</module>
+				<module>org.wso2.carbon.issue.tracker.stub</module>
 			</modules>
 		</profile>
 
@@ -254,6 +255,7 @@
 				<module>org.wso2.carbon.rule.service.stub</module>
 				<module>org.wso2.carbon.admin.mgt.stub</module>
 				<module>org.wso2.carbon.task.stub</module>
+				<module>org.wso2.carbon.issue.tracker.stub</module>
 				<!--Stubs used in Stratos Component-->
 				<module>org.wso2.carbon.throttling.agent.stub</module>
 				<module>org.wso2.carbon.throttling.stub</module>
