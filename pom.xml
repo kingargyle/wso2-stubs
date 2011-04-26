@@ -261,6 +261,8 @@
                 		<module>org.wso2.carbon.bam.services.stub</module>
 		                <module>org.wso2.carbon.dataservices.taskscheduler.stub</module>
                 		<module>org.wso2.carbon.dataservices.fileupload.stub</module>
+                                <module>org.wso2.carbon.cloud.csg.stub</module>
+                                <module>org.wso2.carbon.cloud.csg.agent.stub</module>
 				<!--Stubs used in Stratos Component-->
 				<module>org.wso2.carbon.throttling.agent.stub</module>
 				<module>org.wso2.carbon.throttling.stub</module>
