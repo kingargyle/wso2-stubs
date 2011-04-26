@@ -184,6 +184,7 @@
                 <xs:sequence>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="optionalClaims" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="realm" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="requestClaimsFromIdP" type="xs:boolean"/>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="requestTypes" nillable="true" type="xs:string" />
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="requiredClaims" nillable="true" type="xs:string" />
                 </xs:sequence>
