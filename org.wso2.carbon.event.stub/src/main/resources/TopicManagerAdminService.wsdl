@@ -1,11 +1,11 @@
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://internal.admin.event.carbon.wso2.org"
-                  xmlns:ax296="http://commons.qpid.carbon.wso2.org/xsd"
-                  xmlns:ax288="http://exception.internal.admin.event.carbon.wso2.org/xsd"
-                  xmlns:ax292="http://internal.admin.event.carbon.wso2.org/xsd"
+                  xmlns:ax2108="http://commons.qpid.carbon.wso2.org/xsd"
+                  xmlns:ax2102="http://topic.core.event.carbon.wso2.org/xsd"
+                  xmlns:ax2105="http://subscription.core.event.carbon.wso2.org/xsd"
+                  xmlns:ax2104="http://internal.admin.event.carbon.wso2.org/xsd"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                  xmlns:ax293="http://subscription.core.event.carbon.wso2.org/xsd"
-                  xmlns:ax290="http://topic.core.event.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd"
-                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:ax2100="http://exception.internal.admin.event.carbon.wso2.org/xsd"
+                  xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
                   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
                   xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
@@ -59,17 +59,17 @@
             <xs:complexType name="TopicNode">
                 <xs:sequence>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="children" nillable="true"
-                                type="ax290:TopicNode"/>
+                                type="ax2102:TopicNode"/>
                     <xs:element minOccurs="0" name="nodeName" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="topicName" nillable="true" type="xs:string"/>
                 </xs:sequence>
 
             </xs:complexType>
         </xs:schema>
-        <xs:schema xmlns:ax289="http://exception.internal.admin.event.carbon.wso2.org/xsd"
-                   xmlns:ax295="http://internal.admin.event.carbon.wso2.org/xsd"
-                   xmlns:ax297="http://commons.qpid.carbon.wso2.org/xsd"
-                   xmlns:ax291="http://topic.core.event.carbon.wso2.org/xsd" attributeFormDefault="qualified"
+        <xs:schema xmlns:ax2107="http://internal.admin.event.carbon.wso2.org/xsd"
+                   xmlns:ax2101="http://exception.internal.admin.event.carbon.wso2.org/xsd"
+                   xmlns:ax2109="http://commons.qpid.carbon.wso2.org/xsd"
+                   xmlns:ax2103="http://topic.core.event.carbon.wso2.org/xsd" attributeFormDefault="qualified"
                    elementFormDefault="qualified" targetNamespace="http://internal.admin.event.carbon.wso2.org">
             <xs:import namespace="http://exception.internal.admin.event.carbon.wso2.org/xsd"/>
             <xs:import namespace="http://topic.core.event.carbon.wso2.org/xsd"/>
@@ -80,7 +80,7 @@
 
                     <xs:sequence>
                         <xs:element minOccurs="0" name="EventAdminException" nillable="true"
-                                    type="ax289:EventAdminException"/>
+                                    type="ax2101:EventAdminException"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -90,201 +90,223 @@
                         <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
 
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="topicRolePermissions" nillable="true"
-                                    type="ax290:TopicRolePermission"/>
+                                    type="ax2103:TopicRolePermission"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="removeTopic">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeTopicResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
             <xs:element name="getWsSubscriptionsForTopic">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
                     </xs:sequence>
-
                 </xs:complexType>
             </xs:element>
             <xs:element name="getWsSubscriptionsForTopicResponse">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true"
-                                    type="ax292:Subscription"/>
+                                    type="ax2107:Subscription"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="getUserRoles">
                 <xs:complexType>
                     <xs:sequence/>
                 </xs:complexType>
+
             </xs:element>
             <xs:element name="getUserRolesResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
-
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getTopicRolePermissions">
+
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
-
             </xs:element>
             <xs:element name="getTopicRolePermissionsResponse">
                 <xs:complexType>
                     <xs:sequence>
+
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true"
-                                    type="ax290:TopicRolePermission"/>
+                                    type="ax2103:TopicRolePermission"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getJMSSubscriptionsForTopic">
-
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
                     </xs:sequence>
+
                 </xs:complexType>
             </xs:element>
             <xs:element name="getJMSSubscriptionsForTopicResponse">
                 <xs:complexType>
                     <xs:sequence>
-
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true"
-                                    type="ax296:SubscriptionDetails"/>
+                                    type="ax2109:SubscriptionDetails"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
             <xs:element name="getAllWSSubscriptionsForTopic">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
                         <xs:element minOccurs="0" name="startingIndex" type="xs:int"/>
-
                         <xs:element minOccurs="0" name="maxSubscriptionCount" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
             <xs:element name="getAllWSSubscriptionsForTopicResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true"
-                                    type="ax292:Subscription"/>
+                                    type="ax2107:Subscription"/>
                     </xs:sequence>
-
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllWSSubscriptionCountForTopic">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="getAllWSSubscriptionCountForTopicResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" type="xs:int"/>
+
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllTopics">
                 <xs:complexType>
-
                     <xs:sequence/>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllTopicsResponse">
+
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax290:TopicNode"/>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2103:TopicNode"/>
                     </xs:sequence>
                 </xs:complexType>
-
             </xs:element>
             <xs:element name="addTopic">
                 <xs:complexType>
                     <xs:sequence>
+
                         <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
         </xs:schema>
-
-        <xs:schema xmlns:ax294="http://subscription.core.event.carbon.wso2.org/xsd" attributeFormDefault="qualified"
+        <xs:schema xmlns:ax2106="http://subscription.core.event.carbon.wso2.org/xsd" attributeFormDefault="qualified"
                    elementFormDefault="qualified" targetNamespace="http://internal.admin.event.carbon.wso2.org/xsd">
             <xs:import namespace="http://subscription.core.event.carbon.wso2.org/xsd"/>
             <xs:complexType name="Subscription">
                 <xs:sequence>
-                    <xs:element minOccurs="0" name="createdTime" nillable="true" type="xs:date"/>
-                    <xs:element minOccurs="0" name="eventDispatcher" nillable="true" type="ax293:EventDispatcher"/>
-                    <xs:element minOccurs="0" name="eventDispatcherName" nillable="true" type="xs:string"/>
-                    <xs:element minOccurs="0" name="eventFilter" nillable="true" type="ax293:EventFilter"/>
-                    <xs:element minOccurs="0" name="eventSinkURL" nillable="true" type="xs:string"/>
 
+                    <xs:element minOccurs="0" name="createdTime" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="eventDispatcher" nillable="true" type="ax2106:EventDispatcher"/>
+                    <xs:element minOccurs="0" name="eventDispatcherName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="eventFilter" nillable="true" type="ax2106:EventFilter"/>
+                    <xs:element minOccurs="0" name="eventSinkURL" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="expires" nillable="true" type="xs:dateTime"/>
                     <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="mode" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="owner" nillable="true" type="xs:string"/>
+
                     <xs:element minOccurs="0" name="topicName" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
     </wsdl:types>
-
     <wsdl:message name="getWsSubscriptionsForTopicRequest">
         <wsdl:part name="parameters" element="ns:getWsSubscriptionsForTopic"/>
     </wsdl:message>
     <wsdl:message name="getWsSubscriptionsForTopicResponse">
+
         <wsdl:part name="parameters" element="ns:getWsSubscriptionsForTopicResponse"/>
     </wsdl:message>
     <wsdl:message name="TopicManagerAdminServiceEventAdminException">
         <wsdl:part name="parameters" element="ns:TopicManagerAdminServiceEventAdminException"/>
     </wsdl:message>
-
     <wsdl:message name="getAllWSSubscriptionsForTopicRequest">
         <wsdl:part name="parameters" element="ns:getAllWSSubscriptionsForTopic"/>
     </wsdl:message>
     <wsdl:message name="getAllWSSubscriptionsForTopicResponse">
+
         <wsdl:part name="parameters" element="ns:getAllWSSubscriptionsForTopicResponse"/>
     </wsdl:message>
     <wsdl:message name="updatePermissionRequest">
         <wsdl:part name="parameters" element="ns:updatePermission"/>
     </wsdl:message>
-
     <wsdl:message name="getAllWSSubscriptionCountForTopicRequest">
         <wsdl:part name="parameters" element="ns:getAllWSSubscriptionCountForTopic"/>
     </wsdl:message>
     <wsdl:message name="getAllWSSubscriptionCountForTopicResponse">
+
         <wsdl:part name="parameters" element="ns:getAllWSSubscriptionCountForTopicResponse"/>
     </wsdl:message>
     <wsdl:message name="addTopicRequest">
         <wsdl:part name="parameters" element="ns:addTopic"/>
     </wsdl:message>
-
     <wsdl:message name="getAllTopicsRequest">
         <wsdl:part name="parameters" element="ns:getAllTopics"/>
     </wsdl:message>
     <wsdl:message name="getAllTopicsResponse">
+
         <wsdl:part name="parameters" element="ns:getAllTopicsResponse"/>
     </wsdl:message>
     <wsdl:message name="getUserRolesRequest">
         <wsdl:part name="parameters" element="ns:getUserRoles"/>
     </wsdl:message>
-
     <wsdl:message name="getUserRolesResponse">
         <wsdl:part name="parameters" element="ns:getUserRolesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="removeTopicRequest">
+
+        <wsdl:part name="parameters" element="ns:removeTopic"/>
+    </wsdl:message>
+    <wsdl:message name="removeTopicResponse">
+        <wsdl:part name="parameters" element="ns:removeTopicResponse"/>
     </wsdl:message>
     <wsdl:message name="getTopicRolePermissionsRequest">
         <wsdl:part name="parameters" element="ns:getTopicRolePermissions"/>
     </wsdl:message>
     <wsdl:message name="getTopicRolePermissionsResponse">
+
         <wsdl:part name="parameters" element="ns:getTopicRolePermissionsResponse"/>
     </wsdl:message>
-
     <wsdl:message name="getJMSSubscriptionsForTopicRequest">
         <wsdl:part name="parameters" element="ns:getJMSSubscriptionsForTopic"/>
     </wsdl:message>
@@ -292,9 +314,9 @@
         <wsdl:part name="parameters" element="ns:getJMSSubscriptionsForTopicResponse"/>
     </wsdl:message>
     <wsdl:portType name="TopicManagerAdminServicePortType">
+
         <wsdl:operation name="getWsSubscriptionsForTopic">
             <wsdl:input message="ns:getWsSubscriptionsForTopicRequest" wsaw:Action="urn:getWsSubscriptionsForTopic"/>
-
             <wsdl:output message="ns:getWsSubscriptionsForTopicResponse"
                          wsaw:Action="urn:getWsSubscriptionsForTopicResponse"/>
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
@@ -309,9 +331,9 @@
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
                         name="TopicManagerAdminServiceEventAdminException"
                         wsaw:Action="urn:getAllWSSubscriptionsForTopicTopicManagerAdminServiceEventAdminException"/>
+
         </wsdl:operation>
         <wsdl:operation name="updatePermission">
-
             <wsdl:input message="ns:updatePermissionRequest" wsaw:Action="urn:updatePermission"/>
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
                         name="TopicManagerAdminServiceEventAdminException"
@@ -325,9 +347,9 @@
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
                         name="TopicManagerAdminServiceEventAdminException"
                         wsaw:Action="urn:getAllWSSubscriptionCountForTopicTopicManagerAdminServiceEventAdminException"/>
+
         </wsdl:operation>
         <wsdl:operation name="addTopic">
-
             <wsdl:input message="ns:addTopicRequest" wsaw:Action="urn:addTopic"/>
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
                         name="TopicManagerAdminServiceEventAdminException"
@@ -339,14 +361,22 @@
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
                         name="TopicManagerAdminServiceEventAdminException"
                         wsaw:Action="urn:getAllTopicsTopicManagerAdminServiceEventAdminException"/>
+
         </wsdl:operation>
         <wsdl:operation name="getUserRoles">
-
             <wsdl:input message="ns:getUserRolesRequest" wsaw:Action="urn:getUserRoles"/>
             <wsdl:output message="ns:getUserRolesResponse" wsaw:Action="urn:getUserRolesResponse"/>
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
                         name="TopicManagerAdminServiceEventAdminException"
                         wsaw:Action="urn:getUserRolesTopicManagerAdminServiceEventAdminException"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeTopic">
+            <wsdl:input message="ns:removeTopicRequest" wsaw:Action="urn:removeTopic"/>
+            <wsdl:output message="ns:removeTopicResponse" wsaw:Action="urn:removeTopicResponse"/>
+
+            <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
+                        name="TopicManagerAdminServiceEventAdminException"
+                        wsaw:Action="urn:removeTopicTopicManagerAdminServiceEventAdminException"/>
         </wsdl:operation>
         <wsdl:operation name="getTopicRolePermissions">
             <wsdl:input message="ns:getTopicRolePermissionsRequest" wsaw:Action="urn:getTopicRolePermissions"/>
@@ -356,9 +386,9 @@
                         name="TopicManagerAdminServiceEventAdminException"
                         wsaw:Action="urn:getTopicRolePermissionsTopicManagerAdminServiceEventAdminException"/>
         </wsdl:operation>
-
         <wsdl:operation name="getJMSSubscriptionsForTopic">
             <wsdl:input message="ns:getJMSSubscriptionsForTopicRequest" wsaw:Action="urn:getJMSSubscriptionsForTopic"/>
+
             <wsdl:output message="ns:getJMSSubscriptionsForTopicResponse"
                          wsaw:Action="urn:getJMSSubscriptionsForTopicResponse"/>
             <wsdl:fault message="ns:TopicManagerAdminServiceEventAdminException"
@@ -369,9 +399,9 @@
     <wsdl:binding name="TopicManagerAdminServiceSoap11Binding" type="ns:TopicManagerAdminServicePortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="getWsSubscriptionsForTopic">
-
             <soap:operation soapAction="urn:getWsSubscriptionsForTopic" style="document"/>
             <wsdl:input>
+
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
@@ -379,9 +409,9 @@
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
                 <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
-
             </wsdl:fault>
         </wsdl:operation>
+
         <wsdl:operation name="updatePermission">
             <soap:operation soapAction="urn:updatePermission" style="document"/>
             <wsdl:input>
@@ -389,9 +419,9 @@
             </wsdl:input>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
                 <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
-
             </wsdl:fault>
         </wsdl:operation>
+
         <wsdl:operation name="getAllWSSubscriptionsForTopic">
             <soap:operation soapAction="urn:getAllWSSubscriptionsForTopic" style="document"/>
             <wsdl:input>
@@ -399,9 +429,9 @@
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal"/>
-
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
+
                 <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
@@ -409,9 +439,9 @@
             <soap:operation soapAction="urn:getAllWSSubscriptionCountForTopic" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
-
             </wsdl:input>
             <wsdl:output>
+
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
@@ -419,9 +449,9 @@
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="addTopic">
-
             <soap:operation soapAction="urn:addTopic" style="document"/>
             <wsdl:input>
+
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
@@ -429,9 +459,9 @@
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllTopics">
-
             <soap:operation soapAction="urn:getAllTopics" style="document"/>
             <wsdl:input>
+
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
@@ -439,27 +469,40 @@
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
                 <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
+            </wsdl:fault>
+        </wsdl:operation>
 
+        <wsdl:operation name="getUserRoles">
+            <soap:operation soapAction="urn:getUserRoles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
+
+                <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeTopic">
+            <soap:operation soapAction="urn:removeTopic" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
+                <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getTopicRolePermissions">
             <soap:operation soapAction="urn:getTopicRolePermissions" style="document"/>
             <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
 
-            </wsdl:output>
-            <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
-                <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="getUserRoles">
-            <soap:operation soapAction="urn:getUserRoles" style="document"/>
-            <wsdl:input>
                 <soap:body use="literal"/>
-
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal"/>
@@ -468,8 +511,8 @@
                 <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
+
         <wsdl:operation name="getJMSSubscriptionsForTopic">
-
             <soap:operation soapAction="urn:getJMSSubscriptionsForTopic" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
@@ -478,8 +521,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
-                <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
 
+                <soap:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
@@ -488,8 +531,8 @@
         <wsdl:operation name="getWsSubscriptionsForTopic">
             <soap12:operation soapAction="urn:getWsSubscriptionsForTopic" style="document"/>
             <wsdl:input>
-                <soap12:body use="literal"/>
 
+                <soap12:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
@@ -498,8 +541,8 @@
                 <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="updatePermission">
 
+        <wsdl:operation name="updatePermission">
             <soap12:operation soapAction="urn:updatePermission" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
@@ -508,8 +551,8 @@
                 <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="getAllWSSubscriptionsForTopic">
 
+        <wsdl:operation name="getAllWSSubscriptionsForTopic">
             <soap12:operation soapAction="urn:getAllWSSubscriptionsForTopic" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
@@ -518,8 +561,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
-                <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
 
+                <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllWSSubscriptionCountForTopic">
@@ -528,8 +571,8 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
-                <soap12:body use="literal"/>
 
+                <soap12:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
                 <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
@@ -538,8 +581,8 @@
         <wsdl:operation name="addTopic">
             <soap12:operation soapAction="urn:addTopic" style="document"/>
             <wsdl:input>
-                <soap12:body use="literal"/>
 
+                <soap12:body use="literal"/>
             </wsdl:input>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
                 <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
@@ -548,8 +591,8 @@
         <wsdl:operation name="getAllTopics">
             <soap12:operation soapAction="urn:getAllTopics" style="document"/>
             <wsdl:input>
-                <soap12:body use="literal"/>
 
+                <soap12:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
@@ -558,20 +601,7 @@
                 <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="getTopicRolePermissions">
 
-            <soap12:operation soapAction="urn:getTopicRolePermissions" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
-                <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
-
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="getUserRoles">
             <soap12:operation soapAction="urn:getUserRoles" style="document"/>
             <wsdl:input>
@@ -579,17 +609,30 @@
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
 
+                <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeTopic">
+            <soap12:operation soapAction="urn:removeTopic" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
                 <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="getJMSSubscriptionsForTopic">
-            <soap12:operation soapAction="urn:getJMSSubscriptionsForTopic" style="document"/>
+        <wsdl:operation name="getTopicRolePermissions">
+            <soap12:operation soapAction="urn:getTopicRolePermissions" style="document"/>
             <wsdl:input>
-                <soap12:body use="literal"/>
 
+                <soap12:body use="literal"/>
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
@@ -598,109 +641,133 @@
                 <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
             </wsdl:fault>
         </wsdl:operation>
-    </wsdl:binding>
 
+        <wsdl:operation name="getJMSSubscriptionsForTopic">
+            <soap12:operation soapAction="urn:getJMSSubscriptionsForTopic" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="TopicManagerAdminServiceEventAdminException">
+
+                <soap12:fault use="literal" name="TopicManagerAdminServiceEventAdminException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
     <wsdl:binding name="TopicManagerAdminServiceHttpBinding" type="ns:TopicManagerAdminServicePortType">
         <http:binding verb="POST"/>
         <wsdl:operation name="getWsSubscriptionsForTopic">
             <http:operation location="getWsSubscriptionsForTopic"/>
             <wsdl:input>
+
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="updatePermission">
             <http:operation location="updatePermission"/>
             <wsdl:input>
+
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="getAllWSSubscriptionsForTopic">
-
             <http:operation location="getAllWSSubscriptionsForTopic"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
+
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getAllWSSubscriptionCountForTopic">
-
             <http:operation location="getAllWSSubscriptionCountForTopic"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
+
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="addTopic">
-
             <http:operation location="addTopic"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
+
         <wsdl:operation name="getAllTopics">
             <http:operation location="getAllTopics"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getTopicRolePermissions">
-            <http:operation location="getTopicRolePermissions"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
 
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
         <wsdl:operation name="getUserRoles">
             <http:operation location="getUserRoles"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+
+        <wsdl:operation name="removeTopic">
+            <http:operation location="removeTopic"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTopicRolePermissions">
+            <http:operation location="getTopicRolePermissions"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+
         <wsdl:operation name="getJMSSubscriptionsForTopic">
             <http:operation location="getJMSSubscriptionsForTopic"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
-
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+
     </wsdl:binding>
     <wsdl:service name="TopicManagerAdminService">
         <wsdl:port name="TopicManagerAdminServiceHttpsSoap11Endpoint"
                    binding="ns:TopicManagerAdminServiceSoap11Binding">
             <soap:address
-                    location="https://10.100.0.144:9443/services/TopicManagerAdminService.TopicManagerAdminServiceHttpsSoap11Endpoint/"/>
-
+                    location="https://10.215.22.107:9443/services/TopicManagerAdminService.TopicManagerAdminServiceHttpsSoap11Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="TopicManagerAdminServiceHttpsSoap12Endpoint"
                    binding="ns:TopicManagerAdminServiceSoap12Binding">
             <soap12:address
-                    location="https://10.100.0.144:9443/services/TopicManagerAdminService.TopicManagerAdminServiceHttpsSoap12Endpoint/"/>
+                    location="https://10.215.22.107:9443/services/TopicManagerAdminService.TopicManagerAdminServiceHttpsSoap12Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="TopicManagerAdminServiceHttpsEndpoint" binding="ns:TopicManagerAdminServiceHttpBinding">
+
             <http:address
-                    location="https://10.100.0.144:9443/services/TopicManagerAdminService.TopicManagerAdminServiceHttpsEndpoint/"/>
+                    location="https://10.215.22.107:9443/services/TopicManagerAdminService.TopicManagerAdminServiceHttpsEndpoint/"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
