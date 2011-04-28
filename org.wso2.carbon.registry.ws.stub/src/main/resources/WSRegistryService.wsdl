@@ -354,7 +354,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="invokeAspectRegistryException">
+            <xs:element name="invokeAspectNoParamRegistryException">
 
                 <xs:complexType>
                     <xs:sequence>
@@ -362,7 +362,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="invokeAspect">
+            <xs:element name="invokeAspectNoParam">
                 <xs:complexType>
                     <xs:sequence>
 
@@ -1184,12 +1184,12 @@
     <wsdl:message name="restoreVersionRegistryException">
         <wsdl:part name="parameters" element="ns:restoreVersionRegistryException" />
     </wsdl:message>
-    <wsdl:message name="invokeAspectRequest">
+    <wsdl:message name="invokeAspectNoParamRequest">
 
-        <wsdl:part name="parameters" element="ns:invokeAspect" />
+        <wsdl:part name="parameters" element="ns:invokeAspectNoParam" />
     </wsdl:message>
-    <wsdl:message name="invokeAspectRegistryException">
-        <wsdl:part name="parameters" element="ns:invokeAspectRegistryException" />
+    <wsdl:message name="invokeAspectNoParamRegistryException">
+        <wsdl:part name="parameters" element="ns:invokeAspectNoParamRegistryException" />
     </wsdl:message>
     <wsdl:message name="createLinkWithSubTargetRequest">
         <wsdl:part name="parameters" element="ns:createLinkWithSubTarget" />
@@ -1578,9 +1578,9 @@
 
             <wsdl:fault message="ns:restoreVersionRegistryException" name="restoreVersionRegistryException" wsaw:Action="urn:restoreVersionrestoreVersionRegistryException" />
         </wsdl:operation>
-        <wsdl:operation name="invokeAspect">
-            <wsdl:input message="ns:invokeAspectRequest" wsaw:Action="urn:invokeAspect" />
-            <wsdl:fault message="ns:invokeAspectRegistryException" name="invokeAspectRegistryException" wsaw:Action="urn:invokeAspectinvokeAspectRegistryException" />
+        <wsdl:operation name="invokeAspectNoParam">
+            <wsdl:input message="ns:invokeAspectNoParamRequest" wsaw:Action="urn:invokeAspectNoParam" />
+            <wsdl:fault message="ns:invokeAspectNoParamRegistryException" name="invokeAspectNoParamRegistryException" wsaw:Action="urn:invokeAspectNoParaminvokeAspectNoParamRegistryException" />
         </wsdl:operation>
         <wsdl:operation name="createLinkWithSubTarget">
             <wsdl:input message="ns:createLinkWithSubTargetRequest" wsaw:Action="urn:createLinkWithSubTarget" />
@@ -1854,14 +1854,14 @@
                 <soap:fault use="literal" name="WSgetAllAssociationsRegistryException" />
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="invokeAspect">
+        <wsdl:operation name="invokeAspectNoParam">
 
-            <soap:operation soapAction="urn:invokeAspect" style="document" />
+            <soap:operation soapAction="urn:invokeAspectNoParam" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
-            <wsdl:fault name="invokeAspectRegistryException">
-                <soap:fault use="literal" name="invokeAspectRegistryException" />
+            <wsdl:fault name="invokeAspectNoParamRegistryException">
+                <soap:fault use="literal" name="invokeAspectNoParamRegistryException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="createLinkWithSubTarget">
@@ -2421,14 +2421,14 @@
                 <soap12:fault use="literal" name="WSgetAllAssociationsRegistryException" />
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="invokeAspect">
-            <soap12:operation soapAction="urn:invokeAspect" style="document" />
+        <wsdl:operation name="invokeAspectNoParam">
+            <soap12:operation soapAction="urn:invokeAspectNoParam" style="document" />
             <wsdl:input>
                 <soap12:body use="literal" />
 
             </wsdl:input>
-            <wsdl:fault name="invokeAspectRegistryException">
-                <soap12:fault use="literal" name="invokeAspectRegistryException" />
+            <wsdl:fault name="invokeAspectNoParamRegistryException">
+                <soap12:fault use="literal" name="invokeAspectNoParamRegistryException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="createLinkWithSubTarget">
@@ -2971,8 +2971,8 @@
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="invokeAspect">
-            <http:operation location="invokeAspect" />
+        <wsdl:operation name="invokeAspectNoParam">
+            <http:operation location="invokeAspectNoParam" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
 
