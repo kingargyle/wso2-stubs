@@ -282,6 +282,7 @@
 				<module>org.wso2.carbon.usage.meteringqueryds.stub</module>
 				<module>org.wso2.carbon.usage.meteringsummarygenerationds.stub</module>
 				<module>org.wso2.carbon.cloud.csg.agent.stub</module>
+                                <module>org.wso2.carbon.payment.stub</module>
 			</modules>
         </profile>
     </profiles>
