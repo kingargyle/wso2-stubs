@@ -304,6 +304,13 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getAllServersWithCategoryForTenent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tenentID" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getServiceForServer">
                 <xs:complexType>
                     <xs:sequence>
@@ -784,6 +791,12 @@
     <wsdl:message name="addTenentRequest">
         <wsdl:part name="parameters" element="ns2:addTenent"/>
     </wsdl:message>
+    <wsdl:message name="getAllServersWithCategoryForTenentRequest">
+        <wsdl:part name="parameters" element="ns0:getAllServersWithCategoryForTenent"/>
+    </wsdl:message>
+    <wsdl:message name="getAllServersWithCategoryForTenentResponse">
+        <wsdl:part name="parameters" element="ns0:servers"/>
+    </wsdl:message>
     <wsdl:message name="getEndpointsRequest">
         <wsdl:part name="parameters" element="ns0:getEndpoints"/>
     </wsdl:message>
@@ -1110,6 +1123,15 @@
             <wsdl:input message="ns2:addTenentRequest" wsaw:Action="urn:addTenent"/>
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
                         wsaw:Action="urn:addTenentDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategoryForTenent">
+            <wsdl:documentation/>
+            <wsdl:input message="ns2:getAllServersWithCategoryForTenentRequest"
+                        wsaw:Action="urn:getAllServersWithCategoryForTenent"/>
+            <wsdl:output message="ns2:getAllServersWithCategoryForTenentResponse"
+                         wsaw:Action="urn:getAllServersWithCategoryForTenentResponse"/>
+            <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
+                        wsaw:Action="urn:getAllServersWithCategoryForTenentDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="getEndpoints">
             <wsdl:documentation/>
@@ -1592,6 +1614,18 @@
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategoryForTenent">
+            <soap:operation soapAction="urn:getAllServersWithCategoryForTenent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
             <wsdl:fault name="DataServiceFault">
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
@@ -2235,6 +2269,18 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategoryForTenent">
+            <soap12:operation soapAction="urn:getAllServersWithCategoryForTenent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="getEndpoints">
             <soap12:operation soapAction="urn:getEndpoints" style="document"/>
             <wsdl:input>
@@ -2817,6 +2863,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategoryForTenent">
+            <http:operation location="getAllServersWithCategoryForTenent"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getEndpoints">
             <http:operation location="getEndpoints"/>
             <wsdl:input>
@@ -3135,22 +3190,22 @@
     </wsdl:binding>
     <wsdl:service name="BAMConfigurationDS">
         <wsdl:port name="SOAP11Endpoint" binding="ns2:BAMConfigurationDSSOAP11Binding">
-            <soap:address location="http://10.100.0.134:9763/services/BAMConfigurationDS.SOAP11Endpoint/"/>
+            <soap:address location="http://10.215.119.232:9763/services/BAMConfigurationDS.SOAP11Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="SecureSOAP11Endpoint" binding="ns2:BAMConfigurationDSSOAP11Binding">
-            <soap:address location="https://10.100.0.134:9443/services/BAMConfigurationDS.SecureSOAP11Endpoint/"/>
+            <soap:address location="https://10.215.119.232:9443/services/BAMConfigurationDS.SecureSOAP11Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="SecureSOAP12Endpoint" binding="ns2:BAMConfigurationDSSOAP12Binding">
-            <soap12:address location="https://10.100.0.134:9443/services/BAMConfigurationDS.SecureSOAP12Endpoint/"/>
+            <soap12:address location="https://10.215.119.232:9443/services/BAMConfigurationDS.SecureSOAP12Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="SOAP12Endpoint" binding="ns2:BAMConfigurationDSSOAP12Binding">
-            <soap12:address location="http://10.100.0.134:9763/services/BAMConfigurationDS.SOAP12Endpoint/"/>
+            <soap12:address location="http://10.215.119.232:9763/services/BAMConfigurationDS.SOAP12Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="HTTPEndpoint" binding="ns2:BAMConfigurationDSHttpBinding">
-            <http:address location="http://10.100.0.134:9763/services/BAMConfigurationDS.HTTPEndpoint/"/>
+            <http:address location="http://10.215.119.232:9763/services/BAMConfigurationDS.HTTPEndpoint/"/>
         </wsdl:port>
         <wsdl:port name="SecureHTTPEndpoint" binding="ns2:BAMConfigurationDSHttpBinding">
-            <http:address location="https://10.100.0.134:9443/services/BAMConfigurationDS.SecureHTTPEndpoint/"/>
+            <http:address location="https://10.215.119.232:9443/services/BAMConfigurationDS.SecureHTTPEndpoint/"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
