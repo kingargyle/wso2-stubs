@@ -87,7 +87,8 @@
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${pom.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.wso2.carbon.load.balance.agent.stub.*; version="${carbon.platform.package.export.version}"
+                            org.wso2.carbon.load.balance.agent.stub.*; version="${carbon.platform.package.export.version}",
+                            org.wso2.carbon.load.balance.agent.*; version="${carbon.platform.package.export.version}",
                         </Export-Package>
                         <Import-Package>
                             *;resolution:=optional
