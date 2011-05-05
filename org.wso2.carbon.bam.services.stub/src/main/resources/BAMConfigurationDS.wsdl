@@ -416,6 +416,9 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getAllServersWithCategory">
+                <xs:complexType/>
+            </xs:element>
             <xs:element name="getAllOperations">
                 <xs:complexType/>
             </xs:element>
@@ -478,6 +481,8 @@
         </xs:schema>
         <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
                    targetNamespace="http://ws.wso2.org/dataservice">
+            <xs:element name="DataServiceFault" type="xs:string"/>
+            <xs:element name="REQUEST_STATUS" type="xs:string"/>
             <xs:element name="deleteOperation">
                 <xs:complexType>
                     <xs:sequence>
@@ -684,14 +689,6 @@
                         <xs:element name="timestamp" nillable="true" type="xs:string"/>
                         <xs:element name="ipAddress" nillable="true" type="xs:string"/>
                         <xs:element name="userAgent" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="DataServiceFault" type="xs:string"/>
-            <xs:element name="DataServiceAnyElement">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:any/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -919,6 +916,12 @@
     <wsdl:message name="addOperationRequest">
         <wsdl:part name="parameters" element="ns2:addOperation"/>
     </wsdl:message>
+    <wsdl:message name="getAllServersWithCategoryRequest">
+        <wsdl:part name="parameters" element="ns0:getAllServersWithCategory"/>
+    </wsdl:message>
+    <wsdl:message name="getAllServersWithCategoryResponse">
+        <wsdl:part name="parameters" element="ns0:servers"/>
+    </wsdl:message>
     <wsdl:message name="getServerFromURLRequest">
         <wsdl:part name="parameters" element="ns0:getServerFromURL"/>
     </wsdl:message>
@@ -985,9 +988,7 @@
                         wsaw:Action="urn:addServerDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="addNamespaceData">
-            <wsdl:documentation>
-                This operation adds data corresponds to a particular namespace.
-            </wsdl:documentation>
+            <wsdl:documentation>This operation adds data corresponds to a particular namespace.</wsdl:documentation>
             <wsdl:input message="ns2:addNamespaceDataRequest" wsaw:Action="urn:addNamespaceData"/>
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
                         wsaw:Action="urn:addNamespaceDataDataServiceFault"/>
@@ -1047,16 +1048,14 @@
                         wsaw:Action="urn:getAllMessagesForActivityKeyIdDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="updateXpathData">
-            <wsdl:documentation>
-                This operation updates and existing xpath record with some new set of values.
+            <wsdl:documentation>This operation updates and existing xpath record with some new set of values.
             </wsdl:documentation>
             <wsdl:input message="ns2:updateXpathDataRequest" wsaw:Action="urn:updateXpathData"/>
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
                         wsaw:Action="urn:updateXpathDataDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="addXpathData">
-            <wsdl:documentation>
-                This operation adds details corresponds to a particular xpath to the table xpath.
+            <wsdl:documentation>This operation adds details corresponds to a particular xpath to the table xpath.
             </wsdl:documentation>
             <wsdl:input message="ns2:addXpathDataRequest" wsaw:Action="urn:addXpathData"/>
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
@@ -1127,8 +1126,7 @@
                         wsaw:Action="urn:updateServerWithSubscriptionDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="deleteNamespaceData">
-            <wsdl:documentation>
-                This operation deletes namespaces belonging to a particular xpath configuration.
+            <wsdl:documentation>This operation deletes namespaces belonging to a particular xpath configuration.
             </wsdl:documentation>
             <wsdl:input message="ns2:deleteNamespaceDataRequest" wsaw:Action="urn:deleteNamespaceData"/>
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
@@ -1209,8 +1207,8 @@
                         wsaw:Action="urn:getTenentDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="selectNamespaceData">
-            <wsdl:documentation>
-                This operation retrieves BAM_ID, BAM_PREFIX, BAM_URI associated with a particular BAM_XPATH_ID.
+            <wsdl:documentation>This operation retrieves BAM_ID, BAM_PREFIX, BAM_URI associated with a particular
+                BAM_XPATH_ID.
             </wsdl:documentation>
             <wsdl:input message="ns2:selectNamespaceDataRequest" wsaw:Action="urn:selectNamespaceData"/>
             <wsdl:output message="ns2:selectNamespaceDataResponse" wsaw:Action="urn:selectNamespaceDataResponse"/>
@@ -1301,6 +1299,14 @@
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
                         wsaw:Action="urn:addOperationDataServiceFault"/>
         </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategory">
+            <wsdl:documentation/>
+            <wsdl:input message="ns2:getAllServersWithCategoryRequest" wsaw:Action="urn:getAllServersWithCategory"/>
+            <wsdl:output message="ns2:getAllServersWithCategoryResponse"
+                         wsaw:Action="urn:getAllServersWithCategoryResponse"/>
+            <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
+                        wsaw:Action="urn:getAllServersWithCategoryDataServiceFault"/>
+        </wsdl:operation>
         <wsdl:operation name="getServerFromURL">
             <wsdl:documentation/>
             <wsdl:input message="ns2:getServerFromURLRequest" wsaw:Action="urn:getServerFromURL"/>
@@ -1309,9 +1315,8 @@
                         wsaw:Action="urn:getServerFromURLDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="selectXpathData">
-            <wsdl:documentation>
-                This operation retrieves BAM_ID, BAM_ALIAS, BAM_XPATH from the table BAM_XPATH corresponds to a given
-                BAM_NAME and BAM_SERVER_ID.
+            <wsdl:documentation>This operation retrieves BAM_ID, BAM_ALIAS, BAM_XPATH from the table BAM_XPATH
+                corresponds to a given BAM_NAME and BAM_SERVER_ID.
             </wsdl:documentation>
             <wsdl:input message="ns2:selectXpathDataRequest" wsaw:Action="urn:selectXpathData"/>
             <wsdl:output message="ns2:selectXpathDataResponse" wsaw:Action="urn:selectXpathDataResponse"/>
@@ -1352,8 +1357,8 @@
                         wsaw:Action="urn:addActivityDataDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="updateNamespaceData">
-            <wsdl:documentation>
-                This operation updates data corresponds to a particular namespace with a given set of new data.
+            <wsdl:documentation>This operation updates data corresponds to a particular namespace with a given set of
+                new data.
             </wsdl:documentation>
             <wsdl:input message="ns2:updateNamespaceDataRequest" wsaw:Action="urn:updateNamespaceData"/>
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
@@ -1381,9 +1386,7 @@
                         wsaw:Action="urn:getOperationFromNameDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="getAllXpathData">
-            <wsdl:documentation>
-                This operation retrieves all xpath configurations from BAM_XPATH.
-            </wsdl:documentation>
+            <wsdl:documentation>This operation retrieves all xpath configurations from BAM_XPATH.</wsdl:documentation>
             <wsdl:input message="ns2:getAllXpathDataRequest" wsaw:Action="urn:getAllXpathData"/>
             <wsdl:output message="ns2:getAllXpathDataResponse" wsaw:Action="urn:getAllXpathDataResponse"/>
             <wsdl:fault message="ns2:DataServiceFault" name="DataServiceFault"
@@ -1883,6 +1886,18 @@
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategory">
+            <soap:operation soapAction="urn:getAllServersWithCategory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
             <wsdl:fault name="DataServiceFault">
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
@@ -2514,6 +2529,18 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategory">
+            <soap12:operation soapAction="urn:getAllServersWithCategory" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="getServerFromURL">
             <soap12:operation soapAction="urn:getServerFromURL" style="document"/>
             <wsdl:input>
@@ -3003,6 +3030,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
+        <wsdl:operation name="getAllServersWithCategory">
+            <http:operation location="getAllServersWithCategory"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getServerFromURL">
             <http:operation location="getServerFromURL"/>
             <wsdl:input>
@@ -3099,22 +3135,22 @@
     </wsdl:binding>
     <wsdl:service name="BAMConfigurationDS">
         <wsdl:port name="SOAP11Endpoint" binding="ns2:BAMConfigurationDSSOAP11Binding">
-            <soap:address location="http://10.100.0.136:9763/services/BAMConfigurationDS.SOAP11Endpoint/"/>
+            <soap:address location="http://10.100.0.134:9763/services/BAMConfigurationDS.SOAP11Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="SecureSOAP11Endpoint" binding="ns2:BAMConfigurationDSSOAP11Binding">
-            <soap:address location="https://10.100.0.136:9443/services/BAMConfigurationDS.SecureSOAP11Endpoint/"/>
+            <soap:address location="https://10.100.0.134:9443/services/BAMConfigurationDS.SecureSOAP11Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="SecureSOAP12Endpoint" binding="ns2:BAMConfigurationDSSOAP12Binding">
-            <soap12:address location="https://10.100.0.136:9443/services/BAMConfigurationDS.SecureSOAP12Endpoint/"/>
+            <soap12:address location="https://10.100.0.134:9443/services/BAMConfigurationDS.SecureSOAP12Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="SOAP12Endpoint" binding="ns2:BAMConfigurationDSSOAP12Binding">
-            <soap12:address location="http://10.100.0.136:9763/services/BAMConfigurationDS.SOAP12Endpoint/"/>
+            <soap12:address location="http://10.100.0.134:9763/services/BAMConfigurationDS.SOAP12Endpoint/"/>
         </wsdl:port>
         <wsdl:port name="HTTPEndpoint" binding="ns2:BAMConfigurationDSHttpBinding">
-            <http:address location="http://10.100.0.136:9763/services/BAMConfigurationDS.HTTPEndpoint/"/>
+            <http:address location="http://10.100.0.134:9763/services/BAMConfigurationDS.HTTPEndpoint/"/>
         </wsdl:port>
         <wsdl:port name="SecureHTTPEndpoint" binding="ns2:BAMConfigurationDSHttpBinding">
-            <http:address location="https://10.100.0.136:9443/services/BAMConfigurationDS.SecureHTTPEndpoint/"/>
+            <http:address location="https://10.100.0.134:9443/services/BAMConfigurationDS.SecureHTTPEndpoint/"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
