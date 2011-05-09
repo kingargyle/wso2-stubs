@@ -130,14 +130,15 @@
 
                     <xs:element minOccurs="0" name="owner" nillable="true" type="xs:string" />
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="sharedUsers" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="tenantDomain" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="visibilityTimeout" nillable="true" type="xs:string" />
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://messagebox.carbon.wso2.org/xsd">
             <xs:complexType name="MessageDetails">
-                <xs:sequence>
 
+                <xs:sequence>
                     <xs:element minOccurs="0" name="defaultVisibilityTimeout" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="messageBody" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="messageId" nillable="true" type="xs:string" />
@@ -146,8 +147,8 @@
                     <xs:element minOccurs="0" name="sentTimestamp" nillable="true" type="xs:string" />
                 </xs:sequence>
             </xs:complexType>
-            <xs:complexType name="PermissionLabel">
 
+            <xs:complexType name="PermissionLabel">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="labelName" nillable="true" type="xs:string" />
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="operations" nillable="true" type="xs:string" />
@@ -156,8 +157,8 @@
             </xs:complexType>
         </xs:schema>
     </wsdl:types>
-    <wsdl:message name="getMessageBoxesCountRequest">
 
+    <wsdl:message name="getMessageBoxesCountRequest">
         <wsdl:part name="parameters" element="ns:getMessageBoxesCount" />
     </wsdl:message>
     <wsdl:message name="getMessageBoxesCountResponse">
@@ -166,8 +167,8 @@
     <wsdl:message name="MessageBoxAdminServiceMessageBoxAdminException">
         <wsdl:part name="parameters" element="ns:MessageBoxAdminServiceMessageBoxAdminException" />
     </wsdl:message>
-    <wsdl:message name="getAllPermissionsRequest">
 
+    <wsdl:message name="getAllPermissionsRequest">
         <wsdl:part name="parameters" element="ns:getAllPermissions" />
     </wsdl:message>
     <wsdl:message name="getAllPermissionsResponse">
@@ -176,8 +177,8 @@
     <wsdl:message name="getSQSKeysRequest">
         <wsdl:part name="parameters" element="ns:getSQSKeys" />
     </wsdl:message>
-    <wsdl:message name="getSQSKeysResponse">
 
+    <wsdl:message name="getSQSKeysResponse">
         <wsdl:part name="parameters" element="ns:getSQSKeysResponse" />
     </wsdl:message>
     <wsdl:message name="getAllAvailableMessagesRequest">
@@ -186,8 +187,8 @@
     <wsdl:message name="getAllAvailableMessagesResponse">
         <wsdl:part name="parameters" element="ns:getAllAvailableMessagesResponse" />
     </wsdl:message>
-    <wsdl:message name="getAllMessageBoxesRequest">
 
+    <wsdl:message name="getAllMessageBoxesRequest">
         <wsdl:part name="parameters" element="ns:getAllMessageBoxes" />
     </wsdl:message>
     <wsdl:message name="getAllMessageBoxesResponse">
@@ -196,8 +197,8 @@
     <wsdl:message name="getAllRetrievedMessagesRequest">
         <wsdl:part name="parameters" element="ns:getAllRetrievedMessages" />
     </wsdl:message>
-    <wsdl:message name="getAllRetrievedMessagesResponse">
 
+    <wsdl:message name="getAllRetrievedMessagesResponse">
         <wsdl:part name="parameters" element="ns:getAllRetrievedMessagesResponse" />
     </wsdl:message>
     <wsdl:portType name="MessageBoxAdminServicePortType">
@@ -206,8 +207,8 @@
             <wsdl:output message="ns:getMessageBoxesCountResponse" wsaw:Action="urn:getMessageBoxesCountResponse" />
             <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException" name="MessageBoxAdminServiceMessageBoxAdminException" wsaw:Action="urn:getMessageBoxesCountMessageBoxAdminServiceMessageBoxAdminException" />
         </wsdl:operation>
-        <wsdl:operation name="getAllPermissions">
 
+        <wsdl:operation name="getAllPermissions">
             <wsdl:input message="ns:getAllPermissionsRequest" wsaw:Action="urn:getAllPermissions" />
             <wsdl:output message="ns:getAllPermissionsResponse" wsaw:Action="urn:getAllPermissionsResponse" />
             <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException" name="MessageBoxAdminServiceMessageBoxAdminException" wsaw:Action="urn:getAllPermissionsMessageBoxAdminServiceMessageBoxAdminException" />
@@ -216,8 +217,8 @@
             <wsdl:input message="ns:getSQSKeysRequest" wsaw:Action="urn:getSQSKeys" />
             <wsdl:output message="ns:getSQSKeysResponse" wsaw:Action="urn:getSQSKeysResponse" />
             <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException" name="MessageBoxAdminServiceMessageBoxAdminException" wsaw:Action="urn:getSQSKeysMessageBoxAdminServiceMessageBoxAdminException" />
-        </wsdl:operation>
 
+        </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <wsdl:input message="ns:getAllAvailableMessagesRequest" wsaw:Action="urn:getAllAvailableMessages" />
             <wsdl:output message="ns:getAllAvailableMessagesResponse" wsaw:Action="urn:getAllAvailableMessagesResponse" />
@@ -226,8 +227,8 @@
         <wsdl:operation name="getAllMessageBoxes">
             <wsdl:input message="ns:getAllMessageBoxesRequest" wsaw:Action="urn:getAllMessageBoxes" />
             <wsdl:output message="ns:getAllMessageBoxesResponse" wsaw:Action="urn:getAllMessageBoxesResponse" />
-            <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException" name="MessageBoxAdminServiceMessageBoxAdminException" wsaw:Action="urn:getAllMessageBoxesMessageBoxAdminServiceMessageBoxAdminException" />
 
+            <wsdl:fault message="ns:MessageBoxAdminServiceMessageBoxAdminException" name="MessageBoxAdminServiceMessageBoxAdminException" wsaw:Action="urn:getAllMessageBoxesMessageBoxAdminServiceMessageBoxAdminException" />
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
             <wsdl:input message="ns:getAllRetrievedMessagesRequest" wsaw:Action="urn:getAllRetrievedMessages" />
@@ -236,8 +237,8 @@
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="MessageBoxAdminServiceSoap11Binding" type="ns:MessageBoxAdminServicePortType">
-        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
 
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
         <wsdl:operation name="getMessageBoxesCount">
             <soap:operation soapAction="urn:getMessageBoxesCount" style="document" />
             <wsdl:input>
@@ -246,8 +247,8 @@
             <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
-            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
 
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
         </wsdl:operation>
@@ -256,8 +257,8 @@
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
-            <wsdl:output>
 
+            <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
@@ -266,8 +267,8 @@
         </wsdl:operation>
         <wsdl:operation name="getSQSKeys">
             <soap:operation soapAction="urn:getSQSKeys" style="document" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -276,8 +277,8 @@
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
-        </wsdl:operation>
 
+        </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <soap:operation soapAction="urn:getAllAvailableMessages" style="document" />
             <wsdl:input>
@@ -286,8 +287,8 @@
             <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
-            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
 
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
         </wsdl:operation>
@@ -296,8 +297,8 @@
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
-            <wsdl:output>
 
+            <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
@@ -306,8 +307,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
             <soap:operation soapAction="urn:getAllRetrievedMessages" style="document" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -316,8 +317,8 @@
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
-        </wsdl:operation>
 
+        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="MessageBoxAdminServiceSoap12Binding" type="ns:MessageBoxAdminServicePortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
@@ -326,8 +327,8 @@
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
-            <wsdl:output>
 
+            <wsdl:output>
                 <soap12:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
@@ -336,8 +337,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAllPermissions">
             <soap12:operation soapAction="urn:getAllPermissions" style="document" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -346,8 +347,8 @@
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
-        </wsdl:operation>
 
+        </wsdl:operation>
         <wsdl:operation name="getSQSKeys">
             <soap12:operation soapAction="urn:getSQSKeys" style="document" />
             <wsdl:input>
@@ -356,8 +357,8 @@
             <wsdl:output>
                 <soap12:body use="literal" />
             </wsdl:output>
-            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
 
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
         </wsdl:operation>
@@ -366,8 +367,8 @@
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
-            <wsdl:output>
 
+            <wsdl:output>
                 <soap12:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
@@ -376,8 +377,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAllMessageBoxes">
             <soap12:operation soapAction="urn:getAllMessageBoxes" style="document" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -386,8 +387,8 @@
             <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
-        </wsdl:operation>
 
+        </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
             <soap12:operation soapAction="urn:getAllRetrievedMessages" style="document" />
             <wsdl:input>
@@ -396,8 +397,8 @@
             <wsdl:output>
                 <soap12:body use="literal" />
             </wsdl:output>
-            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
 
+            <wsdl:fault name="MessageBoxAdminServiceMessageBoxAdminException">
                 <soap12:fault use="literal" name="MessageBoxAdminServiceMessageBoxAdminException" />
             </wsdl:fault>
         </wsdl:operation>
@@ -406,8 +407,8 @@
         <http:binding verb="POST" />
         <wsdl:operation name="getMessageBoxesCount">
             <http:operation location="getMessageBoxesCount" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
             <wsdl:output>
@@ -416,8 +417,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAllPermissions">
             <http:operation location="getAllPermissions" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
             <wsdl:output>
@@ -426,8 +427,8 @@
         </wsdl:operation>
         <wsdl:operation name="getSQSKeys">
             <http:operation location="getSQSKeys" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
             <wsdl:output>
@@ -436,8 +437,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAllAvailableMessages">
             <http:operation location="getAllAvailableMessages" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
             <wsdl:output>
@@ -446,8 +447,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAllMessageBoxes">
             <http:operation location="getAllMessageBoxes" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
             <wsdl:output>
@@ -456,8 +457,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAllRetrievedMessages">
             <http:operation location="getAllRetrievedMessages" />
-            <wsdl:input>
 
+            <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
             <wsdl:output>
@@ -466,16 +467,16 @@
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="MessageBoxAdminService">
-        <wsdl:port name="MessageBoxAdminServiceHttpsSoap11Endpoint" binding="ns:MessageBoxAdminServiceSoap11Binding">
 
-            <soap:address location="https://10.215.174.38:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap11Endpoint/" />
+        <wsdl:port name="MessageBoxAdminServiceHttpsSoap11Endpoint" binding="ns:MessageBoxAdminServiceSoap11Binding">
+            <soap:address location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap11Endpoint/" />
         </wsdl:port>
         <wsdl:port name="MessageBoxAdminServiceHttpsSoap12Endpoint" binding="ns:MessageBoxAdminServiceSoap12Binding">
-            <soap12:address location="https://10.215.174.38:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap12Endpoint/" />
+            <soap12:address location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsSoap12Endpoint/" />
         </wsdl:port>
         <wsdl:port name="MessageBoxAdminServiceHttpsEndpoint" binding="ns:MessageBoxAdminServiceHttpBinding">
-            <http:address location="https://10.215.174.38:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsEndpoint/" />
+            <http:address location="https://172.16.208.1:9443/services/MessageBoxAdminService.MessageBoxAdminServiceHttpsEndpoint/" />
         </wsdl:port>
-    </wsdl:service>
 
+    </wsdl:service>
 </wsdl:definitions>
