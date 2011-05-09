@@ -52,7 +52,7 @@
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
 									<arg line="-uri src/main/resources/ActivityPublisherAdmin.wsdl -u -uw -o target/generated-code
-									-p org.wso2.carbon.bam.data.publisher.activity.mediation.stub -ns2p http://services.mediation.activity.publisher.data.bam.carbon.wso2.org=org.wso2.carbon.bam.data.publisher.activity.mediation.stub.services,http://config.mediation.activity.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.activity.mediation.stub.config,http://org.apache.axis2/xsd=org.wso2.carbon.bam.data.publisher.activity.mediation.stub.axis2"/>
+									-p org.wso2.carbon.bam.data.publisher.activity.mediation.stub -ns2p http://services.mediation.activity.publisher.data.bam.carbon.wso2.org=org.wso2.carbon.bam.data.publisher.activity.mediation.stub.services,http://config.mediation.activity.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.activity.mediation.stub.config,http://org.apache.axis2/xsd=org.wso2.carbon.bam.data.publisher.activity.mediation.stub.axis2,http://config.activitymediator.mediator.activity.publisher.data.bam.carbon.wso2.org/xsd=org.wso2.carbon.bam.data.publisher.activity.mediation.stub.config"/>
                                     <classpath refid="wsdl2java.classpath"/>
 								</java>
                             </tasks>
