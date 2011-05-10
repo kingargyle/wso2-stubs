@@ -94,7 +94,6 @@
                             org.wso2.carbon.datasource.ui.stub.*
                         </Export-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
-                        <Axis2Deployer>DataServicesDeployer</Axis2Deployer>
                     </instructions>
                 </configuration>
             </plugin>
