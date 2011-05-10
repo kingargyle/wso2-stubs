@@ -101,7 +101,7 @@
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://to.common.endpoint.carbon.wso2.org/xsd">
             <xs:complexType name="WSDLEndpointData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="epDur" type="xs:long"/>
                     <xs:element minOccurs="0" name="epName" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="epPort" nillable="true" type="xs:string"/>
@@ -124,23 +124,23 @@
                     <xs:element minOccurs="0" name="epwsdlTimeoutAction" type="xs:int"/>
                     <xs:element minOccurs="0" name="inLineWSDL" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="retryDisabledErrorCodes" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="TemplateEndpointData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="epType" type="xs:int"/>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="parametersAsColonSepArray" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="targetTemplate" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="LoadBalanceEndpointData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="sessionTimeout" type="xs:long"/>
                     <xs:element minOccurs="0" name="sessiontype" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="DefaultEndpointData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="epName" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="epType" type="xs:int"/>
                     <xs:element minOccurs="0" name="errorCodes" nillable="true" type="xs:string"/>
@@ -167,10 +167,10 @@
                     <xs:element minOccurs="0" name="wsadd" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="wsrm" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="wssec" type="xs:boolean"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="AddressEndpointData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="address" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="epName" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="epType" type="xs:int"/>
@@ -198,16 +198,16 @@
                     <xs:element minOccurs="0" name="wsadd" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="wsrm" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="wssec" type="xs:boolean"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="EndpointMetaData">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="enableStatistics" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="switchOn" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="type" type="xs:int"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://multitenancy.config.core.user.carbon.wso2.org/xsd">
