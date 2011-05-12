@@ -463,35 +463,35 @@
                    targetNamespace="http://internal.admin.cep.carbon.wso2.org/xsd">
 
             <xs:complexType name="BucketDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="engineProvider" nillable="true" type="xs:string"/>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="inputs" nillable="true" type="ax29:InputDTO"/>
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="queries" nillable="true"
                                 type="ax29:QueryDTO"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
 
             <xs:complexType name="InputDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="brokerName" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="mapping" nillable="true" type="ax29:MappingDTO"/>
                     <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="MappingDTO">
-                <xs:sequence>
+                <xs:all>
 
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="properties" nillable="true"
                                 type="ax29:PropertyDTO"/>
                     <xs:element minOccurs="0" name="stream" nillable="true" type="xs:string"/>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="xpathDefinition" nillable="true"
                                 type="ax29:XpathDefinitionDTO"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="PropertyDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="inputProperty" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
 
@@ -499,73 +499,73 @@
                     <xs:element minOccurs="0" name="xmlFieldName" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="xmlFieldType" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="xpath" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="XpathDefinitionDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="namespace" nillable="true" type="xs:string"/>
 
                     <xs:element minOccurs="0" name="prefix" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="QueryDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="expression" nillable="true" type="ax29:ExpressionDTO"/>
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="output" nillable="true" type="ax29:OutputDTO"/>
-                </xs:sequence>
+                </xs:all>
 
             </xs:complexType>
             <xs:complexType name="ExpressionDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="text" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="type" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="OutputDTO">
-                <xs:sequence>
+                <xs:all>
 
                     <xs:element minOccurs="0" name="brokerName" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="elementMapping" nillable="true" type="ax29:ElementMappingDTO"/>
                     <xs:element minOccurs="0" name="topic" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="xmlMapping" nillable="true" type="ax29:XMLMappingDTO"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="ElementMappingDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="documentElement" nillable="true" type="xs:string"/>
 
                     <xs:element minOccurs="0" name="namespace" nillable="true" type="xs:string"/>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="properties" nillable="true"
                                 type="ax29:PropertyDTO"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
             <xs:complexType name="XMLMappingDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="mappingXMLText" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
 
             <xs:complexType name="BucketBasicInfoDTO">
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
                    targetNamespace="http://exception.internal.admin.cep.carbon.wso2.org/xsd">
             <xs:complexType name="CEPAdminException">
 
-                <xs:sequence>
+                <xs:all>
                     <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string"/>
-                </xs:sequence>
+                </xs:all>
             </xs:complexType>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
                    targetNamespace="http://exception.core.cep.carbon.wso2.org/xsd">
             <xs:complexType name="CEPConfigurationException">
-                <xs:sequence/>
+                <xs:all/>
             </xs:complexType>
 
         </xs:schema>
