@@ -1,9 +1,29 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2384="http://core.reporting.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://services.core.reporting.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax2382="http://api.reporting.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.core.reporting.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://services.core.reporting.carbon.wso2.org" xmlns:ax2319="http://api.reporting.carbon.wso2.org/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax2321="http://engine.jasperreports.sf.net/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2323="http://core.reporting.carbon.wso2.org/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.core.reporting.carbon.wso2.org">
     <wsdl:documentation>ReportingResourcesSupplier</wsdl:documentation>
     <wsdl:types>
-        <xs:schema xmlns:ax2385="http://core.reporting.carbon.wso2.org/xsd" xmlns:ax2383="http://api.reporting.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.core.reporting.carbon.wso2.org">
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://engine.jasperreports.sf.net/xsd">
+            <xs:complexType name="JRException">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax2324="http://core.reporting.carbon.wso2.org/xsd" xmlns:ax2322="http://engine.jasperreports.sf.net/xsd" xmlns:ax2320="http://api.reporting.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.core.reporting.carbon.wso2.org">
             <xs:import namespace="http://api.reporting.carbon.wso2.org/xsd"/>
+            <xs:import namespace="http://engine.jasperreports.sf.net/xsd"/>
             <xs:import namespace="http://core.reporting.carbon.wso2.org/xsd"/>
+            <xs:element name="ReportingResourcesSupplierReportingException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ReportingException" nillable="true" type="ax2319:ReportingException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ReportingResourcesSupplierJRException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="JRException" nillable="true" type="ax2321:JRException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="updateReport">
                 <xs:complexType>
                     <xs:sequence>
@@ -16,13 +36,6 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" type="xs:boolean"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="ReportingResourcesSupplierReportingException">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="ReportingException" nillable="true" type="ax2382:ReportingException"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -41,6 +54,13 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="ReportingResourcesSupplierXMLStreamException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="XMLStreamException" nillable="true" type="xs:anyType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getReportParam">
                 <xs:complexType>
                     <xs:sequence>
@@ -51,7 +71,7 @@
             <xs:element name="getReportParamResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2384:ReportParameters"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2324:ReportParameters"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -113,11 +133,17 @@
     <wsdl:message name="updateReportResponse">
         <wsdl:part name="parameters" element="ns:updateReportResponse"/>
     </wsdl:message>
+    <wsdl:message name="ReportingResourcesSupplierJRException">
+        <wsdl:part name="parameters" element="ns:ReportingResourcesSupplierJRException"/>
+    </wsdl:message>
     <wsdl:message name="getReportParamRequest">
         <wsdl:part name="parameters" element="ns:getReportParam"/>
     </wsdl:message>
     <wsdl:message name="getReportParamResponse">
         <wsdl:part name="parameters" element="ns:getReportParamResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ReportingResourcesSupplierXMLStreamException">
+        <wsdl:part name="parameters" element="ns:ReportingResourcesSupplierXMLStreamException"/>
     </wsdl:message>
     <wsdl:portType name="ReportingResourcesSupplierPortType">
         <wsdl:operation name="deleteReportTemplate">
@@ -137,11 +163,14 @@
         <wsdl:operation name="updateReport">
             <wsdl:input message="ns:updateReportRequest" wsaw:Action="urn:updateReport"/>
             <wsdl:output message="ns:updateReportResponse" wsaw:Action="urn:updateReportResponse"/>
+            <wsdl:fault message="ns:ReportingResourcesSupplierReportingException" name="ReportingResourcesSupplierReportingException" wsaw:Action="urn:updateReportReportingResourcesSupplierReportingException"/>
+            <wsdl:fault message="ns:ReportingResourcesSupplierJRException" name="ReportingResourcesSupplierJRException" wsaw:Action="urn:updateReportReportingResourcesSupplierJRException"/>
         </wsdl:operation>
         <wsdl:operation name="getReportParam">
             <wsdl:input message="ns:getReportParamRequest" wsaw:Action="urn:getReportParam"/>
             <wsdl:output message="ns:getReportParamResponse" wsaw:Action="urn:getReportParamResponse"/>
             <wsdl:fault message="ns:ReportingResourcesSupplierReportingException" name="ReportingResourcesSupplierReportingException" wsaw:Action="urn:getReportParamReportingResourcesSupplierReportingException"/>
+            <wsdl:fault message="ns:ReportingResourcesSupplierXMLStreamException" name="ReportingResourcesSupplierXMLStreamException" wsaw:Action="urn:getReportParamReportingResourcesSupplierXMLStreamException"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="ReportingResourcesSupplierSoap11Binding" type="ns:ReportingResourcesSupplierPortType">
@@ -187,6 +216,12 @@
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
+            <wsdl:fault name="ReportingResourcesSupplierReportingException">
+                <soap:fault use="literal" name="ReportingResourcesSupplierReportingException"/>
+            </wsdl:fault>
+            <wsdl:fault name="ReportingResourcesSupplierJRException">
+                <soap:fault use="literal" name="ReportingResourcesSupplierJRException"/>
+            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getReportParam">
             <soap:operation soapAction="urn:getReportParam" style="document"/>
@@ -198,6 +233,9 @@
             </wsdl:output>
             <wsdl:fault name="ReportingResourcesSupplierReportingException">
                 <soap:fault use="literal" name="ReportingResourcesSupplierReportingException"/>
+            </wsdl:fault>
+            <wsdl:fault name="ReportingResourcesSupplierXMLStreamException">
+                <soap:fault use="literal" name="ReportingResourcesSupplierXMLStreamException"/>
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
@@ -244,6 +282,12 @@
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
+            <wsdl:fault name="ReportingResourcesSupplierReportingException">
+                <soap12:fault use="literal" name="ReportingResourcesSupplierReportingException"/>
+            </wsdl:fault>
+            <wsdl:fault name="ReportingResourcesSupplierJRException">
+                <soap12:fault use="literal" name="ReportingResourcesSupplierJRException"/>
+            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getReportParam">
             <soap12:operation soapAction="urn:getReportParam" style="document"/>
@@ -255,6 +299,9 @@
             </wsdl:output>
             <wsdl:fault name="ReportingResourcesSupplierReportingException">
                 <soap12:fault use="literal" name="ReportingResourcesSupplierReportingException"/>
+            </wsdl:fault>
+            <wsdl:fault name="ReportingResourcesSupplierXMLStreamException">
+                <soap12:fault use="literal" name="ReportingResourcesSupplierXMLStreamException"/>
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>

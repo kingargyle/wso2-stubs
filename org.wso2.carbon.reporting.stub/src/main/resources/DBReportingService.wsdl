@@ -1,4 +1,4 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax2386="http://api.reporting.carbon.wso2.org/xsd" xmlns:ns="http://services.core.reporting.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ax2390="http://util.reporting.carbon.wso2.org/xsd" xmlns:ax2388="http://core.reporting.carbon.wso2.org/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.core.reporting.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://services.core.reporting.carbon.wso2.org" xmlns:ax2325="http://api.reporting.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2329="http://core.reporting.carbon.wso2.org/xsd" xmlns:ax2327="http://engine.jasperreports.sf.net/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax2331="http://util.reporting.carbon.wso2.org/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.core.reporting.carbon.wso2.org">
     <wsdl:documentation>DBReportingService</wsdl:documentation>
     <wsdl:types>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://util.reporting.carbon.wso2.org/xsd">
@@ -10,22 +10,35 @@
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
-        <xs:schema xmlns:ax2391="http://util.reporting.carbon.wso2.org/xsd" xmlns:ax2387="http://api.reporting.carbon.wso2.org/xsd" xmlns:ax2389="http://core.reporting.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.core.reporting.carbon.wso2.org">
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://engine.jasperreports.sf.net/xsd">
+            <xs:complexType name="JRException">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax2332="http://util.reporting.carbon.wso2.org/xsd" xmlns:ax2330="http://core.reporting.carbon.wso2.org/xsd" xmlns:ax2328="http://engine.jasperreports.sf.net/xsd" xmlns:ax2326="http://api.reporting.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.core.reporting.carbon.wso2.org">
             <xs:import namespace="http://api.reporting.carbon.wso2.org/xsd"/>
+            <xs:import namespace="http://engine.jasperreports.sf.net/xsd"/>
             <xs:import namespace="http://core.reporting.carbon.wso2.org/xsd"/>
             <xs:import namespace="http://util.reporting.carbon.wso2.org/xsd"/>
             <xs:element name="DBReportingServiceReportingException">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="ReportingException" nillable="true" type="ax2386:ReportingException"/>
+                        <xs:element minOccurs="0" name="ReportingException" nillable="true" type="ax2325:ReportingException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DBReportingServiceJRException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="JRException" nillable="true" type="ax2328:JRException"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getReport">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="reportBean" nillable="true" type="ax2388:ReportBean"/>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="reportParamMap" nillable="true" type="ax2391:ReportParamMap"/>
+                        <xs:element minOccurs="0" name="reportBean" nillable="true" type="ax2330:ReportBean"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="reportParamMap" nillable="true" type="ax2332:ReportParamMap"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -79,6 +92,9 @@
     <wsdl:message name="DBReportingServiceReportingException">
         <wsdl:part name="parameters" element="ns:DBReportingServiceReportingException"/>
     </wsdl:message>
+    <wsdl:message name="DBReportingServiceJRException">
+        <wsdl:part name="parameters" element="ns:DBReportingServiceJRException"/>
+    </wsdl:message>
     <wsdl:portType name="DBReportingServicePortType">
         <wsdl:operation name="getCarbonDataSourceNames">
             <wsdl:input message="ns:getCarbonDataSourceNamesRequest" wsaw:Action="urn:getCarbonDataSourceNames"/>
@@ -88,6 +104,7 @@
             <wsdl:input message="ns:getReportRequest" wsaw:Action="urn:getReport"/>
             <wsdl:output message="ns:getReportResponse" wsaw:Action="urn:getReportResponse"/>
             <wsdl:fault message="ns:DBReportingServiceReportingException" name="DBReportingServiceReportingException" wsaw:Action="urn:getReportDBReportingServiceReportingException"/>
+            <wsdl:fault message="ns:DBReportingServiceJRException" name="DBReportingServiceJRException" wsaw:Action="urn:getReportDBReportingServiceJRException"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="DBReportingServiceSoap11Binding" type="ns:DBReportingServicePortType">
@@ -100,6 +117,9 @@
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
+            <wsdl:fault name="DBReportingServiceJRException">
+                <soap:fault use="literal" name="DBReportingServiceJRException"/>
+            </wsdl:fault>
             <wsdl:fault name="DBReportingServiceReportingException">
                 <soap:fault use="literal" name="DBReportingServiceReportingException"/>
             </wsdl:fault>
@@ -124,6 +144,9 @@
             <wsdl:output>
                 <soap12:body use="literal"/>
             </wsdl:output>
+            <wsdl:fault name="DBReportingServiceJRException">
+                <soap12:fault use="literal" name="DBReportingServiceJRException"/>
+            </wsdl:fault>
             <wsdl:fault name="DBReportingServiceReportingException">
                 <soap12:fault use="literal" name="DBReportingServiceReportingException"/>
             </wsdl:fault>
