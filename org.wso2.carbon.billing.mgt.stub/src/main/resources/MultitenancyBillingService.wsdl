@@ -90,6 +90,20 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getOutstandingBalance">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="tenantDomain" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOutstandingBalanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax232:OutstandingBalanceInfoBean" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getCurrentInvoice">
                 <xs:complexType>
                     <xs:sequence />
@@ -219,6 +233,12 @@
     <wsdl:message name="getPastInvoiceResponse">
         <wsdl:part name="parameters" element="ns:getPastInvoiceResponse" />
     </wsdl:message>
+    <wsdl:message name="getOutstandingBalanceRequest">
+        <wsdl:part name="parameters" element="ns:getOutstandingBalance" />
+    </wsdl:message>
+    <wsdl:message name="getOutstandingBalanceResponse">
+        <wsdl:part name="parameters" element="ns:getOutstandingBalanceResponse" />
+    </wsdl:message>
     <wsdl:message name="getCurrentInvoiceRequest">
         <wsdl:part name="parameters" element="ns:getCurrentInvoice" />
     </wsdl:message>
@@ -247,6 +267,11 @@
             <wsdl:input message="ns:getPastInvoiceRequest" wsaw:Action="urn:getPastInvoice" />
             <wsdl:output message="ns:getPastInvoiceResponse" wsaw:Action="urn:getPastInvoiceResponse" />
             <wsdl:fault message="ns:MultitenancyBillingServiceException" name="MultitenancyBillingServiceException" wsaw:Action="urn:getPastInvoiceMultitenancyBillingServiceException" />
+        </wsdl:operation>
+        <wsdl:operation name="getOutstandingBalance">
+            <wsdl:input message="ns:getOutstandingBalanceRequest" wsaw:Action="urn:getOutstandingBalance" />
+            <wsdl:output message="ns:getOutstandingBalanceResponse" wsaw:Action="urn:getOutstandingBalanceResponse" />
+            <wsdl:fault message="ns:MultitenancyBillingServiceException" name="MultitenancyBillingServiceException" wsaw:Action="urn:getOutstandingBalanceMultitenancyBillingServiceException" />
         </wsdl:operation>
         <wsdl:operation name="getCurrentInvoice">
             <wsdl:input message="ns:getCurrentInvoiceRequest" wsaw:Action="urn:getCurrentInvoice" />
@@ -280,6 +305,18 @@
         </wsdl:operation>
         <wsdl:operation name="getAvailableBillingPeriods">
             <soap:operation soapAction="urn:getAvailableBillingPeriods" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="MultitenancyBillingServiceException">
+                <soap:fault use="literal" name="MultitenancyBillingServiceException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOutstandingBalance">
+            <soap:operation soapAction="urn:getOutstandingBalance" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
@@ -353,6 +390,18 @@
                 <soap12:fault use="literal" name="MultitenancyBillingServiceException" />
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getOutstandingBalance">
+            <soap12:operation soapAction="urn:getOutstandingBalance" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="MultitenancyBillingServiceException">
+                <soap12:fault use="literal" name="MultitenancyBillingServiceException" />
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="getCurrentInvoice">
             <soap12:operation soapAction="urn:getCurrentInvoice" style="document" />
             <wsdl:input>
@@ -403,6 +452,15 @@
         </wsdl:operation>
         <wsdl:operation name="getAvailableBillingPeriods">
             <http:operation location="getAvailableBillingPeriods" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOutstandingBalance">
+            <http:operation location="getOutstandingBalance" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
