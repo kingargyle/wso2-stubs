@@ -124,6 +124,7 @@
                     <xs:element minOccurs="0" name="epwsdlSecutiryKey" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="epwsdlTimeoutAction" type="xs:int"/>
                     <xs:element minOccurs="0" name="inLineWSDL" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="properties" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="retryDisabledErrorCodes" nillable="true" type="xs:string"/>
                 </xs:all>
             </xs:complexType>
@@ -136,6 +137,7 @@
             </xs:complexType>
             <xs:complexType name="LoadBalanceEndpointData">
                 <xs:all>
+                    <xs:element minOccurs="0" name="properties" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="sessionTimeout" type="xs:long"/>
                     <xs:element minOccurs="0" name="sessiontype" nillable="true" type="xs:string"/>
                 </xs:all>
@@ -151,6 +153,7 @@
                     <xs:element minOccurs="0" name="maxSusDuration" type="xs:long"/>
                     <xs:element minOccurs="0" name="mtom" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="pox" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="properties" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="rest" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="retryDelay" type="xs:int"/>
                     <xs:element minOccurs="0" name="retryDisabledErrorCodes" nillable="true" type="xs:string"/>
