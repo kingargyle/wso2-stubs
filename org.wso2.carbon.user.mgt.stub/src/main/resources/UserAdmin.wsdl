@@ -422,6 +422,7 @@
                     <xs:element minOccurs="0" name="adminUser" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="bulkImportSupported" type="xs:boolean"/>
                     <xs:element minOccurs="0" name="everyOneRole" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="externalIdP" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="jsRegEx" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="maxUserListCount" type="xs:int"/>
                     <xs:element minOccurs="0" name="passwordsExternallyManaged" type="xs:boolean"/>
