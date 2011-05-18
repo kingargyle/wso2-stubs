@@ -100,191 +100,211 @@
 
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getSystemLog">
+            <xs:element name="isStratosService">
                 <xs:complexType>
                     <xs:sequence />
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getSystemLogResponse">
+            <xs:element name="isStratosServiceResponse">
                 <xs:complexType>
 
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getSystemLog">
+                <xs:complexType>
+                    <xs:sequence />
+                </xs:complexType>
+
+            </xs:element>
+            <xs:element name="getSystemLogResponse">
+                <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2273:LogData" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getSyslogData">
+
                 <xs:complexType>
                     <xs:sequence />
                 </xs:complexType>
-
             </xs:element>
             <xs:element name="getSyslogDataResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2273:SyslogData" />
                     </xs:sequence>
+
                 </xs:complexType>
             </xs:element>
             <xs:element name="getLoggerData">
-
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="loggerName" nillable="true" type="xs:string" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
             <xs:element name="getLoggerDataResponse">
                 <xs:complexType>
                     <xs:sequence>
-
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2273:LoggerData" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAppenderData">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element minOccurs="0" name="appenderName" nillable="true" type="xs:string" />
                     </xs:sequence>
-
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAppenderDataResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax2273:AppenderData" />
+
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="getAllLoggerData">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="logNameFilter" nillable="true" type="xs:string" />
                         <xs:element minOccurs="0" name="beginsWith" type="xs:boolean" />
                     </xs:sequence>
+
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllLoggerDataResponse">
-
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2273:LoggerData" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://data.service.logging.carbon.wso2.org/xsd">
             <xs:complexType name="LogData">
-
                 <xs:sequence>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="appenderData" nillable="true" type="ax2273:AppenderData" />
                     <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="logLevel" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="logPattern" nillable="true" type="xs:string" />
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="loggerData" nillable="true" type="ax2273:LoggerData" />
+
                     <xs:element minOccurs="0" name="selectedAppenderData" nillable="true" type="ax2273:AppenderData" />
                     <xs:element minOccurs="0" name="selectedLoggerData" nillable="true" type="ax2273:LoggerData" />
                 </xs:sequence>
-
             </xs:complexType>
             <xs:complexType name="AppenderData">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="facility" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="isFileAppender" type="xs:boolean" />
                     <xs:element minOccurs="0" name="isSysLogAppender" type="xs:boolean" />
+
                     <xs:element minOccurs="0" name="logFile" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="pattern" nillable="true" type="xs:string" />
-
                     <xs:element minOccurs="0" name="sysLogHost" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="threshold" nillable="true" type="xs:string" />
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="LoggerData">
                 <xs:sequence>
+
                     <xs:element minOccurs="0" name="additivity" type="xs:boolean" />
                     <xs:element minOccurs="0" name="level" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-
                     <xs:element minOccurs="0" name="parentName" nillable="true" type="xs:string" />
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="SyslogData">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+
                     <xs:element minOccurs="0" name="port" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="realm" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
-
                     <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="getAllLoggerDataRequest">
+
         <wsdl:part name="parameters" element="ns1:getAllLoggerData" />
     </wsdl:message>
     <wsdl:message name="getAllLoggerDataResponse">
-
         <wsdl:part name="parameters" element="ns1:getAllLoggerDataResponse" />
     </wsdl:message>
     <wsdl:message name="updateAllAppenderDataRequest">
         <wsdl:part name="parameters" element="ns1:updateAllAppenderData" />
     </wsdl:message>
     <wsdl:message name="LoggingAdminException">
+
         <wsdl:part name="parameters" element="ns1:LoggingAdminException" />
     </wsdl:message>
     <wsdl:message name="getSyslogDataRequest">
-
         <wsdl:part name="parameters" element="ns1:getSyslogData" />
     </wsdl:message>
     <wsdl:message name="getSyslogDataResponse">
         <wsdl:part name="parameters" element="ns1:getSyslogDataResponse" />
     </wsdl:message>
     <wsdl:message name="LoggingAdminLoggingAdminException">
+
         <wsdl:part name="parameters" element="ns1:LoggingAdminLoggingAdminException" />
     </wsdl:message>
     <wsdl:message name="updateSystemLogRequest">
-
         <wsdl:part name="parameters" element="ns1:updateSystemLog" />
     </wsdl:message>
     <wsdl:message name="updateSyslogConfigRequest">
         <wsdl:part name="parameters" element="ns1:updateSyslogConfig" />
     </wsdl:message>
     <wsdl:message name="getAppenderDataRequest">
+
         <wsdl:part name="parameters" element="ns1:getAppenderData" />
     </wsdl:message>
     <wsdl:message name="getAppenderDataResponse">
-
         <wsdl:part name="parameters" element="ns1:getAppenderDataResponse" />
     </wsdl:message>
     <wsdl:message name="removeSyslogPatternRequest">
         <wsdl:part name="parameters" element="ns1:removeSyslogPattern" />
     </wsdl:message>
     <wsdl:message name="removeSyslogPatternResponse">
+
         <wsdl:part name="parameters" element="ns1:removeSyslogPatternResponse" />
     </wsdl:message>
     <wsdl:message name="restoreDefaultsRequest">
-
         <wsdl:part name="parameters" element="ns1:restoreDefaults" />
     </wsdl:message>
     <wsdl:message name="updateLoggerDataRequest">
         <wsdl:part name="parameters" element="ns1:updateLoggerData" />
     </wsdl:message>
     <wsdl:message name="getLoggerDataRequest">
+
         <wsdl:part name="parameters" element="ns1:getLoggerData" />
     </wsdl:message>
     <wsdl:message name="getLoggerDataResponse">
-
         <wsdl:part name="parameters" element="ns1:getLoggerDataResponse" />
     </wsdl:message>
     <wsdl:message name="getSystemLogRequest">
         <wsdl:part name="parameters" element="ns1:getSystemLog" />
     </wsdl:message>
     <wsdl:message name="getSystemLogResponse">
+
         <wsdl:part name="parameters" element="ns1:getSystemLogResponse" />
+    </wsdl:message>
+    <wsdl:message name="isStratosServiceRequest">
+        <wsdl:part name="parameters" element="ns1:isStratosService" />
+    </wsdl:message>
+    <wsdl:message name="isStratosServiceResponse">
+        <wsdl:part name="parameters" element="ns1:isStratosServiceResponse" />
     </wsdl:message>
     <wsdl:portType name="LoggingAdminPortType">
 
@@ -339,116 +359,135 @@
             <wsdl:fault message="tns:LoggingAdminException" name="LoggingAdminException" wsaw:Action="urn:getSystemLogLoggingAdminException" />
 
         </wsdl:operation>
+        <wsdl:operation name="isStratosService">
+            <wsdl:input message="tns:isStratosServiceRequest" wsaw:Action="urn:isStratosService" />
+            <wsdl:output message="tns:isStratosServiceResponse" wsaw:Action="urn:isStratosServiceResponse" />
+            <wsdl:fault message="tns:LoggingAdminException" name="LoggingAdminException" wsaw:Action="urn:isStratosServiceLoggingAdminException" />
+        </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="LoggingAdminSoap11Binding" type="tns:LoggingAdminPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+
         <wsdl:operation name="getAllLoggerData">
             <soap:operation soapAction="urn:getAllLoggerData" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
-
             <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
+
         <wsdl:operation name="getSyslogData">
             <soap:operation soapAction="urn:getSyslogData" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
-
             <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="LoggingAdminLoggingAdminException">
+
                 <soap:fault use="literal" name="LoggingAdminLoggingAdminException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="updateAllAppenderData">
             <soap:operation soapAction="urn:updateAllAppenderData" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
+
                 <soap:fault use="literal" name="LoggingAdminException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="updateSystemLog">
             <soap:operation soapAction="urn:updateSystemLog" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
+
                 <soap:fault use="literal" name="LoggingAdminException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="updateSyslogConfig">
             <soap:operation soapAction="urn:updateSyslogConfig" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminLoggingAdminException">
+
                 <soap:fault use="literal" name="LoggingAdminLoggingAdminException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAppenderData">
             <soap:operation soapAction="urn:getAppenderData" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
+
                 <soap:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="updateLoggerData">
             <soap:operation soapAction="urn:updateLoggerData" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
+
                 <soap:fault use="literal" name="LoggingAdminException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="restoreDefaults">
             <soap:operation soapAction="urn:restoreDefaults" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
+
                 <soap:fault use="literal" name="LoggingAdminException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="removeSyslogPattern">
             <soap:operation soapAction="urn:removeSyslogPattern" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
+
                 <soap:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getLoggerData">
             <soap:operation soapAction="urn:getLoggerData" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
+
                 <soap:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="isStratosService">
+            <soap:operation soapAction="urn:isStratosService" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="LoggingAdminException">
+                <soap:fault use="literal" name="LoggingAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="getSystemLog">
             <soap:operation soapAction="urn:getSystemLog" style="document" />
-
             <wsdl:input>
+
                 <soap:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -457,8 +496,8 @@
             <wsdl:fault name="LoggingAdminException">
                 <soap:fault use="literal" name="LoggingAdminException" />
             </wsdl:fault>
-
         </wsdl:operation>
+
     </wsdl:binding>
     <wsdl:binding name="LoggingAdminSoap12Binding" type="tns:LoggingAdminPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
@@ -467,8 +506,8 @@
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
-
             <wsdl:output>
+
                 <soap12:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
@@ -477,8 +516,8 @@
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
-
             <wsdl:output>
+
                 <soap12:body use="literal" />
             </wsdl:output>
             <wsdl:fault name="LoggingAdminLoggingAdminException">
@@ -487,8 +526,8 @@
         </wsdl:operation>
         <wsdl:operation name="updateAllAppenderData">
             <soap12:operation soapAction="urn:updateAllAppenderData" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
@@ -497,8 +536,8 @@
         </wsdl:operation>
         <wsdl:operation name="updateSystemLog">
             <soap12:operation soapAction="urn:updateSystemLog" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
@@ -507,8 +546,8 @@
         </wsdl:operation>
         <wsdl:operation name="updateSyslogConfig">
             <soap12:operation soapAction="urn:updateSyslogConfig" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminLoggingAdminException">
@@ -517,8 +556,8 @@
         </wsdl:operation>
         <wsdl:operation name="getAppenderData">
             <soap12:operation soapAction="urn:getAppenderData" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -527,8 +566,8 @@
         </wsdl:operation>
         <wsdl:operation name="updateLoggerData">
             <soap12:operation soapAction="urn:updateLoggerData" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
@@ -537,8 +576,8 @@
         </wsdl:operation>
         <wsdl:operation name="restoreDefaults">
             <soap12:operation soapAction="urn:restoreDefaults" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="LoggingAdminException">
@@ -547,8 +586,8 @@
         </wsdl:operation>
         <wsdl:operation name="removeSyslogPattern">
             <soap12:operation soapAction="urn:removeSyslogPattern" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -557,18 +596,18 @@
         </wsdl:operation>
         <wsdl:operation name="getLoggerData">
             <soap12:operation soapAction="urn:getLoggerData" style="document" />
-
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getSystemLog">
-            <soap12:operation soapAction="urn:getSystemLog" style="document" />
-
+        <wsdl:operation name="isStratosService">
+            <soap12:operation soapAction="urn:isStratosService" style="document" />
             <wsdl:input>
+
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
@@ -577,7 +616,20 @@
             <wsdl:fault name="LoggingAdminException">
                 <soap12:fault use="literal" name="LoggingAdminException" />
             </wsdl:fault>
+        </wsdl:operation>
 
+        <wsdl:operation name="getSystemLog">
+            <soap12:operation soapAction="urn:getSystemLog" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="LoggingAdminException">
+
+                <soap12:fault use="literal" name="LoggingAdminException" />
+            </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="LoggingAdminHttpBinding" type="tns:LoggingAdminPortType">
@@ -585,9 +637,9 @@
         <wsdl:operation name="getAllLoggerData">
             <http:operation location="getAllLoggerData" />
             <wsdl:input>
+
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
-
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
@@ -595,9 +647,9 @@
         <wsdl:operation name="getSyslogData">
             <http:operation location="getSyslogData" />
             <wsdl:input>
+
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
-
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
@@ -605,9 +657,9 @@
         <wsdl:operation name="updateAllAppenderData">
             <http:operation location="updateAllAppenderData" />
             <wsdl:input>
+
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
-
         </wsdl:operation>
         <wsdl:operation name="updateSystemLog">
             <http:operation location="updateSystemLog" />
@@ -615,9 +667,9 @@
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
         </wsdl:operation>
+
         <wsdl:operation name="updateSyslogConfig">
             <http:operation location="updateSyslogConfig" />
-
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
@@ -625,9 +677,9 @@
         <wsdl:operation name="getAppenderData">
             <http:operation location="getAppenderData" />
             <wsdl:input>
+
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
-
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
@@ -635,9 +687,9 @@
         <wsdl:operation name="updateLoggerData">
             <http:operation location="updateLoggerData" />
             <wsdl:input>
+
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
-
         </wsdl:operation>
         <wsdl:operation name="restoreDefaults">
             <http:operation location="restoreDefaults" />
@@ -645,9 +697,9 @@
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
         </wsdl:operation>
+
         <wsdl:operation name="removeSyslogPattern">
             <http:operation location="removeSyslogPattern" />
-
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
@@ -655,9 +707,9 @@
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
+
         <wsdl:operation name="getLoggerData">
             <http:operation location="getLoggerData" />
-
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
@@ -665,9 +717,19 @@
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
+
+        <wsdl:operation name="isStratosService">
+            <http:operation location="isStratosService" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
         <wsdl:operation name="getSystemLog">
             <http:operation location="getSystemLog" />
-
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
@@ -675,18 +737,18 @@
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
+
     </wsdl:binding>
     <wsdl:service name="LoggingAdmin">
-
         <wsdl:port name="LoggingAdminHttpsSoap11Endpoint" binding="tns:LoggingAdminSoap11Binding">
-            <soap:address location="https://192.168.1.4:9443/services/LoggingAdmin.LoggingAdminHttpsSoap11Endpoint/" />
+            <soap:address location="https://192.168.1.6:9443/services/LoggingAdmin.LoggingAdminHttpsSoap11Endpoint/" />
         </wsdl:port>
         <wsdl:port name="LoggingAdminHttpsSoap12Endpoint" binding="tns:LoggingAdminSoap12Binding">
-            <soap12:address location="https://192.168.1.4:9443/services/LoggingAdmin.LoggingAdminHttpsSoap12Endpoint/" />
+            <soap12:address location="https://192.168.1.6:9443/services/LoggingAdmin.LoggingAdminHttpsSoap12Endpoint/" />
         </wsdl:port>
         <wsdl:port name="LoggingAdminHttpsEndpoint" binding="tns:LoggingAdminHttpBinding">
-            <http:address location="https://192.168.1.4:9443/services/LoggingAdmin.LoggingAdminHttpsEndpoint/" />
-        </wsdl:port>
 
+            <http:address location="https://192.168.1.6:9443/services/LoggingAdmin.LoggingAdminHttpsEndpoint/" />
+        </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
