@@ -1,35 +1,43 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://entitlement.identity.carbon.wso2.org" xmlns:ax2185="http://dto.entitlement.identity.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2183="http://base.identity.carbon.wso2.org/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://entitlement.identity.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://entitlement.identity.carbon.wso2.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ax2189="http://dto.entitlement.identity.carbon.wso2.org/xsd" xmlns:ax2187="http://base.identity.carbon.wso2.org/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://entitlement.identity.carbon.wso2.org">
     <wsdl:documentation>EntitlementPolicyAdminService</wsdl:documentation>
     <wsdl:types>
-        <xs:schema xmlns:ax2184="http://base.identity.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.axis2/xsd" xmlns:ax2186="http://dto.entitlement.identity.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
+        <xs:schema xmlns:ax2190="http://dto.entitlement.identity.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.axis2/xsd" xmlns:ax2188="http://base.identity.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
             <xs:import namespace="http://base.identity.carbon.wso2.org/xsd" />
             <xs:import namespace="http://dto.entitlement.identity.carbon.wso2.org/xsd" />
             <xs:element name="EntitlementPolicyAdminServiceIdentityException">
                 <xs:complexType>
                     <xs:sequence>
 
-                        <xs:element minOccurs="0" name="IdentityException" nillable="true" type="ax2184:IdentityException" />
+                        <xs:element minOccurs="0" name="IdentityException" nillable="true" type="ax2188:IdentityException" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="updatePolicy">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="policy" nillable="true" type="ax2185:PolicyDTO" />
+                        <xs:element minOccurs="0" name="policy" nillable="true" type="ax2190:PolicyDTO" />
                     </xs:sequence>
 
                 </xs:complexType>
             </xs:element>
+            <xs:element name="setGlobalPolicyAlgorithm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="policyCombiningAlgorithm" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
             <xs:element name="removePolicy">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="policy" nillable="true" type="ax2185:PolicyDTO" />
+                        <xs:element minOccurs="0" name="policy" nillable="true" type="ax2190:PolicyDTO" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="importPolicyFromRegistry">
                 <xs:complexType>
+
                     <xs:sequence>
                         <xs:element minOccurs="0" name="policyRegistryPath" nillable="true" type="xs:string" />
                     </xs:sequence>
@@ -37,17 +45,30 @@
             </xs:element>
             <xs:element name="getPolicy">
                 <xs:complexType>
-
                     <xs:sequence>
                         <xs:element minOccurs="0" name="policyId" nillable="true" type="xs:string" />
+
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getPolicyResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2185:PolicyDTO" />
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2190:PolicyDTO" />
+                    </xs:sequence>
+                </xs:complexType>
 
+            </xs:element>
+            <xs:element name="getGlobalPolicyAlgorithm">
+                <xs:complexType>
+                    <xs:sequence />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGlobalPolicyAlgorithmResponse">
+                <xs:complexType>
+                    <xs:sequence>
+
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -56,8 +77,8 @@
                     <xs:sequence>
                         <xs:element minOccurs="0" name="resourceName" nillable="true" type="xs:string" />
                     </xs:sequence>
-                </xs:complexType>
 
+                </xs:complexType>
             </xs:element>
             <xs:element name="getEntitlementPolicyDataFromRegistryResponse">
                 <xs:complexType>
@@ -66,8 +87,8 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getAllPolicyIds">
 
+            <xs:element name="getAllPolicyIds">
                 <xs:complexType>
                     <xs:sequence />
                 </xs:complexType>
@@ -76,8 +97,8 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string" />
-                    </xs:sequence>
 
+                    </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getAllPolicies">
@@ -86,28 +107,28 @@
                         <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
                     </xs:sequence>
                 </xs:complexType>
-            </xs:element>
 
+            </xs:element>
             <xs:element name="getAllPoliciesResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2185:PaginatedPolicySetDTO" />
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2190:PaginatedPolicySetDTO" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="clearDecisionCache">
-                <xs:complexType>
 
+                <xs:complexType>
                     <xs:sequence />
                 </xs:complexType>
             </xs:element>
             <xs:element name="addPolicy">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="policy" nillable="true" type="ax2185:PolicyDTO" />
+                        <xs:element minOccurs="0" name="policy" nillable="true" type="ax2190:PolicyDTO" />
                     </xs:sequence>
-                </xs:complexType>
 
+                </xs:complexType>
             </xs:element>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dto.entitlement.identity.carbon.wso2.org/xsd">
@@ -116,18 +137,18 @@
                     <xs:element minOccurs="0" name="active" type="xs:boolean" />
                     <xs:element minOccurs="0" name="policy" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="policyId" nillable="true" type="xs:string" />
-                </xs:sequence>
 
+                </xs:sequence>
             </xs:complexType>
             <xs:complexType name="PaginatedPolicySetDTO">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="numberOfPages" type="xs:int" />
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="policySet" nillable="true" type="ax2185:PolicyDTO" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="policySet" nillable="true" type="ax2189:PolicyDTO" />
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
-        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://base.identity.carbon.wso2.org/xsd">
 
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://base.identity.carbon.wso2.org/xsd">
             <xs:complexType name="IdentityException">
                 <xs:sequence />
             </xs:complexType>
@@ -136,8 +157,8 @@
     <wsdl:message name="importPolicyFromRegistryRequest">
         <wsdl:part name="parameters" element="ns1:importPolicyFromRegistry" />
     </wsdl:message>
-    <wsdl:message name="EntitlementPolicyAdminServiceIdentityException">
 
+    <wsdl:message name="EntitlementPolicyAdminServiceIdentityException">
         <wsdl:part name="parameters" element="ns1:EntitlementPolicyAdminServiceIdentityException" />
     </wsdl:message>
     <wsdl:message name="getEntitlementPolicyDataFromRegistryRequest">
@@ -146,19 +167,29 @@
     <wsdl:message name="getEntitlementPolicyDataFromRegistryResponse">
         <wsdl:part name="parameters" element="ns1:getEntitlementPolicyDataFromRegistryResponse" />
     </wsdl:message>
-    <wsdl:message name="updatePolicyRequest">
 
+    <wsdl:message name="setGlobalPolicyAlgorithmRequest">
+        <wsdl:part name="parameters" element="ns1:setGlobalPolicyAlgorithm" />
+    </wsdl:message>
+    <wsdl:message name="updatePolicyRequest">
         <wsdl:part name="parameters" element="ns1:updatePolicy" />
     </wsdl:message>
     <wsdl:message name="addPolicyRequest">
         <wsdl:part name="parameters" element="ns1:addPolicy" />
     </wsdl:message>
+
     <wsdl:message name="getAllPolicyIdsRequest">
         <wsdl:part name="parameters" element="ns1:getAllPolicyIds" />
     </wsdl:message>
     <wsdl:message name="getAllPolicyIdsResponse">
-
         <wsdl:part name="parameters" element="ns1:getAllPolicyIdsResponse" />
+    </wsdl:message>
+    <wsdl:message name="getGlobalPolicyAlgorithmRequest">
+        <wsdl:part name="parameters" element="ns1:getGlobalPolicyAlgorithm" />
+    </wsdl:message>
+
+    <wsdl:message name="getGlobalPolicyAlgorithmResponse">
+        <wsdl:part name="parameters" element="ns1:getGlobalPolicyAlgorithmResponse" />
     </wsdl:message>
     <wsdl:message name="getAllPoliciesRequest">
         <wsdl:part name="parameters" element="ns1:getAllPolicies" />
@@ -166,8 +197,8 @@
     <wsdl:message name="getAllPoliciesResponse">
         <wsdl:part name="parameters" element="ns1:getAllPoliciesResponse" />
     </wsdl:message>
-    <wsdl:message name="removePolicyRequest">
 
+    <wsdl:message name="removePolicyRequest">
         <wsdl:part name="parameters" element="ns1:removePolicy" />
     </wsdl:message>
     <wsdl:message name="clearDecisionCacheRequest">
@@ -176,8 +207,8 @@
     <wsdl:message name="getPolicyRequest">
         <wsdl:part name="parameters" element="ns1:getPolicy" />
     </wsdl:message>
-    <wsdl:message name="getPolicyResponse">
 
+    <wsdl:message name="getPolicyResponse">
         <wsdl:part name="parameters" element="ns1:getPolicyResponse" />
     </wsdl:message>
     <wsdl:portType name="EntitlementPolicyAdminServicePortType">
@@ -186,28 +217,38 @@
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:importPolicyFromRegistryEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
         <wsdl:operation name="getEntitlementPolicyDataFromRegistry">
-            <wsdl:input message="tns:getEntitlementPolicyDataFromRegistryRequest" wsaw:Action="urn:getEntitlementPolicyDataFromRegistry" />
 
+            <wsdl:input message="tns:getEntitlementPolicyDataFromRegistryRequest" wsaw:Action="urn:getEntitlementPolicyDataFromRegistry" />
             <wsdl:output message="tns:getEntitlementPolicyDataFromRegistryResponse" wsaw:Action="urn:getEntitlementPolicyDataFromRegistryResponse" />
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:getEntitlementPolicyDataFromRegistryEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
+        <wsdl:operation name="setGlobalPolicyAlgorithm">
+            <wsdl:input message="tns:setGlobalPolicyAlgorithmRequest" wsaw:Action="urn:setGlobalPolicyAlgorithm" />
+            <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:setGlobalPolicyAlgorithmEntitlementPolicyAdminServiceIdentityException" />
+        </wsdl:operation>
         <wsdl:operation name="updatePolicy">
+
             <wsdl:input message="tns:updatePolicyRequest" wsaw:Action="urn:updatePolicy" />
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:updatePolicyEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
         <wsdl:operation name="addPolicy">
             <wsdl:input message="tns:addPolicyRequest" wsaw:Action="urn:addPolicy" />
-
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:addPolicyEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
         <wsdl:operation name="getAllPolicyIds">
             <wsdl:input message="tns:getAllPolicyIdsRequest" wsaw:Action="urn:getAllPolicyIds" />
+
             <wsdl:output message="tns:getAllPolicyIdsResponse" wsaw:Action="urn:getAllPolicyIdsResponse" />
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:getAllPolicyIdsEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
+        <wsdl:operation name="getGlobalPolicyAlgorithm">
+            <wsdl:input message="tns:getGlobalPolicyAlgorithmRequest" wsaw:Action="urn:getGlobalPolicyAlgorithm" />
+            <wsdl:output message="tns:getGlobalPolicyAlgorithmResponse" wsaw:Action="urn:getGlobalPolicyAlgorithmResponse" />
+            <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:getGlobalPolicyAlgorithmEntitlementPolicyAdminServiceIdentityException" />
+        </wsdl:operation>
         <wsdl:operation name="getAllPolicies">
-            <wsdl:input message="tns:getAllPoliciesRequest" wsaw:Action="urn:getAllPolicies" />
 
+            <wsdl:input message="tns:getAllPoliciesRequest" wsaw:Action="urn:getAllPolicies" />
             <wsdl:output message="tns:getAllPoliciesResponse" wsaw:Action="urn:getAllPoliciesResponse" />
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:getAllPoliciesEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
@@ -216,8 +257,8 @@
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:removePolicyEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
         <wsdl:operation name="clearDecisionCache">
-            <wsdl:input message="tns:clearDecisionCacheRequest" wsaw:Action="urn:clearDecisionCache" />
 
+            <wsdl:input message="tns:clearDecisionCacheRequest" wsaw:Action="urn:clearDecisionCache" />
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:clearDecisionCacheEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
         <wsdl:operation name="getPolicy">
@@ -226,8 +267,8 @@
             <wsdl:fault message="tns:EntitlementPolicyAdminServiceIdentityException" name="EntitlementPolicyAdminServiceIdentityException" wsaw:Action="urn:getPolicyEntitlementPolicyAdminServiceIdentityException" />
         </wsdl:operation>
     </wsdl:portType>
-    <wsdl:binding name="EntitlementPolicyAdminServiceSoap11Binding" type="tns:EntitlementPolicyAdminServicePortType">
 
+    <wsdl:binding name="EntitlementPolicyAdminServiceSoap11Binding" type="tns:EntitlementPolicyAdminServicePortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
         <wsdl:operation name="importPolicyFromRegistry">
             <soap:operation soapAction="urn:importPolicyFromRegistry" style="document" />
@@ -236,8 +277,8 @@
             </wsdl:input>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
-            </wsdl:fault>
 
+            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getEntitlementPolicyDataFromRegistry">
             <soap:operation soapAction="urn:getEntitlementPolicyDataFromRegistry" style="document" />
@@ -246,8 +287,18 @@
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal" />
-            </wsdl:output>
 
+            </wsdl:output>
+            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
+                <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setGlobalPolicyAlgorithm">
+            <soap:operation soapAction="urn:setGlobalPolicyAlgorithm" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+
+            </wsdl:input>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
@@ -256,8 +307,8 @@
             <soap:operation soapAction="urn:updatePolicy" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
-            </wsdl:input>
 
+            </wsdl:input>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
@@ -266,8 +317,8 @@
             <soap:operation soapAction="urn:getAllPolicyIds" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
-            </wsdl:input>
 
+            </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
@@ -276,8 +327,8 @@
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="addPolicy">
+
             <soap:operation soapAction="urn:addPolicy" style="document" />
-
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
@@ -285,19 +336,9 @@
                 <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="removePolicy">
-            <soap:operation soapAction="urn:removePolicy" style="document" />
+        <wsdl:operation name="getGlobalPolicyAlgorithm">
 
-            <wsdl:input>
-                <soap:body use="literal" />
-            </wsdl:input>
-            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
-                <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="getAllPolicies">
-            <soap:operation soapAction="urn:getAllPolicies" style="document" />
-
+            <soap:operation soapAction="urn:getGlobalPolicyAlgorithm" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>
@@ -306,90 +347,137 @@
             </wsdl:output>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
-            </wsdl:fault>
 
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removePolicy">
+            <soap:operation soapAction="urn:removePolicy" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
+                <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllPolicies">
+            <soap:operation soapAction="urn:getAllPolicies" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+
+            </wsdl:output>
+            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
+                <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="clearDecisionCache">
             <soap:operation soapAction="urn:clearDecisionCache" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
+
             </wsdl:input>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
-
         </wsdl:operation>
         <wsdl:operation name="getPolicy">
             <soap:operation soapAction="urn:getPolicy" style="document" />
             <wsdl:input>
                 <soap:body use="literal" />
+
             </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
-
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
+
     <wsdl:binding name="EntitlementPolicyAdminServiceSoap12Binding" type="tns:EntitlementPolicyAdminServicePortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
         <wsdl:operation name="importPolicyFromRegistry">
             <soap12:operation soapAction="urn:importPolicyFromRegistry" style="document" />
-
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getEntitlementPolicyDataFromRegistry">
             <soap12:operation soapAction="urn:getEntitlementPolicyDataFromRegistry" style="document" />
-
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal" />
+
             </wsdl:output>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setGlobalPolicyAlgorithm">
+            <soap12:operation soapAction="urn:setGlobalPolicyAlgorithm" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
 
+            </wsdl:input>
+            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
+                <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="updatePolicy">
             <soap12:operation soapAction="urn:updatePolicy" style="document" />
             <wsdl:input>
                 <soap12:body use="literal" />
+
             </wsdl:input>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
-
         </wsdl:operation>
         <wsdl:operation name="getAllPolicyIds">
             <soap12:operation soapAction="urn:getAllPolicyIds" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
+                <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addPolicy">
+
+            <soap12:operation soapAction="urn:addPolicy" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
+                <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getGlobalPolicyAlgorithm">
+
+            <soap12:operation soapAction="urn:getGlobalPolicyAlgorithm" style="document" />
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal" />
             </wsdl:output>
-
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="addPolicy">
-            <soap12:operation soapAction="urn:addPolicy" style="document" />
-            <wsdl:input>
-                <soap12:body use="literal" />
-            </wsdl:input>
 
-            <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
-                <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="removePolicy">
@@ -397,9 +485,9 @@
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
-
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
+
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getAllPolicies">
@@ -407,9 +495,9 @@
             <wsdl:input>
                 <soap12:body use="literal" />
             </wsdl:input>
-
             <wsdl:output>
                 <soap12:body use="literal" />
+
             </wsdl:output>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
@@ -417,9 +505,9 @@
         </wsdl:operation>
         <wsdl:operation name="clearDecisionCache">
             <soap12:operation soapAction="urn:clearDecisionCache" style="document" />
-
             <wsdl:input>
                 <soap12:body use="literal" />
+
             </wsdl:input>
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
@@ -427,9 +515,9 @@
         </wsdl:operation>
         <wsdl:operation name="getPolicy">
             <soap12:operation soapAction="urn:getPolicy" style="document" />
-
             <wsdl:input>
                 <soap12:body use="literal" />
+
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal" />
@@ -437,9 +525,9 @@
             <wsdl:fault name="EntitlementPolicyAdminServiceIdentityException">
                 <soap12:fault use="literal" name="EntitlementPolicyAdminServiceIdentityException" />
             </wsdl:fault>
-
         </wsdl:operation>
     </wsdl:binding>
+
     <wsdl:binding name="EntitlementPolicyAdminServiceHttpBinding" type="tns:EntitlementPolicyAdminServicePortType">
         <http:binding verb="POST" />
         <wsdl:operation name="importPolicyFromRegistry">
@@ -447,9 +535,9 @@
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
-
         </wsdl:operation>
         <wsdl:operation name="getEntitlementPolicyDataFromRegistry">
+
             <http:operation location="getEntitlementPolicyDataFromRegistry" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
@@ -457,17 +545,40 @@
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setGlobalPolicyAlgorithm">
 
+            <http:operation location="setGlobalPolicyAlgorithm" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="updatePolicy">
             <http:operation location="updatePolicy" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="getAllPolicyIds">
             <http:operation location="getAllPolicyIds" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
 
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addPolicy">
+            <http:operation location="addPolicy" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getGlobalPolicyAlgorithm">
+
+            <http:operation location="getGlobalPolicyAlgorithm" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
@@ -475,58 +586,51 @@
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="addPolicy">
-            <http:operation location="addPolicy" />
-
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters" />
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="removePolicy">
+
             <http:operation location="removePolicy" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
-
         </wsdl:operation>
         <wsdl:operation name="getAllPolicies">
             <http:operation location="getAllPolicies" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:output>
-
         </wsdl:operation>
         <wsdl:operation name="clearDecisionCache">
             <http:operation location="clearDecisionCache" />
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="getPolicy">
             <http:operation location="getPolicy" />
-
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters" />
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters" />
+
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="EntitlementPolicyAdminService">
-
         <wsdl:port name="EntitlementPolicyAdminServiceHttpsSoap11Endpoint" binding="tns:EntitlementPolicyAdminServiceSoap11Binding">
             <soap:address location="https://localhost:9443/services/EntitlementPolicyAdminService.EntitlementPolicyAdminServiceHttpsSoap11Endpoint/" />
         </wsdl:port>
         <wsdl:port name="EntitlementPolicyAdminServiceHttpsSoap12Endpoint" binding="tns:EntitlementPolicyAdminServiceSoap12Binding">
             <soap12:address location="https://localhost:9443/services/EntitlementPolicyAdminService.EntitlementPolicyAdminServiceHttpsSoap12Endpoint/" />
+
         </wsdl:port>
         <wsdl:port name="EntitlementPolicyAdminServiceHttpsEndpoint" binding="tns:EntitlementPolicyAdminServiceHttpBinding">
             <http:address location="https://localhost:9443/services/EntitlementPolicyAdminService.EntitlementPolicyAdminServiceHttpsEndpoint/" />
         </wsdl:port>
-
     </wsdl:service>
 </wsdl:definitions>
