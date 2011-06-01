@@ -22,10 +22,12 @@
                     <xs:element minOccurs="0" name="id" type="xs:int" />
                     <xs:element minOccurs="0" name="payment" nillable="true" type="xs:string" />
                     <xs:element minOccurs="0" name="paymentDate" nillable="true" type="xs:date" />
+                    <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="MultitenancySubscription">
                 <xs:sequence>
+                    <xs:element minOccurs="0" name="active" type="xs:boolean" />
                     <xs:element minOccurs="0" name="activeSince" nillable="true" type="xs:date" />
                     <xs:element minOccurs="0" name="activeUntil" nillable="true" type="xs:date" />
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="billedEntries" nillable="true" type="ax227:BilledEntry" />
