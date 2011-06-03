@@ -3,13 +3,13 @@
     <wsdl:types> 
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://util.synchronizer.deployment.carbon.wso2.org/xsd"> 
             <xs:complexType name="DeploymentSynchronizerConfiguration"> 
-                <xs:sequence> 
+                <xs:all> 
                     <xs:element minOccurs="0" name="autoCheckout" type="xs:boolean" /> 
                     <xs:element minOccurs="0" name="autoCommit" type="xs:boolean" /> 
                     <xs:element minOccurs="0" name="enabled" type="xs:boolean" /> 
                     <xs:element minOccurs="0" name="period" type="xs:long" /> 
                     <xs:element minOccurs="0" name="useEventing" type="xs:boolean" /> 
-                </xs:sequence> 
+                </xs:all> 
             </xs:complexType> 
         </xs:schema> 
         <xs:schema xmlns:ax2107="http://api.registry.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exceptions.core.registry.carbon.wso2.org/xsd"> 
