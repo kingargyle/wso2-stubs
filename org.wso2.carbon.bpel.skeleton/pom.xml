@@ -55,7 +55,7 @@
                                     <classpath refid="maven.runtime.classpath"/>
                                 </java>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
-                                    <arg line="-uri src/main/resources/package_mgt.wsdl -uw -ss -ssi
+                                    <arg line="-uri src/main/resources/package_mgt.wsdl -uw -ss -ssi -sd    
                                 -o target/generated-code -p org.wso2.carbon.bpel.skeleton.ode.integration.mgt.services
                                 -ns2p http://wso2.org/bps/management/schema=org.wso2.carbon.bpel.skeleton.ode.integration.mgt.services.types,http://wso2.org/bps/management/wsdl/BPELPackageManagement=org.wso2.carbon.bpel.skeleton.ode.integration.mgt.services"/>
                                     <classpath refid="maven.dependency.classpath"/>
