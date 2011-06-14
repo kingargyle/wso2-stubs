@@ -19,6 +19,13 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="removeDatabaseInstance">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getUserList">
                 <xs:complexType>
                     <xs:sequence>
@@ -45,6 +52,21 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getDatabaseUserInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseUserInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="getDatabaseList">
                 <xs:complexType>
                     <xs:sequence/>
@@ -57,16 +79,52 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="ConsoleAdminClassNotFoundException">
+            <xs:element name="getDatabaseInstanceInfo">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="ClassNotFoundException" nillable="true" type="xs:anyType"/>
+                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseInstanceInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="editDatabaseInstanceInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="strDbInstance" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="editDatabaseInstanceInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="dropDatabase">
                 <xs:complexType>
                     <xs:sequence>
+                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
                         <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
@@ -95,31 +153,43 @@
             <xs:element name="createDatabaseForTenantResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="addDbInstance">
+            <xs:element name="addDatabaseInstance">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="strDbInstance" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="addDbInstanceResponse">
+            <xs:element name="addDatabaseInstanceResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
         </xs:schema>
     </wsdl:types>
+    <wsdl:message name="getDatabaseInstanceInfoRequest">
+        <wsdl:part name="parameters" element="ns:getDatabaseInstanceInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getDatabaseInstanceInfoResponse">
+        <wsdl:part name="parameters" element="ns:getDatabaseInstanceInfoResponse"/>
+    </wsdl:message>
     <wsdl:message name="createDatabaseForTenantRequest">
         <wsdl:part name="parameters" element="ns:createDatabaseForTenant"/>
     </wsdl:message>
     <wsdl:message name="createDatabaseForTenantResponse">
         <wsdl:part name="parameters" element="ns:createDatabaseForTenantResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editDatabaseInstanceInfoRequest">
+        <wsdl:part name="parameters" element="ns:editDatabaseInstanceInfo"/>
+    </wsdl:message>
+    <wsdl:message name="editDatabaseInstanceInfoResponse">
+        <wsdl:part name="parameters" element="ns:editDatabaseInstanceInfoResponse"/>
     </wsdl:message>
     <wsdl:message name="getUserListRequest">
         <wsdl:part name="parameters" element="ns:getUserList"/>
@@ -133,17 +203,23 @@
     <wsdl:message name="testConnectionResponse">
         <wsdl:part name="parameters" element="ns:testConnectionResponse"/>
     </wsdl:message>
+    <wsdl:message name="getDatabaseInfoRequest">
+        <wsdl:part name="parameters" element="ns:getDatabaseInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getDatabaseInfoResponse">
+        <wsdl:part name="parameters" element="ns:getDatabaseInfoResponse"/>
+    </wsdl:message>
     <wsdl:message name="getDbInstanceListRequest">
         <wsdl:part name="parameters" element="ns:getDbInstanceList"/>
     </wsdl:message>
     <wsdl:message name="getDbInstanceListResponse">
         <wsdl:part name="parameters" element="ns:getDbInstanceListResponse"/>
     </wsdl:message>
-    <wsdl:message name="addDbInstanceRequest">
-        <wsdl:part name="parameters" element="ns:addDbInstance"/>
+    <wsdl:message name="getDatabaseUserInfoRequest">
+        <wsdl:part name="parameters" element="ns:getDatabaseUserInfo"/>
     </wsdl:message>
-    <wsdl:message name="addDbInstanceResponse">
-        <wsdl:part name="parameters" element="ns:addDbInstanceResponse"/>
+    <wsdl:message name="getDatabaseUserInfoResponse">
+        <wsdl:part name="parameters" element="ns:getDatabaseUserInfoResponse"/>
     </wsdl:message>
     <wsdl:message name="createDatabaseUserForTenantRequest">
         <wsdl:part name="parameters" element="ns:createDatabaseUserForTenant"/>
@@ -157,16 +233,30 @@
     <wsdl:message name="getDatabaseListResponse">
         <wsdl:part name="parameters" element="ns:getDatabaseListResponse"/>
     </wsdl:message>
+    <wsdl:message name="removeDatabaseInstanceRequest">
+        <wsdl:part name="parameters" element="ns:removeDatabaseInstance"/>
+    </wsdl:message>
+    <wsdl:message name="addDatabaseInstanceRequest">
+        <wsdl:part name="parameters" element="ns:addDatabaseInstance"/>
+    </wsdl:message>
+    <wsdl:message name="addDatabaseInstanceResponse">
+        <wsdl:part name="parameters" element="ns:addDatabaseInstanceResponse"/>
+    </wsdl:message>
     <wsdl:message name="dropDatabaseRequest">
         <wsdl:part name="parameters" element="ns:dropDatabase"/>
     </wsdl:message>
-    <wsdl:message name="ConsoleAdminClassNotFoundException">
-        <wsdl:part name="parameters" element="ns:ConsoleAdminClassNotFoundException"/>
-    </wsdl:message>
     <wsdl:portType name="ConsoleAdminPortType">
+        <wsdl:operation name="getDatabaseInstanceInfo">
+            <wsdl:input message="ns:getDatabaseInstanceInfoRequest" wsaw:Action="urn:getDatabaseInstanceInfo"/>
+            <wsdl:output message="ns:getDatabaseInstanceInfoResponse" wsaw:Action="urn:getDatabaseInstanceInfoResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <wsdl:input message="ns:createDatabaseForTenantRequest" wsaw:Action="urn:createDatabaseForTenant"/>
             <wsdl:output message="ns:createDatabaseForTenantResponse" wsaw:Action="urn:createDatabaseForTenantResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editDatabaseInstanceInfo">
+            <wsdl:input message="ns:editDatabaseInstanceInfoRequest" wsaw:Action="urn:editDatabaseInstanceInfo"/>
+            <wsdl:output message="ns:editDatabaseInstanceInfoResponse" wsaw:Action="urn:editDatabaseInstanceInfoResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getUserList">
             <wsdl:input message="ns:getUserListRequest" wsaw:Action="urn:getUserList"/>
@@ -176,13 +266,17 @@
             <wsdl:input message="ns:testConnectionRequest" wsaw:Action="urn:testConnection"/>
             <wsdl:output message="ns:testConnectionResponse" wsaw:Action="urn:testConnectionResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="getDatabaseInfo">
+            <wsdl:input message="ns:getDatabaseInfoRequest" wsaw:Action="urn:getDatabaseInfo"/>
+            <wsdl:output message="ns:getDatabaseInfoResponse" wsaw:Action="urn:getDatabaseInfoResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="getDbInstanceList">
             <wsdl:input message="ns:getDbInstanceListRequest" wsaw:Action="urn:getDbInstanceList"/>
             <wsdl:output message="ns:getDbInstanceListResponse" wsaw:Action="urn:getDbInstanceListResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="addDbInstance">
-            <wsdl:input message="ns:addDbInstanceRequest" wsaw:Action="urn:addDbInstance"/>
-            <wsdl:output message="ns:addDbInstanceResponse" wsaw:Action="urn:addDbInstanceResponse"/>
+        <wsdl:operation name="getDatabaseUserInfo">
+            <wsdl:input message="ns:getDatabaseUserInfoRequest" wsaw:Action="urn:getDatabaseUserInfo"/>
+            <wsdl:output message="ns:getDatabaseUserInfoResponse" wsaw:Action="urn:getDatabaseUserInfoResponse"/>
         </wsdl:operation>
         <wsdl:operation name="createDatabaseUserForTenant">
             <wsdl:input message="ns:createDatabaseUserForTenantRequest" wsaw:Action="urn:createDatabaseUserForTenant"/>
@@ -192,15 +286,39 @@
             <wsdl:input message="ns:getDatabaseListRequest" wsaw:Action="urn:getDatabaseList"/>
             <wsdl:output message="ns:getDatabaseListResponse" wsaw:Action="urn:getDatabaseListResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="removeDatabaseInstance">
+            <wsdl:input message="ns:removeDatabaseInstanceRequest" wsaw:Action="urn:removeDatabaseInstance"/>
+        </wsdl:operation>
+        <wsdl:operation name="addDatabaseInstance">
+            <wsdl:input message="ns:addDatabaseInstanceRequest" wsaw:Action="urn:addDatabaseInstance"/>
+            <wsdl:output message="ns:addDatabaseInstanceResponse" wsaw:Action="urn:addDatabaseInstanceResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="dropDatabase">
             <wsdl:input message="ns:dropDatabaseRequest" wsaw:Action="urn:dropDatabase"/>
-            <wsdl:fault message="ns:ConsoleAdminClassNotFoundException" name="ConsoleAdminClassNotFoundException" wsaw:Action="urn:dropDatabaseConsoleAdminClassNotFoundException"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="ConsoleAdminSoap11Binding" type="ns:ConsoleAdminPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getDatabaseInstanceInfo">
+            <soap:operation soapAction="urn:getDatabaseInstanceInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <soap:operation soapAction="urn:createDatabaseForTenant" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDatabaseInstanceInfo">
+            <soap:operation soapAction="urn:editDatabaseInstanceInfo" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -226,6 +344,15 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getDatabaseInfo">
+            <soap:operation soapAction="urn:getDatabaseInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDbInstanceList">
             <soap:operation soapAction="urn:getDbInstanceList" style="document"/>
             <wsdl:input>
@@ -235,8 +362,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="addDbInstance">
-            <soap:operation soapAction="urn:addDbInstance" style="document"/>
+        <wsdl:operation name="getDatabaseUserInfo">
+            <soap:operation soapAction="urn:getDatabaseUserInfo" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -262,20 +389,50 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="removeDatabaseInstance">
+            <soap:operation soapAction="urn:removeDatabaseInstance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="addDatabaseInstance">
+            <soap:operation soapAction="urn:addDatabaseInstance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="dropDatabase">
             <soap:operation soapAction="urn:dropDatabase" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="ConsoleAdminClassNotFoundException">
-                <soap:fault use="literal" name="ConsoleAdminClassNotFoundException"/>
-            </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="ConsoleAdminSoap12Binding" type="ns:ConsoleAdminPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getDatabaseInstanceInfo">
+            <soap12:operation soapAction="urn:getDatabaseInstanceInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <soap12:operation soapAction="urn:createDatabaseForTenant" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDatabaseInstanceInfo">
+            <soap12:operation soapAction="urn:editDatabaseInstanceInfo" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -301,6 +458,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getDatabaseInfo">
+            <soap12:operation soapAction="urn:getDatabaseInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDbInstanceList">
             <soap12:operation soapAction="urn:getDbInstanceList" style="document"/>
             <wsdl:input>
@@ -310,8 +476,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="addDbInstance">
-            <soap12:operation soapAction="urn:addDbInstance" style="document"/>
+        <wsdl:operation name="getDatabaseUserInfo">
+            <soap12:operation soapAction="urn:getDatabaseUserInfo" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -337,20 +503,50 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="removeDatabaseInstance">
+            <soap12:operation soapAction="urn:removeDatabaseInstance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="addDatabaseInstance">
+            <soap12:operation soapAction="urn:addDatabaseInstance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="dropDatabase">
             <soap12:operation soapAction="urn:dropDatabase" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-            <wsdl:fault name="ConsoleAdminClassNotFoundException">
-                <soap12:fault use="literal" name="ConsoleAdminClassNotFoundException"/>
-            </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="ConsoleAdminHttpBinding" type="ns:ConsoleAdminPortType">
         <http:binding verb="POST"/>
+        <wsdl:operation name="getDatabaseInstanceInfo">
+            <http:operation location="getDatabaseInstanceInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <http:operation location="createDatabaseForTenant"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDatabaseInstanceInfo">
+            <http:operation location="editDatabaseInstanceInfo"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -376,6 +572,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getDatabaseInfo">
+            <http:operation location="getDatabaseInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDbInstanceList">
             <http:operation location="getDbInstanceList"/>
             <wsdl:input>
@@ -385,8 +590,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="addDbInstance">
-            <http:operation location="addDbInstance"/>
+        <wsdl:operation name="getDatabaseUserInfo">
+            <http:operation location="getDatabaseUserInfo"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -405,6 +610,21 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseList">
             <http:operation location="getDatabaseList"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeDatabaseInstance">
+            <http:operation location="removeDatabaseInstance"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="addDatabaseInstance">
+            <http:operation location="addDatabaseInstance"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
