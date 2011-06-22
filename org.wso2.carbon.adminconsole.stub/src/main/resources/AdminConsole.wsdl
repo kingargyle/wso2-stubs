@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.adminconsole.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.adminconsole.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
     <wsdl:types>
-        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+        <xs:schema xmlns:ax22="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+            <xs:import namespace="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd"/>
             <xs:element name="testConnection">
                 <xs:complexType>
                     <xs:sequence>
@@ -19,7 +20,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="removeDatabaseInstance">
+            <xs:element name="removeRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
@@ -40,15 +41,29 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getDbInstanceList">
+            <xs:element name="getRSSInstanceList">
                 <xs:complexType>
                     <xs:sequence/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getDbInstanceListResponse">
+            <xs:element name="getRSSInstanceListResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:RSSInstance"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRSSInstanceInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRSSInstanceInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:RSSInstance"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -79,20 +94,6 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getDatabaseInstanceInfo">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getDatabaseInstanceInfoResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="getDatabaseInfo">
                 <xs:complexType>
                     <xs:sequence>
@@ -107,14 +108,14 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="editDatabaseInstanceInfo">
+            <xs:element name="editRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="strDbInstance" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="strRSSInstance" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="editDatabaseInstanceInfoResponse">
+            <xs:element name="editRSSInstanceResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
@@ -172,14 +173,14 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="addDatabaseInstance">
+            <xs:element name="addRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="strDbInstance" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="strRSSInstance" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="addDatabaseInstanceResponse">
+            <xs:element name="addRSSInstanceResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
@@ -187,12 +188,26 @@
                 </xs:complexType>
             </xs:element>
         </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd">
+            <xs:complexType name="RSSInstance">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="adminPassword" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="adminUsername" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dbmsType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="instanceType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="rssInstanceId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="serverURL" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="tenantId" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
     </wsdl:types>
-    <wsdl:message name="getDatabaseInstanceInfoRequest">
-        <wsdl:part name="parameters" element="ns:getDatabaseInstanceInfo"/>
+    <wsdl:message name="getRSSInstanceListRequest">
+        <wsdl:part name="parameters" element="ns:getRSSInstanceList"/>
     </wsdl:message>
-    <wsdl:message name="getDatabaseInstanceInfoResponse">
-        <wsdl:part name="parameters" element="ns:getDatabaseInstanceInfoResponse"/>
+    <wsdl:message name="getRSSInstanceListResponse">
+        <wsdl:part name="parameters" element="ns:getRSSInstanceListResponse"/>
     </wsdl:message>
     <wsdl:message name="createDatabaseForTenantRequest">
         <wsdl:part name="parameters" element="ns:createDatabaseForTenant"/>
@@ -200,23 +215,11 @@
     <wsdl:message name="createDatabaseForTenantResponse">
         <wsdl:part name="parameters" element="ns:createDatabaseForTenantResponse"/>
     </wsdl:message>
-    <wsdl:message name="editDatabaseInstanceInfoRequest">
-        <wsdl:part name="parameters" element="ns:editDatabaseInstanceInfo"/>
-    </wsdl:message>
-    <wsdl:message name="editDatabaseInstanceInfoResponse">
-        <wsdl:part name="parameters" element="ns:editDatabaseInstanceInfoResponse"/>
-    </wsdl:message>
     <wsdl:message name="getUserListRequest">
         <wsdl:part name="parameters" element="ns:getUserList"/>
     </wsdl:message>
     <wsdl:message name="getUserListResponse">
         <wsdl:part name="parameters" element="ns:getUserListResponse"/>
-    </wsdl:message>
-    <wsdl:message name="testConnectionRequest">
-        <wsdl:part name="parameters" element="ns:testConnection"/>
-    </wsdl:message>
-    <wsdl:message name="testConnectionResponse">
-        <wsdl:part name="parameters" element="ns:testConnectionResponse"/>
     </wsdl:message>
     <wsdl:message name="getDatabaseInfoRequest">
         <wsdl:part name="parameters" element="ns:getDatabaseInfo"/>
@@ -224,23 +227,32 @@
     <wsdl:message name="getDatabaseInfoResponse">
         <wsdl:part name="parameters" element="ns:getDatabaseInfoResponse"/>
     </wsdl:message>
+    <wsdl:message name="testConnectionRequest">
+        <wsdl:part name="parameters" element="ns:testConnection"/>
+    </wsdl:message>
+    <wsdl:message name="testConnectionResponse">
+        <wsdl:part name="parameters" element="ns:testConnectionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getRSSInstanceInfoRequest">
+        <wsdl:part name="parameters" element="ns:getRSSInstanceInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getRSSInstanceInfoResponse">
+        <wsdl:part name="parameters" element="ns:getRSSInstanceInfoResponse"/>
+    </wsdl:message>
     <wsdl:message name="createUserWithPrivilegesRequest">
         <wsdl:part name="parameters" element="ns:createUserWithPrivileges"/>
     </wsdl:message>
     <wsdl:message name="createUserWithPrivilegesResponse">
         <wsdl:part name="parameters" element="ns:createUserWithPrivilegesResponse"/>
     </wsdl:message>
-    <wsdl:message name="getDbInstanceListRequest">
-        <wsdl:part name="parameters" element="ns:getDbInstanceList"/>
-    </wsdl:message>
-    <wsdl:message name="getDbInstanceListResponse">
-        <wsdl:part name="parameters" element="ns:getDbInstanceListResponse"/>
-    </wsdl:message>
     <wsdl:message name="getDatabaseUserInfoRequest">
         <wsdl:part name="parameters" element="ns:getDatabaseUserInfo"/>
     </wsdl:message>
     <wsdl:message name="getDatabaseUserInfoResponse">
         <wsdl:part name="parameters" element="ns:getDatabaseUserInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="removeRSSInstanceRequest">
+        <wsdl:part name="parameters" element="ns:removeRSSInstance"/>
     </wsdl:message>
     <wsdl:message name="createDatabaseUserForTenantRequest">
         <wsdl:part name="parameters" element="ns:createDatabaseUserForTenant"/>
@@ -254,54 +266,56 @@
     <wsdl:message name="getDatabaseListResponse">
         <wsdl:part name="parameters" element="ns:getDatabaseListResponse"/>
     </wsdl:message>
-    <wsdl:message name="removeDatabaseInstanceRequest">
-        <wsdl:part name="parameters" element="ns:removeDatabaseInstance"/>
+    <wsdl:message name="editRSSInstanceRequest">
+        <wsdl:part name="parameters" element="ns:editRSSInstance"/>
     </wsdl:message>
-    <wsdl:message name="addDatabaseInstanceRequest">
-        <wsdl:part name="parameters" element="ns:addDatabaseInstance"/>
+    <wsdl:message name="editRSSInstanceResponse">
+        <wsdl:part name="parameters" element="ns:editRSSInstanceResponse"/>
     </wsdl:message>
-    <wsdl:message name="addDatabaseInstanceResponse">
-        <wsdl:part name="parameters" element="ns:addDatabaseInstanceResponse"/>
+    <wsdl:message name="addRSSInstanceRequest">
+        <wsdl:part name="parameters" element="ns:addRSSInstance"/>
+    </wsdl:message>
+    <wsdl:message name="addRSSInstanceResponse">
+        <wsdl:part name="parameters" element="ns:addRSSInstanceResponse"/>
     </wsdl:message>
     <wsdl:message name="dropDatabaseRequest">
         <wsdl:part name="parameters" element="ns:dropDatabase"/>
     </wsdl:message>
     <wsdl:portType name="ConsoleAdminPortType">
-        <wsdl:operation name="getDatabaseInstanceInfo">
-            <wsdl:input message="ns:getDatabaseInstanceInfoRequest" wsaw:Action="urn:getDatabaseInstanceInfo"/>
-            <wsdl:output message="ns:getDatabaseInstanceInfoResponse" wsaw:Action="urn:getDatabaseInstanceInfoResponse"/>
+        <wsdl:operation name="getRSSInstanceList">
+            <wsdl:input message="ns:getRSSInstanceListRequest" wsaw:Action="urn:getRSSInstanceList"/>
+            <wsdl:output message="ns:getRSSInstanceListResponse" wsaw:Action="urn:getRSSInstanceListResponse"/>
         </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <wsdl:input message="ns:createDatabaseForTenantRequest" wsaw:Action="urn:createDatabaseForTenant"/>
             <wsdl:output message="ns:createDatabaseForTenantResponse" wsaw:Action="urn:createDatabaseForTenantResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="editDatabaseInstanceInfo">
-            <wsdl:input message="ns:editDatabaseInstanceInfoRequest" wsaw:Action="urn:editDatabaseInstanceInfo"/>
-            <wsdl:output message="ns:editDatabaseInstanceInfoResponse" wsaw:Action="urn:editDatabaseInstanceInfoResponse"/>
-        </wsdl:operation>
         <wsdl:operation name="getUserList">
             <wsdl:input message="ns:getUserListRequest" wsaw:Action="urn:getUserList"/>
             <wsdl:output message="ns:getUserListResponse" wsaw:Action="urn:getUserListResponse"/>
-        </wsdl:operation>
-        <wsdl:operation name="testConnection">
-            <wsdl:input message="ns:testConnectionRequest" wsaw:Action="urn:testConnection"/>
-            <wsdl:output message="ns:testConnectionResponse" wsaw:Action="urn:testConnectionResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getDatabaseInfo">
             <wsdl:input message="ns:getDatabaseInfoRequest" wsaw:Action="urn:getDatabaseInfo"/>
             <wsdl:output message="ns:getDatabaseInfoResponse" wsaw:Action="urn:getDatabaseInfoResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="testConnection">
+            <wsdl:input message="ns:testConnectionRequest" wsaw:Action="urn:testConnection"/>
+            <wsdl:output message="ns:testConnectionResponse" wsaw:Action="urn:testConnectionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getRSSInstanceInfo">
+            <wsdl:input message="ns:getRSSInstanceInfoRequest" wsaw:Action="urn:getRSSInstanceInfo"/>
+            <wsdl:output message="ns:getRSSInstanceInfoResponse" wsaw:Action="urn:getRSSInstanceInfoResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="createUserWithPrivileges">
             <wsdl:input message="ns:createUserWithPrivilegesRequest" wsaw:Action="urn:createUserWithPrivileges"/>
             <wsdl:output message="ns:createUserWithPrivilegesResponse" wsaw:Action="urn:createUserWithPrivilegesResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="getDbInstanceList">
-            <wsdl:input message="ns:getDbInstanceListRequest" wsaw:Action="urn:getDbInstanceList"/>
-            <wsdl:output message="ns:getDbInstanceListResponse" wsaw:Action="urn:getDbInstanceListResponse"/>
-        </wsdl:operation>
         <wsdl:operation name="getDatabaseUserInfo">
             <wsdl:input message="ns:getDatabaseUserInfoRequest" wsaw:Action="urn:getDatabaseUserInfo"/>
             <wsdl:output message="ns:getDatabaseUserInfoResponse" wsaw:Action="urn:getDatabaseUserInfoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeRSSInstance">
+            <wsdl:input message="ns:removeRSSInstanceRequest" wsaw:Action="urn:removeRSSInstance"/>
         </wsdl:operation>
         <wsdl:operation name="createDatabaseUserForTenant">
             <wsdl:input message="ns:createDatabaseUserForTenantRequest" wsaw:Action="urn:createDatabaseUserForTenant"/>
@@ -311,12 +325,13 @@
             <wsdl:input message="ns:getDatabaseListRequest" wsaw:Action="urn:getDatabaseList"/>
             <wsdl:output message="ns:getDatabaseListResponse" wsaw:Action="urn:getDatabaseListResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="removeDatabaseInstance">
-            <wsdl:input message="ns:removeDatabaseInstanceRequest" wsaw:Action="urn:removeDatabaseInstance"/>
+        <wsdl:operation name="editRSSInstance">
+            <wsdl:input message="ns:editRSSInstanceRequest" wsaw:Action="urn:editRSSInstance"/>
+            <wsdl:output message="ns:editRSSInstanceResponse" wsaw:Action="urn:editRSSInstanceResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="addDatabaseInstance">
-            <wsdl:input message="ns:addDatabaseInstanceRequest" wsaw:Action="urn:addDatabaseInstance"/>
-            <wsdl:output message="ns:addDatabaseInstanceResponse" wsaw:Action="urn:addDatabaseInstanceResponse"/>
+        <wsdl:operation name="addRSSInstance">
+            <wsdl:input message="ns:addRSSInstanceRequest" wsaw:Action="urn:addRSSInstance"/>
+            <wsdl:output message="ns:addRSSInstanceResponse" wsaw:Action="urn:addRSSInstanceResponse"/>
         </wsdl:operation>
         <wsdl:operation name="dropDatabase">
             <wsdl:input message="ns:dropDatabaseRequest" wsaw:Action="urn:dropDatabase"/>
@@ -324,8 +339,8 @@
     </wsdl:portType>
     <wsdl:binding name="ConsoleAdminSoap11Binding" type="ns:ConsoleAdminPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-        <wsdl:operation name="getDatabaseInstanceInfo">
-            <soap:operation soapAction="urn:getDatabaseInstanceInfo" style="document"/>
+        <wsdl:operation name="getRSSInstanceList">
+            <soap:operation soapAction="urn:getRSSInstanceList" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -335,15 +350,6 @@
         </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <soap:operation soapAction="urn:createDatabaseForTenant" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="editDatabaseInstanceInfo">
-            <soap:operation soapAction="urn:editDatabaseInstanceInfo" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -369,6 +375,15 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getRSSInstanceInfo">
+            <soap:operation soapAction="urn:getRSSInstanceInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDatabaseInfo">
             <soap:operation soapAction="urn:getDatabaseInfo" style="document"/>
             <wsdl:input>
@@ -387,14 +402,11 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getDbInstanceList">
-            <soap:operation soapAction="urn:getDbInstanceList" style="document"/>
+        <wsdl:operation name="removeRSSInstance">
+            <soap:operation soapAction="urn:removeRSSInstance" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getDatabaseUserInfo">
             <soap:operation soapAction="urn:getDatabaseUserInfo" style="document"/>
@@ -414,6 +426,15 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="editRSSInstance">
+            <soap:operation soapAction="urn:editRSSInstance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDatabaseList">
             <soap:operation soapAction="urn:getDatabaseList" style="document"/>
             <wsdl:input>
@@ -423,14 +444,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="removeDatabaseInstance">
-            <soap:operation soapAction="urn:removeDatabaseInstance" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="addDatabaseInstance">
-            <soap:operation soapAction="urn:addDatabaseInstance" style="document"/>
+        <wsdl:operation name="addRSSInstance">
+            <soap:operation soapAction="urn:addRSSInstance" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -447,8 +462,8 @@
     </wsdl:binding>
     <wsdl:binding name="ConsoleAdminSoap12Binding" type="ns:ConsoleAdminPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-        <wsdl:operation name="getDatabaseInstanceInfo">
-            <soap12:operation soapAction="urn:getDatabaseInstanceInfo" style="document"/>
+        <wsdl:operation name="getRSSInstanceList">
+            <soap12:operation soapAction="urn:getRSSInstanceList" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -458,15 +473,6 @@
         </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <soap12:operation soapAction="urn:createDatabaseForTenant" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="editDatabaseInstanceInfo">
-            <soap12:operation soapAction="urn:editDatabaseInstanceInfo" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -492,6 +498,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getRSSInstanceInfo">
+            <soap12:operation soapAction="urn:getRSSInstanceInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDatabaseInfo">
             <soap12:operation soapAction="urn:getDatabaseInfo" style="document"/>
             <wsdl:input>
@@ -510,14 +525,11 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getDbInstanceList">
-            <soap12:operation soapAction="urn:getDbInstanceList" style="document"/>
+        <wsdl:operation name="removeRSSInstance">
+            <soap12:operation soapAction="urn:removeRSSInstance" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getDatabaseUserInfo">
             <soap12:operation soapAction="urn:getDatabaseUserInfo" style="document"/>
@@ -537,6 +549,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="editRSSInstance">
+            <soap12:operation soapAction="urn:editRSSInstance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDatabaseList">
             <soap12:operation soapAction="urn:getDatabaseList" style="document"/>
             <wsdl:input>
@@ -546,14 +567,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="removeDatabaseInstance">
-            <soap12:operation soapAction="urn:removeDatabaseInstance" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="addDatabaseInstance">
-            <soap12:operation soapAction="urn:addDatabaseInstance" style="document"/>
+        <wsdl:operation name="addRSSInstance">
+            <soap12:operation soapAction="urn:addRSSInstance" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -570,8 +585,8 @@
     </wsdl:binding>
     <wsdl:binding name="ConsoleAdminHttpBinding" type="ns:ConsoleAdminPortType">
         <http:binding verb="POST"/>
-        <wsdl:operation name="getDatabaseInstanceInfo">
-            <http:operation location="getDatabaseInstanceInfo"/>
+        <wsdl:operation name="getRSSInstanceList">
+            <http:operation location="getRSSInstanceList"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -581,15 +596,6 @@
         </wsdl:operation>
         <wsdl:operation name="createDatabaseForTenant">
             <http:operation location="createDatabaseForTenant"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="editDatabaseInstanceInfo">
-            <http:operation location="editDatabaseInstanceInfo"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -615,6 +621,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getRSSInstanceInfo">
+            <http:operation location="getRSSInstanceInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDatabaseInfo">
             <http:operation location="getDatabaseInfo"/>
             <wsdl:input>
@@ -633,14 +648,11 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getDbInstanceList">
-            <http:operation location="getDbInstanceList"/>
+        <wsdl:operation name="removeRSSInstance">
+            <http:operation location="removeRSSInstance"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getDatabaseUserInfo">
             <http:operation location="getDatabaseUserInfo"/>
@@ -660,6 +672,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="editRSSInstance">
+            <http:operation location="editRSSInstance"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDatabaseList">
             <http:operation location="getDatabaseList"/>
             <wsdl:input>
@@ -669,14 +690,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="removeDatabaseInstance">
-            <http:operation location="removeDatabaseInstance"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="addDatabaseInstance">
-            <http:operation location="addDatabaseInstance"/>
+        <wsdl:operation name="addRSSInstance">
+            <http:operation location="addRSSInstance"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
