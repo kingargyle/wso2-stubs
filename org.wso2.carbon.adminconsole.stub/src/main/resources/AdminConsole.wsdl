@@ -129,6 +129,21 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="createUserWithPrivileges">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="strPrivileges" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="strUserInfo" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createUserWithPrivilegesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="createDatabaseUserForTenant">
                 <xs:complexType>
                     <xs:sequence>
@@ -209,6 +224,12 @@
     <wsdl:message name="getDatabaseInfoResponse">
         <wsdl:part name="parameters" element="ns:getDatabaseInfoResponse"/>
     </wsdl:message>
+    <wsdl:message name="createUserWithPrivilegesRequest">
+        <wsdl:part name="parameters" element="ns:createUserWithPrivileges"/>
+    </wsdl:message>
+    <wsdl:message name="createUserWithPrivilegesResponse">
+        <wsdl:part name="parameters" element="ns:createUserWithPrivilegesResponse"/>
+    </wsdl:message>
     <wsdl:message name="getDbInstanceListRequest">
         <wsdl:part name="parameters" element="ns:getDbInstanceList"/>
     </wsdl:message>
@@ -269,6 +290,10 @@
         <wsdl:operation name="getDatabaseInfo">
             <wsdl:input message="ns:getDatabaseInfoRequest" wsaw:Action="urn:getDatabaseInfo"/>
             <wsdl:output message="ns:getDatabaseInfoResponse" wsaw:Action="urn:getDatabaseInfoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createUserWithPrivileges">
+            <wsdl:input message="ns:createUserWithPrivilegesRequest" wsaw:Action="urn:createUserWithPrivileges"/>
+            <wsdl:output message="ns:createUserWithPrivilegesResponse" wsaw:Action="urn:createUserWithPrivilegesResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getDbInstanceList">
             <wsdl:input message="ns:getDbInstanceListRequest" wsaw:Action="urn:getDbInstanceList"/>
@@ -346,6 +371,15 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseInfo">
             <soap:operation soapAction="urn:getDatabaseInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createUserWithPrivileges">
+            <soap:operation soapAction="urn:createUserWithPrivileges" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -467,6 +501,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="createUserWithPrivileges">
+            <soap12:operation soapAction="urn:createUserWithPrivileges" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getDbInstanceList">
             <soap12:operation soapAction="urn:getDbInstanceList" style="document"/>
             <wsdl:input>
@@ -574,6 +617,15 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseInfo">
             <http:operation location="getDatabaseInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createUserWithPrivileges">
+            <http:operation location="createUserWithPrivileges"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
