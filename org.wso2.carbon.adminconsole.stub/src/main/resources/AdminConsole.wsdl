@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.adminconsole.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.adminconsole.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://admin.core.adminconsole.carbon.wso2.org/xsd" xmlns:ax21="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
     <wsdl:types>
-        <xs:schema xmlns:ax22="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org/xsd">
+            <xs:complexType name="ConsoleAdmin_DataSourceEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataSourceName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="rssInstanceId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax24="http://admin.core.adminconsole.carbon.wso2.org/xsd" xmlns:ax22="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
             <xs:import namespace="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd"/>
+            <xs:import namespace="http://admin.core.adminconsole.carbon.wso2.org/xsd"/>
             <xs:element name="testConnection">
                 <xs:complexType>
                     <xs:sequence>
@@ -174,6 +186,20 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="createCarbonDSFromDatabaseUserEntry">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="entry" nillable="true" type="ax23:ConsoleAdmin_DataSourceEntry"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createCarbonDSFromDatabaseUserEntryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="addRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
@@ -241,6 +267,12 @@
     </wsdl:message>
     <wsdl:message name="getRSSInstanceInfoResponse">
         <wsdl:part name="parameters" element="ns:getRSSInstanceInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createCarbonDSFromDatabaseUserEntryRequest">
+        <wsdl:part name="parameters" element="ns:createCarbonDSFromDatabaseUserEntry"/>
+    </wsdl:message>
+    <wsdl:message name="createCarbonDSFromDatabaseUserEntryResponse">
+        <wsdl:part name="parameters" element="ns:createCarbonDSFromDatabaseUserEntryResponse"/>
     </wsdl:message>
     <wsdl:message name="createUserWithPrivilegesRequest">
         <wsdl:part name="parameters" element="ns:createUserWithPrivileges"/>
@@ -310,6 +342,10 @@
         <wsdl:operation name="getRSSInstanceInfo">
             <wsdl:input message="ns:getRSSInstanceInfoRequest" wsaw:Action="urn:getRSSInstanceInfo"/>
             <wsdl:output message="ns:getRSSInstanceInfoResponse" wsaw:Action="urn:getRSSInstanceInfoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createCarbonDSFromDatabaseUserEntry">
+            <wsdl:input message="ns:createCarbonDSFromDatabaseUserEntryRequest" wsaw:Action="urn:createCarbonDSFromDatabaseUserEntry"/>
+            <wsdl:output message="ns:createCarbonDSFromDatabaseUserEntryResponse" wsaw:Action="urn:createCarbonDSFromDatabaseUserEntryResponse"/>
         </wsdl:operation>
         <wsdl:operation name="createUserWithPrivileges">
             <wsdl:input message="ns:createUserWithPrivilegesRequest" wsaw:Action="urn:createUserWithPrivileges"/>
@@ -386,6 +422,15 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseUserByName">
             <soap:operation soapAction="urn:getDatabaseUserByName" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createCarbonDSFromDatabaseUserEntry">
+            <soap:operation soapAction="urn:createCarbonDSFromDatabaseUserEntry" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -516,6 +561,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="createCarbonDSFromDatabaseUserEntry">
+            <soap12:operation soapAction="urn:createCarbonDSFromDatabaseUserEntry" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createUserWithPrivileges">
             <soap12:operation soapAction="urn:createUserWithPrivileges" style="document"/>
             <wsdl:input>
@@ -632,6 +686,15 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseUserByName">
             <http:operation location="getDatabaseUserByName"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createCarbonDSFromDatabaseUserEntry">
+            <http:operation location="createCarbonDSFromDatabaseUserEntry"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
