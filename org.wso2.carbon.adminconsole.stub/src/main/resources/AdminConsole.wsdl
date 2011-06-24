@@ -121,6 +121,21 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getDatabaseInstanceById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="rssInsId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseInstanceByIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="editRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
@@ -138,8 +153,8 @@
             <xs:element name="dropDatabase">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
-                        <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="rssInsId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -162,6 +177,7 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="strDbUser" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -214,6 +230,17 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://description.core.adminconsole.carbon.wso2.org/xsd">
+            <xs:complexType name="DataSourceEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataSourceName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="rssInstanceId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd">
             <xs:complexType name="DatabaseUser">
@@ -322,6 +349,12 @@
     <wsdl:message name="getDatabaseInstanceListResponse">
         <wsdl:part name="parameters" element="ns:getDatabaseInstanceListResponse"/>
     </wsdl:message>
+    <wsdl:message name="getDatabaseInstanceByIdRequest">
+        <wsdl:part name="parameters" element="ns:getDatabaseInstanceById"/>
+    </wsdl:message>
+    <wsdl:message name="getDatabaseInstanceByIdResponse">
+        <wsdl:part name="parameters" element="ns:getDatabaseInstanceByIdResponse"/>
+    </wsdl:message>
     <wsdl:portType name="ConsoleAdminPortType">
         <wsdl:operation name="getRSSInstanceList">
             <wsdl:input message="ns:getRSSInstanceListRequest" wsaw:Action="urn:getRSSInstanceList"/>
@@ -380,6 +413,10 @@
         <wsdl:operation name="getDatabaseInstanceList">
             <wsdl:input message="ns:getDatabaseInstanceListRequest" wsaw:Action="urn:getDatabaseInstanceList"/>
             <wsdl:output message="ns:getDatabaseInstanceListResponse" wsaw:Action="urn:getDatabaseInstanceListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseInstanceById">
+            <wsdl:input message="ns:getDatabaseInstanceByIdRequest" wsaw:Action="urn:getDatabaseInstanceById"/>
+            <wsdl:output message="ns:getDatabaseInstanceByIdResponse" wsaw:Action="urn:getDatabaseInstanceByIdResponse"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="ConsoleAdminSoap11Binding" type="ns:ConsoleAdminPortType">
@@ -506,6 +543,15 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseInstanceList">
             <soap:operation soapAction="urn:getDatabaseInstanceList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseInstanceById">
+            <soap:operation soapAction="urn:getDatabaseInstanceById" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -645,6 +691,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getDatabaseInstanceById">
+            <soap12:operation soapAction="urn:getDatabaseInstanceById" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="ConsoleAdminHttpBinding" type="ns:ConsoleAdminPortType">
         <http:binding verb="POST"/>
@@ -770,6 +825,15 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseInstanceList">
             <http:operation location="getDatabaseInstanceList"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseInstanceById">
+            <http:operation location="getDatabaseInstanceById"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
