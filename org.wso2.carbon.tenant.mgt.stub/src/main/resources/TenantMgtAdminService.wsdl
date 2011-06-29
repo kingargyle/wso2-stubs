@@ -100,21 +100,7 @@
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
-            <xs:element name="restartTenantException"> 
-                <xs:complexType> 
-                    <xs:sequence> 
-                        <xs:element minOccurs="0" name="restartTenantException" nillable="true" type="ns:Exception" /> 
-                    </xs:sequence> 
-                </xs:complexType> 
-            </xs:element> 
-            <xs:element name="restartTenant"> 
-                <xs:complexType> 
-                    <xs:sequence> 
-                        <xs:element minOccurs="0" name="tenantDomain" nillable="true" type="xs:string" /> 
-                    </xs:sequence> 
-                </xs:complexType> 
-            </xs:element> 
-            <xs:element name="getTenantException"> 
+            <xs:element name="getTenantException">
                 <xs:complexType> 
                     <xs:sequence> 
                         <xs:element minOccurs="0" name="getTenantException" nillable="true" type="ns:Exception" /> 
@@ -244,13 +230,7 @@
     <wsdl:message name="deactivateTenantException"> 
         <wsdl:part name="parameters" element="ns:deactivateTenantException" /> 
     </wsdl:message> 
-    <wsdl:message name="restartTenantRequest"> 
-        <wsdl:part name="parameters" element="ns:restartTenant" /> 
-    </wsdl:message> 
-    <wsdl:message name="restartTenantException"> 
-        <wsdl:part name="parameters" element="ns:restartTenantException" /> 
-    </wsdl:message> 
-    <wsdl:message name="retrievePaginatedTenantsRequest"> 
+    <wsdl:message name="retrievePaginatedTenantsRequest">
         <wsdl:part name="parameters" element="ns:retrievePaginatedTenants" /> 
     </wsdl:message> 
     <wsdl:message name="retrievePaginatedTenantsResponse"> 
@@ -303,11 +283,7 @@
             <wsdl:output message="ns:deactivateTenantResponse" wsaw:Action="urn:deactivateTenantResponse" /> 
             <wsdl:fault message="ns:deactivateTenantException" name="deactivateTenantException" wsaw:Action="urn:deactivateTenantdeactivateTenantException" /> 
         </wsdl:operation> 
-        <wsdl:operation name="restartTenant"> 
-            <wsdl:input message="ns:restartTenantRequest" wsaw:Action="urn:restartTenant" /> 
-            <wsdl:fault message="ns:restartTenantException" name="restartTenantException" wsaw:Action="urn:restartTenantrestartTenantException" /> 
-        </wsdl:operation> 
-        <wsdl:operation name="retrievePaginatedTenants"> 
+        <wsdl:operation name="retrievePaginatedTenants">
             <wsdl:input message="ns:retrievePaginatedTenantsRequest" wsaw:Action="urn:retrievePaginatedTenants" /> 
             <wsdl:output message="ns:retrievePaginatedTenantsResponse" wsaw:Action="urn:retrievePaginatedTenantsResponse" /> 
             <wsdl:fault message="ns:retrievePaginatedTenantsException" name="retrievePaginatedTenantsException" wsaw:Action="urn:retrievePaginatedTenantsretrievePaginatedTenantsException" /> 
@@ -378,16 +354,7 @@
                 <soap:fault use="literal" name="deactivateTenantException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
-        <wsdl:operation name="restartTenant"> 
-            <soap:operation soapAction="urn:restartTenant" style="document" /> 
-            <wsdl:input> 
-                <soap:body use="literal" /> 
-            </wsdl:input> 
-            <wsdl:fault name="restartTenantException"> 
-                <soap:fault use="literal" name="restartTenantException" /> 
-            </wsdl:fault> 
-        </wsdl:operation> 
-        <wsdl:operation name="retrievePaginatedTenants"> 
+        <wsdl:operation name="retrievePaginatedTenants">
             <soap:operation soapAction="urn:retrievePaginatedTenants" style="document" /> 
             <wsdl:input> 
                 <soap:body use="literal" /> 
@@ -486,16 +453,7 @@
                 <soap12:fault use="literal" name="deactivateTenantException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
-        <wsdl:operation name="restartTenant"> 
-            <soap12:operation soapAction="urn:restartTenant" style="document" /> 
-            <wsdl:input> 
-                <soap12:body use="literal" /> 
-            </wsdl:input> 
-            <wsdl:fault name="restartTenantException"> 
-                <soap12:fault use="literal" name="restartTenantException" /> 
-            </wsdl:fault> 
-        </wsdl:operation> 
-        <wsdl:operation name="retrievePaginatedTenants"> 
+        <wsdl:operation name="retrievePaginatedTenants">
             <soap12:operation soapAction="urn:retrievePaginatedTenants" style="document" /> 
             <wsdl:input> 
                 <soap12:body use="literal" /> 
@@ -582,13 +540,7 @@
                 <mime:content type="text/xml" part="parameters" /> 
             </wsdl:output> 
         </wsdl:operation> 
-        <wsdl:operation name="restartTenant"> 
-            <http:operation location="restartTenant" /> 
-            <wsdl:input> 
-                <mime:content type="text/xml" part="parameters" /> 
-            </wsdl:input> 
-        </wsdl:operation> 
-        <wsdl:operation name="retrievePaginatedTenants"> 
+        <wsdl:operation name="retrievePaginatedTenants">
             <http:operation location="retrievePaginatedTenants" /> 
             <wsdl:input> 
                 <mime:content type="text/xml" part="parameters" /> 
