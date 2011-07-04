@@ -19,7 +19,7 @@
             <xs:element name="validateAuthenticationRequest">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="oauthConsumer" nillable="true" type="ax2194:Parameters" />
+                        <xs:element minOccurs="0" name="params" nillable="true" type="ax2194:Parameters" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
