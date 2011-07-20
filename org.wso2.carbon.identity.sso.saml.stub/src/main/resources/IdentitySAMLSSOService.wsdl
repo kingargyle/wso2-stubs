@@ -1,14 +1,14 @@
 
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://saml.sso.identity.carbon.wso2.org" xmlns:ax2197="http://base.identity.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ax2199="http://dto.saml.sso.identity.carbon.wso2.org/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://saml.sso.identity.carbon.wso2.org"> 
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax2278="http://dto.saml.sso.identity.carbon.wso2.org/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://saml.sso.identity.carbon.wso2.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ax2276="http://base.identity.carbon.wso2.org/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://saml.sso.identity.carbon.wso2.org"> 
     <wsdl:documentation>IdentitySAMLSSOService</wsdl:documentation> 
     <wsdl:types> 
-        <xs:schema xmlns:ax2198="http://base.identity.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.axis2/xsd" xmlns:ax2200="http://dto.saml.sso.identity.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd"> 
+        <xs:schema xmlns:ns="http://org.apache.axis2/xsd" xmlns:ax2279="http://dto.saml.sso.identity.carbon.wso2.org/xsd" xmlns:ax2277="http://base.identity.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd"> 
             <xs:import namespace="http://base.identity.carbon.wso2.org/xsd" /> 
             <xs:import namespace="http://dto.saml.sso.identity.carbon.wso2.org/xsd" /> 
-            <xs:element name="validateRequestIdentityException"> 
+            <xs:element name="IdentitySAMLSSOServiceIdentityException"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="IdentityException" nillable="true" type="ax2198:IdentityException" /> 
+                        <xs:element minOccurs="0" name="IdentityException" nillable="true" type="ax2276:IdentityException" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
@@ -25,14 +25,7 @@
             <xs:element name="validateRequestResponse"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2199:SAMLSSOReqValidationResponseDTO" /> 
-                    </xs:sequence> 
-                </xs:complexType> 
-            </xs:element> 
-            <xs:element name="doSingleLogoutIdentityException"> 
-                <xs:complexType> 
-                    <xs:sequence> 
-                        <xs:element minOccurs="0" name="IdentityException" nillable="true" type="ax2198:IdentityException" /> 
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2278:SAMLSSOReqValidationResponseDTO" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
@@ -46,21 +39,14 @@
             <xs:element name="doSingleLogoutResponse"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2199:SAMLSSOReqValidationResponseDTO" /> 
-                    </xs:sequence> 
-                </xs:complexType> 
-            </xs:element> 
-            <xs:element name="authenticateIdentityException"> 
-                <xs:complexType> 
-                    <xs:sequence> 
-                        <xs:element minOccurs="0" name="IdentityException" nillable="true" type="ax2198:IdentityException" /> 
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2278:SAMLSSOReqValidationResponseDTO" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
             <xs:element name="authenticate"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="authReqDTO" nillable="true" type="ax2199:SAMLSSOAuthnReqDTO" /> 
+                        <xs:element minOccurs="0" name="authReqDTO" nillable="true" type="ax2278:SAMLSSOAuthnReqDTO" /> 
                         <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" /> 
                     </xs:sequence> 
                 </xs:complexType> 
@@ -68,7 +54,7 @@
             <xs:element name="authenticateResponse"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2199:SAMLSSORespDTO" /> 
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2278:SAMLSSORespDTO" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
@@ -83,7 +69,7 @@
                     <xs:element minOccurs="0" name="issuer" nillable="true" type="xs:string" /> 
                     <xs:element minOccurs="0" name="logOutReq" type="xs:boolean" /> 
                     <xs:element minOccurs="0" name="loginPageURL" nillable="true" type="xs:string" /> 
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="logoutRespDTO" nillable="true" type="ax2199:SingleLogoutRequestDTO" /> 
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="logoutRespDTO" nillable="true" type="ax2278:SingleLogoutRequestDTO" /> 
                     <xs:element minOccurs="0" name="logoutResponse" nillable="true" type="xs:string" /> 
                     <xs:element minOccurs="0" name="response" nillable="true" type="xs:string" /> 
                     <xs:element minOccurs="0" name="rpSessionId" nillable="true" type="xs:string" /> 
@@ -121,6 +107,7 @@
             <xs:complexType name="SAMLSSORespDTO"> 
                 <xs:sequence> 
                     <xs:element minOccurs="0" name="assertionConsumerURL" nillable="true" type="xs:string" /> 
+                    <xs:element minOccurs="0" name="errorMsg" nillable="true" type="xs:string" /> 
                     <xs:element minOccurs="0" name="loginPageURL" nillable="true" type="xs:string" /> 
                     <xs:element minOccurs="0" name="respString" nillable="true" type="xs:string" /> 
                     <xs:element minOccurs="0" name="sessionEstablished" type="xs:boolean" /> 
@@ -139,8 +126,8 @@
     <wsdl:message name="authenticateResponse"> 
         <wsdl:part name="parameters" element="ns1:authenticateResponse" /> 
     </wsdl:message> 
-    <wsdl:message name="authenticateIdentityException"> 
-        <wsdl:part name="parameters" element="ns1:authenticateIdentityException" /> 
+    <wsdl:message name="IdentitySAMLSSOServiceIdentityException"> 
+        <wsdl:part name="parameters" element="ns1:IdentitySAMLSSOServiceIdentityException" /> 
     </wsdl:message> 
     <wsdl:message name="validateRequestRequest"> 
         <wsdl:part name="parameters" element="ns1:validateRequest" /> 
@@ -148,33 +135,27 @@
     <wsdl:message name="validateRequestResponse"> 
         <wsdl:part name="parameters" element="ns1:validateRequestResponse" /> 
     </wsdl:message> 
-    <wsdl:message name="validateRequestIdentityException"> 
-        <wsdl:part name="parameters" element="ns1:validateRequestIdentityException" /> 
-    </wsdl:message> 
     <wsdl:message name="doSingleLogoutRequest"> 
         <wsdl:part name="parameters" element="ns1:doSingleLogout" /> 
     </wsdl:message> 
     <wsdl:message name="doSingleLogoutResponse"> 
         <wsdl:part name="parameters" element="ns1:doSingleLogoutResponse" /> 
     </wsdl:message> 
-    <wsdl:message name="doSingleLogoutIdentityException"> 
-        <wsdl:part name="parameters" element="ns1:doSingleLogoutIdentityException" /> 
-    </wsdl:message> 
     <wsdl:portType name="IdentitySAMLSSOServicePortType"> 
         <wsdl:operation name="authenticate"> 
             <wsdl:input message="tns:authenticateRequest" wsaw:Action="urn:authenticate" /> 
             <wsdl:output message="tns:authenticateResponse" wsaw:Action="urn:authenticateResponse" /> 
-            <wsdl:fault message="tns:authenticateIdentityException" name="authenticateIdentityException" wsaw:Action="urn:authenticateauthenticateIdentityException" /> 
+            <wsdl:fault message="tns:IdentitySAMLSSOServiceIdentityException" name="IdentitySAMLSSOServiceIdentityException" wsaw:Action="urn:authenticateIdentitySAMLSSOServiceIdentityException" /> 
         </wsdl:operation> 
         <wsdl:operation name="validateRequest"> 
             <wsdl:input message="tns:validateRequestRequest" wsaw:Action="urn:validateRequest" /> 
             <wsdl:output message="tns:validateRequestResponse" wsaw:Action="urn:validateRequestResponse" /> 
-            <wsdl:fault message="tns:validateRequestIdentityException" name="validateRequestIdentityException" wsaw:Action="urn:validateRequestvalidateRequestIdentityException" /> 
+            <wsdl:fault message="tns:IdentitySAMLSSOServiceIdentityException" name="IdentitySAMLSSOServiceIdentityException" wsaw:Action="urn:validateRequestIdentitySAMLSSOServiceIdentityException" /> 
         </wsdl:operation> 
         <wsdl:operation name="doSingleLogout"> 
             <wsdl:input message="tns:doSingleLogoutRequest" wsaw:Action="urn:doSingleLogout" /> 
             <wsdl:output message="tns:doSingleLogoutResponse" wsaw:Action="urn:doSingleLogoutResponse" /> 
-            <wsdl:fault message="tns:doSingleLogoutIdentityException" name="doSingleLogoutIdentityException" wsaw:Action="urn:doSingleLogoutdoSingleLogoutIdentityException" /> 
+            <wsdl:fault message="tns:IdentitySAMLSSOServiceIdentityException" name="IdentitySAMLSSOServiceIdentityException" wsaw:Action="urn:doSingleLogoutIdentitySAMLSSOServiceIdentityException" /> 
         </wsdl:operation> 
     </wsdl:portType> 
     <wsdl:binding name="IdentitySAMLSSOServiceSoap11Binding" type="tns:IdentitySAMLSSOServicePortType"> 
@@ -187,8 +168,8 @@
             <wsdl:output> 
                 <soap:body use="literal" /> 
             </wsdl:output> 
-            <wsdl:fault name="authenticateIdentityException"> 
-                <soap:fault use="literal" name="authenticateIdentityException" /> 
+            <wsdl:fault name="IdentitySAMLSSOServiceIdentityException"> 
+                <soap:fault use="literal" name="IdentitySAMLSSOServiceIdentityException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="validateRequest"> 
@@ -199,8 +180,8 @@
             <wsdl:output> 
                 <soap:body use="literal" /> 
             </wsdl:output> 
-            <wsdl:fault name="validateRequestIdentityException"> 
-                <soap:fault use="literal" name="validateRequestIdentityException" /> 
+            <wsdl:fault name="IdentitySAMLSSOServiceIdentityException"> 
+                <soap:fault use="literal" name="IdentitySAMLSSOServiceIdentityException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="doSingleLogout"> 
@@ -211,8 +192,8 @@
             <wsdl:output> 
                 <soap:body use="literal" /> 
             </wsdl:output> 
-            <wsdl:fault name="doSingleLogoutIdentityException"> 
-                <soap:fault use="literal" name="doSingleLogoutIdentityException" /> 
+            <wsdl:fault name="IdentitySAMLSSOServiceIdentityException"> 
+                <soap:fault use="literal" name="IdentitySAMLSSOServiceIdentityException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
     </wsdl:binding> 
@@ -226,8 +207,8 @@
             <wsdl:output> 
                 <soap12:body use="literal" /> 
             </wsdl:output> 
-            <wsdl:fault name="authenticateIdentityException"> 
-                <soap12:fault use="literal" name="authenticateIdentityException" /> 
+            <wsdl:fault name="IdentitySAMLSSOServiceIdentityException"> 
+                <soap12:fault use="literal" name="IdentitySAMLSSOServiceIdentityException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="validateRequest"> 
@@ -238,8 +219,8 @@
             <wsdl:output> 
                 <soap12:body use="literal" /> 
             </wsdl:output> 
-            <wsdl:fault name="validateRequestIdentityException"> 
-                <soap12:fault use="literal" name="validateRequestIdentityException" /> 
+            <wsdl:fault name="IdentitySAMLSSOServiceIdentityException"> 
+                <soap12:fault use="literal" name="IdentitySAMLSSOServiceIdentityException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="doSingleLogout"> 
@@ -250,8 +231,8 @@
             <wsdl:output> 
                 <soap12:body use="literal" /> 
             </wsdl:output> 
-            <wsdl:fault name="doSingleLogoutIdentityException"> 
-                <soap12:fault use="literal" name="doSingleLogoutIdentityException" /> 
+            <wsdl:fault name="IdentitySAMLSSOServiceIdentityException"> 
+                <soap12:fault use="literal" name="IdentitySAMLSSOServiceIdentityException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
     </wsdl:binding> 
