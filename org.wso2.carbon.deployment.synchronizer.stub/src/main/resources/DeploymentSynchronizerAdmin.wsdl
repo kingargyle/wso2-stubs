@@ -1,4 +1,4 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2106="http://api.registry.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.synapse/xsd" xmlns:ax2109="http://message.synchronization.registry.carbon.wso2.org/xsd" xmlns:ax2102="http://util.synchronizer.deployment.carbon.wso2.org/xsd" xmlns:ax2105="http://exceptions.core.registry.carbon.wso2.org/xsd" xmlns:ax2104="http://synchronization.registry.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2100="http://synchronizer.deployment.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://services.synchronizer.deployment.carbon.wso2.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.synchronizer.deployment.carbon.wso2.org"> 
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2106="http://util.synchronizer.deployment.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://org.apache.synapse/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://services.synchronizer.deployment.carbon.wso2.org" xmlns:ax2104="http://synchronizer.deployment.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.synchronizer.deployment.carbon.wso2.org"> 
     <wsdl:documentation>DeploymentSynchronizerAdmin</wsdl:documentation> 
     <wsdl:types> 
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://util.synchronizer.deployment.carbon.wso2.org/xsd"> 
@@ -8,27 +8,9 @@
                     <xs:element minOccurs="0" name="autoCommit" type="xs:boolean" /> 
                     <xs:element minOccurs="0" name="enabled" type="xs:boolean" /> 
                     <xs:element minOccurs="0" name="period" type="xs:long" /> 
+                    <xs:element minOccurs="0" name="repositoryType" nillable="true" type="xs:string" /> 
                     <xs:element minOccurs="0" name="useEventing" type="xs:boolean" /> 
                 </xs:all> 
-            </xs:complexType> 
-        </xs:schema> 
-        <xs:schema xmlns:ax2107="http://api.registry.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exceptions.core.registry.carbon.wso2.org/xsd"> 
-            <xs:import namespace="http://api.registry.carbon.wso2.org/xsd" /> 
-            <xs:complexType name="RegistryException"> 
-                <xs:complexContent> 
-                    <xs:extension base="ax2107:RegistryException"> 
-                        <xs:sequence /> 
-                    </xs:extension> 
-                </xs:complexContent> 
-            </xs:complexType> 
-        </xs:schema> 
-        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://message.synchronization.registry.carbon.wso2.org/xsd"> 
-            <xs:complexType name="MessageCode"> 
-                <xs:complexContent> 
-                    <xs:extension base="xs:Enum"> 
-                        <xs:sequence /> 
-                    </xs:extension> 
-                </xs:complexContent> 
             </xs:complexType> 
         </xs:schema> 
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://synchronizer.deployment.carbon.wso2.org/xsd"> 
@@ -36,41 +18,20 @@
                 <xs:sequence /> 
             </xs:complexType> 
         </xs:schema> 
-        <xs:schema xmlns:ax2108="http://exceptions.core.registry.carbon.wso2.org/xsd" xmlns:ax2110="http://message.synchronization.registry.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://synchronization.registry.carbon.wso2.org/xsd"> 
-            <xs:import namespace="http://exceptions.core.registry.carbon.wso2.org/xsd" /> 
-            <xs:import namespace="http://message.synchronization.registry.carbon.wso2.org/xsd" /> 
-            <xs:complexType name="SynchronizationException"> 
-                <xs:complexContent> 
-                    <xs:extension base="ax2108:RegistryException"> 
-                        <xs:sequence> 
-                            <xs:element minOccurs="0" name="code" nillable="true" type="ax2109:MessageCode" /> 
-                            <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" /> 
-                            <xs:element maxOccurs="unbounded" minOccurs="0" name="parameters" nillable="true" type="xs:string" /> 
-                        </xs:sequence> 
-                    </xs:extension> 
-                </xs:complexContent> 
-            </xs:complexType> 
-        </xs:schema> 
-        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://api.registry.carbon.wso2.org/xsd"> 
-            <xs:complexType name="RegistryException"> 
-                <xs:sequence /> 
-            </xs:complexType> 
-        </xs:schema> 
-        <xs:schema xmlns:ax2101="http://synchronizer.deployment.carbon.wso2.org/xsd" xmlns:ax2103="http://util.synchronizer.deployment.carbon.wso2.org/xsd" xmlns:ax2111="http://synchronization.registry.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.synapse/xsd"> 
+        <xs:schema xmlns:ax2107="http://util.synchronizer.deployment.carbon.wso2.org/xsd" xmlns:ax2105="http://synchronizer.deployment.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.synapse/xsd"> 
             <xs:import namespace="http://synchronizer.deployment.carbon.wso2.org/xsd" /> 
             <xs:import namespace="http://util.synchronizer.deployment.carbon.wso2.org/xsd" /> 
-            <xs:import namespace="http://synchronization.registry.carbon.wso2.org/xsd" /> 
             <xs:element name="DeploymentSynchronizerAdminDeploymentSynchronizerException"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="DeploymentSynchronizerException" nillable="true" type="ax2101:DeploymentSynchronizerException" /> 
+                        <xs:element minOccurs="0" name="DeploymentSynchronizerException" nillable="true" type="ax2105:DeploymentSynchronizerException" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
             <xs:element name="updateSynchronizerForCarbonRepository"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="config" nillable="true" type="ax2103:DeploymentSynchronizerConfiguration" /> 
+                        <xs:element minOccurs="0" name="config" nillable="true" type="ax2107:DeploymentSynchronizerConfiguration" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
@@ -94,7 +55,7 @@
             <xs:element name="getSynchronizerConfigurationForCarbonRepositoryResponse"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2103:DeploymentSynchronizerConfiguration" /> 
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2107:DeploymentSynchronizerConfiguration" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
@@ -125,20 +86,13 @@
             <xs:element name="enableSynchronizerForCarbonRepository"> 
                 <xs:complexType> 
                     <xs:sequence> 
-                        <xs:element minOccurs="0" name="config" nillable="true" type="ax2103:DeploymentSynchronizerConfiguration" /> 
+                        <xs:element minOccurs="0" name="config" nillable="true" type="ax2107:DeploymentSynchronizerConfiguration" /> 
                     </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
             <xs:element name="disableSynchronizerForCarbonRepository"> 
                 <xs:complexType> 
                     <xs:sequence /> 
-                </xs:complexType> 
-            </xs:element> 
-            <xs:element name="DeploymentSynchronizerAdminSynchronizationException"> 
-                <xs:complexType> 
-                    <xs:sequence> 
-                        <xs:element minOccurs="0" name="SynchronizationException" nillable="true" type="ax2104:SynchronizationException" /> 
-                    </xs:sequence> 
                 </xs:complexType> 
             </xs:element> 
             <xs:element name="commit"> 
@@ -170,9 +124,6 @@
     </wsdl:message> 
     <wsdl:message name="checkoutRequest"> 
         <wsdl:part name="parameters" element="ns:checkout" /> 
-    </wsdl:message> 
-    <wsdl:message name="DeploymentSynchronizerAdminSynchronizationException"> 
-        <wsdl:part name="parameters" element="ns:DeploymentSynchronizerAdminSynchronizationException" /> 
     </wsdl:message> 
     <wsdl:message name="synchronizerEnabledForCarbonRepositoryRequest"> 
         <wsdl:part name="parameters" element="ns:synchronizerEnabledForCarbonRepository" /> 
@@ -214,7 +165,7 @@
         </wsdl:operation> 
         <wsdl:operation name="checkout"> 
             <wsdl:input message="tns:checkoutRequest" wsaw:Action="urn:checkout" /> 
-            <wsdl:fault message="tns:DeploymentSynchronizerAdminSynchronizationException" name="DeploymentSynchronizerAdminSynchronizationException" wsaw:Action="urn:checkoutDeploymentSynchronizerAdminSynchronizationException" /> 
+            <wsdl:fault message="tns:DeploymentSynchronizerAdminDeploymentSynchronizerException" name="DeploymentSynchronizerAdminDeploymentSynchronizerException" wsaw:Action="urn:checkoutDeploymentSynchronizerAdminDeploymentSynchronizerException" /> 
         </wsdl:operation> 
         <wsdl:operation name="synchronizerEnabledForCarbonRepository"> 
             <wsdl:input message="tns:synchronizerEnabledForCarbonRepositoryRequest" wsaw:Action="urn:synchronizerEnabledForCarbonRepository" /> 
@@ -222,7 +173,7 @@
         </wsdl:operation> 
         <wsdl:operation name="commit"> 
             <wsdl:input message="tns:commitRequest" wsaw:Action="urn:commit" /> 
-            <wsdl:fault message="tns:DeploymentSynchronizerAdminSynchronizationException" name="DeploymentSynchronizerAdminSynchronizationException" wsaw:Action="urn:commitDeploymentSynchronizerAdminSynchronizationException" /> 
+            <wsdl:fault message="tns:DeploymentSynchronizerAdminDeploymentSynchronizerException" name="DeploymentSynchronizerAdminDeploymentSynchronizerException" wsaw:Action="urn:commitDeploymentSynchronizerAdminDeploymentSynchronizerException" /> 
         </wsdl:operation> 
         <wsdl:operation name="enableSynchronizerForCarbonRepository"> 
             <wsdl:input message="tns:enableSynchronizerForCarbonRepositoryRequest" wsaw:Action="urn:enableSynchronizerForCarbonRepository" /> 
@@ -274,8 +225,8 @@
             <wsdl:input> 
                 <soap:body use="literal" /> 
             </wsdl:input> 
-            <wsdl:fault name="DeploymentSynchronizerAdminSynchronizationException"> 
-                <soap:fault use="literal" name="DeploymentSynchronizerAdminSynchronizationException" /> 
+            <wsdl:fault name="DeploymentSynchronizerAdminDeploymentSynchronizerException"> 
+                <soap:fault use="literal" name="DeploymentSynchronizerAdminDeploymentSynchronizerException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="synchronizerEnabledForCarbonRepository"> 
@@ -292,8 +243,8 @@
             <wsdl:input> 
                 <soap:body use="literal" /> 
             </wsdl:input> 
-            <wsdl:fault name="DeploymentSynchronizerAdminSynchronizationException"> 
-                <soap:fault use="literal" name="DeploymentSynchronizerAdminSynchronizationException" /> 
+            <wsdl:fault name="DeploymentSynchronizerAdminDeploymentSynchronizerException"> 
+                <soap:fault use="literal" name="DeploymentSynchronizerAdminDeploymentSynchronizerException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="enableSynchronizerForCarbonRepository"> 
@@ -361,8 +312,8 @@
             <wsdl:input> 
                 <soap12:body use="literal" /> 
             </wsdl:input> 
-            <wsdl:fault name="DeploymentSynchronizerAdminSynchronizationException"> 
-                <soap12:fault use="literal" name="DeploymentSynchronizerAdminSynchronizationException" /> 
+            <wsdl:fault name="DeploymentSynchronizerAdminDeploymentSynchronizerException"> 
+                <soap12:fault use="literal" name="DeploymentSynchronizerAdminDeploymentSynchronizerException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="synchronizerEnabledForCarbonRepository"> 
@@ -379,8 +330,8 @@
             <wsdl:input> 
                 <soap12:body use="literal" /> 
             </wsdl:input> 
-            <wsdl:fault name="DeploymentSynchronizerAdminSynchronizationException"> 
-                <soap12:fault use="literal" name="DeploymentSynchronizerAdminSynchronizationException" /> 
+            <wsdl:fault name="DeploymentSynchronizerAdminDeploymentSynchronizerException"> 
+                <soap12:fault use="literal" name="DeploymentSynchronizerAdminDeploymentSynchronizerException" /> 
             </wsdl:fault> 
         </wsdl:operation> 
         <wsdl:operation name="enableSynchronizerForCarbonRepository"> 
