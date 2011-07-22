@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.adminconsole.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://description.core.adminconsole.carbon.wso2.org/xsd" xmlns:ax21="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.adminconsole.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://description.core.adminconsole.carbon.wso2.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
     <wsdl:types>
-        <xs:schema xmlns:ax24="http://description.core.adminconsole.carbon.wso2.org/xsd" xmlns:ax22="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
-            <xs:import namespace="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd"/>
+        <xs:schema xmlns:ax22="http://description.core.adminconsole.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.adminconsole.carbon.wso2.org">
             <xs:import namespace="http://description.core.adminconsole.carbon.wso2.org/xsd"/>
             <xs:element name="testConnection">
                 <xs:complexType>
@@ -24,7 +23,14 @@
             <xs:element name="removeRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="rssInsId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removePrivilegeGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="privGroupId" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -39,6 +45,47 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:DatabaseUser"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUserDatabasePermissions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUserDatabasePermissionsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTenantDomain">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="tenantId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTenantDomainResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRoundRobinAssignedInstance">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRoundRobinAssignedInstanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:RSSInstance"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -82,16 +129,40 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getDatabaseUserByName">
+            <xs:element name="getPrivilegeGroups">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPrivilegeGroupsResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="rssInstId" type="xs:int"/>
-                        <xs:element minOccurs="0" name="dbInstId" type="xs:int"/>
-                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:PrivilegeGroup"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getDatabaseUserByNameResponse">
+            <xs:element name="getPrivilegeGroupById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="privGroupId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPrivilegeGroupByIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:PrivilegeGroup"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseUserById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDatabaseUserByIdResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="ax21:DatabaseUser"/>
@@ -125,10 +196,19 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="editUserPrivileges">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="strPrivileges" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="ax21:DatabaseUser"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="editRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="strRSSInstance" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="rssIns" nillable="true" type="ax21:RSSInstance"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -136,6 +216,13 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="editPrivilegeGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="privGroup" nillable="true" type="ax21:PrivilegeGroup"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -147,11 +234,20 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="deleteUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="createUserWithPrivileges">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="strPrivileges" nillable="true" type="xs:string"/>
-                        <xs:element minOccurs="0" name="strUserInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="ax21:DatabaseUser"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -162,10 +258,40 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="createUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="ax21:DatabaseUser"/>
+                        <xs:element minOccurs="0" name="privGroupId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createPrivilegeGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="privGroup" nillable="true" type="ax21:PrivilegeGroup"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createPrivilegeGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="createDatabaseUserForTenant">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="strDbUser" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="ax21:DatabaseUser"/>
                         <xs:element minOccurs="0" name="dbInsId" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
@@ -194,7 +320,7 @@
             <xs:element name="createCarbonDSFromDatabaseUserEntry">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="entry" nillable="true" type="ax23:DataSourceEntry"/>
+                        <xs:element minOccurs="0" name="entry" nillable="true" type="ax21:DataSourceEntry"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -208,7 +334,7 @@
             <xs:element name="addRSSInstance">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="strRSSInstance" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="rssIns" nillable="true" type="ax21:RSSInstance"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -221,17 +347,6 @@
             </xs:element>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://description.core.adminconsole.carbon.wso2.org/xsd">
-            <xs:complexType name="DataSourceEntry">
-                <xs:sequence>
-                    <xs:element minOccurs="0" name="dataSourceName" nillable="true" type="xs:string"/>
-                    <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
-                    <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
-                    <xs:element minOccurs="0" name="rssInstanceId" type="xs:int"/>
-                    <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-        </xs:schema>
-        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entity.dao.core.adminconsole.carbon.wso2.org/xsd">
             <xs:complexType name="DatabaseUser">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
@@ -248,8 +363,31 @@
                     <xs:element minOccurs="0" name="instanceType" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="rssInstanceId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="serverCategory" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="serverURL" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="tenantId" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PrivilegeGroup">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="privGroupId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="privGroupName" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="privs" nillable="true" type="ax21:DatabasePrivilege"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DatabasePrivilege">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="privName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="privValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DataSourceEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataSourceName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dbName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="rssInstanceId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
@@ -266,17 +404,20 @@
     <wsdl:message name="createDatabaseForTenantResponse">
         <wsdl:part name="parameters" element="ns:createDatabaseForTenantResponse"/>
     </wsdl:message>
+    <wsdl:message name="getPrivilegeGroupByIdRequest">
+        <wsdl:part name="parameters" element="ns:getPrivilegeGroupById"/>
+    </wsdl:message>
+    <wsdl:message name="getPrivilegeGroupByIdResponse">
+        <wsdl:part name="parameters" element="ns:getPrivilegeGroupByIdResponse"/>
+    </wsdl:message>
     <wsdl:message name="testConnectionRequest">
         <wsdl:part name="parameters" element="ns:testConnection"/>
     </wsdl:message>
     <wsdl:message name="testConnectionResponse">
         <wsdl:part name="parameters" element="ns:testConnectionResponse"/>
     </wsdl:message>
-    <wsdl:message name="getDatabaseUserByNameRequest">
-        <wsdl:part name="parameters" element="ns:getDatabaseUserByName"/>
-    </wsdl:message>
-    <wsdl:message name="getDatabaseUserByNameResponse">
-        <wsdl:part name="parameters" element="ns:getDatabaseUserByNameResponse"/>
+    <wsdl:message name="editPrivilegeGroupRequest">
+        <wsdl:part name="parameters" element="ns:editPrivilegeGroup"/>
     </wsdl:message>
     <wsdl:message name="getRSSInstanceInfoRequest">
         <wsdl:part name="parameters" element="ns:getRSSInstanceInfo"/>
@@ -290,14 +431,38 @@
     <wsdl:message name="createCarbonDSFromDatabaseUserEntryResponse">
         <wsdl:part name="parameters" element="ns:createCarbonDSFromDatabaseUserEntryResponse"/>
     </wsdl:message>
+    <wsdl:message name="getUserDatabasePermissionsRequest">
+        <wsdl:part name="parameters" element="ns:getUserDatabasePermissions"/>
+    </wsdl:message>
+    <wsdl:message name="getUserDatabasePermissionsResponse">
+        <wsdl:part name="parameters" element="ns:getUserDatabasePermissionsResponse"/>
+    </wsdl:message>
     <wsdl:message name="createUserWithPrivilegesRequest">
         <wsdl:part name="parameters" element="ns:createUserWithPrivileges"/>
     </wsdl:message>
     <wsdl:message name="createUserWithPrivilegesResponse">
         <wsdl:part name="parameters" element="ns:createUserWithPrivilegesResponse"/>
     </wsdl:message>
+    <wsdl:message name="removePrivilegeGroupRequest">
+        <wsdl:part name="parameters" element="ns:removePrivilegeGroup"/>
+    </wsdl:message>
     <wsdl:message name="removeRSSInstanceRequest">
         <wsdl:part name="parameters" element="ns:removeRSSInstance"/>
+    </wsdl:message>
+    <wsdl:message name="getDatabaseUserByIdRequest">
+        <wsdl:part name="parameters" element="ns:getDatabaseUserById"/>
+    </wsdl:message>
+    <wsdl:message name="getDatabaseUserByIdResponse">
+        <wsdl:part name="parameters" element="ns:getDatabaseUserByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createUserRequest">
+        <wsdl:part name="parameters" element="ns:createUser"/>
+    </wsdl:message>
+    <wsdl:message name="createUserResponse">
+        <wsdl:part name="parameters" element="ns:createUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteUserRequest">
+        <wsdl:part name="parameters" element="ns:deleteUser"/>
     </wsdl:message>
     <wsdl:message name="getUsersByDatabaseInstanceIdRequest">
         <wsdl:part name="parameters" element="ns:getUsersByDatabaseInstanceId"/>
@@ -311,6 +476,18 @@
     <wsdl:message name="createDatabaseUserForTenantResponse">
         <wsdl:part name="parameters" element="ns:createDatabaseUserForTenantResponse"/>
     </wsdl:message>
+    <wsdl:message name="getPrivilegeGroupsRequest">
+        <wsdl:part name="parameters" element="ns:getPrivilegeGroups"/>
+    </wsdl:message>
+    <wsdl:message name="getPrivilegeGroupsResponse">
+        <wsdl:part name="parameters" element="ns:getPrivilegeGroupsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getRoundRobinAssignedInstanceRequest">
+        <wsdl:part name="parameters" element="ns:getRoundRobinAssignedInstance"/>
+    </wsdl:message>
+    <wsdl:message name="getRoundRobinAssignedInstanceResponse">
+        <wsdl:part name="parameters" element="ns:getRoundRobinAssignedInstanceResponse"/>
+    </wsdl:message>
     <wsdl:message name="editRSSInstanceRequest">
         <wsdl:part name="parameters" element="ns:editRSSInstance"/>
     </wsdl:message>
@@ -322,6 +499,15 @@
     </wsdl:message>
     <wsdl:message name="getRSSInstanceByIdResponse">
         <wsdl:part name="parameters" element="ns:getRSSInstanceByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editUserPrivilegesRequest">
+        <wsdl:part name="parameters" element="ns:editUserPrivileges"/>
+    </wsdl:message>
+    <wsdl:message name="createPrivilegeGroupRequest">
+        <wsdl:part name="parameters" element="ns:createPrivilegeGroup"/>
+    </wsdl:message>
+    <wsdl:message name="createPrivilegeGroupResponse">
+        <wsdl:part name="parameters" element="ns:createPrivilegeGroupResponse"/>
     </wsdl:message>
     <wsdl:message name="addRSSInstanceRequest">
         <wsdl:part name="parameters" element="ns:addRSSInstance"/>
@@ -344,6 +530,12 @@
     <wsdl:message name="getDatabaseInstanceByIdResponse">
         <wsdl:part name="parameters" element="ns:getDatabaseInstanceByIdResponse"/>
     </wsdl:message>
+    <wsdl:message name="getTenantDomainRequest">
+        <wsdl:part name="parameters" element="ns:getTenantDomain"/>
+    </wsdl:message>
+    <wsdl:message name="getTenantDomainResponse">
+        <wsdl:part name="parameters" element="ns:getTenantDomainResponse"/>
+    </wsdl:message>
     <wsdl:portType name="ConsoleAdminPortType">
         <wsdl:operation name="getRSSInstanceList">
             <wsdl:input message="ns:getRSSInstanceListRequest" wsaw:Action="urn:getRSSInstanceList"/>
@@ -353,13 +545,16 @@
             <wsdl:input message="ns:createDatabaseForTenantRequest" wsaw:Action="urn:createDatabaseForTenant"/>
             <wsdl:output message="ns:createDatabaseForTenantResponse" wsaw:Action="urn:createDatabaseForTenantResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="getPrivilegeGroupById">
+            <wsdl:input message="ns:getPrivilegeGroupByIdRequest" wsaw:Action="urn:getPrivilegeGroupById"/>
+            <wsdl:output message="ns:getPrivilegeGroupByIdResponse" wsaw:Action="urn:getPrivilegeGroupByIdResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="testConnection">
             <wsdl:input message="ns:testConnectionRequest" wsaw:Action="urn:testConnection"/>
             <wsdl:output message="ns:testConnectionResponse" wsaw:Action="urn:testConnectionResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="getDatabaseUserByName">
-            <wsdl:input message="ns:getDatabaseUserByNameRequest" wsaw:Action="urn:getDatabaseUserByName"/>
-            <wsdl:output message="ns:getDatabaseUserByNameResponse" wsaw:Action="urn:getDatabaseUserByNameResponse"/>
+        <wsdl:operation name="editPrivilegeGroup">
+            <wsdl:input message="ns:editPrivilegeGroupRequest" wsaw:Action="urn:editPrivilegeGroup"/>
         </wsdl:operation>
         <wsdl:operation name="getRSSInstanceInfo">
             <wsdl:input message="ns:getRSSInstanceInfoRequest" wsaw:Action="urn:getRSSInstanceInfo"/>
@@ -369,12 +564,30 @@
             <wsdl:input message="ns:createCarbonDSFromDatabaseUserEntryRequest" wsaw:Action="urn:createCarbonDSFromDatabaseUserEntry"/>
             <wsdl:output message="ns:createCarbonDSFromDatabaseUserEntryResponse" wsaw:Action="urn:createCarbonDSFromDatabaseUserEntryResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="getUserDatabasePermissions">
+            <wsdl:input message="ns:getUserDatabasePermissionsRequest" wsaw:Action="urn:getUserDatabasePermissions"/>
+            <wsdl:output message="ns:getUserDatabasePermissionsResponse" wsaw:Action="urn:getUserDatabasePermissionsResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="createUserWithPrivileges">
             <wsdl:input message="ns:createUserWithPrivilegesRequest" wsaw:Action="urn:createUserWithPrivileges"/>
             <wsdl:output message="ns:createUserWithPrivilegesResponse" wsaw:Action="urn:createUserWithPrivilegesResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="removePrivilegeGroup">
+            <wsdl:input message="ns:removePrivilegeGroupRequest" wsaw:Action="urn:removePrivilegeGroup"/>
+        </wsdl:operation>
         <wsdl:operation name="removeRSSInstance">
             <wsdl:input message="ns:removeRSSInstanceRequest" wsaw:Action="urn:removeRSSInstance"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseUserById">
+            <wsdl:input message="ns:getDatabaseUserByIdRequest" wsaw:Action="urn:getDatabaseUserById"/>
+            <wsdl:output message="ns:getDatabaseUserByIdResponse" wsaw:Action="urn:getDatabaseUserByIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createUser">
+            <wsdl:input message="ns:createUserRequest" wsaw:Action="urn:createUser"/>
+            <wsdl:output message="ns:createUserResponse" wsaw:Action="urn:createUserResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <wsdl:input message="ns:deleteUserRequest" wsaw:Action="urn:deleteUser"/>
         </wsdl:operation>
         <wsdl:operation name="getUsersByDatabaseInstanceId">
             <wsdl:input message="ns:getUsersByDatabaseInstanceIdRequest" wsaw:Action="urn:getUsersByDatabaseInstanceId"/>
@@ -384,6 +597,14 @@
             <wsdl:input message="ns:createDatabaseUserForTenantRequest" wsaw:Action="urn:createDatabaseUserForTenant"/>
             <wsdl:output message="ns:createDatabaseUserForTenantResponse" wsaw:Action="urn:createDatabaseUserForTenantResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="getPrivilegeGroups">
+            <wsdl:input message="ns:getPrivilegeGroupsRequest" wsaw:Action="urn:getPrivilegeGroups"/>
+            <wsdl:output message="ns:getPrivilegeGroupsResponse" wsaw:Action="urn:getPrivilegeGroupsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getRoundRobinAssignedInstance">
+            <wsdl:input message="ns:getRoundRobinAssignedInstanceRequest" wsaw:Action="urn:getRoundRobinAssignedInstance"/>
+            <wsdl:output message="ns:getRoundRobinAssignedInstanceResponse" wsaw:Action="urn:getRoundRobinAssignedInstanceResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="editRSSInstance">
             <wsdl:input message="ns:editRSSInstanceRequest" wsaw:Action="urn:editRSSInstance"/>
             <wsdl:output message="ns:editRSSInstanceResponse" wsaw:Action="urn:editRSSInstanceResponse"/>
@@ -391,6 +612,13 @@
         <wsdl:operation name="getRSSInstanceById">
             <wsdl:input message="ns:getRSSInstanceByIdRequest" wsaw:Action="urn:getRSSInstanceById"/>
             <wsdl:output message="ns:getRSSInstanceByIdResponse" wsaw:Action="urn:getRSSInstanceByIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editUserPrivileges">
+            <wsdl:input message="ns:editUserPrivilegesRequest" wsaw:Action="urn:editUserPrivileges"/>
+        </wsdl:operation>
+        <wsdl:operation name="createPrivilegeGroup">
+            <wsdl:input message="ns:createPrivilegeGroupRequest" wsaw:Action="urn:createPrivilegeGroup"/>
+            <wsdl:output message="ns:createPrivilegeGroupResponse" wsaw:Action="urn:createPrivilegeGroupResponse"/>
         </wsdl:operation>
         <wsdl:operation name="addRSSInstance">
             <wsdl:input message="ns:addRSSInstanceRequest" wsaw:Action="urn:addRSSInstance"/>
@@ -406,6 +634,10 @@
         <wsdl:operation name="getDatabaseInstanceById">
             <wsdl:input message="ns:getDatabaseInstanceByIdRequest" wsaw:Action="urn:getDatabaseInstanceById"/>
             <wsdl:output message="ns:getDatabaseInstanceByIdResponse" wsaw:Action="urn:getDatabaseInstanceByIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTenantDomain">
+            <wsdl:input message="ns:getTenantDomainRequest" wsaw:Action="urn:getTenantDomain"/>
+            <wsdl:output message="ns:getTenantDomainResponse" wsaw:Action="urn:getTenantDomainResponse"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="ConsoleAdminSoap11Binding" type="ns:ConsoleAdminPortType">
@@ -437,6 +669,12 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="editPrivilegeGroup">
+            <soap:operation soapAction="urn:editPrivilegeGroup" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
         <wsdl:operation name="getRSSInstanceInfo">
             <soap:operation soapAction="urn:getRSSInstanceInfo" style="document"/>
             <wsdl:input>
@@ -446,8 +684,17 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getDatabaseUserByName">
-            <soap:operation soapAction="urn:getDatabaseUserByName" style="document"/>
+        <wsdl:operation name="getPrivilegeGroupById">
+            <soap:operation soapAction="urn:getPrivilegeGroupById" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserDatabasePermissions">
+            <soap:operation soapAction="urn:getUserDatabasePermissions" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -473,11 +720,35 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="removePrivilegeGroup">
+            <soap:operation soapAction="urn:removePrivilegeGroup" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
         <wsdl:operation name="removeRSSInstance">
             <soap:operation soapAction="urn:removeRSSInstance" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseUserById">
+            <soap:operation soapAction="urn:getDatabaseUserById" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createUser">
+            <soap:operation soapAction="urn:createUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getUsersByDatabaseInstanceId">
             <soap:operation soapAction="urn:getUsersByDatabaseInstanceId" style="document"/>
@@ -488,8 +759,32 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPrivilegeGroups">
+            <soap:operation soapAction="urn:getPrivilegeGroups" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createDatabaseUserForTenant">
             <soap:operation soapAction="urn:createDatabaseUserForTenant" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getRoundRobinAssignedInstance">
+            <soap:operation soapAction="urn:getRoundRobinAssignedInstance" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -508,6 +803,21 @@
         </wsdl:operation>
         <wsdl:operation name="editRSSInstance">
             <soap:operation soapAction="urn:editRSSInstance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editUserPrivileges">
+            <soap:operation soapAction="urn:editUserPrivileges" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="createPrivilegeGroup">
+            <soap:operation soapAction="urn:createPrivilegeGroup" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -548,6 +858,15 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getTenantDomain">
+            <soap:operation soapAction="urn:getTenantDomain" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="ConsoleAdminSoap12Binding" type="ns:ConsoleAdminPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
@@ -578,6 +897,12 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="editPrivilegeGroup">
+            <soap12:operation soapAction="urn:editPrivilegeGroup" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
         <wsdl:operation name="getRSSInstanceInfo">
             <soap12:operation soapAction="urn:getRSSInstanceInfo" style="document"/>
             <wsdl:input>
@@ -587,8 +912,17 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getDatabaseUserByName">
-            <soap12:operation soapAction="urn:getDatabaseUserByName" style="document"/>
+        <wsdl:operation name="getPrivilegeGroupById">
+            <soap12:operation soapAction="urn:getPrivilegeGroupById" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserDatabasePermissions">
+            <soap12:operation soapAction="urn:getUserDatabasePermissions" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -614,11 +948,35 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="removePrivilegeGroup">
+            <soap12:operation soapAction="urn:removePrivilegeGroup" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
         <wsdl:operation name="removeRSSInstance">
             <soap12:operation soapAction="urn:removeRSSInstance" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseUserById">
+            <soap12:operation soapAction="urn:getDatabaseUserById" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createUser">
+            <soap12:operation soapAction="urn:createUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getUsersByDatabaseInstanceId">
             <soap12:operation soapAction="urn:getUsersByDatabaseInstanceId" style="document"/>
@@ -629,8 +987,32 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap12:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPrivilegeGroups">
+            <soap12:operation soapAction="urn:getPrivilegeGroups" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createDatabaseUserForTenant">
             <soap12:operation soapAction="urn:createDatabaseUserForTenant" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getRoundRobinAssignedInstance">
+            <soap12:operation soapAction="urn:getRoundRobinAssignedInstance" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -649,6 +1031,21 @@
         </wsdl:operation>
         <wsdl:operation name="editRSSInstance">
             <soap12:operation soapAction="urn:editRSSInstance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editUserPrivileges">
+            <soap12:operation soapAction="urn:editUserPrivileges" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="createPrivilegeGroup">
+            <soap12:operation soapAction="urn:createPrivilegeGroup" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -689,6 +1086,15 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getTenantDomain">
+            <soap12:operation soapAction="urn:getTenantDomain" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="ConsoleAdminHttpBinding" type="ns:ConsoleAdminPortType">
         <http:binding verb="POST"/>
@@ -719,6 +1125,12 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="editPrivilegeGroup">
+            <http:operation location="editPrivilegeGroup"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
         <wsdl:operation name="getRSSInstanceInfo">
             <http:operation location="getRSSInstanceInfo"/>
             <wsdl:input>
@@ -728,8 +1140,17 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getDatabaseUserByName">
-            <http:operation location="getDatabaseUserByName"/>
+        <wsdl:operation name="getPrivilegeGroupById">
+            <http:operation location="getPrivilegeGroupById"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserDatabasePermissions">
+            <http:operation location="getUserDatabasePermissions"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -755,11 +1176,35 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="removePrivilegeGroup">
+            <http:operation location="removePrivilegeGroup"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
         <wsdl:operation name="removeRSSInstance">
             <http:operation location="removeRSSInstance"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getDatabaseUserById">
+            <http:operation location="getDatabaseUserById"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createUser">
+            <http:operation location="createUser"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getUsersByDatabaseInstanceId">
             <http:operation location="getUsersByDatabaseInstanceId"/>
@@ -770,8 +1215,32 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <http:operation location="deleteUser"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPrivilegeGroups">
+            <http:operation location="getPrivilegeGroups"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createDatabaseUserForTenant">
             <http:operation location="createDatabaseUserForTenant"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getRoundRobinAssignedInstance">
+            <http:operation location="getRoundRobinAssignedInstance"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -790,6 +1259,21 @@
         </wsdl:operation>
         <wsdl:operation name="editRSSInstance">
             <http:operation location="editRSSInstance"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editUserPrivileges">
+            <http:operation location="editUserPrivileges"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="createPrivilegeGroup">
+            <http:operation location="createPrivilegeGroup"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -823,6 +1307,15 @@
         </wsdl:operation>
         <wsdl:operation name="getDatabaseInstanceById">
             <http:operation location="getDatabaseInstanceById"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTenantDomain">
+            <http:operation location="getTenantDomain"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
